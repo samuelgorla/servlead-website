@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servlead Solutions — AI Consulting for Small & Mid-Sized Businesses</title>
+<meta name="description" content="Practical AI consulting that pays for itself. We help small and mid-sized businesses use AI, analytics, and automation to run leaner and grow faster.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f6f1e8;
+    --bg-warm: #ede3d2;
+    --ink: #1a2332;
+    --ink-soft: #3d4a5f;
+    --muted: #6b7585;
+    --accent: #c2571a;
+    --accent-soft: #e8a178;
+    --cream: #faf6ee;
+    --line: #d9ccb4;
+    --success: #5a7a3a;
+    --shadow: 20px 20px 60px rgba(26, 35, 50, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ========== NAV ========== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+  }
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px;
+    width: 16px; height: 16px;
+    background: var(--bg);
+    border-radius: 50%;
+  }
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream) !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--cream) !important; }
+  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--ink); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid var(--line); }
+    .nav-links.open { display: flex; }
+    .mobile-toggle { display: block; }
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: 6rem 0 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    opacity: 0.35;
+    z-index: 0;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-warm);
+    border: 1px solid var(--line);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+  }
+  .hero-eyebrow .dot {
+    width: 8px; height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  h1.hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.02;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  h1.hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    position: relative;
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+    line-height: 1.55;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.75rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(194, 87, 26, 0.3);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .btn-text {
+    color: var(--ink-soft);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.95rem 0.5rem;
+  }
+  .btn-text:hover { color: var(--accent); }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    height: 480px;
+  }
+  .card-float {
+    position: absolute;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  .card-1 {
+    top: 0; left: 0;
+    width: 260px;
+    animation: float 6s ease-in-out infinite;
+  }
+  .card-2 {
+    top: 140px; right: 0;
+    width: 280px;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  .card-3 {
+    bottom: 20px; left: 40px;
+    width: 300px;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .card-icon {
+    width: 24px; height: 24px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream); font-size: 0.8rem;
+  }
+  .card-title { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.2; }
+  .card-stat { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .card-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
+  .card-bar { height: 6px; background: var(--bg-warm); border-radius: 3px; margin-top: 0.75rem; overflow: hidden; }
+  .card-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0; animation: fill 2s ease-out forwards; animation-delay: 0.5s; }
+  @keyframes fill { to { width: 78%; } }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { height: 380px; margin: 0 auto; max-width: 500px; }
+    .card-3 { left: 20px; }
+  }
+
+  /* ========== TRUST BAR ========== */
+  .trust {
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-warm);
+  }
+  .trust-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .trust-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .trust-items { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .trust-item {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* ========== SECTION BASICS ========== */
+  section { padding: 6rem 0; }
+  .section-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .section-intro {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ========== SERVICES ========== */
+  .services { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(26, 35, 50, 0.08);
+  }
+  .service-num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .service-icon {
+    width: 56px; height: 56px;
+    background: var(--bg-warm);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  .service-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .service-desc {
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    font-size: 0.98rem;
+  }
+  .service-list {
+    list-style: none;
+    padding: 0;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .service-list li {
+    padding: 0.4rem 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .service-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
+
+  /* ========== PROCESS ========== */
+  .process {
+    position: relative;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .process-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--line) 0, var(--line) 6px, transparent 6px, transparent 12px);
+    z-index: 0;
+  }
+  .process-step { position: relative; z-index: 1; }
+  .process-num {
+    width: 56px; height: 56px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .process-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .process-desc { color: var(--ink-soft); font-size: 0.95rem; }
+  @media (max-width: 900px) {
+    .process-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .process-grid::before { display: none; }
+  }
+  @media (max-width: 500px) { .process-grid { grid-template-columns: 1fr; } }
+
+  /* ========== CASE STUDIES ========== */
+  .cases { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .case-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .case-card:hover { border-color: var(--accent); }
+  .case-tag {
+    display: inline-block;
+    padding: 0.25rem 0.85rem;
+    background: var(--bg-warm);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+  .case-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  .case-result {
+    display: flex;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.25rem;
+  }
+  .case-metric { flex: 1; }
+  .case-metric-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .case-metric-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.35rem;
+  }
+  .case-desc { color: var(--ink-soft); font-size: 0.98rem; }
+  @media (max-width: 800px) { .cases-grid { grid-template-columns: 1fr; } }
+
+  /* ========== ABOUT ========== */
+  .about {
+    position: relative;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-visual {
+    aspect-ratio: 4/5;
+    background: var(--bg-warm);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .about-visual-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+  }
+  .quote-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 6rem;
+    line-height: 0.7;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .quote-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .quote-author {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .quote-role {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .about p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .about-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .about-stat-label {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-visual { max-width: 480px; margin: 0 auto; }
+  }
+
+  /* ========== CTA ========== */
+  .cta-section {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 32px;
+    margin: 0 2rem 6rem;
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(194, 87, 26, 0.4) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .cta-section > * { position: relative; z-index: 1; }
+  .cta-eyebrow {
+    font-size: 0.85rem;
+    color: var(--accent-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  h2.cta-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h2.cta-title em { font-style: italic; color: var(--accent-soft); font-weight: 400; }
+  .cta-sub {
+    font-size: 1.15rem;
+    color: #c8d0dc;
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-section .btn-primary { background: var(--accent); }
+  .cta-section .btn-primary:hover { background: var(--cream); color: var(--ink); }
+  .cta-section .btn-secondary { border-color: var(--cream); color: var(--cream); }
+  .cta-section .btn-secondary:hover { background: var(--cream); color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .cta-section { margin: 0 1rem 4rem; padding: 3.5rem 1.5rem; }
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--bg-warm);
+    border-top: 1px solid var(--line);
+    padding: 4rem 0 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.35rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .footer-tagline { color: var(--ink-soft); font-size: 0.95rem; max-width: 320px; }
+  .footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 0.35rem 0;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+
+  /* ========== REVEAL ANIMATIONS ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"></span>
+      Servlead Solutions
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#process">How we work</a>
+      <a href="#cases">Case studies</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Book a call →</a>
+    </div>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow reveal">
+          <span class="dot"></span>
+          Now accepting Q2 2026 projects
+        </div>
+        <h1 class="hero-title reveal">
+          AI that actually<br>works for <em>real businesses</em>.
+        </h1>
+        <p class="hero-sub reveal">
+          We help small and mid-sized businesses use AI, analytics, and automation to cut costs, save hours, and grow faster — without the enterprise price tag or the hype.
+        </p>
+        <div class="hero-ctas reveal">
+          <a href="#contact" class="btn btn-primary">Book a free 30-min consult →</a>
+          <a href="#services" class="btn-text">See what we do →</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="card-float card-1 reveal">
+          <div class="card-header">
+            <span class="card-icon">⚡</span>
+            Automation
+          </div>
+          <div class="card-title">Invoice processing</div>
+          <div class="card-stat">−73%</div>
+          <div class="card-label">time per invoice</div>
+        </div>
+
+        <div class="card-float card-2 reveal">
+          <div class="card-header">
+            <span class="card-icon">📊</span>
+            Analytics
+          </div>
+          <div class="card-title">Demand forecast accuracy</div>
+          <div class="card-bar"><div class="card-bar-fill"></div></div>
+          <div class="card-label">78% — up from 52%</div>
+        </div>
+
+        <div class="card-float card-3 reveal">
+          <div class="card-header">
+            <span class="card-icon">🤖</span>
+            AI assistant
+          </div>
+          <div class="card-title">Support tickets auto-resolved</div>
+          <div class="card-stat">2,400+</div>
+          <div class="card-label">this quarter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="container">
+    <div class="trust-inner">
+      <span class="trust-label">Trusted approach built on</span>
+      <div class="trust-items">
+        <span class="trust-item">20+ years enterprise experience</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">Fortune 500 background</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">SMB-focused pricing</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-eyebrow reveal">What we do</div>
+    <h2 class="section-title reveal">Three ways we help you <em>put AI to work</em>.</h2>
+    <p class="section-intro reveal">Most AI projects fail because they're over-engineered. We focus on what's practical, what pays for itself, and what your team can actually use.</p>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01 / STRATEGY</div>
+        <div class="service-icon">🎯</div>
+        <h3 class="service-title">Strategy & Advisory</h3>
+        <p class="service-desc">A clear-eyed AI roadmap built around your actual business, not a tech wishlist.</p>
+        <ul class="service-list">
+          <li>AI opportunity audits</li>
+          <li>Build vs. buy decisions</li>
+          <li>Data & analytics strategy</li>
+          <li>ROI modeling</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">02 / IMPLEMENTATION</div>
+        <div class="service-icon">⚙️</div>
+        <h3 class="service-title">Implementation & Automation</h3>
+        <p class="service-desc">We build it, test it, and hand it off working. No 200-slide deliverables.</p>
+        <ul class="service-list">
+          <li>Custom AI chatbots & assistants</li>
+          <li>Workflow automation</li>
+          <li>Systems integration</li>
+          <li>Analytics dashboards</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">03 / ENABLEMENT</div>
+        <div class="service-icon">🎓</div>
+        <h3 class="service-title">Training & Enablement</h3>
+        <p class="service-desc">Your team owns the outcome. We make sure they know how to run with it.</p>
+        <ul class="service-list">
+          <li>Team workshops</li>
+          <li>AI literacy training</li>
+          <li>Prompt engineering sessions</li>
+          <li>Ongoing advisory</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-eyebrow reveal">How we work</div>
+    <h2 class="section-title reveal">A simple, <em>honest</em> process.</h2>
+    <p class="section-intro reveal">No drawn-out RFPs. No mystery. Here's exactly how engagements go from first call to working solution.</p>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <h3 class="process-title">Discovery call</h3>
+        <p class="process-desc">Free 30 minutes to understand your business and where AI could actually move the needle.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">02</div>
+        <h3 class="process-title">Scoped plan</h3>
+        <p class="process-desc">A clear proposal with fixed pricing, timeline, and expected outcomes. No surprises.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">03</div>
+        <h3 class="process-title">Build & test</h3>
+        <p class="process-desc">We build in short sprints with you in the loop. You see progress every week.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">04</div>
+        <h3 class="process-title">Launch & support</h3>
+        <p class="process-desc">We train your team, document everything, and stick around for questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-eyebrow reveal">Recent work</div>
+    <h2 class="section-title reveal">Small projects. <em>Real results.</em></h2>
+    <p class="section-intro reveal">A couple of recent engagements that show what's possible when AI is applied carefully.</p>
+
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <span class="case-tag">PROCESS AUTOMATION</span>
+        <h3 class="case-title">Automated invoice processing for a 40-person services firm.</h3>
+        <div class="case-result">
+          <div class="case-metric">
+            <div class="case-metric-num">73%</div>
+            <div class="case-metric-label">Time saved</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-num">$48k</div>
+            <div class="case-metric-label">Annual savings</div>
+          </div>
+        </div>
+        <p class="case-desc">Replaced a manual 4-hour weekly reconciliation process with an automated workflow that runs in under an hour.</p>
+      </div>
+
+      <div class="case-card reveal">
+        <span class="case-tag">AI STRATEGY</span>
+        <h3 class="case-title">AI readiness roadmap for a regional retailer.</h3>
+        <div class="case-result">
+          <div class="case-metric">
+            <div class="case-metric-num">3</div>
+            <div class="case-metric-label">Quick wins identified</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-num">6 mo</div>
+            <div class="case-metric-label">Payback window</div>
+          </div>
+        </div>
+        <p class="case-desc">Built a phased plan that prioritized high-ROI pilots over big, risky platform bets — starting with demand forecasting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-visual-inner">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">Most AI advice is written for companies with 50-person data teams. We built Servlead for the other 99%.</p>
+          <div class="quote-author">The Servlead Approach</div>
+          <div class="quote-role">Our founding principle</div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="section-eyebrow">About Servlead</div>
+        <h2 class="section-title">Enterprise expertise. <em>Small-business sensibility.</em></h2>
+        <p>Servlead Solutions was founded on a simple observation: the biggest AI wins aren't happening at tech giants. They're happening at regular businesses that pick one clear problem and solve it well.</p>
+        <p>With two decades of experience inside Fortune 500 analytics, automation, and digital transformation programs, we've seen what works — and what's just expensive theater. We bring that same playbook to SMB and mid-market clients, at a price that actually makes sense.</p>
+
+        <div class="about-stats">
+          <div>
+            <div class="about-stat-num">20+</div>
+            <div class="about-stat-label">Years of experience</div>
+          </div>
+          <div>
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">Fixed-price projects</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="cta-eyebrow">Let's talk</div>
+  <h2 class="cta-title">Not sure where AI fits in your business? <em>Let's figure it out together.</em></h2>
+  <p class="cta-sub">Free 30-minute call. No pitch deck. Just an honest conversation about your business and what might actually help.</p>
+  <div class="cta-ctas">
+    <a href="mailto:info@ServleadSolutions.com?subject=Booking a consultation" class="btn btn-primary">Book your free consult →</a>
+    <a href="tel:+18608691385" class="btn btn-secondary">Call (860) 869-1385</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-mark"></span>
+          Servlead Solutions
+        </div>
+        <p class="footer-tagline">Practical AI consulting for small and mid-sized businesses. Based in Connecticut, serving clients across the US.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Strategy & Advisory</a>
+        <a href="#services">Implementation</a>
+        <a href="#services">Training</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#cases">Case studies</a>
+        <a href="#process">How we work</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@ServleadSolutions.com">info@ServleadSolutions.com</a>
+        <a href="tel:+18608691385">(860) 869-1385</a>
+        <a href="https://www.linkedin.com/company/servlead-solutions/" target="_blank">LinkedIn →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Servlead Solutions. All rights reserved.</div>
+      <div>Built with care in Connecticut.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Stagger hero reveals on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 120);
+    });
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
