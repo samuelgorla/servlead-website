@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Servlead Solutions — AI Consulting for Small & Mid-Sized Businesses</title>
-<meta name="description" content="Practical AI consulting that pays for itself. We help small and mid-sized businesses use AI, analytics, and automation to run leaner and grow faster.">
+<meta name="description" content="Practical AI consulting that pays for itself. We help small and mid-sized businesses identify workflow inefficiencies and build AI automation that actually works.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,11 +22,11 @@
     --cream: #faf6ee;
     --line: #d9ccb4;
     --success: #5a7a3a;
+    --teal: #0d7a6e;
     --shadow: 20px 20px 60px rgba(26, 35, 50, 0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -34,687 +34,369 @@
     background: var(--bg);
     color: var(--ink);
     line-height: 1.6;
-    font-weight: 400;
     overflow-x: hidden;
   }
 
-  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; }
-  .serif { font-family: 'Fraunces', Georgia, serif; }
-
+  .display { font-family: 'Fraunces', Georgia, serif; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
   /* ========== NAV ========== */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: rgba(246, 241, 232, 0.92);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
   .nav-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2rem; max-width: 1200px; margin: 0 auto;
   }
   .logo {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.35rem;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.35rem;
+    color: var(--ink); letter-spacing: -0.01em; text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
   }
   .logo-mark {
-    width: 28px;
-    height: 28px;
-    background: var(--accent);
-    border-radius: 50%;
-    position: relative;
-    display: inline-block;
+    width: 28px; height: 28px; background: var(--accent);
+    border-radius: 50%; position: relative; display: inline-block; flex-shrink: 0;
   }
   .logo-mark::after {
-    content: '';
-    position: absolute;
-    top: 6px; left: 6px;
-    width: 16px; height: 16px;
-    background: var(--bg);
-    border-radius: 50%;
+    content: ''; position: absolute; top: 6px; left: 6px;
+    width: 16px; height: 16px; background: var(--bg); border-radius: 50%;
   }
   .nav-links { display: flex; gap: 2.5rem; align-items: center; }
   .nav-links a {
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.2s;
+    color: var(--ink-soft); text-decoration: none;
+    font-size: 0.95rem; font-weight: 500; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
   .nav-cta {
-    background: var(--ink);
-    color: var(--cream) !important;
-    padding: 0.6rem 1.2rem;
-    border-radius: 999px;
-    transition: all 0.2s;
+    background: var(--ink); color: var(--cream) !important;
+    padding: 0.6rem 1.2rem; border-radius: 999px; transition: all 0.2s;
   }
-  .nav-cta:hover { background: var(--accent); color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--accent); }
   .mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--ink); }
 
   @media (max-width: 768px) {
-    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid var(--line); }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg); flex-direction: column; padding: 1.5rem 2rem;
+      gap: 1.25rem; border-bottom: 1px solid var(--line);
+    }
     .nav-links.open { display: flex; }
     .mobile-toggle { display: block; }
   }
 
   /* ========== HERO ========== */
-  .hero {
-    padding: 6rem 0 7rem;
-    position: relative;
-    overflow: hidden;
-  }
+  .hero { padding: 6rem 0 7rem; position: relative; overflow: hidden; }
   .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
     background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-    opacity: 0.35;
-    z-index: 0;
+    opacity: 0.35; z-index: 0;
   }
   .hero-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    display: grid; grid-template-columns: 1.3fr 1fr;
+    gap: 4rem; align-items: center; position: relative; z-index: 1;
   }
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--bg-warm);
-    border: 1px solid var(--line);
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-bottom: 1.75rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--bg-warm); border: 1px solid var(--line);
+    padding: 0.5rem 1rem; border-radius: 999px;
+    font-size: 0.85rem; font-weight: 500; color: var(--ink-soft); margin-bottom: 1.75rem;
   }
   .hero-eyebrow .dot {
-    width: 8px; height: 8px;
-    background: var(--success);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
+    width: 8px; height: 8px; background: var(--success);
+    border-radius: 50%; animation: pulse 2s infinite;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
   h1.hero-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-    line-height: 1.02;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    color: var(--ink);
+    font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.02; font-weight: 500; letter-spacing: -0.03em;
+    margin-bottom: 1.5rem; color: var(--ink);
   }
-  h1.hero-title em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-    position: relative;
-  }
+  h1.hero-title em { font-style: italic; font-weight: 400; color: var(--accent); }
   .hero-sub {
-    font-size: 1.2rem;
-    color: var(--ink-soft);
-    max-width: 540px;
-    margin-bottom: 2.5rem;
-    line-height: 1.55;
+    font-size: 1.2rem; color: var(--ink-soft);
+    max-width: 540px; margin-bottom: 2.5rem; line-height: 1.55;
   }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.95rem 1.75rem;
-    border-radius: 999px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.25s;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.95rem 1.75rem; border-radius: 999px;
+    font-size: 1rem; font-weight: 600; text-decoration: none;
+    transition: all 0.25s; border: none; cursor: pointer; font-family: inherit;
   }
-  .btn-primary {
-    background: var(--ink);
-    color: var(--cream);
-  }
+  .btn-primary { background: var(--ink); color: var(--cream); }
   .btn-primary:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
+    background: var(--accent); transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(194, 87, 26, 0.3);
   }
-  .btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    border: 1.5px solid var(--ink);
-  }
-  .btn-secondary:hover {
-    background: var(--ink);
-    color: var(--cream);
-  }
-  .btn-text {
-    color: var(--ink-soft);
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.95rem 0.5rem;
-  }
+  .btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+  .btn-text { color: var(--ink-soft); font-weight: 500; text-decoration: none; padding: 0.95rem 0.5rem; }
   .btn-text:hover { color: var(--accent); }
 
-  /* Hero visual */
-  .hero-visual {
-    position: relative;
-    height: 480px;
-  }
+  .hero-visual { position: relative; height: 480px; }
   .card-float {
-    position: absolute;
-    background: var(--cream);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
+    position: absolute; background: var(--cream);
+    border: 1px solid var(--line); border-radius: 20px;
+    padding: 1.5rem; box-shadow: var(--shadow);
   }
-  .card-1 {
-    top: 0; left: 0;
-    width: 260px;
-    animation: float 6s ease-in-out infinite;
-  }
-  .card-2 {
-    top: 140px; right: 0;
-    width: 280px;
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 1s;
-  }
-  .card-3 {
-    bottom: 20px; left: 40px;
-    width: 300px;
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
+  .card-1 { top: 0; left: 0; width: 260px; animation: float 6s ease-in-out infinite; }
+  .card-2 { top: 140px; right: 0; width: 280px; animation: float 6s ease-in-out infinite; animation-delay: 1s; }
+  .card-3 { bottom: 20px; left: 40px; width: 300px; animation: float 6s ease-in-out infinite; animation-delay: 2s; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
   .card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;
   }
   .card-icon {
-    width: 24px; height: 24px;
-    background: var(--accent);
-    border-radius: 6px;
+    width: 24px; height: 24px; background: var(--accent); border-radius: 6px;
     display: flex; align-items: center; justify-content: center;
     color: var(--cream); font-size: 0.8rem;
   }
-  .card-title { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.2; }
+  .card-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.2; }
   .card-stat { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 600; color: var(--accent); line-height: 1; }
   .card-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
   .card-bar { height: 6px; background: var(--bg-warm); border-radius: 3px; margin-top: 0.75rem; overflow: hidden; }
   .card-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0; animation: fill 2s ease-out forwards; animation-delay: 0.5s; }
-  @keyframes fill { to { width: 78%; } }
+  @keyframes fill { to { width: 82%; } }
 
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
     .hero-visual { height: 380px; margin: 0 auto; max-width: 500px; }
-    .card-3 { left: 20px; }
   }
 
   /* ========== TRUST BAR ========== */
   .trust {
-    padding: 2rem 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--bg-warm);
+    padding: 2rem 0; border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line); background: var(--bg-warm);
   }
   .trust-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
   }
-  .trust-label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+  .trust-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
   .trust-items { display: flex; gap: 2.5rem; flex-wrap: wrap; }
-  .trust-item {
-    font-family: 'Fraunces', serif;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
+  .trust-item { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--ink-soft); font-weight: 500; }
 
   /* ========== SECTION BASICS ========== */
   section { padding: 6rem 0; }
   .section-eyebrow {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 1rem;
+    font-size: 0.85rem; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem;
   }
   h2.section-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    margin-bottom: 1.25rem;
-    max-width: 720px;
+    font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1; letter-spacing: -0.02em; font-weight: 500;
+    margin-bottom: 1.25rem; max-width: 720px;
   }
   h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
-  .section-intro {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    max-width: 640px;
-    margin-bottom: 3.5rem;
+  .section-intro { font-size: 1.15rem; color: var(--ink-soft); max-width: 640px; margin-bottom: 3.5rem; }
+
+  /* ========== REAL ESTATE FEATURE ========== */
+  .realestate {
+    background: var(--ink); color: var(--cream);
+    padding: 5rem 0; position: relative; overflow: hidden;
   }
+  .realestate::before {
+    content: ''; position: absolute; top: -150px; right: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(194,87,26,0.3) 0%, transparent 70%);
+  }
+  .realestate::after {
+    content: ''; position: absolute; bottom: -150px; left: -150px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(13,122,110,0.2) 0%, transparent 70%);
+  }
+  .realestate .container { position: relative; z-index: 1; }
+  .realestate .section-eyebrow { color: var(--accent-soft); }
+  .realestate h2.section-title { color: var(--cream); max-width: 800px; }
+  .realestate h2.section-title em { color: var(--accent-soft); }
+  .realestate .section-intro { color: #c8d0dc; }
+
+  .re-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .re-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;
+  }
+  .re-stat {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 1.5rem;
+  }
+  .re-stat-num {
+    font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600;
+    color: var(--accent-soft); line-height: 1; margin-bottom: 0.35rem;
+  }
+  .re-stat-label { font-size: 0.85rem; color: #c8d0dc; }
+
+  .re-steps { display: flex; flex-direction: column; gap: 1rem; }
+  .re-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 1.25rem;
+  }
+  .re-step-num {
+    width: 32px; height: 32px; background: var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.9rem;
+    color: var(--cream); flex-shrink: 0;
+  }
+  .re-step-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; color: var(--cream); }
+  .re-step-desc { font-size: 0.88rem; color: #a0aab8; line-height: 1.4; }
+  .re-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(13,122,110,0.3); border: 1px solid rgba(13,122,110,0.5);
+    padding: 0.5rem 1rem; border-radius: 999px;
+    font-size: 0.82rem; font-weight: 600; color: #7dd3c8;
+    margin-bottom: 1.5rem;
+  }
+  .re-badge .dot { width: 7px; height: 7px; background: #7dd3c8; border-radius: 50%; }
+  .re-cta { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-teal { background: var(--teal); color: var(--cream); }
+  .btn-teal:hover { background: #0a5f55; transform: translateY(-2px); }
+  .btn-outline-light { background: transparent; color: var(--cream); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
+
+  @media (max-width: 900px) { .re-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .re-stats { grid-template-columns: 1fr 1fr; } }
 
   /* ========== SERVICES ========== */
   .services { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .service-card {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 2.5rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 24px;
+    padding: 2.5rem; transition: all 0.3s; position: relative; overflow: hidden;
   }
-  .service-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 20px 40px rgba(26, 35, 50, 0.08);
-  }
-  .service-num {
-    font-family: 'Fraunces', serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-  }
-  .service-icon {
-    width: 56px; height: 56px;
-    background: var(--bg-warm);
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-  }
-  .service-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    line-height: 1.2;
-  }
-  .service-desc {
-    color: var(--ink-soft);
-    margin-bottom: 1.5rem;
-    font-size: 0.98rem;
-  }
-  .service-list {
-    list-style: none;
-    padding: 0;
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-  }
-  .service-list li {
-    padding: 0.4rem 0;
-    border-top: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .service-list li::before {
-    content: '→';
-    color: var(--accent);
-    font-weight: 600;
-  }
+  .service-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(26, 35, 50, 0.08); }
+  .service-num { font-family: 'Fraunces', serif; font-size: 0.85rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .service-icon { width: 56px; height: 56px; background: var(--bg-warm); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
+  .service-title { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.2; }
+  .service-desc { color: var(--ink-soft); margin-bottom: 1.5rem; font-size: 0.98rem; }
+  .service-list { list-style: none; padding: 0; font-size: 0.92rem; color: var(--ink-soft); }
+  .service-list li { padding: 0.4rem 0; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 0.5rem; }
+  .service-list li::before { content: '→'; color: var(--accent); font-weight: 600; }
   @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
 
   /* ========== PROCESS ========== */
-  .process {
-    position: relative;
-  }
   .process-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-    position: relative;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    margin-top: 3rem; position: relative;
   }
   .process-grid::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: 8%;
-    right: 8%;
-    height: 2px;
+    content: ''; position: absolute; top: 28px; left: 8%; right: 8%; height: 2px;
     background: repeating-linear-gradient(to right, var(--line) 0, var(--line) 6px, transparent 6px, transparent 12px);
-    z-index: 0;
   }
   .process-step { position: relative; z-index: 1; }
   .process-num {
-    width: 56px; height: 56px;
-    background: var(--bg);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 1.25rem;
+    width: 56px; height: 56px; background: var(--bg); border: 2px solid var(--accent);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600;
+    color: var(--accent); margin-bottom: 1.25rem;
   }
-  .process-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
+  .process-title { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
   .process-desc { color: var(--ink-soft); font-size: 0.95rem; }
-  @media (max-width: 900px) {
-    .process-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .process-grid::before { display: none; }
-  }
+  @media (max-width: 900px) { .process-grid { grid-template-columns: 1fr 1fr; } .process-grid::before { display: none; } }
   @media (max-width: 500px) { .process-grid { grid-template-columns: 1fr; } }
 
   /* ========== CASE STUDIES ========== */
   .cases { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .cases-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
+  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
   .case-card {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 2.5rem;
-    position: relative;
-    transition: all 0.3s;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 24px;
+    padding: 2.5rem; transition: all 0.3s;
   }
   .case-card:hover { border-color: var(--accent); }
   .case-tag {
-    display: inline-block;
-    padding: 0.25rem 0.85rem;
-    background: var(--bg-warm);
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--ink-soft);
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5rem;
+    display: inline-block; padding: 0.25rem 0.85rem; background: var(--bg-warm);
+    border-radius: 999px; font-size: 0.75rem; font-weight: 600;
+    color: var(--ink-soft); letter-spacing: 0.05em; margin-bottom: 1.5rem;
   }
-  .case-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: 1.25rem;
-  }
+  .case-title { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 500; line-height: 1.2; margin-bottom: 1.25rem; }
   .case-result {
-    display: flex;
-    gap: 2rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 1.25rem;
+    display: flex; gap: 2rem; padding: 1.25rem 0;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 1.25rem;
   }
   .case-metric { flex: 1; }
-  .case-metric-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .case-metric-label {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 0.35rem;
-  }
-  .case-desc { color: var(--ink-soft); font-size: 0.98rem; }
+  .case-metric-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .case-metric-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.35rem; }
+  .case-desc { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.6; }
   @media (max-width: 800px) { .cases-grid { grid-template-columns: 1fr; } }
 
   /* ========== ABOUT ========== */
-  .about {
-    position: relative;
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
   .about-visual {
-    aspect-ratio: 4/5;
-    background: var(--bg-warm);
-    border-radius: 24px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--line);
+    aspect-ratio: 4/5; background: var(--bg-warm); border-radius: 24px;
+    position: relative; overflow: hidden; border: 1px solid var(--line);
   }
   .about-visual-inner {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 3rem;
+    position: absolute; inset: 0; display: flex;
+    flex-direction: column; justify-content: center; padding: 3rem;
   }
-  .quote-mark {
-    font-family: 'Fraunces', serif;
-    font-size: 6rem;
-    line-height: 0.7;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-  .quote-text {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    line-height: 1.35;
-    color: var(--ink);
-    margin-bottom: 2rem;
-  }
-  .quote-author {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .quote-role {
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  .about p {
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    margin-bottom: 1.25rem;
-    line-height: 1.7;
-  }
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
-  }
-  .about-stat-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .about-stat-label {
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-top: 0.35rem;
-  }
-  @media (max-width: 900px) {
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-visual { max-width: 480px; margin: 0 auto; }
-  }
+  .quote-mark { font-family: 'Fraunces', serif; font-size: 6rem; line-height: 0.7; color: var(--accent); margin-bottom: 1rem; }
+  .quote-text { font-family: 'Fraunces', serif; font-size: 1.4rem; font-style: italic; line-height: 1.35; color: var(--ink); margin-bottom: 2rem; }
+  .quote-author { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+  .quote-role { font-size: 0.85rem; color: var(--muted); }
+  .about p { font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 1.25rem; line-height: 1.7; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  .about-stat-num { font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .about-stat-label { font-size: 0.9rem; color: var(--muted); margin-top: 0.35rem; }
+  .about-links { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
 
   /* ========== CTA ========== */
   .cta-section {
-    background: var(--ink);
-    color: var(--cream);
-    border-radius: 32px;
-    margin: 0 2rem 6rem;
-    padding: 5rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    background: var(--ink); color: var(--cream); border-radius: 32px;
+    margin: 0 2rem 6rem; padding: 5rem 3rem; text-align: center;
+    position: relative; overflow: hidden;
   }
   .cta-section::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
+    content: ''; position: absolute; top: -100px; right: -100px;
     width: 400px; height: 400px;
     background: radial-gradient(circle, rgba(194, 87, 26, 0.4) 0%, transparent 70%);
-    z-index: 0;
   }
   .cta-section > * { position: relative; z-index: 1; }
-  .cta-eyebrow {
-    font-size: 0.85rem;
-    color: var(--accent-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
+  .cta-eyebrow { font-size: 0.85rem; color: var(--accent-soft); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; font-weight: 600; }
   h2.cta-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    margin-bottom: 1.25rem;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
+    font-family: 'Fraunces', serif; font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1.1; letter-spacing: -0.02em; font-weight: 500;
+    margin-bottom: 1.25rem; max-width: 760px; margin-left: auto; margin-right: auto;
   }
   h2.cta-title em { font-style: italic; color: var(--accent-soft); font-weight: 400; }
-  .cta-sub {
-    font-size: 1.15rem;
-    color: #c8d0dc;
-    margin-bottom: 2.5rem;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .cta-sub { font-size: 1.15rem; color: #c8d0dc; margin-bottom: 2.5rem; max-width: 560px; margin-left: auto; margin-right: auto; }
   .cta-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .cta-section .btn-primary { background: var(--accent); }
   .cta-section .btn-primary:hover { background: var(--cream); color: var(--ink); }
   .cta-section .btn-secondary { border-color: var(--cream); color: var(--cream); }
   .cta-section .btn-secondary:hover { background: var(--cream); color: var(--ink); }
-
-  @media (max-width: 600px) {
-    .cta-section { margin: 0 1rem 4rem; padding: 3.5rem 1.5rem; }
-  }
+  @media (max-width: 600px) { .cta-section { margin: 0 1rem 4rem; padding: 3.5rem 1.5rem; } }
 
   /* ========== FOOTER ========== */
-  footer {
-    background: var(--bg-warm);
-    border-top: 1px solid var(--line);
-    padding: 4rem 0 2rem;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
+  footer { background: var(--bg-warm); border-top: 1px solid var(--line); padding: 4rem 0 2rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
   .footer-brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.35rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
   .footer-tagline { color: var(--ink-soft); font-size: 0.95rem; max-width: 320px; }
-  .footer-col h4 {
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    margin-bottom: 1.25rem;
-  }
-  .footer-col a {
-    display: block;
-    color: var(--ink-soft);
-    text-decoration: none;
-    padding: 0.35rem 0;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-  }
+  .footer-col h4 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 1.25rem; }
+  .footer-col a { display: block; color: var(--ink-soft); text-decoration: none; padding: 0.35rem 0; font-size: 0.95rem; transition: color 0.2s; }
   .footer-col a:hover { color: var(--accent); }
-  .footer-bottom {
-    border-top: 1px solid var(--line);
-    padding-top: 1.75rem;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
+  .footer-bottom { border-top: 1px solid var(--line); padding-top: 1.75rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: var(--muted); }
   @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
 
-  /* ========== REVEAL ANIMATIONS ========== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+  /* ========== ANIMATIONS ========== */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">
@@ -722,8 +404,8 @@
       Servlead Solutions
     </a>
     <div class="nav-links" id="navLinks">
+      <a href="#solutions">Solutions</a>
       <a href="#services">Services</a>
-      <a href="#process">How we work</a>
       <a href="#cases">Case studies</a>
       <a href="#about">About</a>
       <a href="#contact" class="nav-cta">Book a call →</a>
@@ -739,49 +421,38 @@
       <div>
         <div class="hero-eyebrow reveal">
           <span class="dot"></span>
-          Now accepting Q2 2026 projects
+          Serving clients in Lehigh Valley & beyond
         </div>
         <h1 class="hero-title reveal">
-          AI that actually<br>works for <em>real businesses</em>.
+          Find the workflow that's <em>costing you most.</em> Then fix it with AI.
         </h1>
         <p class="hero-sub reveal">
-          We help small and mid-sized businesses use AI, analytics, and automation to cut costs, save hours, and grow faster — without the enterprise price tag or the hype.
+          We help small and mid-sized businesses identify hidden process inefficiencies and build AI automation that pays for itself — without the enterprise price tag or the hype.
         </p>
         <div class="hero-ctas reveal">
           <a href="#contact" class="btn btn-primary">Book a free 30-min consult →</a>
-          <a href="#services" class="btn-text">See what we do →</a>
+          <a href="#solutions" class="btn-text">See our solutions →</a>
         </div>
       </div>
 
       <div class="hero-visual">
         <div class="card-float card-1 reveal">
-          <div class="card-header">
-            <span class="card-icon">⚡</span>
-            Automation
-          </div>
-          <div class="card-title">Invoice processing</div>
-          <div class="card-stat">−73%</div>
-          <div class="card-label">time per invoice</div>
+          <div class="card-header"><span class="card-icon">⚡</span>Automation</div>
+          <div class="card-title">Reporting & data entry</div>
+          <div class="card-stat">95%</div>
+          <div class="card-label">time reduction achieved</div>
         </div>
-
         <div class="card-float card-2 reveal">
-          <div class="card-header">
-            <span class="card-icon">📊</span>
-            Analytics
-          </div>
-          <div class="card-title">Demand forecast accuracy</div>
+          <div class="card-header"><span class="card-icon">🏠</span>Real Estate AI</div>
+          <div class="card-title">Lead response time</div>
           <div class="card-bar"><div class="card-bar-fill"></div></div>
-          <div class="card-label">78% — up from 52%</div>
+          <div class="card-label">Under 30 seconds — every time</div>
         </div>
-
         <div class="card-float card-3 reveal">
-          <div class="card-header">
-            <span class="card-icon">🤖</span>
-            AI assistant
-          </div>
-          <div class="card-title">Support tickets auto-resolved</div>
-          <div class="card-stat">2,400+</div>
-          <div class="card-label">this quarter</div>
+          <div class="card-header"><span class="card-icon">🔄</span>ERP Migration</div>
+          <div class="card-title">QuickBooks → NetSuite</div>
+          <div class="card-stat">70+</div>
+          <div class="card-label">users migrated, on time & on budget</div>
         </div>
       </div>
     </div>
@@ -792,23 +463,95 @@
 <div class="trust">
   <div class="container">
     <div class="trust-inner">
-      <span class="trust-label">Trusted approach built on</span>
+      <span class="trust-label">Experience across</span>
       <div class="trust-items">
-        <span class="trust-item">14+ years enterprise experience</span>
+        <span class="trust-item">Finance & Banking</span>
         <span class="trust-item">·</span>
-        <span class="trust-item">Fortune 500 background</span>
+        <span class="trust-item">Healthcare</span>
         <span class="trust-item">·</span>
-        <span class="trust-item">SMB-focused pricing</span>
+        <span class="trust-item">Insurance</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">eCommerce</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">Tech Consulting</span>
       </div>
     </div>
   </div>
 </div>
 
+<!-- REAL ESTATE FEATURE -->
+<section class="realestate" id="solutions">
+  <div class="container">
+    <div class="section-eyebrow reveal">Featured Solution</div>
+    <h2 class="section-title reveal">AI lead qualification <em>built for real estate agents.</em></h2>
+    <p class="section-intro reveal">The average agent takes 47 minutes to respond to an inbound lead. The average buyer moves on in 5. We built a working AI system that responds in under 30 seconds — qualifying leads, routing them, and notifying you instantly.</p>
+
+    <div class="re-grid">
+      <div>
+        <div class="re-badge reveal"><span class="dot"></span> Built & running — demo available</div>
+        <div class="re-stats reveal">
+          <div class="re-stat">
+            <div class="re-stat-num">&lt;30s</div>
+            <div class="re-stat-label">Response time, day or night</div>
+          </div>
+          <div class="re-stat">
+            <div class="re-stat-num">9x</div>
+            <div class="re-stat-label">Higher conversion vs. 30-min response</div>
+          </div>
+          <div class="re-stat">
+            <div class="re-stat-num">24/7</div>
+            <div class="re-stat-label">Never misses a lead</div>
+          </div>
+          <div class="re-stat">
+            <div class="re-stat-num">$0</div>
+            <div class="re-stat-label">Leads lost while you sleep</div>
+          </div>
+        </div>
+        <div class="re-cta reveal">
+          <a href="#contact" class="btn btn-teal">Request a live demo →</a>
+          <a href="#contact" class="btn btn-outline-light">Book a discovery call</a>
+        </div>
+      </div>
+
+      <div class="re-steps reveal">
+        <div class="re-step">
+          <div class="re-step-num">1</div>
+          <div>
+            <div class="re-step-title">Lead arrives</div>
+            <div class="re-step-desc">From Zillow, Realtor.com, your website, or Facebook — any source.</div>
+          </div>
+        </div>
+        <div class="re-step">
+          <div class="re-step-num">2</div>
+          <div>
+            <div class="re-step-title">AI replies in seconds</div>
+            <div class="re-step-desc">A personalized message goes out instantly — asking the right qualifying question.</div>
+          </div>
+        </div>
+        <div class="re-step">
+          <div class="re-step-num">3</div>
+          <div>
+            <div class="re-step-title">AI qualifies the reply</div>
+            <div class="re-step-desc">Reads the response, extracts timeline, area, budget, and financing status.</div>
+          </div>
+        </div>
+        <div class="re-step">
+          <div class="re-step-num">4</div>
+          <div>
+            <div class="re-step-title">Smart routing</div>
+            <div class="re-step-desc">Hot leads get your booking link immediately. Others get the right follow-up. You get notified either way.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="container">
     <div class="section-eyebrow reveal">What we do</div>
-    <h2 class="section-title reveal">Three ways we help you <em>put AI to work</em>.</h2>
+    <h2 class="section-title reveal">Three ways we help you <em>put AI to work.</em></h2>
     <p class="section-intro reveal">Most AI projects fail because they're over-engineered. We focus on what's practical, what pays for itself, and what your team can actually use.</p>
 
     <div class="services-grid">
@@ -816,11 +559,11 @@
         <div class="service-num">01 / STRATEGY</div>
         <div class="service-icon">🎯</div>
         <h3 class="service-title">Strategy & Advisory</h3>
-        <p class="service-desc">A clear-eyed AI roadmap built around your actual business, not a tech wishlist.</p>
+        <p class="service-desc">A clear-eyed AI roadmap built around your actual business — not a tech wishlist.</p>
         <ul class="service-list">
-          <li>AI opportunity audits</li>
+          <li>Workflow & process audits</li>
+          <li>AI opportunity identification</li>
           <li>Build vs. buy decisions</li>
-          <li>Data & analytics strategy</li>
           <li>ROI modeling</li>
         </ul>
       </div>
@@ -831,9 +574,9 @@
         <h3 class="service-title">Implementation & Automation</h3>
         <p class="service-desc">We build it, test it, and hand it off working. No 200-slide deliverables.</p>
         <ul class="service-list">
-          <li>Custom AI chatbots & assistants</li>
-          <li>Workflow automation</li>
-          <li>Systems integration</li>
+          <li>AI chatbots & lead qualification</li>
+          <li>Workflow & process automation</li>
+          <li>ERP & systems integration</li>
           <li>Analytics dashboards</li>
         </ul>
       </div>
@@ -844,10 +587,10 @@
         <h3 class="service-title">Training & Enablement</h3>
         <p class="service-desc">Your team owns the outcome. We make sure they know how to run with it.</p>
         <ul class="service-list">
-          <li>Team workshops</li>
+          <li>Team AI workshops</li>
           <li>AI literacy training</li>
           <li>Prompt engineering sessions</li>
-          <li>Ongoing advisory</li>
+          <li>Ongoing advisory support</li>
         </ul>
       </div>
     </div>
@@ -865,7 +608,7 @@
       <div class="process-step reveal">
         <div class="process-num">01</div>
         <h3 class="process-title">Discovery call</h3>
-        <p class="process-desc">Free 30 minutes to understand your business and where AI could actually move the needle.</p>
+        <p class="process-desc">Free 30 minutes to understand your business and find where AI could move the needle.</p>
       </div>
       <div class="process-step reveal">
         <div class="process-num">02</div>
@@ -890,40 +633,40 @@
 <section class="cases" id="cases">
   <div class="container">
     <div class="section-eyebrow reveal">Recent work</div>
-    <h2 class="section-title reveal">Small projects. <em>Real results.</em></h2>
-    <p class="section-intro reveal">A couple of recent engagements that show what's possible when AI is applied carefully.</p>
+    <h2 class="section-title reveal">Real problems. <em>Real results.</em></h2>
+    <p class="section-intro reveal">Two recent engagements that show what's possible when AI is applied to the right problem.</p>
 
     <div class="cases-grid">
       <div class="case-card reveal">
         <span class="case-tag">PROCESS AUTOMATION</span>
-        <h3 class="case-title">Automated invoice processing for a 40-person services firm.</h3>
+        <h3 class="case-title">Eliminated 10–20 hours of weekly manual work for a consumer goods company.</h3>
         <div class="case-result">
           <div class="case-metric">
-            <div class="case-metric-num">73%</div>
-            <div class="case-metric-label">Time saved</div>
+            <div class="case-metric-num">~95%</div>
+            <div class="case-metric-label">Time reduction</div>
           </div>
           <div class="case-metric">
-            <div class="case-metric-num">$48k</div>
-            <div class="case-metric-label">Annual savings</div>
+            <div class="case-metric-num">5 min</div>
+            <div class="case-metric-label">Down from 10–20 hrs</div>
           </div>
         </div>
-        <p class="case-desc">Replaced a manual 4-hour weekly reconciliation process with an automated workflow that runs in under an hour.</p>
+        <p class="case-desc">A growing company was spending 10–20 hours per week on manual data entry and reporting — error-prone work that tied up skilled employees. We replaced the entire process with an automated workflow that completes the same work in under 5 minutes, freeing staff for higher-value tasks.</p>
       </div>
 
       <div class="case-card reveal">
-        <span class="case-tag">AI STRATEGY</span>
-        <h3 class="case-title">AI readiness roadmap for a regional retailer.</h3>
+        <span class="case-tag">ERP MIGRATION</span>
+        <h3 class="case-title">Led a full QuickBooks to NetSuite migration for a 70-person company — on time and on budget.</h3>
         <div class="case-result">
           <div class="case-metric">
-            <div class="case-metric-num">3</div>
-            <div class="case-metric-label">Quick wins identified</div>
+            <div class="case-metric-num">70+</div>
+            <div class="case-metric-label">Users migrated</div>
           </div>
           <div class="case-metric">
-            <div class="case-metric-num">6 mo</div>
-            <div class="case-metric-label">Payback window</div>
+            <div class="case-metric-num">✓</div>
+            <div class="case-metric-label">On scope & on budget</div>
           </div>
         </div>
-        <p class="case-desc">Built a phased plan that prioritized high-ROI pilots over big, risky platform bets — starting with demand forecasting.</p>
+        <p class="case-desc">Managed the full discovery, vendor coordination, and execution of a complex ERP migration from QuickBooks to NetSuite. The project completed within scope, avoiding costly licensing overruns, with 70+ employees transitioned smoothly and operations uninterrupted throughout.</p>
       </div>
     </div>
   </div>
@@ -936,27 +679,41 @@
       <div class="about-visual reveal">
         <div class="about-visual-inner">
           <div class="quote-mark">"</div>
-          <p class="quote-text">Most AI advice is written for companies with 50-person data teams. We built Servlead for the other 99%.</p>
-          <div class="quote-author">The Servlead Approach</div>
-          <div class="quote-role">Our founding principle</div>
+          <p class="quote-text">The most expensive process in your business is usually the one nobody has looked at in five years.</p>
+          <div class="quote-author">Samuel Gorla</div>
+          <div class="quote-role">Founder, Servlead Solutions</div>
         </div>
       </div>
 
       <div class="reveal">
         <div class="section-eyebrow">About Servlead</div>
-        <h2 class="section-title">Enterprise expertise. <em>Small-business sensibility.</em></h2>
-        <p>Servlead Solutions was founded on a simple observation: the biggest AI wins aren't happening at tech giants. They're happening at regular businesses that pick one clear problem and solve it well.</p>
-        <p>With two decades of experience inside Fortune 500 analytics, automation, and digital transformation programs, we've seen what works — and what's just expensive theater. We bring that same playbook to SMB and mid-market clients, at a price that actually makes sense.</p>
+        <h2 class="section-title">14+ years of making <em>complex things work.</em></h2>
+        <p>Servlead Solutions was founded by Samuel Gorla after more than a decade working across analytics, automation, project management, and digital transformation in some of the most process-intensive industries — finance, banking, insurance, healthcare, and tech consulting.</p>
+        <p>Samuel holds a Master's in Business Analytics and Project Management and has worn many hats over his career: automation builder, research analyst, project manager, ERP consultant, startup operator, and compliance advisor. That breadth isn't a resume line — it's what lets him spot the inefficiency others miss and build something that actually gets used.</p>
+        <p>Based in Lehigh Valley, PA. Available to meet in person when it matters.</p>
 
         <div class="about-stats">
           <div>
-            <div class="about-stat-num">20+</div>
+            <div class="about-stat-num">14+</div>
             <div class="about-stat-label">Years of experience</div>
+          </div>
+          <div>
+            <div class="about-stat-num">6+</div>
+            <div class="about-stat-label">Industries served</div>
           </div>
           <div>
             <div class="about-stat-num">100%</div>
             <div class="about-stat-label">Fixed-price projects</div>
           </div>
+          <div>
+            <div class="about-stat-num">MS</div>
+            <div class="about-stat-label">Business Analytics & PM</div>
+          </div>
+        </div>
+
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/samuelgorla/" target="_blank" class="btn btn-secondary" style="font-size:0.9rem; padding: 0.7rem 1.4rem;">View LinkedIn →</a>
+          <a href="#contact" class="btn btn-primary" style="font-size:0.9rem; padding: 0.7rem 1.4rem;">Book a call →</a>
         </div>
       </div>
     </div>
@@ -967,9 +724,9 @@
 <div class="cta-section" id="contact">
   <div class="cta-eyebrow">Let's talk</div>
   <h2 class="cta-title">Not sure where AI fits in your business? <em>Let's figure it out together.</em></h2>
-  <p class="cta-sub">Free 30-minute call. No pitch deck. Just an honest conversation about your business and what might actually help.</p>
+  <p class="cta-sub">Free 30-minute call. No pitch deck. Just an honest conversation about your workflows and what might actually help.</p>
   <div class="cta-ctas">
-    <a href="mailto:info@ServleadSolutions.com?subject=Booking a consultation" class="btn btn-primary">Book your free consult →</a>
+    <a href="mailto:info@ServleadSolutions.com?subject=Book a free consultation" class="btn btn-primary">Book your free consult →</a>
     <a href="tel:+18608691385" class="btn btn-secondary">Call (860) 869-1385</a>
   </div>
 </div>
@@ -983,17 +740,18 @@
           <span class="logo-mark"></span>
           Servlead Solutions
         </div>
-        <p class="footer-tagline">Practical AI consulting for small and mid-sized businesses. Based in Lehigh Valley, PA, serving clients across the US.</p>
+        <p class="footer-tagline">Practical AI consulting for small and mid-sized businesses. Based in Lehigh Valley, PA — serving clients across the US.</p>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4>Solutions</h4>
+        <a href="#solutions">Real Estate AI</a>
         <a href="#services">Strategy & Advisory</a>
         <a href="#services">Implementation</a>
         <a href="#services">Training</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#about">About</a>
+        <a href="#about">About Samuel</a>
         <a href="#cases">Case studies</a>
         <a href="#process">How we work</a>
       </div>
@@ -1001,39 +759,31 @@
         <h4>Contact</h4>
         <a href="mailto:info@ServleadSolutions.com">info@ServleadSolutions.com</a>
         <a href="tel:+18608691385">(860) 869-1385</a>
-        <a href="https://www.linkedin.com/company/servlead-solutions/" target="_blank">LinkedIn →</a>
+        <a href="https://www.linkedin.com/in/samuelgorla/" target="_blank">LinkedIn →</a>
       </div>
     </div>
     <div class="footer-bottom">
       <div>© 2026 Servlead Solutions. All rights reserved.</div>
-      <div>Built with care in Lehigh Valley, PA.</div>
+      <div>Lehigh Valley, PA</div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Stagger hero reveals on load
   window.addEventListener('load', () => {
     document.querySelectorAll('.hero .reveal').forEach((el, i) => {
       setTimeout(() => el.classList.add('visible'), i * 120);
     });
   });
 
-  // Close mobile menu on link click
   document.querySelectorAll('#navLinks a').forEach(a => {
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
   });
 </script>
-
 </body>
 </html>
