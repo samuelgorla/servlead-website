@@ -267,6 +267,70 @@
   @media (max-width: 900px) { .re-grid { grid-template-columns: 1fr; } }
   @media (max-width: 600px) { .re-stats { grid-template-columns: 1fr 1fr; } }
 
+  /* ========== DEMOS SECTION ========== */
+  .demos { padding: 6rem 0; background: var(--bg); }
+  .demos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 1rem;
+  }
+  .demo-card {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 24px; padding: 2.5rem;
+    transition: all 0.3s; position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .demo-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(26,35,50,0.1); }
+  .demo-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .demo-card:hover::before { transform: scaleX(1); }
+  .demo-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--bg-warm); border: 1px solid var(--line);
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;
+  }
+  .demo-tag .live-dot {
+    width: 6px; height: 6px; background: var(--success);
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  .demo-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .demo-title {
+    font-family: 'Fraunces', serif; font-size: 1.45rem;
+    font-weight: 600; line-height: 1.2; margin-bottom: 0.75rem; color: var(--ink);
+  }
+  .demo-desc { color: var(--ink-soft); font-size: 0.97rem; line-height: 1.6; margin-bottom: 1.5rem; flex: 1; }
+  .demo-who {
+    font-size: 0.82rem; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;
+  }
+  .demo-verticals { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.75rem; }
+  .demo-vertical {
+    background: var(--bg-warm); border: 1px solid var(--line);
+    padding: 0.25rem 0.7rem; border-radius: 999px;
+    font-size: 0.78rem; color: var(--ink-soft); font-weight: 500;
+  }
+  .demo-stat-row {
+    display: flex; gap: 1.5rem; padding: 1.25rem 0;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+  }
+  .demo-stat-num {
+    font-family: 'Fraunces', serif; font-size: 1.75rem;
+    font-weight: 600; color: var(--accent); line-height: 1;
+  }
+  .demo-stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+  .demo-cta {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: var(--accent); font-weight: 600; font-size: 0.92rem;
+    text-decoration: none; transition: gap 0.2s;
+  }
+  .demo-cta:hover { gap: 0.7rem; }
+  @media (max-width: 900px) { .demos-grid { grid-template-columns: 1fr; } }
+
   /* ========== SERVICES ========== */
   .services { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -407,6 +471,7 @@
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#solutions">Solutions</a>
+      <a href="#demos">Demos</a>
       <a href="#services">Services</a>
       <a href="#cases">Case studies</a>
       <a href="#about">About</a>
@@ -547,6 +612,76 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOS -->
+<section class="demos" id="demos">
+  <div class="container">
+    <div class="section-eyebrow reveal">Live demos</div>
+    <h2 class="section-title reveal">Three automations <em>built and running.</em></h2>
+    <p class="section-intro reveal">Not concepts. Not mockups. Working systems you can see in action today — each one ready to deploy for your business in days, not months.</p>
+
+    <div class="demos-grid">
+
+      <div class="demo-card reveal">
+        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
+        <div class="demo-icon">&#x26A1;</div>
+        <h3 class="demo-title">Instant Lead Responder</h3>
+        <p class="demo-desc">The average business takes 47 minutes to respond to an inbound lead. The average buyer moves on in 5. This AI responds in under 30 seconds — qualifying prospects, routing hot leads, and notifying you instantly. Day or night.</p>
+        <div class="demo-who">Best for</div>
+        <div class="demo-verticals">
+          <span class="demo-vertical">Real Estate</span>
+          <span class="demo-vertical">HVAC &amp; Trades</span>
+          <span class="demo-vertical">Insurance</span>
+          <span class="demo-vertical">Home Services</span>
+        </div>
+        <div class="demo-stat-row">
+          <div><div class="demo-stat-num">&lt;30s</div><div class="demo-stat-label">Response time</div></div>
+          <div><div class="demo-stat-num">9x</div><div class="demo-stat-label">Higher conversion</div></div>
+        </div>
+        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+      </div>
+
+      <div class="demo-card reveal">
+        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
+        <div class="demo-icon">&#x1F3AF;</div>
+        <h3 class="demo-title">AI Prospect Engine</h3>
+        <p class="demo-desc">Stop manually hunting for leads. This system finds your ideal clients, researches them automatically, and generates personalized outreach — all without lifting a finger. Feed it a target profile. Watch the pipeline fill.</p>
+        <div class="demo-who">Best for</div>
+        <div class="demo-verticals">
+          <span class="demo-vertical">Consultants</span>
+          <span class="demo-vertical">Agencies</span>
+          <span class="demo-vertical">B2B Sales</span>
+          <span class="demo-vertical">Professional Services</span>
+        </div>
+        <div class="demo-stat-row">
+          <div><div class="demo-stat-num">10x</div><div class="demo-stat-label">Faster prospecting</div></div>
+          <div><div class="demo-stat-num">100%</div><div class="demo-stat-label">Personalized outreach</div></div>
+        </div>
+        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+      </div>
+
+      <div class="demo-card reveal">
+        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
+        <div class="demo-icon">&#x2709;&#xFE0F;</div>
+        <h3 class="demo-title">Inbox Autopilot</h3>
+        <p class="demo-desc">Every email classified the moment it arrives. Hot prospects, scheduling requests, referral intros — each one gets a reply drafted in your voice and dropped in your Drafts folder. You review and send. Nothing goes out without you.</p>
+        <div class="demo-who">Best for</div>
+        <div class="demo-verticals">
+          <span class="demo-vertical">Founders</span>
+          <span class="demo-vertical">Sales Teams</span>
+          <span class="demo-vertical">Law Firms</span>
+          <span class="demo-vertical">Any Inbox-Heavy Role</span>
+        </div>
+        <div class="demo-stat-row">
+          <div><div class="demo-stat-num">8</div><div class="demo-stat-label">Email categories</div></div>
+          <div><div class="demo-stat-num">24/7</div><div class="demo-stat-label">Always on</div></div>
+        </div>
+        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+      </div>
+
     </div>
   </div>
 </section>
