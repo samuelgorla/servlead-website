@@ -456,6 +456,52 @@
   /* ========== ANIMATIONS ========== */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== INVOICE BOT SECTION ========== */
+  .invoicebot { background: var(--bg); padding: 6rem 0; border-top: 1px solid var(--line); }
+  .ib-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+  .ib-steps { display: flex; flex-direction: column; gap: 1rem; }
+  .ib-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.25rem; transition: border-color 0.2s;
+  }
+  .ib-step:hover { border-color: var(--accent); }
+  .ib-step-num {
+    width: 32px; height: 32px; background: var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.9rem;
+    color: var(--cream); flex-shrink: 0;
+  }
+  .ib-step-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; color: var(--ink); }
+  .ib-step-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.4; }
+  .ib-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+  .ib-stat {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 16px; padding: 1.5rem; transition: border-color 0.2s;
+  }
+  .ib-stat:hover { border-color: var(--accent); }
+  .ib-stat-num {
+    font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600;
+    color: var(--accent); line-height: 1; margin-bottom: 0.35rem;
+  }
+  .ib-stat-label { font-size: 0.85rem; color: var(--muted); }
+  .ib-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--bg-warm); border: 1px solid var(--line);
+    padding: 0.5rem 1rem; border-radius: 999px;
+    font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 1.5rem;
+  }
+  .ib-badge .dot { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+  .ib-verticals { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .ib-vertical {
+    background: var(--bg-warm); border: 1px solid var(--line);
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+    font-size: 0.82rem; color: var(--ink-soft); font-weight: 500;
+  }
+  .ib-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  @media (max-width: 900px) { .ib-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  @media (max-width: 500px) { .ib-stats { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -471,6 +517,7 @@
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#solutions">Solutions</a>
+      <a href="#invoice-bot">Invoice Bot</a>
       <a href="#demos">Demos</a>
       <a href="#services">Services</a>
       <a href="#cases">Case studies</a>
@@ -609,6 +656,83 @@
           <div>
             <div class="re-step-title">Smart routing</div>
             <div class="re-step-desc">Hot leads get your booking link immediately. Others get the right follow-up. You get notified either way.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVOICE BOT FEATURE -->
+<section class="invoicebot" id="invoice-bot">
+  <div class="container">
+    <div class="section-eyebrow reveal">Featured Solution</div>
+    <h2 class="section-title reveal">An AI bot that <em>chases invoices for you.</em></h2>
+    <p class="section-intro reveal">The average trades business has $20K–$50K sitting in unpaid invoices. Not because clients won't pay — because nobody followed up. We built a working automation that handles the entire collection sequence in your voice, without you lifting a finger after one click.</p>
+
+    <div class="ib-grid">
+      <div>
+        <div class="ib-badge reveal"><span class="dot"></span> Built &amp; running — demo available</div>
+        <div class="ib-stats reveal">
+          <div class="ib-stat">
+            <div class="ib-stat-num">30s</div>
+            <div class="ib-stat-label">Owner review time per day</div>
+          </div>
+          <div class="ib-stat">
+            <div class="ib-stat-num">3×</div>
+            <div class="ib-stat-label">Automated follow-ups per invoice</div>
+          </div>
+          <div class="ib-stat">
+            <div class="ib-stat-num">100%</div>
+            <div class="ib-stat-label">In your voice — never robotic</div>
+          </div>
+          <div class="ib-stat">
+            <div class="ib-stat-num">$0</div>
+            <div class="ib-stat-label">Lost chasing invoices manually</div>
+          </div>
+        </div>
+        <p class="reveal" style="color: var(--ink-soft); font-size: 0.98rem; line-height: 1.7; margin-bottom: 0.75rem;">Works with your existing spreadsheet or QuickBooks. No new software to learn. The only interface is an email in your inbox with two buttons.</p>
+        <div class="ib-verticals reveal">
+          <span class="ib-vertical">HVAC</span>
+          <span class="ib-vertical">Plumbing</span>
+          <span class="ib-vertical">Electrical</span>
+          <span class="ib-vertical">Landscaping</span>
+          <span class="ib-vertical">General Contractors</span>
+          <span class="ib-vertical">Auto Repair</span>
+        </div>
+        <div class="ib-cta reveal">
+          <a href="#contact" class="btn btn-primary">Book a free consult →</a>
+          <a href="#contact" class="btn btn-secondary" style="font-size:0.95rem; padding: 0.8rem 1.5rem;">Request a live demo</a>
+        </div>
+      </div>
+
+      <div class="ib-steps reveal">
+        <div class="ib-step">
+          <div class="ib-step-num">1</div>
+          <div>
+            <div class="ib-step-title">Bot scans overdue invoices every morning</div>
+            <div class="ib-step-desc">Connects to your spreadsheet or QuickBooks. Finds everything 7+ days past due and flags it automatically.</div>
+          </div>
+        </div>
+        <div class="ib-step">
+          <div class="ib-step-num">2</div>
+          <div>
+            <div class="ib-step-title">AI writes 3 personalized emails per invoice</div>
+            <div class="ib-step-desc">A polite reminder, a firmer follow-up, and a final notice — all written in your voice using a two-sentence style description you provide once at setup.</div>
+          </div>
+        </div>
+        <div class="ib-step">
+          <div class="ib-step-num">3</div>
+          <div>
+            <div class="ib-step-title">You get one digest email — approve or skip</div>
+            <div class="ib-step-desc">Every overdue invoice listed with client name, amount, and days past due. Click Approve or Skip per invoice. Takes about 30 seconds.</div>
+          </div>
+        </div>
+        <div class="ib-step">
+          <div class="ib-step-num">4</div>
+          <div>
+            <div class="ib-step-title">The sequence runs automatically</div>
+            <div class="ib-step-desc">First email sends immediately. Second goes out 7 days later. Final notice at 14 days. You're notified if a client responds. Nothing else required.</div>
           </div>
         </div>
       </div>
@@ -880,6 +1004,7 @@
       <div class="footer-col">
         <h4>Solutions</h4>
         <a href="#solutions">Real Estate AI</a>
+        <a href="#invoice-bot">Invoice Collections Bot</a>
         <a href="#services">Strategy & Advisory</a>
         <a href="#services">Implementation</a>
         <a href="#services">Training</a>
