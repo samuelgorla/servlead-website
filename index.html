@@ -372,6 +372,7 @@
   /* ========== CASE STUDIES ========== */
   .cases { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
+  .cases-grid .case-card:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 640px; }
   .case-card {
     background: var(--bg); border: 1px solid var(--line); border-radius: 24px;
     padding: 2.5rem; transition: all 0.3s;
@@ -896,10 +897,30 @@
 <section class="cases" id="cases">
   <div class="container">
     <div class="section-eyebrow reveal">Recent work</div>
-    <h2 class="section-title reveal">Real problems. <em>Real results.</em></h2>
-    <p class="section-intro reveal">Two recent engagements that show what's possible when AI is applied to the right problem.</p>
+    <h2 class="section-title reveal">Your documents shouldn't need <em>a human in the loop.</em></h2>
+    <p class="section-intro reveal">From document automation to full ERP migrations — real engagements and working demos that show what's possible when AI is applied to the right problem.</p>
 
     <div class="cases-grid">
+      <div class="case-card reveal" style="grid-column: 1 / -1; border-color: var(--accent); background: var(--cream);">
+        <span class="case-tag" style="background: var(--accent); color: var(--cream);">⚡ FEATURED — DOCUMENT AUTOMATION</span>
+        <h3 class="case-title" style="font-size: 1.75rem;">Built Invoice Autopilot — any document hits your inbox, AI processes it in under 30 seconds.</h3>
+        <div class="case-result">
+          <div class="case-metric">
+            <div class="case-metric-num">&lt;30s</div>
+            <div class="case-metric-label">End-to-end processing</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-num">6–8 hrs</div>
+            <div class="case-metric-label">Saved per week</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-num">$0</div>
+            <div class="case-metric-label">Manual data entry</div>
+          </div>
+        </div>
+        <p class="case-desc">Invoices, contracts, receipts — any document arriving by email is automatically read by AI, key data extracted and logged to a spreadsheet or CRM, and a confirmation sent to the sender. No manual data entry. No copy-paste. Built for accountants, financial advisors, and service-based businesses processing documents at volume.</p>
+      </div>
+
       <div class="case-card reveal">
         <span class="case-tag">PROCESS AUTOMATION</span>
         <h3 class="case-title">Eliminated 10–20 hours of weekly manual work for a consumer goods company.</h3>
