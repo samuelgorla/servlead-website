@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +15,15 @@
   :root {
     --bg: #f7f7f5;
     --bg-warm: #ececE8;
-    --ink: #15171c;
-    --ink-soft: #3a3e48;
+    --ink: #0b1e3f;
+    --ink-soft: #3a4a66;
     --muted: #6e7280;
     --accent: #be4420;
     --accent-soft: #e9b59c;
     --cream: #ffffff;
     --line: #dedfdb;
     --success: #1f8a5b;
-    --teal: #2e5bba;
-    --shadow: 20px 20px 60px rgba(21, 23, 28, 0.08);
+    --shadow: 20px 20px 60px rgba(11, 30, 63, 0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -212,7 +212,7 @@
   .realestate::after {
     content: ''; position: absolute; bottom: -150px; left: -150px;
     width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(46,91,186,0.18) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(31,138,91,0.16) 0%, transparent 70%);
   }
   .realestate .container { position: relative; z-index: 1; }
   .realestate .section-eyebrow { color: var(--accent-soft); }
@@ -259,8 +259,8 @@
   }
   .re-badge .dot { width: 7px; height: 7px; background: #7ddaaa; border-radius: 50%; }
   .re-cta { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-teal { background: var(--teal); color: var(--cream); }
-  .btn-teal:hover { background: #0a5f55; transform: translateY(-2px); }
+  .btn-teal { background: var(--accent); color: var(--cream); }
+  .btn-teal:hover { background: var(--btn-teal-hover, #9c3617); transform: translateY(-2px); }
   .btn-outline-light { background: transparent; color: var(--cream); border: 1.5px solid rgba(255,255,255,0.3); }
   .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
 
@@ -1038,7 +1038,7 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="/cdn-cgi/l/email-protection#056c6b636a455660777369606461566a6970716c6a6b762b666a68"><span class="__cf_email__" data-cfemail="e78e898188a7b48295918b828683b4888b92938e888994c984888a">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#d5bcbbb3ba9586b0a7a3b9b0b4b186bab9a0a1bcbabba6fbb6bab8"><span class="__cf_email__" data-cfemail="2d44434b426d7e485f5b41484c497e424158594442435e034e4240">[email&#160;protected]</span></a>
         <a href="tel:+18608691385">+1(860) 869-1385</a>
         <a href="https://www.linkedin.com/in/samuelgorla/" target="_blank">LinkedIn →</a>
       </div>
@@ -1065,6 +1065,102 @@
   document.querySelectorAll('#navLinks a').forEach(a => {
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
   });
+</script>
+
+<!-- ============ TWEAKS PANEL (only visible when Tweaks is toggled on) ============ -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#be4420",
+  "bgTone": "Cool grey",
+  "inkTone": "Navy",
+  "statusDots": "Green"
+}/*EDITMODE-END*/;
+
+// accent hue → soft companion (used for tints, dark-section highlights)
+const ACCENT_SOFT = {
+  "#be4420": "#e9b59c",  // Burnt Brick
+  "#d9531e": "#f3c2a8",  // Signal Orange
+  "#e4632a": "#f6cdb1",  // Ember
+  "#cf3a33": "#eeb1ad",  // Crimson
+  "#2f62e8": "#aec2f6",  // Cobalt
+};
+const ACCENT_DEEP = {
+  "#be4420": "#9c3617",
+  "#d9531e": "#b5430f",
+  "#e4632a": "#bf4d1c",
+  "#cf3a33": "#a92c26",
+  "#2f62e8": "#1f49bf",
+};
+
+const BG_TONES = {
+  "Cool grey": { bg:"#f7f7f5", warm:"#ececE8", line:"#dedfdb", cream:"#ffffff" },
+  "Warm cream": { bg:"#f6f1e8", warm:"#ede3d2", line:"#e0d6c2", cream:"#fffdf8" },
+  "Pure white": { bg:"#ffffff", warm:"#f1f1ef", line:"#e4e4e1", cream:"#ffffff" },
+};
+const INK_TONES = {
+  "Charcoal": { ink:"#15171c", soft:"#3a3e48" },
+  "Navy":     { ink:"#0b1e3f", soft:"#3a4a66" },
+};
+
+function applyTweaks(t) {
+  const root = document.documentElement;
+  const set = (k, v) => root.style.setProperty(k, v);
+
+  set('--accent', t.accent);
+  set('--accent-soft', ACCENT_SOFT[t.accent] || '#e9b59c');
+
+  const bg = BG_TONES[t.bgTone] || BG_TONES["Cool grey"];
+  set('--bg', bg.bg);
+  set('--bg-warm', bg.warm);
+  set('--line', bg.line);
+  set('--cream', bg.cream);
+
+  const ink = INK_TONES[t.inkTone] || INK_TONES["Charcoal"];
+  set('--ink', ink.ink);
+  set('--ink-soft', ink.soft);
+
+  // status dots / "live" pulse — green signal or matched to accent
+  set('--success', t.statusDots === 'Accent' ? t.accent : '#1f8a5b');
+
+  // matched glow tints
+  const deep = ACCENT_DEEP[t.accent] || '#9c3617';
+  root.style.setProperty('--btn-teal-hover', deep);
+}
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => { applyTweaks(t); }, [t]);
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Brand color" />
+      <TweakColor label="Accent" value={t.accent}
+        options={["#be4420", "#d9531e", "#e4632a", "#cf3a33", "#2f62e8"]}
+        onChange={(v) => setTweak('accent', v)} />
+      <TweakRadio label="Status dots" value={t.statusDots}
+        options={["Green", "Accent"]}
+        onChange={(v) => setTweak('statusDots', v)} />
+
+      <TweakSection label="Surfaces" />
+      <TweakRadio label="Background" value={t.bgTone}
+        options={["Cool grey", "Warm cream", "Pure white"]}
+        onChange={(v) => setTweak('bgTone', v)} />
+      <TweakRadio label="Ink" value={t.inkTone}
+        options={["Charcoal", "Navy"]}
+        onChange={(v) => setTweak('inkTone', v)} />
+    </TweaksPanel>
+  );
+}
+
+// apply default tweaks immediately so the page reflects them before the panel opens
+// (useTweaks persists changes by rewriting the EDITMODE block above on disk)
+applyTweaks(TWEAK_DEFAULTS);
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
 </script>
 </body>
 </html>
