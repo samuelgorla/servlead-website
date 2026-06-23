@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,7 +198,7 @@
   h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
   .section-intro { font-size: 1.15rem; color: var(--ink-soft); max-width: 640px; margin-bottom: 3.5rem; }
 
-  /* ========== REAL ESTATE FEATURE ========== */
+  /* ========== AI AUDIT FEATURE ========== */
   .realestate {
     background: var(--ink); color: var(--cream);
     padding: 5rem 0; position: relative; overflow: hidden;
@@ -273,6 +272,8 @@
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem; margin-top: 1rem;
   }
+  .demos-grid .demo-card:nth-last-child(2):nth-child(3n+1) { grid-column: 1 / 2; }
+  .demos-grid .demo-card:last-child:nth-child(3n+2) { grid-column: 2 / 3; }
   .demo-card {
     background: var(--cream); border: 1px solid var(--line);
     border-radius: 24px; padding: 2.5rem;
@@ -458,51 +459,7 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ========== INVOICE BOT SECTION ========== */
-  .invoicebot { background: var(--bg); padding: 6rem 0; border-top: 1px solid var(--line); }
-  .ib-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
-  .ib-steps { display: flex; flex-direction: column; gap: 1rem; }
-  .ib-step {
-    display: flex; gap: 1rem; align-items: flex-start;
-    background: var(--cream); border: 1px solid var(--line);
-    border-radius: 14px; padding: 1.25rem; transition: border-color 0.2s;
-  }
-  .ib-step:hover { border-color: var(--accent); }
-  .ib-step-num {
-    width: 32px; height: 32px; background: var(--accent); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.9rem;
-    color: var(--cream); flex-shrink: 0;
-  }
-  .ib-step-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; color: var(--ink); }
-  .ib-step-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.4; }
-  .ib-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
-  .ib-stat {
-    background: var(--cream); border: 1px solid var(--line);
-    border-radius: 16px; padding: 1.5rem; transition: border-color 0.2s;
-  }
-  .ib-stat:hover { border-color: var(--accent); }
-  .ib-stat-num {
-    font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600;
-    color: var(--accent); line-height: 1; margin-bottom: 0.35rem;
-  }
-  .ib-stat-label { font-size: 0.85rem; color: var(--muted); }
-  .ib-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--bg-warm); border: 1px solid var(--line);
-    padding: 0.5rem 1rem; border-radius: 999px;
-    font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 1.5rem;
-  }
-  .ib-badge .dot { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
-  .ib-verticals { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-  .ib-vertical {
-    background: var(--bg-warm); border: 1px solid var(--line);
-    padding: 0.3rem 0.85rem; border-radius: 999px;
-    font-size: 0.82rem; color: var(--ink-soft); font-weight: 500;
-  }
-  .ib-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-  @media (max-width: 900px) { .ib-grid { grid-template-columns: 1fr; gap: 3rem; } }
-  @media (max-width: 500px) { .ib-stats { grid-template-columns: 1fr 1fr; } }
+  /* Invoice Bot standalone section removed — merged into demos grid */
 </style>
 </head>
 <body>
@@ -517,13 +474,12 @@
       Servlead Solutions
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#solutions">Solutions</a>
-      <a href="#invoice-bot">Invoice Bot</a>
+      <a href="#audit">AI Audit</a>
       <a href="#demos">Demos</a>
-      <a href="#services">Services</a>
+      <a href="#services">How it works</a>
       <a href="#cases">Case studies</a>
       <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Book a call →</a>
+      <a href="#contact" class="nav-cta">Book free audit →</a>
     </div>
     <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
   </div>
@@ -542,32 +498,32 @@
           Find the workflow that's <em>costing you most.</em> Then fix it with AI.
         </h1>
         <p class="hero-sub reveal">
-          I help small and mid-sized businesses find the work that's quietly eating their time, then build AI automation that pays for itself — without the enterprise price tag or the hype.
+          Free 45-minute AI Audit. I follow the money through your business, find the top three revenue and time leaks, and deliver a ranked report with dollar figures within 48 hours. No pitch. No obligation.
         </p>
         <div class="hero-ctas reveal">
-          <a href="#contact" class="btn btn-primary">Book a free 30-min consult →</a>
-          <a href="#solutions" class="btn-text">See our solutions →</a>
+          <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free AI Audit →</a>
+          <a href="#audit" class="btn-text">See how it works →</a>
         </div>
       </div>
 
       <div class="hero-visual">
         <div class="card-float card-1 reveal">
-          <div class="card-header"><span class="card-icon">⚡</span>Automation</div>
-          <div class="card-title">Reporting & data entry</div>
-          <div class="card-stat">95%</div>
-          <div class="card-label">time reduction achieved</div>
+          <div class="card-header"><span class="card-icon">🔍</span>AI Audit Output</div>
+          <div class="card-title">Top pain ranked by dollar impact</div>
+          <div class="card-stat">#1</div>
+          <div class="card-label">Manual invoicing — ~$18K/yr in lost time</div>
         </div>
         <div class="card-float card-2 reveal">
-          <div class="card-header"><span class="card-icon">🏠</span>Real Estate AI</div>
-          <div class="card-title">Lead response time</div>
+          <div class="card-header"><span class="card-icon">⚡</span>After the audit</div>
+          <div class="card-title">Invoice Collections Bot deployed</div>
           <div class="card-bar"><div class="card-bar-fill"></div></div>
-          <div class="card-label">Under 30 seconds — every time</div>
+          <div class="card-label">Collections cycle cut from 3 weeks to 4 days</div>
         </div>
         <div class="card-float card-3 reveal">
-          <div class="card-header"><span class="card-icon">🔄</span>ERP Migration</div>
-          <div class="card-title">QuickBooks → NetSuite</div>
-          <div class="card-stat">70+</div>
-          <div class="card-label">users migrated, on time & on budget</div>
+          <div class="card-header"><span class="card-icon">📄</span>Delivered within 48 hrs</div>
+          <div class="card-title">Written report — no obligation</div>
+          <div class="card-stat">3</div>
+          <div class="card-label">ranked pain points with ROI estimates</div>
         </div>
       </div>
     </div>
@@ -578,55 +534,57 @@
 <div class="trust">
   <div class="container">
     <div class="trust-inner">
-      <span class="trust-label">Industries I've worked in</span>
+      <span class="trust-label">Verticals served</span>
       <div class="trust-items">
-        <span class="trust-item">Real Estate</span>
+        <span class="trust-item">GC / Contractor</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">Logistics & 3PL</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">Manufacturing</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">Distribution</span>
+        <span class="trust-item">·</span>
+        <span class="trust-item">Insurance</span>
         <span class="trust-item">·</span>
         <span class="trust-item">Finance & Banking</span>
         <span class="trust-item">·</span>
         <span class="trust-item">Healthcare</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Insurance</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">eCommerce</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Tech Consulting</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- REAL ESTATE FEATURE -->
-<section class="realestate" id="solutions">
+<!-- AI AUDIT FEATURE -->
+<section class="realestate" id="audit">
   <div class="container">
-    <div class="section-eyebrow reveal">Featured Solution</div>
-    <h2 class="section-title reveal">AI lead qualification <em>built for real estate agents.</em></h2>
-    <p class="section-intro reveal">The average agent takes 47 minutes to respond to an inbound lead. The average buyer moves on in 5. I built an AI system that responds in under 30 seconds — it qualifies the lead, routes it, and notifies you. Works while you're showing homes, in meetings, or asleep.</p>
+    <div class="section-eyebrow reveal">The entry point — always</div>
+    <h2 class="section-title reveal">A free 45-minute audit that shows you <em>exactly where you're losing money.</em></h2>
+    <p class="section-intro reveal">Most businesses at $2M+ are losing $15,000–$30,000 a year in workflows they don't know are broken. The AI Audit follows the money through your business and identifies the top three pain points — ranked by dollar impact — in one focused conversation. No pitch deck. No obligation. You walk away with a written report in 48 hours whether you hire me or not.</p>
 
     <div class="re-grid">
       <div>
-        <div class="re-badge reveal"><span class="dot"></span> Built & running — demo available</div>
+        <div class="re-badge reveal"><span class="dot"></span> Free — no obligation — 48-hr written report</div>
         <div class="re-stats reveal">
           <div class="re-stat">
-            <div class="re-stat-num">&lt;30s</div>
-            <div class="re-stat-label">Response time, day or night</div>
+            <div class="re-stat-num">45</div>
+            <div class="re-stat-label">Minutes — one focused conversation</div>
           </div>
           <div class="re-stat">
-            <div class="re-stat-num">9x</div>
-            <div class="re-stat-label">Higher conversion vs. 30-min response</div>
+            <div class="re-stat-num">48h</div>
+            <div class="re-stat-label">Written PDF report delivered</div>
           </div>
           <div class="re-stat">
-            <div class="re-stat-num">24/7</div>
-            <div class="re-stat-label">Never misses a lead</div>
+            <div class="re-stat-num">3</div>
+            <div class="re-stat-label">Pain points ranked by dollar impact</div>
           </div>
           <div class="re-stat">
             <div class="re-stat-num">$0</div>
-            <div class="re-stat-label">Leads lost while you sleep</div>
+            <div class="re-stat-label">Cost, no obligation, ever</div>
           </div>
         </div>
         <div class="re-cta reveal">
-          <a href="#contact" class="btn btn-teal">Request a live demo →</a>
-          <a href="#contact" class="btn btn-outline-light">Book a discovery call</a>
+          <a href="https://cal.com/samgorla/consultation" class="btn btn-teal">Book your free audit →</a>
+          <a href="#contact" class="btn btn-outline-light">Or send a message</a>
         </div>
       </div>
 
@@ -634,29 +592,29 @@
         <div class="re-step">
           <div class="re-step-num">1</div>
           <div>
-            <div class="re-step-title">Lead arrives</div>
-            <div class="re-step-desc">From Zillow, Realtor.com, your website, or Facebook — any source.</div>
+            <div class="re-step-title">Getting customers</div>
+            <div class="re-step-desc">How are leads coming in? Where do they stall? What's the speed and volume of your pipeline?</div>
           </div>
         </div>
         <div class="re-step">
           <div class="re-step-num">2</div>
           <div>
-            <div class="re-step-title">AI replies in seconds</div>
-            <div class="re-step-desc">A personalized message goes out instantly — asking the right qualifying question.</div>
+            <div class="re-step-title">Serving customers</div>
+            <div class="re-step-desc">What does delivering your work actually look like day-to-day? Where does time get eaten?</div>
           </div>
         </div>
         <div class="re-step">
           <div class="re-step-num">3</div>
           <div>
-            <div class="re-step-title">AI qualifies the reply</div>
-            <div class="re-step-desc">Reads the response, extracts timeline, area, budget, and financing status.</div>
+            <div class="re-step-title">Getting paid</div>
+            <div class="re-step-desc">How's your invoicing and collections working? How much is sitting unpaid right now?</div>
           </div>
         </div>
         <div class="re-step">
           <div class="re-step-num">4</div>
           <div>
-            <div class="re-step-title">Smart routing</div>
-            <div class="re-step-desc">Hot leads get your booking link immediately. Others get the right follow-up. You get notified either way.</div>
+            <div class="re-step-title">Running the back office</div>
+            <div class="re-step-desc">What admin and ops work is burning hours every week that shouldn't require a human?</div>
           </div>
         </div>
       </div>
@@ -664,103 +622,28 @@
   </div>
 </section>
 
-<!-- INVOICE BOT FEATURE -->
-<section class="invoicebot" id="invoice-bot">
-  <div class="container">
-    <div class="section-eyebrow reveal">Featured Solution</div>
-    <h2 class="section-title reveal">An AI bot that <em>chases invoices for you.</em></h2>
-    <p class="section-intro reveal">The average trades business has $20K–$50K sitting in unpaid invoices. Not because clients won't pay — because nobody followed up. I built an automation that runs the whole collection sequence in your voice. You approve it once; it handles the rest.</p>
-
-    <div class="ib-grid">
-      <div>
-        <div class="ib-badge reveal"><span class="dot"></span> Built &amp; running — demo available</div>
-        <div class="ib-stats reveal">
-          <div class="ib-stat">
-            <div class="ib-stat-num">30s</div>
-            <div class="ib-stat-label">Owner review time per day</div>
-          </div>
-          <div class="ib-stat">
-            <div class="ib-stat-num">3×</div>
-            <div class="ib-stat-label">Automated follow-ups per invoice</div>
-          </div>
-          <div class="ib-stat">
-            <div class="ib-stat-num">100%</div>
-            <div class="ib-stat-label">In your voice — never robotic</div>
-          </div>
-          <div class="ib-stat">
-            <div class="ib-stat-num">$0</div>
-            <div class="ib-stat-label">Lost chasing invoices manually</div>
-          </div>
-        </div>
-        <p class="reveal" style="color: var(--ink-soft); font-size: 0.98rem; line-height: 1.7; margin-bottom: 0.75rem;">Works with your existing spreadsheet or QuickBooks. No new software to learn. The only interface is an email in your inbox with two buttons.</p>
-        <div class="ib-verticals reveal">
-          <span class="ib-vertical">HVAC</span>
-          <span class="ib-vertical">Plumbing</span>
-          <span class="ib-vertical">Electrical</span>
-          <span class="ib-vertical">Landscaping</span>
-          <span class="ib-vertical">General Contractors</span>
-          <span class="ib-vertical">Auto Repair</span>
-        </div>
-        <div class="ib-cta reveal">
-          <a href="#contact" class="btn btn-primary">Book a free consult →</a>
-          <a href="#contact" class="btn btn-secondary" style="font-size:0.95rem; padding: 0.8rem 1.5rem;">Request a live demo</a>
-        </div>
-      </div>
-
-      <div class="ib-steps reveal">
-        <div class="ib-step">
-          <div class="ib-step-num">1</div>
-          <div>
-            <div class="ib-step-title">Bot scans overdue invoices every morning</div>
-            <div class="ib-step-desc">Connects to your spreadsheet or QuickBooks. Finds everything 7+ days past due and flags it automatically.</div>
-          </div>
-        </div>
-        <div class="ib-step">
-          <div class="ib-step-num">2</div>
-          <div>
-            <div class="ib-step-title">AI writes 3 personalized emails per invoice</div>
-            <div class="ib-step-desc">A polite reminder, a firmer follow-up, and a final notice — all written in your voice using a two-sentence style description you provide once at setup.</div>
-          </div>
-        </div>
-        <div class="ib-step">
-          <div class="ib-step-num">3</div>
-          <div>
-            <div class="ib-step-title">You get one digest email — approve or skip</div>
-            <div class="ib-step-desc">Every overdue invoice listed with client name, amount, and days past due. Click Approve or Skip per invoice. Takes about 30 seconds.</div>
-          </div>
-        </div>
-        <div class="ib-step">
-          <div class="ib-step-num">4</div>
-          <div>
-            <div class="ib-step-title">The sequence runs automatically</div>
-            <div class="ib-step-desc">First email sends immediately. Second goes out 7 days later. Final notice at 14 days. You're notified if a client responds. Nothing else required.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- INVOICE BOT section removed — content merged into demos grid below -->
 
 <!-- DEMOS -->
 <section class="demos" id="demos">
   <div class="container">
     <div class="section-eyebrow reveal">Live demos</div>
-    <h2 class="section-title reveal">Three automations <em>built and running.</em></h2>
-    <p class="section-intro reveal">Not concepts. Not mockups. Working systems you can watch run today — and deploy for your business in days, not months.</p>
+    <h2 class="section-title reveal">Five automations <em>built and running.</em></h2>
+    <p class="section-intro reveal">Not concepts. Not mockups. Working systems you can watch run today. The audit identifies your pain — if one of these matches, you can see it live before committing to anything.</p>
 
-    <div class="demos-grid">
+    <div class="demos-grid" style="grid-template-columns: repeat(3, 1fr);">
 
       <div class="demo-card reveal">
         <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
         <div class="demo-icon">&#x26A1;</div>
-        <h3 class="demo-title">Instant Lead Responder</h3>
-        <p class="demo-desc">Most businesses take 47 minutes to answer an inbound lead. The buyer's gone in 5. This AI answers in under 30 seconds — qualifies the prospect, routes the hot ones, and notifies you. Day or night.</p>
+        <h3 class="demo-title">Lead Responder</h3>
+        <p class="demo-desc">Most businesses take 47 minutes to respond to an inbound lead. The buyer's gone in 5. This AI responds in under 30 seconds — qualifies the prospect, routes the hot ones, and notifies you. Day or night.</p>
         <div class="demo-who">Best for</div>
         <div class="demo-verticals">
-          <span class="demo-vertical">Real Estate</span>
-          <span class="demo-vertical">HVAC &amp; Trades</span>
-          <span class="demo-vertical">Insurance</span>
+          <span class="demo-vertical">GC / Contractor</span>
+          <span class="demo-vertical">Insurance Agencies</span>
           <span class="demo-vertical">Home Services</span>
+          <span class="demo-vertical">Any inbound-heavy business</span>
         </div>
         <div class="demo-stat-row">
           <div><div class="demo-stat-num">&lt;30s</div><div class="demo-stat-label">Response time</div></div>
@@ -771,15 +654,51 @@
 
       <div class="demo-card reveal">
         <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x1F3AF;</div>
-        <h3 class="demo-title">AI Prospect Engine</h3>
-        <p class="demo-desc">Stop hunting for leads by hand. This system finds your ideal clients, researches each one, and drafts personalized outreach. You give it a target profile; it fills the pipeline.</p>
+        <div class="demo-icon">&#x1F4E5;</div>
+        <h3 class="demo-title">Invoice Collections Bot</h3>
+        <p class="demo-desc">The average contractor has $20K–$50K sitting in unpaid invoices — not because clients won't pay, but because nobody followed up. This bot runs the full sequence in your voice. You approve once; it handles the rest.</p>
         <div class="demo-who">Best for</div>
         <div class="demo-verticals">
-          <span class="demo-vertical">Consultants</span>
-          <span class="demo-vertical">Agencies</span>
-          <span class="demo-vertical">B2B Sales</span>
-          <span class="demo-vertical">Professional Services</span>
+          <span class="demo-vertical">GC / Contractor</span>
+          <span class="demo-vertical">Wholesale & Distribution</span>
+          <span class="demo-vertical">Any business chasing A/R</span>
+        </div>
+        <div class="demo-stat-row">
+          <div><div class="demo-stat-num">30s</div><div class="demo-stat-label">Owner review per day</div></div>
+          <div><div class="demo-stat-num">3×</div><div class="demo-stat-label">Follow-ups per invoice</div></div>
+        </div>
+        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+      </div>
+
+      <div class="demo-card reveal">
+        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
+        <div class="demo-icon">&#x2709;&#xFE0F;</div>
+        <h3 class="demo-title">Inbox Autopilot</h3>
+        <p class="demo-desc">Every email gets sorted the moment it lands. Hot prospects, scheduling requests, referral intros — each one gets a reply drafted in your voice, waiting in Drafts. You review and send. Nothing goes out without you.</p>
+        <div class="demo-who">Best for</div>
+        <div class="demo-verticals">
+          <span class="demo-vertical">Founders</span>
+          <span class="demo-vertical">Insurance Agencies</span>
+          <span class="demo-vertical">Law Firms</span>
+          <span class="demo-vertical">Any inbox-heavy business</span>
+        </div>
+        <div class="demo-stat-row">
+          <div><div class="demo-stat-num">8</div><div class="demo-stat-label">Email categories</div></div>
+          <div><div class="demo-stat-num">24/7</div><div class="demo-stat-label">Always on</div></div>
+        </div>
+        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+      </div>
+
+      <div class="demo-card reveal">
+        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
+        <div class="demo-icon">&#x1F3AF;</div>
+        <h3 class="demo-title">Lead Discovery & Outreach</h3>
+        <p class="demo-desc">Stop hunting for prospects by hand. This system finds your ideal clients, researches each one, and drafts personalized outreach. You define the target profile — it fills the pipeline and sends on your approval.</p>
+        <div class="demo-who">Best for</div>
+        <div class="demo-verticals">
+          <span class="demo-vertical">Logistics & 3PL</span>
+          <span class="demo-vertical">Manufacturing</span>
+          <span class="demo-vertical">B2B businesses doing outbound</span>
         </div>
         <div class="demo-stat-row">
           <div><div class="demo-stat-num">10x</div><div class="demo-stat-label">Faster prospecting</div></div>
@@ -790,19 +709,19 @@
 
       <div class="demo-card reveal">
         <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x2709;&#xFE0F;</div>
-        <h3 class="demo-title">Inbox Autopilot</h3>
-        <p class="demo-desc">Every email gets sorted the moment it lands. Hot prospects, scheduling requests, referral intros — each one gets a reply drafted in your voice, waiting in your Drafts folder. You review and send. Nothing goes out without you.</p>
+        <div class="demo-icon">&#x1F4C4;</div>
+        <h3 class="demo-title">Document Autopilot</h3>
+        <p class="demo-desc">Invoices, POs, contracts, receipts — any document that arrives by email gets read by AI, its key data logged to a spreadsheet or system, and a confirmation sent back. No data entry. No copy-paste. Under 30 seconds end-to-end.</p>
         <div class="demo-who">Best for</div>
         <div class="demo-verticals">
-          <span class="demo-vertical">Founders</span>
-          <span class="demo-vertical">Sales Teams</span>
-          <span class="demo-vertical">Law Firms</span>
-          <span class="demo-vertical">Any Inbox-Heavy Role</span>
+          <span class="demo-vertical">Manufacturing</span>
+          <span class="demo-vertical">Distribution</span>
+          <span class="demo-vertical">Accounting / CPA</span>
+          <span class="demo-vertical">Any document-heavy operation</span>
         </div>
         <div class="demo-stat-row">
-          <div><div class="demo-stat-num">8</div><div class="demo-stat-label">Email categories</div></div>
-          <div><div class="demo-stat-num">24/7</div><div class="demo-stat-label">Always on</div></div>
+          <div><div class="demo-stat-num">&lt;30s</div><div class="demo-stat-label">End-to-end processing</div></div>
+          <div><div class="demo-stat-num">$0</div><div class="demo-stat-label">Manual data entry</div></div>
         </div>
         <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
       </div>
@@ -811,50 +730,50 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES / WHAT HAPPENS AFTER THE AUDIT -->
 <section class="services" id="services">
   <div class="container">
-    <div class="section-eyebrow reveal">What we do</div>
-    <h2 class="section-title reveal">Three ways we help you <em>put AI to work.</em></h2>
-    <p class="section-intro reveal">Most AI projects fail because they're over-engineered. I focus on what's practical, what pays for itself, and what your team can actually use.</p>
+    <div class="section-eyebrow reveal">After the audit</div>
+    <h2 class="section-title reveal">Three paths forward — <em>you choose what fits.</em></h2>
+    <p class="section-intro reveal">The audit tells us what's worth fixing. Then we decide together how to tackle it. No upsell pressure — if a free tool solves the problem, I'll tell you that.</p>
 
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-num">01 / STRATEGY</div>
+        <div class="service-num">01 / QUICKEST PATH</div>
+        <div class="service-icon">⚡</div>
+        <h3 class="service-title">Working Demo</h3>
+        <p class="service-desc">If an existing demo directly matches the top pain the audit surfaced, I show it live. You see exactly how it works before any decision is made.</p>
+        <ul class="service-list">
+          <li>Live walkthrough of the matching system</li>
+          <li>Deployed to your business in days</li>
+          <li>Fixed price — you own everything</li>
+          <li>No retainer required at start</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">02 / ONE PROBLEM, FIXED</div>
         <div class="service-icon">🎯</div>
-        <h3 class="service-title">Strategy & Advisory</h3>
-        <p class="service-desc">A clear-eyed AI roadmap built around your actual business — not a tech wishlist.</p>
+        <h3 class="service-title">Scoped Pilot</h3>
+        <p class="service-desc">One focused problem. Fixed price. Clear timeline. The audit narrows it down — we build the solution that moves the needle most.</p>
         <ul class="service-list">
-          <li>Workflow & process audits</li>
-          <li>AI opportunity identification</li>
-          <li>Build vs. buy decisions</li>
-          <li>ROI modeling</li>
+          <li>Single workflow automated end-to-end</li>
+          <li>Fixed price, no surprises</li>
+          <li>You own the build — no lock-in</li>
+          <li>Delivered and documented</li>
         </ul>
       </div>
 
       <div class="service-card reveal">
-        <div class="service-num">02 / IMPLEMENTATION</div>
-        <div class="service-icon">⚙️</div>
-        <h3 class="service-title">Implementation & Automation</h3>
-        <p class="service-desc">We build it, test it, and hand it off working. No 200-slide deliverables.</p>
+        <div class="service-num">03 / FULL ENGAGEMENT</div>
+        <div class="service-icon">🔧</div>
+        <h3 class="service-title">Full Build</h3>
+        <p class="service-desc">Map the top 2–3 opportunities from the audit and execute in sequence. For businesses ready to tackle multiple workflow problems in one engagement.</p>
         <ul class="service-list">
-          <li>AI chatbots & lead qualification</li>
-          <li>Workflow & process automation</li>
-          <li>ERP & systems integration</li>
-          <li>Analytics dashboards</li>
-        </ul>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-num">03 / ENABLEMENT</div>
-        <div class="service-icon">🎓</div>
-        <h3 class="service-title">Training & Enablement</h3>
-        <p class="service-desc">Your team owns the outcome. We make sure they know how to run with it.</p>
-        <ul class="service-list">
-          <li>Team AI workshops</li>
-          <li>AI literacy training</li>
-          <li>Prompt engineering sessions</li>
-          <li>Ongoing advisory support</li>
+          <li>Multi-workflow automation roadmap</li>
+          <li>Built and deployed in phases</li>
+          <li>Fixed price per phase, you own everything</li>
+          <li>Ongoing retainer optional after delivery</li>
         </ul>
       </div>
     </div>
@@ -871,23 +790,23 @@
     <div class="process-grid">
       <div class="process-step reveal">
         <div class="process-num">01</div>
-        <h3 class="process-title">Audit &amp; discover</h3>
-        <p class="process-desc">I sit with you and follow the money through your workflow — where time leaks, where work gets redone — and pin down the top three pain points worth fixing.</p>
+        <h3 class="process-title">Free AI Audit</h3>
+        <p class="process-desc">45 minutes. I follow the money through your business — leads, delivery, collections, back office — and find the three pain points costing you most. Written report delivered within 48 hours. No cost, no obligation.</p>
       </div>
       <div class="process-step reveal">
         <div class="process-num">02</div>
         <h3 class="process-title">Scope &amp; plan</h3>
-        <p class="process-desc">A clear proposal with fixed pricing, a timeline, and the outcomes you can expect. No surprises.</p>
+        <p class="process-desc">If we move forward, you get a clear proposal — fixed price, defined timeline, expected outcome. No discovery retainer. No ambiguity.</p>
       </div>
       <div class="process-step reveal">
         <div class="process-num">03</div>
-        <h3 class="process-title">Build & test</h3>
-        <p class="process-desc">We build in short sprints with you in the loop. You see progress every week.</p>
+        <h3 class="process-title">Build &amp; test</h3>
+        <p class="process-desc">Built in short sprints with you in the loop. You see the system run before it goes live. No surprises at handoff.</p>
       </div>
       <div class="process-step reveal">
         <div class="process-num">04</div>
-        <h3 class="process-title">Launch & support</h3>
-        <p class="process-desc">We train your team, document everything, and stick around for questions.</p>
+        <h3 class="process-title">Hand off &amp; support</h3>
+        <p class="process-desc">You own everything — the workflow, the documentation, the credentials. I'm available for questions. Nothing is locked to me.</p>
       </div>
     </div>
   </div>
@@ -1003,11 +922,11 @@
 
 <!-- CTA -->
 <div class="cta-section" id="contact">
-  <div class="cta-eyebrow">Let's talk</div>
-  <h2 class="cta-title">If you're not sure where AI fits in your business — <em>that's exactly what the audit is for.</em></h2>
-  <p class="cta-sub">Free 30-minute call. No pitch deck. Just an honest conversation about your workflows and what might actually help.</p>
+  <div class="cta-eyebrow">Start here</div>
+  <h2 class="cta-title">Not sure where AI fits in your business? <em>That's exactly what the audit is for.</em></h2>
+  <p class="cta-sub">Free 45-minute AI Audit. No pitch deck. You walk away with your top three revenue and time leaks — ranked by dollar impact — delivered as a written report within 48 hours. Whether you hire me or not.</p>
   <div class="cta-ctas">
-    <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free consult →</a>
+    <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free AI Audit →</a>
     <a href="tel:+18608691385" class="btn btn-secondary">Call +1(860) 869-1385</a>
   </div>
 </div>
@@ -1023,12 +942,12 @@
         Servlead Solutions
       </div>
       <div class="footer-col">
-        <h4>Solutions</h4>
-        <a href="#solutions">Real Estate AI</a>
-        <a href="#invoice-bot">Invoice Collections Bot</a>
-        <a href="#services">Strategy & Advisory</a>
-        <a href="#services">Implementation</a>
-        <a href="#services">Training</a>
+        <h4>What we do</h4>
+        <a href="#audit">Free AI Audit</a>
+        <a href="#demos">Live Demos</a>
+        <a href="#services">How it works</a>
+        <a href="#process">Our process</a>
+        <a href="#cases">Case studies</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
