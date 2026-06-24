@@ -116,6 +116,7 @@
     margin-bottom: 1.5rem; color: var(--ink);
   }
   h1.hero-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  h1.hero-title .hero-plain { font-style: normal; letter-spacing: -0.03em; }
   .hero-sub {
     font-size: 1.2rem; color: var(--ink-soft);
     max-width: 540px; margin-bottom: 2.5rem; line-height: 1.55;
@@ -169,6 +170,16 @@
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
     .hero-visual { height: 380px; margin: 0 auto; max-width: 500px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-visual { display: none; }
+    .hero { padding: 4rem 0 5rem; }
+    h1.hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .hero-sub { font-size: 1.05rem; }
+    .hero-ctas { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .btn { width: 100%; justify-content: center; }
+    .btn-text { width: auto; padding: 0.5rem 0; }
   }
 
   /* ========== TRUST BAR ========== */
@@ -264,7 +275,11 @@
   .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
 
   @media (max-width: 900px) { .re-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 600px) { .re-stats { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { 
+    .re-stats { grid-template-columns: 1fr 1fr; }
+    .re-cta { flex-direction: column; }
+    .re-cta .btn { width: 100%; justify-content: center; }
+  }
 
   /* ========== DEMOS SECTION ========== */
   .demos { padding: 6rem 0; background: var(--bg); }
@@ -330,7 +345,8 @@
     text-decoration: none; transition: gap 0.2s;
   }
   .demo-cta:hover { gap: 0.7rem; }
-  @media (max-width: 900px) { .demos-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1024px) { .demos-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .demos-grid { grid-template-columns: 1fr; } }
 
   /* ========== SERVICES ========== */
   .services { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -347,7 +363,8 @@
   .service-list { list-style: none; padding: 0; font-size: 0.92rem; color: var(--ink-soft); }
   .service-list li { padding: 0.4rem 0; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 0.5rem; }
   .service-list li::before { content: '→'; color: var(--accent); font-weight: 600; }
-  @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
 
   /* ========== PROCESS ========== */
   .process-grid {
@@ -459,6 +476,14 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ========== GLOBAL MOBILE ========== */
+  @media (max-width: 600px) {
+    .container { padding: 0 1.25rem; }
+    section { padding: 4rem 0; }
+    .section-intro { font-size: 1rem; margin-bottom: 2.5rem; }
+    h2.section-title { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+  }
+
   /* Invoice Bot standalone section removed — merged into demos grid */
 </style>
 </head>
@@ -495,7 +520,7 @@
           Serving clients in Lehigh Valley & beyond
         </div>
         <h1 class="hero-title reveal">
-          Find the workflow that's <em>costing you most.</em> Then fix it with AI.
+          <span class="hero-plain">Find the workflow that's</span> <em>costing you most.</em> <span class="hero-plain">Then fix it with AI.</span>
         </h1>
         <p class="hero-sub reveal">
           Free 45-minute AI Audit. I follow the money through your business, find the top three revenue and time leaks, and deliver a ranked report with dollar figures within 48 hours. No pitch. No obligation.
@@ -631,7 +656,7 @@
     <h2 class="section-title reveal">Five automations <em>built and running.</em></h2>
     <p class="section-intro reveal">Not concepts. Not mockups. Working systems you can watch run today. The audit identifies your pain — if one of these matches, you can see it live before committing to anything.</p>
 
-    <div class="demos-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="demos-grid">
 
       <div class="demo-card reveal">
         <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
