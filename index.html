@@ -3,970 +3,633 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servlead Solutions — AI Consulting for Small & Mid-Sized Businesses</title>
-<meta name="description" content="Practical AI consulting that pays for itself. We help small and mid-sized businesses identify workflow inefficiencies and build AI automation that actually works.">
-
+<title>Servlead Solutions — Find the workflow that's costing you most.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f7f5;
-    --bg-warm: #ececE8;
-    --ink: #0b1e3f;
-    --ink-soft: #3a4a66;
-    --muted: #6e7280;
-    --accent: #be4420;
-    --accent-soft: #e9b59c;
-    --cream: #ffffff;
-    --line: #dedfdb;
-    --success: #1f8a5b;
-    --shadow: 0 4px 24px rgba(11, 30, 63, 0.10);
+    --paper: #f2f2f1;
+    --paper-deep: #e9e9e7;
+    --ink: #14202e;
+    --ink-soft: #46536a;
+    --muted: #7d8494;
+    --rust: #a63d1c;
+    --rust-deep: #86300f;
+    --line: #d6d6d2;
+    --line-dark: #14202e;
+    --green: #22764f;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'Archivo', system-ui, sans-serif;
+    --mono: 'Spline Sans Mono', ui-monospace, monospace;
   }
-
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+  ::selection { background: var(--rust); color: #fff; }
 
-  /* ROOT FIX: prevent any element from causing horizontal overflow */
-  html, body { max-width: 100%; overflow-x: hidden; }
+  .kicker { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); }
+  .rule { border: none; border-top: 1px solid var(--line); }
 
-  body {
-    font-family: 'Manrope', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.6;
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(242, 242, 241, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1160px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--serif); font-weight: 500; font-size: 1.3rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .logo img { width: 38px; height: 38px; object-fit: contain; }
+  .nav-links { display: flex; align-items: center; gap: 1.8rem; }
+  .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-cta { border: 1.5px solid var(--ink); color: var(--ink) !important; padding: 0.55rem 1.25rem; border-radius: 999px; transition: background 0.2s, color 0.2s !important; }
+  .nav-cta:hover { background: var(--ink); color: var(--paper) !important; }
+  .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; }
+  .btn-primary { background: var(--ink); color: var(--paper); padding: 1.05rem 2.1rem; border-radius: 999px; transition: background 0.2s, transform 0.2s; }
+  .btn-primary:hover { background: var(--rust); transform: translateY(-2px); }
+  .btn-text { color: var(--ink); border-bottom: 2px solid var(--rust); padding-bottom: 2px; transition: color 0.2s; }
+  .btn-text:hover { color: var(--rust); }
+
+  /* HERO */
+  .hero { padding: 6rem 0 4.5rem; }
+  .hero-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.4rem; }
+  .hero-label .rule-seg { flex: 1; height: 1px; background: var(--line); }
+  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(3rem, 7.2vw, 6.2rem); line-height: 1.0; letter-spacing: -0.028em; max-width: 1050px; }
+  .hero-title em { font-style: italic; color: var(--rust); font-weight: 300; }
+  .hero-title .word { display: inline-block; opacity: 0; transform: translateY(0.5em); animation: word-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+  @keyframes word-rise { to { opacity: 1; transform: translateY(0); } }
+  .hero-bottom { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4rem; margin-top: 3rem; align-items: end; }
+  .hero-sub { font-size: 1.16rem; line-height: 1.65; color: var(--ink-soft); max-width: 560px; }
+  .hero-sub b { color: var(--ink); }
+  .hero-ctas { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2rem; }
+  .hero-sig { display: flex; align-items: center; gap: 0.9rem; justify-self: end; }
+  .hero-sig img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--ink); }
+  .hero-sig .who { font-size: 0.88rem; line-height: 1.5; color: var(--ink-soft); max-width: 240px; }
+  .hero-sig .who b { display: block; color: var(--ink); font-size: 1rem; font-family: var(--serif); font-weight: 500; }
+
+  /* TICKER */
+  .ticker { border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); padding: 0.85rem 0; overflow: hidden; background: var(--paper); }
+  .ticker-track { display: flex; gap: 3rem; width: max-content; animation: ticker-scroll 36s linear infinite; }
+  .ticker-track span { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .ticker-track span i { font-style: normal; color: var(--rust); margin-right: 3rem; }
+  @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 6rem 0; }
+  .sec-head { display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: baseline; margin-bottom: 3.2rem; }
+  .sec-num { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
+  .sec-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 780px; }
+  .sec-title em { font-style: italic; color: var(--rust); }
+  .sec-intro { font-size: 1.1rem; color: var(--ink-soft); max-width: 640px; margin-top: 1.3rem; }
+
+  /* AUDIT WALKTHROUGH */
+  .audit { background: var(--paper-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .walk { display: grid; grid-template-columns: 1fr 400px; gap: 3.5rem; align-items: start; }
+  .walk-stages { border-top: 1px solid var(--line-dark); }
+  .stage { border-bottom: 1px solid var(--line); cursor: pointer; transition: background 0.25s; }
+  .stage:hover { background: rgba(166, 61, 28, 0.04); }
+  .stage-head { display: grid; grid-template-columns: 3rem 1fr auto; align-items: baseline; gap: 1.2rem; padding: 1.5rem 0.5rem; }
+  .stage-num { font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--muted); transition: color 0.25s; }
+  .stage-title { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; letter-spacing: -0.01em; }
+  .stage-toggle { font-family: var(--mono); font-size: 1.1rem; color: var(--muted); transition: transform 0.3s; }
+  .stage.open .stage-toggle { transform: rotate(45deg); color: var(--rust); }
+  .stage.open .stage-num { color: var(--rust); }
+  .stage-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+  .stage.open .stage-body { max-height: 320px; }
+  .stage-body-inner { padding: 0 0.5rem 1.8rem 4.2rem; }
+  .stage-q { font-size: 1rem; color: var(--ink-soft); max-width: 520px; margin-bottom: 1.1rem; }
+  .stage-find { display: inline-flex; align-items: baseline; gap: 0.8rem; font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); border: 1px solid var(--line-dark); padding: 0.5rem 0.9rem; background: var(--paper); }
+  .stage-find b { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--rust); font-weight: 500; }
+
+  .report { border: 1px solid var(--ink); background: var(--paper); position: sticky; top: 96px; }
+  .report-head { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.3rem; border-bottom: 1px solid var(--ink); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  .report-head .tag { color: var(--green); }
+  .rline { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 1.3rem; border-bottom: 1px dashed var(--line); opacity: 0.25; transition: opacity 0.5s, background 0.5s; }
+  .rline.stamped { opacity: 1; }
+  .rline.flash { background: rgba(166, 61, 28, 0.07); }
+  .rline .nm { font-size: 0.9rem; font-weight: 600; }
+  .rline .nm span { display: block; font-family: var(--mono); font-size: 0.72rem; font-weight: 400; color: var(--muted); margin-top: 0.2rem; }
+  .rline .amt { font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--rust); white-space: nowrap; }
+  .rline-total { display: flex; justify-content: space-between; align-items: baseline; padding: 1.1rem 1.3rem; background: var(--ink); color: var(--paper); }
+  .rline-total .nm { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; }
+  .rline-total .amt { font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: #e8b64c; }
+  .report-foot { padding: 0.8rem 1.3rem; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--line); }
+  .walk-hint { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .audit-cta-row { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 3rem; }
+  .audit-note { font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* DEMOS */
+  .demo-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: start; margin-top: 0; }
+  .demo-list { border-top: 1px solid var(--line-dark); }
+  .demo-item { display: grid; grid-template-columns: 2.4rem 1fr auto; gap: 1rem; align-items: baseline; padding: 1.3rem 0.5rem; border-bottom: 1px solid var(--line); cursor: pointer; transition: background 0.2s; }
+  .demo-item:hover { background: rgba(166, 61, 28, 0.04); }
+  .demo-item.active { background: var(--paper-deep); }
+  .demo-item .n { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+  .demo-item .t { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
+  .demo-item.active .t { color: var(--rust); font-style: italic; }
+  .demo-item .live { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); display: inline-flex; align-items: center; gap: 0.4rem; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2.2s infinite; }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(34, 118, 79, 0.3); } 50% { box-shadow: 0 0 0 6px rgba(34, 118, 79, 0); } }
+  .demo-desc-line { padding: 1.2rem 0.5rem 0; font-size: 0.98rem; color: var(--ink-soft); max-width: 460px; min-height: 5.2em; }
+
+  .demo-screen { border: 1px solid var(--ink); background: #fff; }
+  .demo-screen-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1.2rem; border-bottom: 1px solid var(--ink); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+  .demo-screen-bar .st { color: var(--green); display: inline-flex; align-items: center; gap: 0.45rem; }
+  .chat { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; min-height: 380px; }
+  .msg { max-width: 82%; padding: 0.8rem 1.1rem; font-size: 0.92rem; line-height: 1.5; opacity: 0; transform: translateY(10px); transition: opacity 0.45s, transform 0.45s; }
+  .msg.show { opacity: 1; transform: translateY(0); }
+  .msg .meta { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+  .msg.in { align-self: flex-start; background: var(--paper-deep); border: 1px solid var(--line); }
+  .msg.out { align-self: flex-end; background: var(--ink); color: var(--paper); }
+  .msg.out .meta { color: #9fb0c8; }
+  .msg.sys { align-self: center; background: none; border: 1px dashed var(--line-dark); font-family: var(--mono); font-size: 0.76rem; color: var(--green); padding: 0.5rem 1rem; }
+  .typing { display: inline-flex; gap: 4px; padding: 0.3rem 0; }
+  .typing i { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+  .typing i:nth-child(2) { animation-delay: 0.2s; } .typing i:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+
+  /* WHY SERVLEAD */
+  .why { background: var(--ink); color: var(--paper); }
+  .why .kicker { color: #e8b64c; }
+  .why-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4.5rem; align-items: center; }
+  .why-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.3rem); line-height: 1.08; letter-spacing: -0.02em; margin: 1.4rem 0 1.6rem; }
+  .why-title em { font-style: italic; color: #e8b64c; }
+  .why p { color: #b6c0d2; font-size: 1.05rem; max-width: 540px; margin-bottom: 1.1rem; }
+  .why p b { color: var(--paper); font-weight: 600; }
+  .verse { border-left: 2px solid #e8b64c; padding: 0.4rem 0 0.4rem 1.6rem; margin-top: 2.2rem; }
+  .verse .vtext { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 1.7rem; line-height: 1.3; color: var(--paper); }
+  .verse .vref { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: #8fa0ba; margin-top: 0.8rem; }
+  .creed { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(249, 247, 242, 0.2); }
+  .creed-row { display: grid; grid-template-columns: 2.6rem 1fr; gap: 1.2rem; padding: 1.5rem 0.3rem; border-bottom: 1px solid rgba(249, 247, 242, 0.14); }
+  .creed-row .cn { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: #e8b64c; }
+  .creed-row .ct { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.3rem; }
+  .creed-row .cd { font-size: 0.94rem; color: #b6c0d2; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 4rem; align-items: start; }
+  .about-photo { border: 1px solid var(--ink); padding: 0.6rem; background: #fff; transform: rotate(-1.2deg); }
+  .about-photo img { width: 100%; aspect-ratio: 4/4.6; object-fit: cover; object-position: center 12%; display: block; filter: saturate(0.92); }
+  .about-photo figcaption { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); padding: 0.7rem 0.2rem 0.2rem; text-align: center; letter-spacing: 0.08em; }
+  .about-body .sec-title { margin-bottom: 1.4rem; }
+  .about-body p { color: var(--ink-soft); font-size: 1.05rem; max-width: 600px; margin-bottom: 1.1rem; }
+  .about-body p b { color: var(--ink); }
+  .about-facts { display: flex; gap: 2.8rem; flex-wrap: wrap; margin: 2rem 0; padding: 1.4rem 0; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line); }
+  .fact-num { font-family: var(--serif); font-style: italic; font-size: 2rem; color: var(--rust); line-height: 1.1; }
+  .fact-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+  /* CTA */
+  .cta { border-top: 1px solid var(--line-dark); text-align: center; padding: 7rem 2rem; }
+  .cta-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.04; letter-spacing: -0.025em; max-width: 860px; margin: 1.6rem auto 0; }
+  .cta-title em { font-style: italic; color: var(--rust); }
+  .cta-sub { font-size: 1.1rem; color: var(--ink-soft); max-width: 560px; margin: 1.6rem auto 2.6rem; }
+  .cta-row { display: flex; gap: 1.6rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+
+  footer { border-top: 1px solid var(--line-dark); padding: 2.2rem 0 5.5rem; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-brand { display: flex; align-items: center; gap: 0.6rem; font-family: var(--serif); font-weight: 500; font-size: 1.05rem; }
+  .footer-brand img { width: 30px; height: 30px; object-fit: contain; }
+  .footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
+  .footer-links a:hover { color: var(--rust); }
+  .footer-fine { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+
+  /* SWITCHER */
+  .dir-switch { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 0.3rem; background: var(--ink); border-radius: 999px; padding: 0.35rem; box-shadow: 0 10px 30px rgba(20, 32, 46, 0.35); }
+  .dir-switch a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: #9fb0c8; text-decoration: none; padding: 0.45rem 0.95rem; border-radius: 999px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+  .dir-switch a:hover { color: #fff; }
+  .dir-switch a.on { background: var(--rust); color: #fff; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title .word { opacity: 1; transform: none; animation: none; }
+    .ticker-track, .live-dot { animation: none; }
   }
 
-  .display { font-family: 'Fraunces', Georgia, serif; }
-  .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-
-  /* ========== NAV ========== */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(247, 247, 245, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+  @media (max-width: 1024px) {
+    .walk { grid-template-columns: 1fr; }
+    .report { position: static; max-width: 480px; }
+    .demo-layout { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo { max-width: 340px; }
+    .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-sig { justify-self: start; }
   }
-  .nav-inner {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 1.5rem; max-width: 1200px; margin: 0 auto;
-  }
-  .logo {
-    font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem;
-    color: var(--ink); letter-spacing: -0.01em; text-decoration: none;
-    display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
-  }
-  .nav-links { display: flex; gap: 2rem; align-items: center; }
-  .nav-links a {
-    color: var(--ink-soft); text-decoration: none;
-    font-size: 0.9rem; font-weight: 500; transition: color 0.2s; white-space: nowrap;
-  }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-cta {
-    background: var(--ink); color: var(--cream) !important;
-    padding: 0.55rem 1.1rem; border-radius: 999px; transition: all 0.2s;
-  }
-  .nav-cta:hover { background: var(--accent); }
-  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--ink); padding: 0.25rem; }
-
   @media (max-width: 768px) {
-    .nav-links {
-      display: none; position: absolute; top: 100%; left: 0; right: 0;
-      background: var(--bg); flex-direction: column; padding: 1.25rem 1.5rem;
-      gap: 1rem; border-bottom: 1px solid var(--line); z-index: 99;
-    }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--line); align-items: flex-start; }
     .nav-links.open { display: flex; }
     .mobile-toggle { display: block; }
-    .logo { font-size: 1.1rem; }
+    section { padding: 4.5rem 0; }
+    .sec-head { grid-template-columns: 1fr; gap: 0.8rem; }
+    .stage-body-inner { padding-left: 0.5rem; }
+    .dir-switch a { padding: 0.45rem 0.7rem; }
   }
-
-  /* ========== BUTTONS ========== */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-    padding: 0.9rem 1.6rem; border-radius: 999px;
-    font-size: 1rem; font-weight: 600; text-decoration: none;
-    transition: all 0.25s; border: none; cursor: pointer; font-family: inherit;
-    white-space: nowrap;
-  }
-  .btn-primary { background: var(--ink); color: var(--cream); }
-  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(190,68,32,0.3); }
-  .btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
-  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
-  .btn-text { color: var(--ink-soft); font-weight: 500; text-decoration: none; padding: 0.9rem 0.5rem; display: inline-flex; align-items: center; }
-  .btn-text:hover { color: var(--accent); }
-  .btn-teal { background: var(--accent); color: var(--cream); }
-  .btn-teal:hover { background: #9c3617; transform: translateY(-2px); }
-  .btn-outline-light { background: transparent; color: var(--cream); border: 1.5px solid rgba(255,255,255,0.35); }
-  .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
-
-  /* ========== HERO ========== */
-  .hero { padding: 5rem 0 6rem; position: relative; overflow: hidden; }
-  .hero::before {
-    content: ''; position: absolute; top: -150px; right: -150px;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-    opacity: 0.3; z-index: 0; pointer-events: none;
-  }
-  .hero-grid {
-    display: grid; grid-template-columns: 1.2fr 1fr;
-    gap: 4rem; align-items: center; position: relative; z-index: 1;
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--bg-warm); border: 1px solid var(--line);
-    padding: 0.45rem 1rem; border-radius: 999px;
-    font-size: 0.82rem; font-weight: 500; color: var(--ink-soft); margin-bottom: 1.5rem;
-  }
-  .hero-eyebrow .dot { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  h1.hero-title {
-    font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 5vw, 4.2rem);
-    line-height: 1.05; font-weight: 500; letter-spacing: -0.03em;
-    margin-bottom: 1.5rem; color: var(--ink);
-  }
-  h1.hero-title em { font-style: italic; font-weight: 400; color: var(--accent); }
-  h1.hero-title .hero-plain { font-style: normal; letter-spacing: -0.03em; }
-  .hero-sub {
-    font-size: 1.1rem; color: var(--ink-soft);
-    max-width: 520px; margin-bottom: 2.5rem; line-height: 1.6;
-  }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
-  /* Hero visual — flex column of cards, no absolute positioning */
-  .hero-visual {
-    display: flex; flex-direction: column; gap: 1rem;
-    width: 100%; max-width: 340px;
-  }
-  .card-float {
-    background: var(--cream); border: 1px solid var(--line);
-    border-radius: 16px; padding: 1.25rem; box-shadow: var(--shadow);
-    width: 100%;
-    animation: float 6s ease-in-out infinite;
-  }
-  .card-float:nth-child(2) { animation-delay: 1s; margin-left: 1.5rem; }
-  .card-float:nth-child(3) { animation-delay: 2s; }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-
-  .card-header {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-size: 0.7rem; font-weight: 600; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem;
-  }
-  .card-icon {
-    width: 22px; height: 22px; background: var(--accent); border-radius: 5px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--cream); font-size: 0.75rem; flex-shrink: 0;
-  }
-  .card-title { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.2; }
-  .card-stat { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; }
-  .card-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
-  .card-bar { height: 5px; background: var(--bg-warm); border-radius: 3px; margin-top: 0.6rem; overflow: hidden; }
-  .card-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0; animation: fill 2s ease-out forwards; animation-delay: 0.5s; }
-  @keyframes fill { to { width: 82%; } }
-
-  /* Hero responsive */
-  @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-visual { max-width: 100%; flex-direction: row; flex-wrap: wrap; }
-    .hero-visual .card-float { flex: 1 1 calc(50% - 0.5rem); min-width: 200px; }
-    .hero-visual .card-float:nth-child(2) { margin-left: 0; }
-    .hero-visual .card-float:nth-child(3) { flex: 1 1 100%; }
-  }
-  @media (max-width: 600px) {
-    .hero { padding: 3.5rem 0 4rem; }
-    h1.hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
-    .hero-sub { font-size: 1rem; margin-bottom: 2rem; }
-    .hero-ctas { flex-direction: column; align-items: stretch; gap: 0.75rem; }
-    .hero-visual { display: none; }
-  }
-
-  /* ========== TRUST BAR ========== */
-  .trust {
-    padding: 1.75rem 0; border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line); background: var(--bg-warm);
-    overflow: hidden;
-  }
-  .trust-inner { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .trust-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; padding-top: 0.2rem; }
-  .trust-items { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .trust-item { font-family: 'Fraunces', serif; font-size: 0.95rem; color: var(--ink-soft); font-weight: 500; }
-
-  /* ========== SECTION BASICS ========== */
-  section { padding: 5rem 0; }
-  .section-eyebrow {
-    font-size: 0.8rem; font-weight: 600; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem;
-  }
-  h2.section-title {
-    font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 4vw, 2.8rem);
-    line-height: 1.1; letter-spacing: -0.02em; font-weight: 500;
-    margin-bottom: 1.25rem; max-width: 720px;
-  }
-  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
-  .section-intro { font-size: 1.05rem; color: var(--ink-soft); max-width: 620px; margin-bottom: 3rem; line-height: 1.65; }
-
-  @media (max-width: 600px) {
-    section { padding: 3.5rem 0; }
-    .section-intro { font-size: 0.97rem; margin-bottom: 2rem; }
-  }
-
-  /* ========== AI AUDIT FEATURE ========== */
-  .realestate {
-    background: var(--ink); color: var(--cream);
-    padding: 5rem 0; position: relative; overflow: hidden;
-  }
-  .realestate::before {
-    content: ''; position: absolute; top: -100px; right: -100px;
-    width: 400px; height: 400px; pointer-events: none;
-    background: radial-gradient(circle, rgba(190,68,32,0.3) 0%, transparent 70%);
-  }
-  .realestate::after {
-    content: ''; position: absolute; bottom: -100px; left: -100px;
-    width: 350px; height: 350px; pointer-events: none;
-    background: radial-gradient(circle, rgba(31,138,91,0.16) 0%, transparent 70%);
-  }
-  .realestate .container { position: relative; z-index: 1; }
-  .realestate .section-eyebrow { color: var(--accent-soft); }
-  .realestate h2.section-title { color: var(--cream); max-width: 800px; }
-  .realestate h2.section-title em { color: var(--accent-soft); }
-  .realestate .section-intro { color: #a8acb4; }
-
-  .re-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .re-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
-  .re-stat {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px; padding: 1.25rem;
-  }
-  .re-stat-num { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; color: var(--accent-soft); line-height: 1; margin-bottom: 0.3rem; }
-  .re-stat-label { font-size: 0.82rem; color: #a8acb4; line-height: 1.3; }
-  .re-steps { display: flex; flex-direction: column; gap: 0.75rem; }
-  .re-step {
-    display: flex; gap: 1rem; align-items: flex-start;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 1.1rem;
-  }
-  .re-step-num {
-    width: 30px; height: 30px; background: var(--accent); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.85rem;
-    color: var(--cream); flex-shrink: 0;
-  }
-  .re-step-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.15rem; color: var(--cream); }
-  .re-step-desc { font-size: 0.85rem; color: #878a92; line-height: 1.4; }
-  .re-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(31,138,91,0.22); border: 1px solid rgba(31,138,91,0.45);
-    padding: 0.45rem 0.9rem; border-radius: 999px;
-    font-size: 0.8rem; font-weight: 600; color: #7ddaaa; margin-bottom: 1.5rem;
-  }
-  .re-badge .dot { width: 6px; height: 6px; background: #7ddaaa; border-radius: 50%; flex-shrink: 0; }
-  .re-cta { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  @media (max-width: 900px) { .re-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-  @media (max-width: 600px) {
-    .re-cta { flex-direction: column; }
-    .re-cta .btn { width: 100%; }
-  }
-
-  /* ========== DEMOS ========== */
-  .demos { padding: 5rem 0; background: var(--bg); }
-  .demos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1rem; }
-  .demo-card {
-    background: var(--cream); border: 1px solid var(--line);
-    border-radius: 20px; padding: 2rem;
-    transition: all 0.3s; position: relative; overflow: hidden;
-    display: flex; flex-direction: column;
-  }
-  .demo-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 16px 32px rgba(21,23,28,0.1); }
-  .demo-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-  }
-  .demo-card:hover::before { transform: scaleX(1); }
-  .demo-tag {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    background: var(--bg-warm); border: 1px solid var(--line);
-    padding: 0.25rem 0.75rem; border-radius: 999px;
-    font-size: 0.68rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;
-    align-self: flex-start;
-  }
-  .demo-tag .live-dot { width: 5px; height: 5px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
-  .demo-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
-  .demo-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.6rem; color: var(--ink); }
-  .demo-desc { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem; flex: 1; }
-  .demo-who { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-  .demo-verticals { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
-  .demo-vertical {
-    background: var(--bg-warm); border: 1px solid var(--line);
-    padding: 0.2rem 0.6rem; border-radius: 999px;
-    font-size: 0.74rem; color: var(--ink-soft); font-weight: 500;
-  }
-  .demo-stat-row {
-    display: flex; gap: 1.25rem; padding: 1rem 0;
-    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 1.25rem;
-  }
-  .demo-stat-num { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; color: var(--accent); line-height: 1; }
-  .demo-stat-label { font-size: 0.74rem; color: var(--muted); margin-top: 0.2rem; }
-  .demo-cta { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: gap 0.2s; }
-  .demo-cta:hover { gap: 0.65rem; }
-
-  @media (max-width: 1024px) { .demos-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .demos-grid { grid-template-columns: 1fr; } }
-
-  /* ========== SERVICES ========== */
-  .services { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .service-card {
-    background: var(--bg); border: 1px solid var(--line); border-radius: 20px;
-    padding: 2rem; transition: all 0.3s;
-  }
-  .service-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 16px 32px rgba(21,23,28,0.08); }
-  .service-num { font-family: 'Fraunces', serif; font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.25rem; }
-  .service-icon { width: 48px; height: 48px; background: var(--bg-warm); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.35rem; }
-  .service-title { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.2; }
-  .service-desc { color: var(--ink-soft); margin-bottom: 1.25rem; font-size: 0.95rem; }
-  .service-list { list-style: none; padding: 0; font-size: 0.88rem; color: var(--ink-soft); }
-  .service-list li { padding: 0.4rem 0; border-top: 1px solid var(--line); display: flex; align-items: flex-start; gap: 0.5rem; }
-  .service-list li::before { content: '→'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
-
-  @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
-
-  /* ========== PROCESS ========== */
-  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; position: relative; }
-  .process-grid::before {
-    content: ''; position: absolute; top: 27px; left: 8%; right: 8%; height: 2px;
-    background: repeating-linear-gradient(to right, var(--line) 0, var(--line) 6px, transparent 6px, transparent 12px);
-  }
-  .process-step { position: relative; z-index: 1; }
-  .process-num {
-    width: 54px; height: 54px; background: var(--bg); border: 2px solid var(--accent);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600;
-    color: var(--accent); margin-bottom: 1.1rem;
-  }
-  .process-title { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .process-desc { color: var(--ink-soft); font-size: 0.92rem; }
-
-  @media (max-width: 900px) { .process-grid { grid-template-columns: 1fr 1fr; } .process-grid::before { display: none; } }
-  @media (max-width: 500px) { .process-grid { grid-template-columns: 1fr; } }
-
-  /* ========== CASE STUDIES ========== */
-  .cases { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-  .case-card {
-    background: var(--bg); border: 1px solid var(--line); border-radius: 20px;
-    padding: 2rem; transition: all 0.3s;
-  }
-  .case-card:hover { border-color: var(--accent); }
-  .case-tag {
-    display: inline-block; padding: 0.2rem 0.75rem; background: var(--bg-warm);
-    border-radius: 999px; font-size: 0.72rem; font-weight: 600;
-    color: var(--ink-soft); letter-spacing: 0.05em; margin-bottom: 1.25rem;
-  }
-  .case-title { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 500; line-height: 1.2; margin-bottom: 1.1rem; }
-  .case-result {
-    display: flex; gap: 1.5rem; padding: 1rem 0;
-    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 1.1rem;
-    flex-wrap: wrap;
-  }
-  .case-metric { flex: 1; min-width: 80px; }
-  .case-metric-num { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 600; color: var(--accent); line-height: 1; }
-  .case-metric-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 0.3rem; }
-  .case-desc { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
-
-  @media (max-width: 700px) { .cases-grid { grid-template-columns: 1fr; } }
-
-  /* ========== ABOUT ========== */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .about-visual {
-    aspect-ratio: 4/5; background: var(--bg-warm); border-radius: 20px;
-    overflow: hidden; border: 1px solid var(--line);
-  }
-  .about p { font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.1rem; line-height: 1.7; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
-  .about-stat-num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 600; color: var(--accent); line-height: 1; }
-  .about-stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
-  .about-links { display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap; }
-
-  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .about-visual { max-width: 360px; } }
-  @media (max-width: 600px) { .about-visual { max-width: 100%; aspect-ratio: 3/2; } .about-links { flex-direction: column; } .about-links .btn { width: 100%; } }
-
-  /* ========== CTA ========== */
-  .cta-section {
-    background: var(--ink); color: var(--cream); border-radius: 24px;
-    margin: 0 1.5rem 5rem; padding: 4rem 2rem; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .cta-section::before {
-    content: ''; position: absolute; top: -80px; right: -80px;
-    width: 350px; height: 350px; pointer-events: none;
-    background: radial-gradient(circle, rgba(190,68,32,0.4) 0%, transparent 70%);
-  }
-  .cta-section > * { position: relative; z-index: 1; }
-  .cta-eyebrow { font-size: 0.8rem; color: var(--accent-soft); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; font-weight: 600; }
-  h2.cta-title {
-    font-family: 'Fraunces', serif; font-size: clamp(1.7rem, 4.5vw, 3rem);
-    line-height: 1.1; letter-spacing: -0.02em; font-weight: 500;
-    margin-bottom: 1.1rem; max-width: 720px; margin-left: auto; margin-right: auto;
-  }
-  h2.cta-title em { font-style: italic; color: var(--accent-soft); font-weight: 400; }
-  .cta-sub { font-size: 1.05rem; color: #a8acb4; margin-bottom: 2.25rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.65; }
-  .cta-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .cta-section .btn-primary { background: var(--accent); }
-  .cta-section .btn-primary:hover { background: var(--cream); color: var(--ink); }
-  .cta-section .btn-secondary { border-color: var(--cream); color: var(--cream); }
-  .cta-section .btn-secondary:hover { background: var(--cream); color: var(--ink); }
-
-  @media (max-width: 600px) {
-    .cta-section { margin: 0 1rem 3.5rem; padding: 3rem 1.25rem; }
-    .cta-ctas { flex-direction: column; align-items: stretch; }
-    .cta-ctas .btn { width: 100%; }
-  }
-
-  /* ========== FOOTER ========== */
-  footer { background: var(--bg-warm); border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
-  .footer-brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-  .footer-tagline { color: var(--ink-soft); font-size: 0.9rem; max-width: 280px; }
-  .footer-col h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 1rem; }
-  .footer-col a { display: block; color: var(--ink-soft); text-decoration: none; padding: 0.3rem 0; font-size: 0.9rem; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--accent); }
-  .footer-bottom { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.82rem; color: var(--muted); }
-
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
-
-  /* ========== ANIMATIONS ========== */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">
-      <img src="Servlead_Solutions_logo-removebg-preview.png" 
-           alt="Servlead Solutions" 
-           style="width:42px;height:42px;object-fit:contain;">
-      Servlead Solutions
-    </a>
+    <a href="#" class="logo"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="Servlead Solutions">Servlead Solutions</a>
     <div class="nav-links" id="navLinks">
-      <a href="#audit">AI Audit</a>
+      <a href="#audit">The Audit</a>
       <a href="#demos">Demos</a>
-      <a href="#services">How it works</a>
-      <a href="#cases">Case studies</a>
+      <a href="#why">Why Servlead</a>
       <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Book free audit →</a>
+      <a href="https://cal.com/samgorla/consultation" class="nav-cta">Book free audit</a>
     </div>
     <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<section class="hero" data-screen-label="Hero">
   <div class="container">
-    <div class="hero-grid">
+    <div class="hero-label">
+      <span class="kicker">AI automation consulting · Lehigh Valley, PA</span>
+      <span class="rule-seg"></span>
+      <span class="kicker" style="color: var(--muted);">Est. on servant leadership</span>
+    </div>
+    <h1 class="hero-title" id="heroTitle">Find the workflow that's <em>costing you most.</em></h1>
+    <div class="hero-bottom">
       <div>
-        <div class="hero-eyebrow reveal">
-          <span class="dot"></span>
-          Serving clients in Lehigh Valley & beyond
-        </div>
-        <h1 class="hero-title reveal">
-          <span class="hero-plain">Find the workflow that's</span> <em>costing you most.</em> <span class="hero-plain">Then fix it with AI.</span>
-        </h1>
-        <p class="hero-sub reveal">
-          Free 45-minute AI Audit. I follow the money through your business, find the top three revenue and time leaks, and deliver a ranked report with dollar figures within 48 hours. No pitch. No obligation.
-        </p>
-        <div class="hero-ctas reveal">
+        <p class="hero-sub">A free 45-minute audit with a real consultant — not a chatbot, not an agency. I follow the money through your business, find your top three leaks, and send you a report <b>with dollar figures</b> in 48 hours. It's yours whether you hire me or not.</p>
+        <div class="hero-ctas">
           <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free AI Audit →</a>
-          <a href="#audit" class="btn-text">See how it works →</a>
+          <a href="#audit" class="btn btn-text">See how the audit works</a>
         </div>
       </div>
-
-      <div class="hero-visual">
-        <div class="card-float card-1 reveal">
-          <div class="card-header"><span class="card-icon">🔍</span>AI Audit Output</div>
-          <div class="card-title">Top pain ranked by dollar impact</div>
-          <div class="card-stat">#1</div>
-          <div class="card-label">Manual invoicing — ~$18K/yr in lost time</div>
-        </div>
-        <div class="card-float card-2 reveal">
-          <div class="card-header"><span class="card-icon">⚡</span>After the audit</div>
-          <div class="card-title">Invoice Collections Bot deployed</div>
-          <div class="card-bar"><div class="card-bar-fill"></div></div>
-          <div class="card-label">Collections cycle cut from 3 weeks to 4 days</div>
-        </div>
-        <div class="card-float card-3 reveal">
-          <div class="card-header"><span class="card-icon">📄</span>Delivered within 48 hrs</div>
-          <div class="card-title">Written report — no obligation</div>
-          <div class="card-stat">3</div>
-          <div class="card-label">ranked pain points with ROI estimates</div>
-        </div>
+      <div class="hero-sig">
+        <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla">
+        <div class="who"><b>Sam Gorla</b>Founder. 14 years in analytics, automation &amp; ERP. Does the work himself.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST -->
-<div class="trust">
-  <div class="container">
-    <div class="trust-inner">
-      <span class="trust-label">Verticals served</span>
-      <div class="trust-items">
-        <span class="trust-item">GC / Contractor</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Logistics & 3PL</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Manufacturing</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Distribution</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Insurance</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Finance & Banking</span>
-        <span class="trust-item">·</span>
-        <span class="trust-item">Healthcare</span>
-      </div>
-    </div>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>GC / Contractor <i>·</i></span><span>Logistics &amp; 3PL <i>·</i></span><span>Manufacturing <i>·</i></span><span>Distribution <i>·</i></span><span>Insurance <i>·</i></span><span>Finance &amp; Banking <i>·</i></span><span>Healthcare <i>·</i></span>
   </div>
 </div>
 
-<!-- AI AUDIT FEATURE -->
-<section class="realestate" id="audit">
+<section class="audit" id="audit" data-screen-label="Audit Walkthrough">
   <div class="container">
-    <div class="section-eyebrow reveal">The entry point — always</div>
-    <h2 class="section-title reveal">A free 45-minute audit that shows you <em>exactly where you're losing money.</em></h2>
-    <p class="section-intro reveal">Most businesses at $2M+ are losing $15,000–$30,000 a year in workflows they don't know are broken. The AI Audit follows the money through your business and identifies the top three pain points — ranked by dollar impact — in one focused conversation. No pitch deck. No obligation. You walk away with a written report in 48 hours whether you hire me or not.</p>
-
-    <div class="re-grid">
+    <div class="sec-head reveal">
+      <span class="sec-num">01 / The Audit</span>
       <div>
-        <div class="re-badge reveal"><span class="dot"></span> Free — no obligation — 48-hr written report</div>
-        <div class="re-stats reveal">
-          <div class="re-stat">
-            <div class="re-stat-num">45</div>
-            <div class="re-stat-label">Minutes — one focused conversation</div>
+        <h2 class="sec-title">Forty-five minutes. Four questions. <em>Every leak gets a dollar figure.</em></h2>
+        <p class="sec-intro">Most businesses at $2M+ are quietly losing $15,000–$30,000 a year in broken workflows. The audit follows the money through four stages of your business. Tap each one — this is the actual conversation.</p>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="reveal">
+        <div class="walk-hint">↓ Tap a stage to walk through it</div>
+        <div class="walk-stages" id="walkStages">
+          <div class="stage" data-stage="0">
+            <div class="stage-head"><span class="stage-num">i.</span><span class="stage-title">Getting customers</span><span class="stage-toggle">+</span></div>
+            <div class="stage-body"><div class="stage-body-inner">
+              <p class="stage-q">How are leads coming in? Where do they stall? If a lead calls at 7pm on a Friday, what happens to it? We time your pipeline end to end.</p>
+              <div class="stage-find">Typical finding <b>$11K/yr</b> in leads lost to slow response</div>
+            </div></div>
           </div>
-          <div class="re-stat">
-            <div class="re-stat-num">48h</div>
-            <div class="re-stat-label">Written PDF report delivered</div>
+          <div class="stage" data-stage="1">
+            <div class="stage-head"><span class="stage-num">ii.</span><span class="stage-title">Serving customers</span><span class="stage-toggle">+</span></div>
+            <div class="stage-body"><div class="stage-body-inner">
+              <p class="stage-q">What does delivering the work actually look like, hour by hour? Where does time get eaten by copy-paste, status chasing, and re-keyed documents?</p>
+              <div class="stage-find">Typical finding <b>6–8 hrs/wk</b> of manual document handling</div>
+            </div></div>
           </div>
-          <div class="re-stat">
-            <div class="re-stat-num">3</div>
-            <div class="re-stat-label">Pain points ranked by dollar impact</div>
+          <div class="stage" data-stage="2">
+            <div class="stage-head"><span class="stage-num">iii.</span><span class="stage-title">Getting paid</span><span class="stage-toggle">+</span></div>
+            <div class="stage-body"><div class="stage-body-inner">
+              <p class="stage-q">How long between finishing the work and money in the bank? How much is sitting unpaid right now, and who's chasing it?</p>
+              <div class="stage-find">Typical finding <b>$18K/yr</b> tied up in a 3-week collections cycle</div>
+            </div></div>
           </div>
-          <div class="re-stat">
-            <div class="re-stat-num">$0</div>
-            <div class="re-stat-label">Cost, no obligation, ever</div>
+          <div class="stage" data-stage="3">
+            <div class="stage-head"><span class="stage-num">iv.</span><span class="stage-title">Running the back office</span><span class="stage-toggle">+</span></div>
+            <div class="stage-body"><div class="stage-body-inner">
+              <p class="stage-q">What admin and ops work burns hours every week that shouldn't need a human at all — scheduling, data entry, reporting, follow-ups?</p>
+              <div class="stage-find">Typical finding <b>$9K/yr</b> of admin that automates cleanly</div>
+            </div></div>
           </div>
         </div>
-        <div class="re-cta reveal">
-          <a href="https://cal.com/samgorla/consultation" class="btn btn-teal">Book your free audit →</a>
-          <a href="#contact" class="btn btn-outline-light">Or send a message</a>
+        <div class="audit-cta-row">
+          <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free audit →</a>
+          <span class="audit-note">Free. No obligation. You keep the report either way.</span>
         </div>
       </div>
 
-      <div class="re-steps reveal">
-        <div class="re-step">
-          <div class="re-step-num">1</div>
-          <div>
-            <div class="re-step-title">Getting customers</div>
-            <div class="re-step-desc">How are leads coming in? Where do they stall? What's the speed and volume of your pipeline?</div>
-          </div>
-        </div>
-        <div class="re-step">
-          <div class="re-step-num">2</div>
-          <div>
-            <div class="re-step-title">Serving customers</div>
-            <div class="re-step-desc">What does delivering your work actually look like day-to-day? Where does time get eaten?</div>
-          </div>
-        </div>
-        <div class="re-step">
-          <div class="re-step-num">3</div>
-          <div>
-            <div class="re-step-title">Getting paid</div>
-            <div class="re-step-desc">How's your invoicing and collections working? How much is sitting unpaid right now?</div>
-          </div>
-        </div>
-        <div class="re-step">
-          <div class="re-step-num">4</div>
-          <div>
-            <div class="re-step-title">Running the back office</div>
-            <div class="re-step-desc">What admin and ops work is burning hours every week that shouldn't require a human?</div>
-          </div>
-        </div>
-      </div>
+      <aside class="report reveal" id="report" aria-label="Sample leak report">
+        <div class="report-head"><span>Your leak report</span><span class="tag">● sample</span></div>
+        <div class="rline" data-for="2"><div class="nm">#1 — Manual invoicing<span>collections cycle: 3 weeks</span></div><div class="amt">$18K/yr</div></div>
+        <div class="rline" data-for="0"><div class="nm">#2 — Slow lead response<span>avg. 47 min to reply</span></div><div class="amt">$11K/yr</div></div>
+        <div class="rline" data-for="1"><div class="nm">#3 — Re-keyed documents<span>6–8 hrs/week by hand</span></div><div class="amt">$9K/yr</div></div>
+        <div class="rline-total"><div class="nm">FOUND IN ONE 45-MIN AUDIT</div><div class="amt" id="reportTotal">$0/yr</div></div>
+        <div class="report-foot">Illustrative — your report is built from your numbers, delivered as a PDF in 48 hours.</div>
+      </aside>
     </div>
   </div>
 </section>
 
-<!-- INVOICE BOT section removed — content merged into demos grid below -->
-
-<!-- DEMOS -->
-<section class="demos" id="demos">
+<section class="demos" id="demos" data-screen-label="Demos">
   <div class="container">
-    <div class="section-eyebrow reveal">Live demos</div>
-    <h2 class="section-title reveal">Five automations <em>built and running.</em></h2>
-    <p class="section-intro reveal">Not concepts. Not mockups. Working systems you can watch run today. The audit identifies your pain — if one of these matches, you can see it live before committing to anything.</p>
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / Proof</span>
+      <div>
+        <h2 class="sec-title">Five automations, <em>built and running.</em></h2>
+        <p class="sec-intro">Not concepts. Working systems you can watch run before committing to anything. Pick one — the window on the right is a live simulation of what it does.</p>
+      </div>
+    </div>
 
-    <div class="demos-grid">
-
-      <div class="demo-card reveal">
-        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x26A1;</div>
-        <h3 class="demo-title">Lead Responder</h3>
-        <p class="demo-desc">Most businesses take 47 minutes to respond to an inbound lead. The buyer's gone in 5. This AI responds in under 30 seconds — qualifies the prospect, routes the hot ones, and notifies you. Day or night.</p>
-        <div class="demo-who">Best for</div>
-        <div class="demo-verticals">
-          <span class="demo-vertical">GC / Contractor</span>
-          <span class="demo-vertical">Insurance Agencies</span>
-          <span class="demo-vertical">Home Services</span>
-          <span class="demo-vertical">Any inbound-heavy business</span>
+    <div class="demo-layout">
+      <div class="reveal">
+        <div class="demo-list" id="demoList">
+          <div class="demo-item active" data-demo="0"><span class="n">01</span><span class="t">Lead Responder</span><span class="live"><span class="live-dot"></span>Live</span></div>
+          <div class="demo-item" data-demo="1"><span class="n">02</span><span class="t">Invoice Collections Bot</span><span class="live"><span class="live-dot"></span>Live</span></div>
+          <div class="demo-item" data-demo="2"><span class="n">03</span><span class="t">Inbox Autopilot</span><span class="live"><span class="live-dot"></span>Live</span></div>
+          <div class="demo-item" data-demo="3"><span class="n">04</span><span class="t">Document Autopilot</span><span class="live"><span class="live-dot"></span>Live</span></div>
+          <div class="demo-item" data-demo="4"><span class="n">05</span><span class="t">Lead Discovery &amp; Outreach</span><span class="live"><span class="live-dot"></span>Live</span></div>
         </div>
-        <div class="demo-stat-row">
-          <div><div class="demo-stat-num">&lt;30s</div><div class="demo-stat-label">Response time</div></div>
-          <div><div class="demo-stat-num">9x</div><div class="demo-stat-label">Higher conversion</div></div>
-        </div>
-        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+        <p class="demo-desc-line" id="demoDesc">Most businesses take 47 minutes to answer an inbound lead. The buyer's gone in 5. This responds in under 30 seconds — qualifies, routes the hot ones, and notifies you. Day or night.</p>
       </div>
 
-      <div class="demo-card reveal">
-        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x1F4E5;</div>
-        <h3 class="demo-title">Invoice Collections Bot</h3>
-        <p class="demo-desc">The average contractor has $20K–$50K sitting in unpaid invoices — not because clients won't pay, but because nobody followed up. This bot runs the full sequence in your voice. You approve once; it handles the rest.</p>
-        <div class="demo-who">Best for</div>
-        <div class="demo-verticals">
-          <span class="demo-vertical">GC / Contractor</span>
-          <span class="demo-vertical">Wholesale & Distribution</span>
-          <span class="demo-vertical">Any business chasing A/R</span>
-        </div>
-        <div class="demo-stat-row">
-          <div><div class="demo-stat-num">30s</div><div class="demo-stat-label">Owner review per day</div></div>
-          <div><div class="demo-stat-num">3×</div><div class="demo-stat-label">Follow-ups per invoice</div></div>
-        </div>
-        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
+      <div class="demo-screen reveal">
+        <div class="demo-screen-bar"><span id="demoBarTitle">lead-responder</span><span class="st"><span class="live-dot"></span><span id="demoBarStatus">running</span></span></div>
+        <div class="chat" id="chatWindow"></div>
       </div>
-
-      <div class="demo-card reveal">
-        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x2709;&#xFE0F;</div>
-        <h3 class="demo-title">Inbox Autopilot</h3>
-        <p class="demo-desc">Every email gets sorted the moment it lands. Hot prospects, scheduling requests, referral intros — each one gets a reply drafted in your voice, waiting in Drafts. You review and send. Nothing goes out without you.</p>
-        <div class="demo-who">Best for</div>
-        <div class="demo-verticals">
-          <span class="demo-vertical">Founders</span>
-          <span class="demo-vertical">Insurance Agencies</span>
-          <span class="demo-vertical">Law Firms</span>
-          <span class="demo-vertical">Any inbox-heavy business</span>
-        </div>
-        <div class="demo-stat-row">
-          <div><div class="demo-stat-num">8</div><div class="demo-stat-label">Email categories</div></div>
-          <div><div class="demo-stat-num">24/7</div><div class="demo-stat-label">Always on</div></div>
-        </div>
-        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
-      </div>
-
-      <div class="demo-card reveal">
-        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x1F3AF;</div>
-        <h3 class="demo-title">Lead Discovery & Outreach</h3>
-        <p class="demo-desc">Stop hunting for prospects by hand. This system finds your ideal clients, researches each one, and drafts personalized outreach. You define the target profile — it fills the pipeline and sends on your approval.</p>
-        <div class="demo-who">Best for</div>
-        <div class="demo-verticals">
-          <span class="demo-vertical">Logistics & 3PL</span>
-          <span class="demo-vertical">Manufacturing</span>
-          <span class="demo-vertical">B2B businesses doing outbound</span>
-        </div>
-        <div class="demo-stat-row">
-          <div><div class="demo-stat-num">10x</div><div class="demo-stat-label">Faster prospecting</div></div>
-          <div><div class="demo-stat-num">100%</div><div class="demo-stat-label">Personalized outreach</div></div>
-        </div>
-        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
-      </div>
-
-      <div class="demo-card reveal">
-        <div class="demo-tag"><span class="live-dot"></span> Live demo available</div>
-        <div class="demo-icon">&#x1F4C4;</div>
-        <h3 class="demo-title">Document Autopilot</h3>
-        <p class="demo-desc">Invoices, POs, contracts, receipts — any document that arrives by email gets read by AI, its key data logged to a spreadsheet or system, and a confirmation sent back. No data entry. No copy-paste. Under 30 seconds end-to-end.</p>
-        <div class="demo-who">Best for</div>
-        <div class="demo-verticals">
-          <span class="demo-vertical">Manufacturing</span>
-          <span class="demo-vertical">Distribution</span>
-          <span class="demo-vertical">Accounting / CPA</span>
-          <span class="demo-vertical">Any document-heavy operation</span>
-        </div>
-        <div class="demo-stat-row">
-          <div><div class="demo-stat-num">&lt;30s</div><div class="demo-stat-label">End-to-end processing</div></div>
-          <div><div class="demo-stat-num">$0</div><div class="demo-stat-label">Manual data entry</div></div>
-        </div>
-        <a href="#contact" class="demo-cta">Request a live demo &rarr;</a>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- SERVICES / WHAT HAPPENS AFTER THE AUDIT -->
-<section class="services" id="services">
+<section class="why" id="why" data-screen-label="Why Servlead">
   <div class="container">
-    <div class="section-eyebrow reveal">After the audit</div>
-    <h2 class="section-title reveal">Three paths forward — <em>you choose what fits.</em></h2>
-    <p class="section-intro reveal">The audit tells us what's worth fixing. Then we decide together how to tackle it. No upsell pressure — if a free tool solves the problem, I'll tell you that.</p>
-
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-num">01 / QUICKEST PATH</div>
-        <div class="service-icon">⚡</div>
-        <h3 class="service-title">Working Demo</h3>
-        <p class="service-desc">If an existing demo directly matches the top pain the audit surfaced, I show it live. You see exactly how it works before any decision is made.</p>
-        <ul class="service-list">
-          <li>Live walkthrough of the matching system</li>
-          <li>Deployed to your business in days</li>
-          <li>Fixed price — you own everything</li>
-          <li>No retainer required at start</li>
-        </ul>
+    <div class="why-grid">
+      <div class="reveal">
+        <span class="kicker">03 / Why "Servlead"</span>
+        <h2 class="why-title">The name means <em>servant leadership.</em> That's not branding — it's the operating model.</h2>
+        <p>Servlead comes from the leadership Jesus modeled: lead by serving. My faith isn't a marketing angle — it's the foundation of how I work, and it's why this business runs the way it does.</p>
+        <p>In practice, that means the audit is free and the report is <b>yours either way</b>. It means if you're not a good fit, I'll tell you — kindly — instead of selling you something that won't work. And it means no manufactured urgency, ever.</p>
+        <div class="verse">
+          <div class="vtext">"Act justly, love mercy, and walk humbly before your God."</div>
+          <div class="vref">Micah 6:8 — the standard I hold myself to</div>
+        </div>
       </div>
-
-      <div class="service-card reveal">
-        <div class="service-num">02 / ONE PROBLEM, FIXED</div>
-        <div class="service-icon">🎯</div>
-        <h3 class="service-title">Scoped Pilot</h3>
-        <p class="service-desc">One focused problem. Fixed price. Clear timeline. The audit narrows it down — we build the solution that moves the needle most.</p>
-        <ul class="service-list">
-          <li>Single workflow automated end-to-end</li>
-          <li>Fixed price, no surprises</li>
-          <li>You own the build — no lock-in</li>
-          <li>Delivered and documented</li>
-        </ul>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-num">03 / FULL ENGAGEMENT</div>
-        <div class="service-icon">🔧</div>
-        <h3 class="service-title">Full Build</h3>
-        <p class="service-desc">Map the top 2–3 opportunities from the audit and execute in sequence. For businesses ready to tackle multiple workflow problems in one engagement.</p>
-        <ul class="service-list">
-          <li>Multi-workflow automation roadmap</li>
-          <li>Built and deployed in phases</li>
-          <li>Fixed price per phase, you own everything</li>
-          <li>Ongoing retainer optional after delivery</li>
-        </ul>
+      <div class="creed reveal">
+        <div class="creed-row"><span class="cn">i.</span><div><div class="ct">Act justly</div><div class="cd">Honest numbers, honest scoping. If the ROI isn't there, I'll say so and you keep the report.</div></div></div>
+        <div class="creed-row"><span class="cn">ii.</span><div><div class="ct">Love mercy</div><div class="cd">No pressure, no guilt, no closing tactics. If the timing's wrong, the door stays open.</div></div></div>
+        <div class="creed-row"><span class="cn">iii.</span><div><div class="ct">Walk humbly</div><div class="cd">I don't have all the answers. When I don't know, I say so — then go find out.</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="container">
-    <div class="section-eyebrow reveal">How we work</div>
-    <h2 class="section-title reveal">A simple, <em>honest</em> process.</h2>
-    <p class="section-intro reveal">No drawn-out RFPs. No mystery. Here's exactly how it goes, from first call to working solution.</p>
-
-    <div class="process-grid">
-      <div class="process-step reveal">
-        <div class="process-num">01</div>
-        <h3 class="process-title">Free AI Audit</h3>
-        <p class="process-desc">45 minutes. I follow the money through your business — leads, delivery, collections, back office — and find the three pain points costing you most. Written report delivered within 48 hours. No cost, no obligation.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-num">02</div>
-        <h3 class="process-title">Scope &amp; plan</h3>
-        <p class="process-desc">If we move forward, you get a clear proposal — fixed price, defined timeline, expected outcome. No discovery retainer. No ambiguity.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-num">03</div>
-        <h3 class="process-title">Build &amp; test</h3>
-        <p class="process-desc">Built in short sprints with you in the loop. You see the system run before it goes live. No surprises at handoff.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-num">04</div>
-        <h3 class="process-title">Hand off &amp; support</h3>
-        <p class="process-desc">You own everything — the workflow, the documentation, the credentials. I'm available for questions. Nothing is locked to me.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section class="cases" id="cases">
-  <div class="container">
-    <div class="section-eyebrow reveal">Recent work</div>
-    <h2 class="section-title reveal">Real work. <em>Real results.</em></h2>
-    <p class="section-intro reveal">From document automation to full ERP migrations — here's what AI does when it's pointed at the right problem.</p>
-
-    <div class="cases-grid">
-      <div class="case-card reveal" style="grid-column: 1 / -1; border-color: var(--accent); background: var(--cream);">
-        <span class="case-tag" style="background: var(--accent); color: var(--cream);">⚡ FEATURED — DOCUMENT AUTOMATION</span>
-        <h3 class="case-title" style="font-size: 1.75rem;">Built Invoice Autopilot — any document hits your inbox, AI processes it in under 30 seconds.</h3>
-        <div class="case-result">
-          <div class="case-metric">
-            <div class="case-metric-num">&lt;30s</div>
-            <div class="case-metric-label">End-to-end processing</div>
-          </div>
-          <div class="case-metric">
-            <div class="case-metric-num">6–8 hrs</div>
-            <div class="case-metric-label">Saved per week</div>
-          </div>
-          <div class="case-metric">
-            <div class="case-metric-num">$0</div>
-            <div class="case-metric-label">Manual data entry</div>
-          </div>
-        </div>
-        <p class="case-desc">Invoices, contracts, receipts — any document that arrives by email gets read by AI, its key data logged to a spreadsheet or CRM, and a confirmation sent back to the sender. No data entry. No copy-paste. Built for accountants, financial advisors, and service businesses handling documents at volume.</p>
-      </div>
-
-      <div class="case-card reveal">
-        <span class="case-tag">PROCESS AUTOMATION</span>
-        <h3 class="case-title">Eliminated 10–20 hours of weekly manual work for a consumer goods company.</h3>
-        <div class="case-result">
-          <div class="case-metric">
-            <div class="case-metric-num">~95%</div>
-            <div class="case-metric-label">Time reduction</div>
-          </div>
-          <div class="case-metric">
-            <div class="case-metric-num">5 min</div>
-            <div class="case-metric-label">Down from 10–20 hrs</div>
-          </div>
-        </div>
-        <p class="case-desc">A growing company was losing 10–20 hours a week to manual data entry and reporting — error-prone work that tied up skilled staff. I replaced the whole process with a workflow that does the same job in under 5 minutes, freeing the team for work that actually needs them.</p>
-      </div>
-
-      <div class="case-card reveal">
-        <span class="case-tag">ERP MIGRATION</span>
-        <h3 class="case-title">Led a full QuickBooks to NetSuite migration for a 70-person company — on time and on budget.</h3>
-        <div class="case-result">
-          <div class="case-metric">
-            <div class="case-metric-num">70+</div>
-            <div class="case-metric-label">Users migrated</div>
-          </div>
-          <div class="case-metric">
-            <div class="case-metric-num">✓</div>
-            <div class="case-metric-label">On scope & on budget</div>
-          </div>
-        </div>
-        <p class="case-desc">I ran the full discovery, vendor coordination, and execution of a complex move from QuickBooks to NetSuite. It finished within scope, avoided costly licensing overruns, and transitioned 70+ employees with operations running the whole time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
+<section class="about" id="about" data-screen-label="About Sam">
   <div class="container">
     <div class="about-grid">
-      <div class="about-visual reveal">
-        <img src="Sam Gorla_headshot.jpeg" 
-             alt="Sam Gorla, Founder of Servlead Solutions"
-             style="width:100%; height:100%; object-fit:cover; object-position:center 15%; display:block;">
-      </div>
-
-      <div class="reveal">
-        <div class="section-eyebrow">About Servlead</div>
-        <h2 class="section-title">14+ years of making <em>complex things work.</em></h2>
-        <p>I started Servlead after more than a decade in analytics, automation, project management, and digital transformation — across some of the most process-heavy industries out there: finance, banking, insurance, healthcare, and tech consulting.</p>
-        <p>I hold a Master's in Business Analytics and Project Management, and I've worn a lot of hats: automation builder, research analyst, project manager, ERP consultant, startup operator, compliance advisor. That breadth isn't a resume line — it's what lets me spot the inefficiency others miss and build something that actually gets used.</p>
-        <p>Based in Lehigh Valley, PA. Available to meet in person when it matters.</p>
-
-        <div class="about-stats">
-          <div>
-            <div class="about-stat-num">14+</div>
-            <div class="about-stat-label">Years of experience</div>
-          </div>
-          <div>
-            <div class="about-stat-num">6+</div>
-            <div class="about-stat-label">Industries served</div>
-          </div>
-          <div>
-            <div class="about-stat-num">100%</div>
-            <div class="about-stat-label">Fixed-price projects</div>
-          </div>
-          <div>
-            <div class="about-stat-num">MS</div>
-            <div class="about-stat-label">Business Analytics & PM</div>
-          </div>
+      <figure class="about-photo reveal">
+        <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla, founder of Servlead Solutions">
+        <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
+      </figure>
+      <div class="about-body reveal">
+        <span class="sec-num">04 / About</span>
+        <h2 class="sec-title" style="margin-top: 0.8rem;">One consultant. <em>No handoffs.</em></h2>
+        <p>I'm Sam. I spent 14 years in analytics, automation, and ERP before starting Servlead — long enough to know that most "AI transformation" pitches are noise, and that the real wins are specific, measurable, and usually unglamorous.</p>
+        <p>When you work with me, <b>I'm the one doing the work</b>. No account managers, no junior team, no handoff. I build custom, from the ground up, for businesses doing $2M–$20M — and I'll tell you honestly if you're outside that range, because then this usually isn't your best option.</p>
+        <div class="about-facts">
+          <div><div class="fact-num">14 yrs</div><div class="fact-label">Analytics · automation · ERP</div></div>
+          <div><div class="fact-num">MS</div><div class="fact-label">Business Analytics</div></div>
+          <div><div class="fact-num">$2–20M</div><div class="fact-label">Client sweet spot</div></div>
+          <div><div class="fact-num">48 hrs</div><div class="fact-label">Report turnaround</div></div>
         </div>
-
-        <div class="about-links">
-          <a href="https://www.linkedin.com/in/samuelgorla/" target="_blank" class="btn btn-secondary" style="font-size:0.9rem; padding: 0.7rem 1.4rem;">View LinkedIn →</a>
-          <a href="#contact" class="btn btn-primary" style="font-size:0.9rem; padding: 0.7rem 1.4rem;">Book a call →</a>
-        </div>
+        <a href="https://www.linkedin.com/in/samuelgorla" class="btn btn-text">Find me on LinkedIn →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section" id="contact">
-  <div class="cta-eyebrow">Start here</div>
-  <h2 class="cta-title">Not sure where AI fits in your business? <em>That's exactly what the audit is for.</em></h2>
-  <p class="cta-sub">Free 45-minute AI Audit. No pitch deck. You walk away with your top three revenue and time leaks — ranked by dollar impact — delivered as a written report within 48 hours. Whether you hire me or not.</p>
-  <div class="cta-ctas">
+<section class="cta" id="contact" data-screen-label="CTA">
+  <span class="kicker">Free · 45 minutes · report in 48 hours</span>
+  <h2 class="cta-title">The audit costs nothing. The broken workflow <em>costs you every week.</em></h2>
+  <p class="cta-sub">One conversation. Three leaks, ranked by dollar impact. You keep the report whether we ever talk again.</p>
+  <div class="cta-row">
     <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free AI Audit →</a>
-    <a href="tel:+18608691385" class="btn btn-secondary">Call +1(860) 869-1385</a>
+    <a href="/cdn-cgi/l/email-protection#75061418121a071914350610070319101411061a1900011c1a1b065b161a18" class="btn btn-text"><span class="__cf_email__" data-cfemail="5b283a363c3429373a1b283e292d373e3a3f2834372e2f3234352875383436">[email&#160;protected]</span></a>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="Servlead_Solutions_logo-removebg-preview.png" 
-             alt="Servlead Solutions" 
-             style="width:36px;height:36px;object-fit:contain;">
-        Servlead Solutions
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="">Servlead Solutions</div>
+      <div class="footer-links">
+        <a href="tel:8608691385">(860) 869-1385</a>
+        <a href="/cdn-cgi/l/email-protection#137a7d757c53607661657f767277607c7f66677a7c7d603d707c7e"><span class="__cf_email__" data-cfemail="0e676068614e7d6b7c78626b6f6a7d61627b7a6761607d206d6163">[email&#160;protected]</span></a>
+        <a href="https://www.linkedin.com/company/servlead-solutions">LinkedIn</a>
       </div>
-      <div class="footer-col">
-        <h4>What we do</h4>
-        <a href="#audit">Free AI Audit</a>
-        <a href="#demos">Live Demos</a>
-        <a href="#services">How it works</a>
-        <a href="#process">Our process</a>
-        <a href="#cases">Case studies</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#about">About Sam</a>
-        <a href="#cases">Case studies</a>
-        <a href="#process">How we work</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="/cdn-cgi/l/email-protection#3b52555d547b685e494d575e5a5f6854574e4f5254554815585456"><span class="__cf_email__" data-cfemail="5f363139301f0c3a2d29333a3e3b0c30332a2b3630312c713c3032">[email&#160;protected]</span></a>
-        <a href="tel:+18608691385">+1(860) 869-1385</a>
-        <a href="https://www.linkedin.com/in/samuelgorla/" target="_blank">LinkedIn →</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servlead Solutions. All rights reserved.</div>
-      <div>Lehigh Valley, PA</div>
+      <div class="footer-fine">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<div class="dir-switch">
+  <a href="Direction 1 — Plain Truth.html" class="on">1 · Plain Truth</a>
+  <a href="Direction 2 — Control Room.html">2 · Control Room</a>
+  <a href="Direction 3 — Servant Heart.html">3 · Servant's Heart</a>
+</div>
 
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 120);
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Hero word-rise
+(function () {
+  var h = document.getElementById('heroTitle');
+  var walker = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
+  var nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  var i = 0;
+  nodes.forEach(function (node) {
+    var frag = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach(function (part) {
+      if (/^\s+$/.test(part) || part === '') { frag.appendChild(document.createTextNode(part)); return; }
+      var s = document.createElement('span');
+      s.className = 'word';
+      s.style.animationDelay = (0.08 + i * 0.07) + 's';
+      s.textContent = part;
+      frag.appendChild(s);
+      i++;
+    });
+    node.parentNode.replaceChild(frag, node);
+  });
+})();
+
+// Ticker duplicate
+(function () {
+  var t = document.getElementById('tickerTrack');
+  t.innerHTML += t.innerHTML;
+})();
+
+// Reveal on scroll
+(function () {
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+})();
+
+// Audit walkthrough — stages stamp lines into report
+(function () {
+  var stages = document.querySelectorAll('.stage');
+  var lines = document.querySelectorAll('.rline');
+  var totalEl = document.getElementById('reportTotal');
+  var amounts = { '0': 11, '1': 9, '2': 18, '3': 0 };
+  var stamped = {};
+
+  function updateTotal() {
+    var sum = 0;
+    Object.keys(stamped).forEach(function (k) { if (stamped[k]) sum += amounts[k] || 0; });
+    var target = sum;
+    var current = parseInt(totalEl.textContent.replace(/\D/g, ''), 10) || 0;
+    var start = null;
+    function tick(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / 500, 1);
+      var v = Math.round(current + (target - current) * p);
+      totalEl.textContent = '$' + v + 'K/yr';
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  stages.forEach(function (st) {
+    st.addEventListener('click', function () {
+      var wasOpen = st.classList.contains('open');
+      stages.forEach(function (s) { s.classList.remove('open'); });
+      if (!wasOpen) {
+        st.classList.add('open');
+        var key = st.dataset.stage;
+        if (!stamped[key]) {
+          stamped[key] = true;
+          lines.forEach(function (ln) {
+            if (ln.dataset.for === key && !ln.classList.contains('stamped')) {
+              ln.classList.add('stamped', 'flash');
+              setTimeout(function () { ln.classList.remove('flash'); }, 900);
+            }
+          });
+          updateTotal();
+        }
+      }
     });
   });
 
-  document.querySelectorAll('#navLinks a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  // Auto-open first stage when scrolled into view
+  var autoObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { autoObs.disconnect(); setTimeout(function () { stages[0].click(); }, 600); }
+    });
+  }, { threshold: 0.4 });
+  autoObs.observe(document.getElementById('walkStages'));
+})();
+
+// Demo chat simulations
+(function () {
+  var scripts = {
+    0: { title: 'lead-responder', desc: "Most businesses take 47 minutes to answer an inbound lead. The buyer's gone in 5. This responds in under 30 seconds — qualifies, routes the hot ones, and notifies you. Day or night.",
+      steps: [
+        { type: 'in', meta: 'New lead · web form · 7:42 PM', text: "Hi — need a quote on a 4,000 sq ft warehouse buildout. Timeline is tight." },
+        { type: 'typing', dur: 1400 },
+        { type: 'out', meta: 'AI reply · 7:42 PM · 22 seconds later', text: "Thanks for reaching out! Happy to help with the buildout. Two quick questions so we quote it right: what's your target completion date, and is the space shell or partially finished?" },
+        { type: 'in', meta: 'Lead · 7:44 PM', text: "Need it done by October. It's a shell." },
+        { type: 'sys', text: '✓ QUALIFIED — HOT · routed to Sam · SMS sent' }
+      ] },
+    1: { title: 'collections-bot', desc: "Unpaid invoices age because following up is awkward and easy to postpone. This bot does the polite, persistent follow-up for you — and escalates only when a human touch is needed.",
+      steps: [
+        { type: 'sys', text: 'INVOICE #1042 · $8,400 · 14 days overdue' },
+        { type: 'typing', dur: 1200 },
+        { type: 'out', meta: 'Auto follow-up · day 14', text: "Hi Dana — friendly nudge on invoice #1042 ($8,400), due two weeks back. Here's the payment link if it slipped through. Anything holding it up on your end?" },
+        { type: 'in', meta: 'Client · 2 hrs later', text: "Sorry! Processing it today." },
+        { type: 'sys', text: '✓ PAID — $8,400 · cycle: 15 days (was 38)' }
+      ] },
+    2: { title: 'inbox-autopilot', desc: "Your inbox is a job you never applied for. This triages every incoming email, drafts replies in your voice for the routine ones, and surfaces only what genuinely needs you.",
+      steps: [
+        { type: 'sys', text: '47 EMAILS OVERNIGHT · triaging…' },
+        { type: 'typing', dur: 1300 },
+        { type: 'out', meta: 'Drafted for review', text: "Hi Marcus — yes, we can move Thursday's walkthrough to 2pm. I've updated the invite. See you then." },
+        { type: 'sys', text: '31 archived · 9 drafted · 7 need you' },
+        { type: 'in', meta: 'Flagged · needs Sam', text: "Re: change order on the Fulton project — need your call on the structural piece." }
+      ] },
+    3: { title: 'document-autopilot', desc: "POs, invoices, packing slips, intake forms — re-keyed by hand, 6–8 hours a week. This reads them, extracts what matters, and pushes it into your system untouched by humans.",
+      steps: [
+        { type: 'in', meta: 'Inbound · PDF attachment', text: "📄 PO_4471_Hartline_Distribution.pdf" },
+        { type: 'typing', dur: 1500 },
+        { type: 'sys', text: 'EXTRACTED — 14 line items · PO #4471 · $23,610' },
+        { type: 'out', meta: 'Pushed to ERP · 41 seconds', text: "Order #4471 created in NetSuite. Quantities matched against inventory — one flag: item SKU-2280 shows 3-week lead time. Flagged for review." },
+        { type: 'sys', text: '✓ 0 keystrokes · 0 re-keying errors' }
+      ] },
+    4: { title: 'lead-discovery', desc: "Instead of waiting for leads, this finds businesses that match your best-customer profile, researches them properly, and drafts outreach that doesn't sound like spam — because it isn't.",
+      steps: [
+        { type: 'sys', text: 'SCANNING — GCs, 10–50 employees, Lehigh Valley' },
+        { type: 'typing', dur: 1400 },
+        { type: 'sys', text: '12 MATCHES · researching top 3…' },
+        { type: 'out', meta: 'Draft outreach · for your approval', text: "Hi Tom — saw Keystone just picked up the Bethlehem school renovation. We help GCs your size cut bid-prep time roughly in half. Worth a 15-minute look?" },
+        { type: 'in', meta: 'Reply · next morning', text: "Interesting timing, actually. Give me a call this week." }
+      ] }
+  };
+
+  var chatEl = document.getElementById('chatWindow');
+  var descEl = document.getElementById('demoDesc');
+  var barTitle = document.getElementById('demoBarTitle');
+  var items = document.querySelectorAll('.demo-item');
+  var current = 0, runToken = 0;
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  function run(idx) {
+    var token = ++runToken;
+    var sc = scripts[idx];
+    chatEl.innerHTML = '';
+    barTitle.textContent = sc.title;
+    descEl.textContent = sc.desc;
+    var i = 0;
+    function next() {
+      if (token !== runToken) return;
+      if (i >= sc.steps.length) { setTimeout(function () { if (token === runToken) run(idx); }, 5000); return; }
+      var step = sc.steps[i++];
+      if (step.type === 'typing') {
+        var t = document.createElement('div');
+        t.className = 'msg in show';
+        t.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+        chatEl.appendChild(t);
+        setTimeout(function () { if (token === runToken) { t.remove(); next(); } }, step.dur);
+        return;
+      }
+      var m = document.createElement('div');
+      m.className = 'msg ' + step.type;
+      m.innerHTML = (step.meta ? '<div class="meta">' + esc(step.meta) + '</div>' : '') + esc(step.text);
+      chatEl.appendChild(m);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { m.classList.add('show'); }); });
+      setTimeout(next, 1700);
+    }
+    next();
+  }
+
+  items.forEach(function (it) {
+    it.addEventListener('click', function () {
+      items.forEach(function (x) { x.classList.remove('active'); });
+      it.classList.add('active');
+      current = parseInt(it.dataset.demo, 10);
+      run(current);
+    });
   });
+
+  // Start when visible
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); run(0); } });
+  }, { threshold: 0.3 });
+  obs.observe(chatEl);
+})();
 </script>
 
 </body>
