@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Servlead Solutions — Find the workflow that's costing you most.</title>
+<meta name="description" content="A paid 60-minute AI & efficiency audit for $2M–$20M businesses. I find where you're losing time and money — and hand you the plan to fix it. If I don't find at least $10,000 in recoverable leaks, the audit is free.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -66,6 +67,8 @@
   .hero-sig img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--ink); }
   .hero-sig .who { font-size: 0.88rem; line-height: 1.5; color: var(--ink-soft); max-width: 240px; }
   .hero-sig .who b { display: block; color: var(--ink); font-size: 1rem; font-family: var(--serif); font-weight: 500; }
+  .hero-guarantee { display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 1.8rem; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--ink-soft); border: 1px solid var(--line-dark); padding: 0.6rem 1rem; background: var(--paper); }
+  .hero-guarantee b { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--rust); font-size: 1rem; }
 
   /* TICKER */
   .ticker { border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); padding: 0.85rem 0; overflow: hidden; background: var(--paper); }
@@ -117,6 +120,41 @@
   .walk-hint { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
   .audit-cta-row { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 3rem; }
   .audit-note { font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* SPLIT — diagnosis vs prescription */
+  .split { }
+  .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line-dark); margin-top: 0; }
+  .split-col { padding: 2.4rem 2.2rem; }
+  .split-col:first-child { border-right: 1px solid var(--line-dark); background: var(--paper); }
+  .split-col:last-child { background: var(--ink); color: var(--paper); }
+  .split-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
+  .split-col:first-child .split-tag { color: var(--green); }
+  .split-col:last-child .split-tag { color: #e8b64c; }
+  .split-h { font-family: var(--serif); font-weight: 400; font-size: 1.7rem; letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .split-col:last-child .split-h em { font-style: italic; color: #e8b64c; }
+  .split-p { font-size: 1rem; color: var(--ink-soft); max-width: 420px; }
+  .split-col:last-child .split-p { color: #b6c0d2; }
+  .split-list { list-style: none; margin-top: 1.3rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .split-list li { font-size: 0.95rem; padding-left: 1.5rem; position: relative; }
+  .split-col:first-child .split-list li { color: var(--ink-soft); }
+  .split-col:last-child .split-list li { color: var(--paper); }
+  .split-list li::before { content: '→'; position: absolute; left: 0; font-family: var(--mono); }
+  .split-col:first-child .split-list li::before { color: var(--green); }
+  .split-col:last-child .split-list li::before { color: #e8b64c; }
+  .split-price { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.6rem; }
+  .split-col:first-child .split-price { color: var(--green); }
+  .split-col:last-child .split-price { color: #e8b64c; }
+
+  /* GUARANTEE BAND */
+  .guarantee-band { background: var(--rust); color: #fff; padding: 3.2rem 0; }
+  .gb-inner { display: grid; grid-template-columns: auto 1fr auto; gap: 2.5rem; align-items: center; }
+  .gb-mark { font-family: var(--serif); font-style: italic; font-size: 3.4rem; line-height: 1; color: #fff; opacity: 0.55; }
+  .gb-text { }
+  .gb-text h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.15; letter-spacing: -0.01em; }
+  .gb-text p { font-size: 0.98rem; color: rgba(255,255,255,0.82); margin-top: 0.7rem; max-width: 560px; }
+  .gb-cta { white-space: nowrap; }
+  .gb-cta a { background: #fff; color: var(--ink); padding: 1rem 1.9rem; border-radius: 999px; font-weight: 700; text-decoration: none; display: inline-block; transition: transform 0.2s; }
+  .gb-cta a:hover { transform: translateY(-2px); }
 
   /* DEMOS */
   .demo-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: start; margin-top: 0; }
@@ -193,12 +231,6 @@
   .footer-links a:hover { color: var(--rust); }
   .footer-fine { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
 
-  /* SWITCHER */
-  .dir-switch { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 0.3rem; background: var(--ink); border-radius: 999px; padding: 0.35rem; box-shadow: 0 10px 30px rgba(20, 32, 46, 0.35); }
-  .dir-switch a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: #9fb0c8; text-decoration: none; padding: 0.45rem 0.95rem; border-radius: 999px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
-  .dir-switch a:hover { color: #fff; }
-  .dir-switch a.on { background: var(--rust); color: #fff; }
-
   @media (prefers-reduced-motion: no-preference) {
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -217,6 +249,10 @@
     .about-photo { max-width: 340px; }
     .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
     .hero-sig { justify-self: start; }
+    .split-grid { grid-template-columns: 1fr; }
+    .split-col:first-child { border-right: none; border-bottom: 1px solid var(--line-dark); }
+    .gb-inner { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
+    .gb-mark { display: none; }
   }
   @media (max-width: 768px) {
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--line); align-items: flex-start; }
@@ -225,7 +261,6 @@
     section { padding: 4.5rem 0; }
     .sec-head { grid-template-columns: 1fr; gap: 0.8rem; }
     .stage-body-inner { padding-left: 0.5rem; }
-    .dir-switch a { padding: 0.45rem 0.7rem; }
   }
 </style>
 </head>
@@ -239,7 +274,7 @@
       <a href="#demos">Demos</a>
       <a href="#why">Why Servlead</a>
       <a href="#about">About</a>
-      <a href="https://cal.com/samgorla/consultation" class="nav-cta">Book free audit</a>
+      <a href="https://cal.com/samgorla/consultation" class="nav-cta">Book your audit</a>
     </div>
     <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
   </div>
@@ -255,11 +290,12 @@
     <h1 class="hero-title" id="heroTitle">Find the workflow that's <em>costing you most.</em></h1>
     <div class="hero-bottom">
       <div>
-        <p class="hero-sub">A free 45-minute audit with a real consultant — not a chatbot, not an agency. I follow the money through your business, find your top three leaks, and send you a report <b>with dollar figures</b> in 48 hours. It's yours whether you hire me or not.</p>
+        <p class="hero-sub">A 60-minute audit with a real consultant — not a chatbot, not an agency. I follow the money through your business and show you your three biggest leaks, live, with dollar figures. Then I hand you a written plan to fix them. <b>If I don't find at least $10,000 in recoverable time and money, the audit's free.</b></p>
         <div class="hero-ctas">
-          <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free AI Audit →</a>
+          <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your AI Audit →</a>
           <a href="#audit" class="btn btn-text">See how the audit works</a>
         </div>
+        <div class="hero-guarantee"><b>$500</b> — credited in full toward your project if you move forward.</div>
       </div>
       <div class="hero-sig">
         <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla">
@@ -280,7 +316,7 @@
     <div class="sec-head reveal">
       <span class="sec-num">01 / The Audit</span>
       <div>
-        <h2 class="sec-title">Forty-five minutes. Four questions. <em>Every leak gets a dollar figure.</em></h2>
+        <h2 class="sec-title">Sixty minutes. Four questions. <em>Every leak gets a dollar figure.</em></h2>
         <p class="sec-intro">Most businesses at $2M+ are quietly losing $15,000–$30,000 a year in broken workflows. The audit follows the money through four stages of your business. Tap each one — this is the actual conversation.</p>
       </div>
     </div>
@@ -319,8 +355,8 @@
           </div>
         </div>
         <div class="audit-cta-row">
-          <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free audit →</a>
-          <span class="audit-note">Free. No obligation. You keep the report either way.</span>
+          <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your audit →</a>
+          <span class="audit-note">$500 · credited toward your project · $10K-or-it's-free guarantee.</span>
         </div>
       </div>
 
@@ -329,20 +365,69 @@
         <div class="rline" data-for="2"><div class="nm">#1 — Manual invoicing<span>collections cycle: 3 weeks</span></div><div class="amt">$18K/yr</div></div>
         <div class="rline" data-for="0"><div class="nm">#2 — Slow lead response<span>avg. 47 min to reply</span></div><div class="amt">$11K/yr</div></div>
         <div class="rline" data-for="1"><div class="nm">#3 — Re-keyed documents<span>6–8 hrs/week by hand</span></div><div class="amt">$9K/yr</div></div>
-        <div class="rline-total"><div class="nm">FOUND IN ONE 45-MIN AUDIT</div><div class="amt" id="reportTotal">$0/yr</div></div>
+        <div class="rline-total"><div class="nm">FOUND IN ONE 60-MIN AUDIT</div><div class="amt" id="reportTotal">$0/yr</div></div>
         <div class="report-foot">Illustrative — your report is built from your numbers, delivered as a PDF in 48 hours.</div>
       </aside>
     </div>
   </div>
 </section>
 
+<section class="split" id="split" data-screen-label="What you get">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / What you walk away with</span>
+      <div>
+        <h2 class="sec-title">On the call, you learn <em>where.</em> In the plan, you learn <em>how.</em></h2>
+        <p class="sec-intro">The 60-minute call is a real diagnosis — you'll leave knowing exactly where you're losing money, whether or not you ever pay a cent. The $500 buys the fix: the written, step-by-step plan you can hand to your team and act on Monday.</p>
+      </div>
+    </div>
+    <div class="split-grid reveal">
+      <div class="split-col">
+        <div class="split-tag">● The call · yours to keep</div>
+        <h3 class="split-h">The diagnosis</h3>
+        <p class="split-p">Live, on the call. You walk away knowing your three biggest leaks and roughly what each is costing you — free, no strings.</p>
+        <ul class="split-list">
+          <li>Your top three money &amp; time leaks, named</li>
+          <li>A rough dollar figure on each one</li>
+          <li>An honest read on whether AI is even the right fix</li>
+        </ul>
+        <div class="split-price">Cost: $0</div>
+      </div>
+      <div class="split-col">
+        <div class="split-tag">● The plan · $500</div>
+        <h3 class="split-h">The <em>prescription</em></h3>
+        <p class="split-p">The written report, delivered in 48 hours. Not "here's your problem" — here's exactly what to do about it, in what order, and what it's worth.</p>
+        <ul class="split-list">
+          <li>The specific fix for each leak — build, tool, hire, or process</li>
+          <li>Priority order and the ROI math on each</li>
+          <li>A plan your team can execute, with or without me</li>
+        </ul>
+        <div class="split-price">$500 · credited if you move forward</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="guarantee-band" data-screen-label="Guarantee">
+  <div class="container">
+    <div class="gb-inner reveal">
+      <div class="gb-mark">“</div>
+      <div class="gb-text">
+        <h3>If I don't find at least $10,000 in recoverable time and money, the audit's free.</h3>
+        <p>That's not a sales line — it's how I keep myself honest. I only take the $500 if I've shown you real money worth going after. At your size, I've yet to look and come up short.</p>
+      </div>
+      <div class="gb-cta"><a href="https://cal.com/samgorla/consultation">Book your audit →</a></div>
+    </div>
+  </div>
+</div>
+
 <section class="demos" id="demos" data-screen-label="Demos">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="sec-num">02 / Proof</span>
+      <span class="sec-num">03 / Proof</span>
       <div>
         <h2 class="sec-title">Five automations, <em>built and running.</em></h2>
-        <p class="sec-intro">Not concepts. Working systems you can watch run before committing to anything. Pick one — the window on the right is a live simulation of what it does.</p>
+        <p class="sec-intro">Not concepts. Working systems you can watch run. If the audit turns up a leak one of these already solves, I'll show you the real thing. Pick one — the window on the right is a live simulation of what it does.</p>
       </div>
     </div>
 
@@ -370,17 +455,17 @@
   <div class="container">
     <div class="why-grid">
       <div class="reveal">
-        <span class="kicker">03 / Why "Servlead"</span>
+        <span class="kicker">04 / Why "Servlead"</span>
         <h2 class="why-title">The name means <em>servant leadership.</em> That's not branding — it's the operating model.</h2>
         <p>Servlead comes from the leadership Jesus modeled: lead by serving. My faith isn't a marketing angle — it's the foundation of how I work, and it's why this business runs the way it does.</p>
-        <p>In practice, that means the audit is free and the report is <b>yours either way</b>. It means if you're not a good fit, I'll tell you — kindly — instead of selling you something that won't work. And it means no manufactured urgency, ever.</p>
+        <p>In practice, that means I put my own money on the line before I ask for yours — <b>if I don't find you $10K, you owe nothing</b>. It means the diagnosis is honest and yours to keep. And it means if you're not a good fit, I'll tell you — kindly — instead of selling you something that won't work.</p>
         <div class="verse">
           <div class="vtext">"Act justly, love mercy, and walk humbly before your God."</div>
           <div class="vref">Micah 6:8 — the standard I hold myself to</div>
         </div>
       </div>
       <div class="creed reveal">
-        <div class="creed-row"><span class="cn">i.</span><div><div class="ct">Act justly</div><div class="cd">Honest numbers, honest scoping. If the ROI isn't there, I'll say so and you keep the report.</div></div></div>
+        <div class="creed-row"><span class="cn">i.</span><div><div class="ct">Act justly</div><div class="cd">Honest numbers, honest scoping. The guarantee's real: no $10K found, no charge.</div></div></div>
         <div class="creed-row"><span class="cn">ii.</span><div><div class="ct">Love mercy</div><div class="cd">No pressure, no guilt, no closing tactics. If the timing's wrong, the door stays open.</div></div></div>
         <div class="creed-row"><span class="cn">iii.</span><div><div class="ct">Walk humbly</div><div class="cd">I don't have all the answers. When I don't know, I say so — then go find out.</div></div></div>
       </div>
@@ -396,7 +481,7 @@
         <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
       </figure>
       <div class="about-body reveal">
-        <span class="sec-num">04 / About</span>
+        <span class="sec-num">05 / About</span>
         <h2 class="sec-title" style="margin-top: 0.8rem;">One consultant. <em>No handoffs.</em></h2>
         <p>I'm Sam. I spent 14 years in analytics, automation, and ERP before starting Servlead — long enough to know that most "AI transformation" pitches are noise, and that the real wins are specific, measurable, and usually unglamorous.</p>
         <p>When you work with me, <b>I'm the one doing the work</b>. No account managers, no junior team, no handoff. I build custom, from the ground up, for businesses doing $2M–$20M — and I'll tell you honestly if you're outside that range, because then this usually isn't your best option.</p>
@@ -413,11 +498,11 @@
 </section>
 
 <section class="cta" id="contact" data-screen-label="CTA">
-  <span class="kicker">Free · 45 minutes · report in 48 hours</span>
-  <h2 class="cta-title">The audit costs nothing. The broken workflow <em>costs you every week.</em></h2>
-  <p class="cta-sub">One conversation. Three leaks, ranked by dollar impact. You keep the report whether we ever talk again.</p>
+  <span class="kicker">$500 · 60 minutes · report in 48 hours</span>
+  <h2 class="cta-title">The audit pays for itself, or it's <em>free.</em></h2>
+  <p class="cta-sub">One conversation. Three leaks, ranked by dollar impact — yours to keep. A written plan to fix them. And if I don't find you $10K, you owe nothing.</p>
   <div class="cta-row">
-    <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your free AI Audit →</a>
+    <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your AI Audit →</a>
     <a href="/cdn-cgi/l/email-protection#75061418121a071914350610070319101411061a1900011c1a1b065b161a18" class="btn btn-text"><span class="__cf_email__" data-cfemail="5b283a363c3429373a1b283e292d373e3a3f2834372e2f3234352875383436">[email&#160;protected]</span></a>
   </div>
 </section>
