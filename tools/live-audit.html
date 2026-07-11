@@ -1,1 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Live Audit Calculator — Servlead</title>
+<style>
+  :root {
+    --paper: #f2f2f1;
+    --paper-deep: #e9e9e7;
+    --ink: #14202e;
+    --ink-soft: #46536a;
+    --muted: #7d8494;
+    --rust: #a63d1c;
+    --line: #d6d6d2;
+    --line-dark: #14202e;
+    --green: #22764f;
+    --gold: #e8b64c;
+    --serif: 'Georgia', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --mono: 'SF Mono', 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); padding: 1.25rem 1rem 3rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  header { margin-bottom: 1.5rem; }
+  .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); font-weight: 600; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 1.7rem; margin: 0.35rem 0 0; letter-spacing: -0.01em; }
+  .sub { color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.35rem; }
 
+  .card {
+    background: #fff; border: 1px solid var(--line-dark); border-radius: 10px;
+    padding: 1.1rem 1.1rem 1.3rem; margin-bottom: 1rem;
+  }
+  .card h2 {
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 500; margin: 0 0 0.15rem;
+  }
+  .card .note { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.9rem; }
+
+  .row { display: flex; gap: 0.6rem; margin-bottom: 0.6rem; align-items: center; flex-wrap: wrap; }
+  .field { flex: 1; min-width: 110px; }
+  .field.wide { min-width: 100%; }
+  label { display: block; font-size: 0.72rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  input[type=text], input[type=number], select {
+    width: 100%; padding: 0.55rem 0.6rem; border: 1px solid var(--line); border-radius: 7px;
+    font-size: 1rem; font-family: var(--sans); background: var(--paper); color: var(--ink);
+  }
+  input:focus, select:focus { outline: none; border-color: var(--rust); }
+
+  .leak-row { border-top: 1px dashed var(--line); padding-top: 0.7rem; margin-top: 0.7rem; }
+  .leak-row:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+  .leak-result { font-family: var(--mono); font-size: 0.85rem; color: var(--rust); text-align: right; margin-top: 0.2rem; }
+
+  .btn-add, .btn-remove {
+    font-family: var(--mono); font-size: 0.75rem; border: 1px solid var(--line-dark);
+    background: var(--paper); border-radius: 6px; padding: 0.4rem 0.7rem; cursor: pointer; color: var(--ink);
+  }
+  .btn-remove { border-color: var(--muted); color: var(--muted); padding: 0.4rem 0.55rem; }
+  .btn-add { margin-top: 0.4rem; }
+
+  .diag-card {
+    background: var(--ink); color: var(--paper); border-radius: 10px; padding: 1.25rem 1.1rem;
+    margin-top: 1.2rem;
+  }
+  .diag-card .kicker { color: var(--gold); }
+  .diag-card .note-light { font-size: 0.8rem; color: #b6c0d2; margin-top: 0.2rem; }
+  .ranked-leak { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px dashed rgba(255,255,255,0.15); }
+  .ranked-leak:last-of-type { border-bottom: none; }
+  .ranked-leak .rl-name { font-size: 0.95rem; font-weight: 600; }
+  .ranked-leak .rl-name span { display: block; font-family: var(--mono); font-size: 0.68rem; font-weight: 400; color: #8fa0ba; margin-top: 0.15rem; }
+  .ranked-leak .rl-amt { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--gold); white-space: nowrap; }
+  .empty-diag { font-size: 0.88rem; color: #8fa0ba; padding: 0.6rem 0; font-style: italic; }
+
+  .buffer-row { display: flex; align-items: center; gap: 0.6rem; margin: 1rem 0 0.8rem; font-size: 0.85rem; color: #b6c0d2; }
+  .buffer-row input { width: 60px; padding: 0.3rem 0.4rem; border-radius: 6px; border: none; text-align: center; font-family: var(--mono); }
+  .floor-line { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.4rem; padding-top: 0.9rem; border-top: 1px solid rgba(255,255,255,0.2); }
+  .floor-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #b6c0d2; }
+  .floor-amt { font-family: var(--serif); font-style: italic; font-size: 2.2rem; color: var(--gold); line-height: 1; }
+  .say-it { margin-top: 1rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.06); border-radius: 8px; font-size: 0.92rem; line-height: 1.55; font-style: italic; color: #dde3ec; }
+  .guarantee-flag { margin-top: 0.9rem; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; padding: 0.5rem 0.7rem; border-radius: 6px; text-align: center; }
+  .flag-met { background: rgba(34,118,79,0.25); color: #7fd8a8; }
+  .flag-not { background: rgba(166,61,28,0.25); color: #e2a48f; }
+
+  .collections-note { font-size: 0.85rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 7px; padding: 0.7rem 0.85rem; margin-top: 0.5rem; }
+  .collections-note b { color: var(--ink); }
+
+  footer { text-align: center; margin-top: 1.5rem; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Live audit call · leak diagnosis + floor calculator</div>
+    <h1>What's the honest diagnosis?</h1>
+    <div class="sub">Name each leak as you hear it. This ranks your top 3 and builds the script — the free diagnosis you say out loud, plus the conservative floor that triggers the $500 ask.</div>
+  </header>
+
+  <div class="card">
+    <h2>Time-based leaks</h2>
+    <div class="note">Busywork, re-keying, manual coordination — Stages 2 &amp; 4. Round hours down. Name it the way you'd say it on the call.</div>
+    <div id="timeLeaks"></div>
+    <button class="btn-add" onclick="addTimeLeak()">+ Add another leak</button>
+  </div>
+
+  <div class="card">
+    <h2>Per-event leaks</h2>
+    <div class="note">Anything that happens repeatedly at a cost — missed leads, underbid jobs, rework, turnover, stockouts, mis-shipments, billing errors. Works across any vertical: pick a frequency, a cost each time it happens, and how solid the number is.</div>
+    <div id="revLeaks"></div>
+    <button class="btn-add" onclick="addRevLeak()">+ Add another leak</button>
+  </div>
+
+  <div class="card">
+    <h2>Collections / cash-timing</h2>
+    <div class="note">Not a leak in the total — this is a timing problem, not lost money. Mention separately; keep it out of the top 3 and the guarantee number.</div>
+    <div class="row">
+      <div class="field">
+        <label>Outstanding $</label>
+        <input type="number" id="outstanding" value="0" min="0" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Days out</label>
+        <input type="number" id="daysOut" value="0" min="0" oninput="calc()">
+      </div>
+    </div>
+    <div class="collections-note" id="collectionsNote">Not counted below — mention separately as a cash-flow issue.</div>
+  </div>
+
+  <div class="diag-card">
+    <div class="kicker">Say this out loud — the free diagnosis</div>
+    <div class="note-light">Only the top 3 by size count. Ranked automatically as you type.</div>
+    <div id="rankedList">
+      <div class="empty-diag">Enter leaks above to rank them.</div>
+    </div>
+
+    <div class="buffer-row">
+      Live-estimate buffer:
+      <input type="number" id="buffer" value="20" min="0" max="90" oninput="calc()"> %
+      discount before you say the total out loud
+    </div>
+    <div class="floor-line">
+      <span class="floor-label">Total floor to state</span>
+      <span class="floor-amt" id="floorAmt">$0</span>
+    </div>
+    <div class="guarantee-flag" id="guaranteeFlag">— enter numbers above —</div>
+    <div class="say-it" id="sayIt">Enter leaks above — this fills in with the actual script once you have at least one.</div>
+  </div>
+
+  <footer>Servlead Solutions · internal call tool · calibrate the buffer % against your first several final reports</footer>
+</div>
+
+<script>
+let leakCount = 0;
+let revCount = 0;
+
+function addTimeLeak(name, hours, rate) {
+  name = name || '';
+  hours = hours || '';
+  rate = rate || 30;
+  leakCount++;
+  const id = 'leak' + leakCount;
+  const div = document.createElement('div');
+  div.className = 'leak-row';
+  div.id = id;
+  div.innerHTML = '' +
+    '<div class="row">' +
+      '<div class="field wide">' +
+        '<label>Leak name</label>' +
+        '<input type="text" id="' + id + '_name" value="' + name + '" placeholder="e.g. Manual order entry" oninput="calc()">' +
+      '</div>' +
+    '</div>' +
+    '<div class="row">' +
+      '<div class="field">' +
+        '<label>Rate</label>' +
+        '<select onchange="calc()" id="' + id + '_rate">' +
+          '<option value="22"' + (rate==22?' selected':'') + '>Admin / front-line — $22/hr</option>' +
+          '<option value="30"' + (rate==30?' selected':'') + '>Skilled ops / sales — $30/hr</option>' +
+          '<option value="45"' + (rate==45?' selected':'') + '>Owner-level — $45/hr</option>' +
+        '</select>' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Hours / week</label>' +
+        '<input type="number" id="' + id + '_hrs" value="' + hours + '" min="0" oninput="calc()">' +
+      '</div>' +
+      '<button class="btn-remove" onclick="removeLeak(\'' + id + '\')">✕</button>' +
+    '</div>' +
+    '<div class="leak-result" id="' + id + '_result">$0/yr</div>';
+  document.getElementById('timeLeaks').appendChild(div);
+  calc();
+}
+
+function addRevLeak(name, freq, unit, impact, conf) {
+  name = name || '';
+  freq = freq || '';
+  unit = unit || 'month';
+  impact = impact || '';
+  conf = conf || '0.65';
+  revCount++;
+  const id = 'rev' + revCount;
+  const div = document.createElement('div');
+  div.className = 'leak-row';
+  div.id = id;
+  div.innerHTML = '' +
+    '<div class="row">' +
+      '<div class="field wide">' +
+        '<label>Leak name</label>' +
+        '<input type="text" id="' + id + '_name" value="' + name + '" placeholder="e.g. Underbid jobs, missed leads, turnover" oninput="calc()">' +
+      '</div>' +
+    '</div>' +
+    '<div class="row">' +
+      '<div class="field">' +
+        '<label>How often</label>' +
+        '<input type="number" id="' + id + '_freq" value="' + freq + '" min="0" oninput="calc()">' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Per</label>' +
+        '<select onchange="calc()" id="' + id + '_unit">' +
+          '<option value="month"' + (unit=='month'?' selected':'') + '>Month</option>' +
+          '<option value="year"' + (unit=='year'?' selected':'') + '>Year</option>' +
+        '</select>' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>$ each time</label>' +
+        '<input type="number" id="' + id + '_impact" value="' + impact + '" min="0" oninput="calc()">' +
+      '</div>' +
+    '</div>' +
+    '<div class="row">' +
+      '<div class="field">' +
+        '<label>How solid is this number</label>' +
+        '<select onchange="calc()" id="' + id + '_conf">' +
+          '<option value="0.9"' + (conf=='0.9'?' selected':'') + '>Hard number — they know it cold</option>' +
+          '<option value="0.65"' + (conf=='0.65'?' selected':'') + '>Estimated — reasonable read</option>' +
+          '<option value="0.4"' + (conf=='0.4'?' selected':'') + '>Rough guess — soft</option>' +
+        '</select>' +
+      '</div>' +
+      '<button class="btn-remove" onclick="removeLeak(\'' + id + '\')">✕</button>' +
+    '</div>' +
+    '<div class="leak-result" id="' + id + '_result">$0/yr</div>';
+  document.getElementById('revLeaks').appendChild(div);
+  calc();
+}
+
+function removeLeak(id) {
+  document.getElementById(id).remove();
+  calc();
+}
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+function roundNice(n, nearest) {
+  return Math.floor(n / nearest) * nearest;
+}
+
+function calc() {
+  const entries = [];
+
+  document.querySelectorAll('#timeLeaks .leak-row').forEach(function(row) {
+    const id = row.id;
+    const name = document.getElementById(id + '_name').value.trim() || 'Unnamed time leak';
+    const rate = parseFloat(document.getElementById(id + '_rate').value) || 0;
+    const hrs = parseFloat(document.getElementById(id + '_hrs').value) || 0;
+    const annual = hrs * rate * 50;
+    document.getElementById(id + '_result').textContent = fmt(annual) + '/yr';
+    if (annual > 0) entries.push({ name: name, type: 'Time', value: annual });
+  });
+
+  document.querySelectorAll('#revLeaks .leak-row').forEach(function(row) {
+    const id = row.id;
+    const name = document.getElementById(id + '_name').value.trim() || 'Unnamed leak';
+    const freq = parseFloat(document.getElementById(id + '_freq').value) || 0;
+    const unit = document.getElementById(id + '_unit').value;
+    const impact = parseFloat(document.getElementById(id + '_impact').value) || 0;
+    const conf = parseFloat(document.getElementById(id + '_conf').value) || 0;
+    const freqAnnual = unit === 'month' ? freq * 12 : freq;
+    const annual = freqAnnual * impact * conf;
+    document.getElementById(id + '_result').textContent = fmt(annual) + '/yr';
+    if (annual > 0) entries.push({ name: name, type: 'Per-event', value: annual });
+  });
+
+  const outstanding = parseFloat(document.getElementById('outstanding').value) || 0;
+  const daysOut = parseFloat(document.getElementById('daysOut').value) || 0;
+  if (outstanding > 0) {
+    document.getElementById('collectionsNote').innerHTML =
+      '<b>' + fmt(outstanding) + '</b> sitting' + (daysOut > 0 ? (', ~' + daysOut + ' days out') : '') + '. Not lost money — a cash-timing problem. Mention it separately; don\'t add it to the leak total.';
+  } else {
+    document.getElementById('collectionsNote').innerHTML = 'Not counted below — mention separately as a cash-flow issue.';
+  }
+
+  entries.sort(function(a, b) { return b.value - a.value; });
+  const top3 = entries.slice(0, 3);
+
+  const rankedListEl = document.getElementById('rankedList');
+  if (top3.length === 0) {
+    rankedListEl.innerHTML = '<div class="empty-diag">Enter leaks above to rank them.</div>';
+  } else {
+    rankedListEl.innerHTML = top3.map(function(e, i) {
+      return '<div class="ranked-leak">' +
+        '<div class="rl-name">#' + (i + 1) + ' — ' + e.name + '<span>' + (e.type === 'Time' ? 'time-based' : 'per-event') + '</span></div>' +
+        '<div class="rl-amt">~' + fmt(roundNice(e.value, 100)) + '/yr</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  const rawTop3Sum = top3.reduce(function(s, e) { return s + e.value; }, 0);
+  const buffer = (parseFloat(document.getElementById('buffer').value) || 0) / 100;
+  const floor = rawTop3Sum * (1 - buffer);
+  const floorRounded = roundNice(floor, 500);
+
+  document.getElementById('floorAmt').textContent = fmt(floorRounded);
+
+  const sayItEl = document.getElementById('sayIt');
+  if (top3.length === 0) {
+    sayItEl.textContent = 'Enter leaks above — this fills in with the actual script once you have at least one.';
+  } else {
+    const leakLines = top3.map(function(e) { return e.name + ' — about ' + fmt(roundNice(e.value, 100)) + ' a year'; }).join('. ');
+    const countWord = top3.length === 1 ? 'biggest leak' : (top3.length === 2 ? 'two biggest leaks' : 'three biggest leaks');
+    sayItEl.textContent = '"Your ' + countWord + ': ' + leakLines + '. Altogether, conservatively, you\'re looking at at least ' + fmt(floorRounded) + ' a year — probably more once I go through this properly."';
+  }
+
+  const flagEl = document.getElementById('guaranteeFlag');
+  if (rawTop3Sum === 0) {
+    flagEl.textContent = '— enter numbers above —';
+    flagEl.className = 'guarantee-flag';
+  } else if (floorRounded >= 10000) {
+    flagEl.textContent = '✓ CLEARS $10K GUARANTEE — safe to state as floor, safe to ask for the $500';
+    flagEl.className = 'guarantee-flag flag-met';
+  } else {
+    flagEl.textContent = '⚠ UNDER $10K FLOOR — don\'t state the guarantee, don\'t ask for the $500 yet';
+    flagEl.className = 'guarantee-flag flag-not';
+  }
+}
+
+addTimeLeak();
+addTimeLeak();
+addRevLeak();
+calc();
+</script>
+</body>
+</html>
