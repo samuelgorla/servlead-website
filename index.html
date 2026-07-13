@@ -394,7 +394,7 @@
             <div class="stage-head"><span class="stage-num">ii.</span><span class="stage-title">Serving customers</span><span class="stage-toggle">+</span></div>
             <div class="stage-body"><div class="stage-body-inner">
               <p class="stage-q">What does delivering the work actually look like, hour by hour? Where does time get eaten by copy-paste, status chasing, and re-keyed documents?</p>
-              <div class="stage-find">Typical finding <b>6–8 hrs/wk</b> of manual document handling</div>
+              <div class="stage-find">Typical finding <b>$9K/yr</b> chasing status, subs and confirmations</div>
             </div></div>
           </div>
           <div class="stage" data-stage="2">
@@ -422,7 +422,8 @@
         <div class="report-head"><span>Your leak report</span><span class="tag">● sample</span></div>
         <div class="rline" data-for="2"><div class="nm">#1 — Manual invoicing<span>collections cycle: 3 weeks</span></div><div class="amt">$18K/yr</div></div>
         <div class="rline" data-for="0"><div class="nm">#2 — Slow lead response<span>avg. 47 min to reply</span></div><div class="amt">$11K/yr</div></div>
-        <div class="rline" data-for="1"><div class="nm">#3 — Re-keyed documents<span>6–8 hrs/week by hand</span></div><div class="amt">$9K/yr</div></div>
+        <div class="rline" data-for="1"><div class="nm">#3 — Chasing confirmations<span>9 hrs/week on the phone</span></div><div class="amt">$9K/yr</div></div>
+        <div class="rline" data-for="3"><div class="nm">#4 — Re-keyed documents<span>6–8 hrs/week by hand</span></div><div class="amt">$9K/yr</div></div>
         <div class="rline-total"><div class="nm">FOUND IN ONE 60-MIN AUDIT</div><div class="amt" id="reportTotal">$0/yr</div></div>
         <div class="report-foot">Illustrative — your report is built from your numbers, delivered as a PDF in 48 hours.</div>
       </aside>
@@ -620,7 +621,7 @@
   var stages = document.querySelectorAll('.stage');
   var lines = document.querySelectorAll('.rline');
   var totalEl = document.getElementById('reportTotal');
-  var amounts = { '0': 11, '1': 9, '2': 18, '3': 0 };
+  var amounts = { '0': 11, '1': 9, '2': 18, '3': 9 };
   var stamped = {};
 
   function updateTotal() {
