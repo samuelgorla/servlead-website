@@ -78,6 +78,7 @@
     --line: #d6d6d2;
     --line-dark: #14202e;
     --green: #22764f;
+    --gold: #e8b64c;
     --serif: 'Newsreader', Georgia, serif;
     --sans: 'Archivo', system-ui, sans-serif;
     --mono: 'Spline Sans Mono', ui-monospace, monospace;
@@ -127,6 +128,11 @@
   .hero-sig .who b { display: block; color: var(--ink); font-size: 1rem; font-family: var(--serif); font-weight: 500; }
   .hero-guarantee { display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 1.8rem; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--ink-soft); border: 1px solid var(--line-dark); padding: 0.6rem 1rem; background: var(--paper); }
   .hero-guarantee b { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--rust); font-size: 1rem; }
+  .hero-proof { margin-top: 1.3rem; max-width: 560px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
+  .hero-proof .hp-stars { color: var(--gold); letter-spacing: 0.12em; margin-right: 0.5rem; }
+  .hero-proof q { font-family: var(--serif); font-style: italic; }
+  .hero-proof a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line-dark); }
+  .hero-proof a:hover { color: var(--rust); }
 
   /* TICKER */
   .ticker { border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); padding: 0.85rem 0; overflow: hidden; background: var(--paper); }
@@ -273,6 +279,18 @@
   .fact-num { font-family: var(--serif); font-style: italic; font-size: 2rem; color: var(--rust); line-height: 1.1; }
   .fact-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
 
+  /* PROOF / TESTIMONIALS */
+  .proof { background: var(--paper-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .quote-card { background: var(--paper); border: 1px solid var(--line-dark); padding: 2rem 1.8rem 1.6rem; display: flex; flex-direction: column; }
+  .stars { color: var(--gold); font-size: 0.95rem; letter-spacing: 0.16em; line-height: 1; margin-bottom: 1.4rem; }
+  .quote-card blockquote { font-family: var(--serif); font-weight: 300; font-size: 1.18rem; line-height: 1.45; letter-spacing: -0.01em; color: var(--ink); flex: 1; }
+  .quote-attr { margin-top: 1.8rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+  .quote-attr .qn { font-weight: 700; font-size: 0.95rem; color: var(--ink); }
+  .quote-attr .qm { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
+  .proof-foot { margin-top: 2.6rem; display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+  .proof-foot .pf-note { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
   /* CTA */
   .cta { border-top: 1px solid var(--line-dark); text-align: center; padding: 7rem 2rem; }
   .cta-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.04; letter-spacing: -0.025em; max-width: 860px; margin: 1.6rem auto 0; }
@@ -305,6 +323,7 @@
     .why-grid { grid-template-columns: 1fr; gap: 3rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-photo { max-width: 340px; }
+    .proof-grid { grid-template-columns: 1fr; gap: 1.2rem; }
     .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
     .hero-sig { justify-self: start; }
     .split-grid { grid-template-columns: 1fr; }
@@ -354,6 +373,7 @@
           <a href="#audit" class="btn btn-text">See how the audit works</a>
         </div>
         <div class="hero-guarantee"><b>$500</b> — credited in full toward your project if you move forward.</div>
+        <p class="hero-proof"><span class="hp-stars">★★★★★</span><q>He pinpointed areas of inefficiency and put together a systematic plan to address them.</q> — S.M. Klase Custom Homes. <a href="GOOGLE_REVIEWS_URL" target="_blank" rel="noopener">Read all four on Google →</a></p>
       </div>
       <div class="hero-sig">
         <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla">
@@ -552,6 +572,51 @@
         </div>
         <a href="https://www.linkedin.com/in/samuelgorla" class="btn btn-text">Find me on LinkedIn →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="reviews" data-screen-label="What clients say">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 / What clients say</span>
+      <div>
+        <h2 class="sec-title">I'd rather you hear it <em>from them.</em></h2>
+        <p class="sec-intro">Every review below is public on Google, word for word. Click through and read the full thing.</p>
+      </div>
+    </div>
+    <div class="proof-grid">
+      <div class="quote-card reveal">
+        <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+        <blockquote>“Sam was extremely helpful and showed us areas we could dramatically improve our efficiency and therefore, profitability… He pinpointed areas of inefficiency and put together a systematic plan to address them.”</blockquote>
+        <div class="quote-attr">
+          <div class="qn">S.M. Klase Custom Homes</div>
+          <div class="qm">Custom home builder</div>
+        </div>
+      </div>
+      <div class="quote-card reveal">
+        <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+        <blockquote>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient… Not only has it saved us valuable time, but it has also helped increase our sales.”</blockquote>
+        <div class="quote-attr">
+          <div class="qn">Alyssa Schlener</div>
+          <div class="qm">Dir. of Community &amp; Culture · Chick-fil-A Whitehall</div>
+          <!-- Fallback if brand-name use isn't cleared — swap the line above for this one:
+          <div class="qm">Dir. of Community &amp; Culture · Multi-unit restaurant operation</div>
+          -->
+        </div>
+      </div>
+      <div class="quote-card reveal">
+        <div class="stars" aria-label="Five out of five stars">★★★★★</div>
+        <blockquote>“The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</blockquote>
+        <div class="quote-attr">
+          <div class="qn">AIG Safety</div>
+          <div class="qm">Verified review on Google</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-foot reveal">
+      <a href="GOOGLE_REVIEWS_URL" target="_blank" rel="noopener" class="btn btn-text">Read all four on Google →</a>
+      <span class="pf-note">5.0 average · 4 reviews</span>
     </div>
   </div>
 </section>
