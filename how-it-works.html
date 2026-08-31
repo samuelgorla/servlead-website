@@ -396,22 +396,16 @@
   .blocks-foot { margin-top: 1.6rem; font-size: 0.98rem; color: var(--ink-soft); max-width: 640px; }
   .blocks-foot b { color: var(--ink); }
 
-  /* Ledger (reused from homepage) */
-  .ledger-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line-dark); }
-  .lg-cell { padding: 1.6rem 1.4rem; border-right: 1px solid var(--line); }
-  .lg-cell:last-child { border-right: none; }
-  .lg-num { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 2.3rem; line-height: 1; color: var(--rust); }
-  .lg-lab { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.6rem; line-height: 1.5; }
-  .ledger-two { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; margin-top: 3.2rem; }
-  .root-list { border-top: 1px solid var(--line-dark); }
-  .root-row { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: baseline; padding: 1.3rem 0.2rem; border-bottom: 1px solid var(--line); }
-  .root-row .rc { font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--rust); line-height: 1; }
-  .root-row .rt { font-family: var(--serif); font-size: 1.2rem; line-height: 1.35; }
-  .root-row .rd { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
-  .np-box { border-left: 2px solid var(--green); padding: 0.3rem 0 0.3rem 1.5rem; }
-  .np-box h4 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin-bottom: 0.8rem; }
-  .np-box p { color: var(--ink-soft); font-size: 1rem; margin-bottom: 0.9rem; max-width: 480px; }
-  .np-tag { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
+  /* Proof callout — compact, links to homepage ledger */
+  .proof-callout { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 3.5rem; align-items: center; border: 1px solid var(--line-dark); background: var(--paper); padding: 2.6rem 2.4rem; }
+  .pc-left .pc-h { font-family: var(--serif); font-weight: 300; font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.08; letter-spacing: -0.02em; margin: 1rem 0 1.1rem; }
+  .pc-left .pc-h em { font-style: italic; color: var(--rust); }
+  .pc-left .pc-p { font-size: 1.02rem; color: var(--ink-soft); line-height: 1.6; max-width: 620px; margin-bottom: 1.5rem; }
+  .pc-left .pc-p b { color: var(--ink); font-weight: 600; }
+  .pc-right { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line-dark); }
+  .pc-stat { padding: 1.1rem 0.2rem; border-bottom: 1px solid var(--line); }
+  .pc-num { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 2rem; line-height: 1; color: var(--rust); }
+  .pc-lab { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
 
   /* Stakes band */
   .stakes { background: var(--ink); color: var(--paper); padding: 3rem 0; border-top: 1px solid var(--line-dark); }
@@ -432,10 +426,7 @@
     .fix-grid { grid-template-columns: 1fr 1fr; }
     .fix-cell:nth-child(2) { border-right: none; }
     .fix-cell:nth-child(1), .fix-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
-    .ledger-grid { grid-template-columns: 1fr 1fr; }
-    .lg-cell:nth-child(2) { border-right: none; }
-    .lg-cell:nth-child(1), .lg-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
-    .ledger-two { grid-template-columns: 1fr; gap: 2.5rem; }
+    .proof-callout { grid-template-columns: 1fr; gap: 2rem; }
     .gb-inner { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
     .gb-mark { display: none; }
   }
@@ -448,9 +439,6 @@
     .fix-grid { grid-template-columns: 1fr; }
     .fix-cell { border-right: none; border-bottom: 1px solid var(--line); }
     .fix-cell:last-child { border-bottom: none; }
-    .ledger-grid { grid-template-columns: 1fr; }
-    .lg-cell { border-right: none; border-bottom: 1px solid var(--line); }
-    .lg-cell:last-child { border-bottom: none; }
     .flagship { padding: 1.9rem 1.5rem; }
     .block-row { grid-template-columns: 2rem 1fr; }
     .block-row .live { grid-column: 2; justify-self: start; margin-top: 0.3rem; }
@@ -612,50 +600,17 @@
 
 <section id="ledger">
   <div class="container">
-    <div class="sec-head reveal">
-      <span class="sec-num">04 / The proof it rests on</span>
-      <div>
-        <h2 class="sec-title">Every fix starts from <em>the same ledger.</em></h2>
-        <p class="sec-intro">Six audits in, every leak I've found goes into one record — the figure, how I got it, and how sure I am of it. What mostly shows up at owner-run businesses is $30,000 to $40,000 a year. The guarantee sits at $10,000 because that's the number I'll stake the fee on, not the number I expect.</p>
+    <div class="proof-callout reveal">
+      <div class="pc-left">
+        <span class="kicker">The proof it rests on</span>
+        <h2 class="pc-h">This isn't guesswork. <em>It's a ledger.</em></h2>
+        <p class="pc-p">Six audits in, every leak I've found goes into one record — the figure, how I got it, and how sure I am of it. What mostly shows up at owner-run businesses is <b>$30,000 to $40,000 a year</b>, and two root causes — nothing following up on its own, and the owner still doing work nobody needs the owner for — account for <b>eleven of twenty-four</b> leaks logged. The guarantee sits at $10,000 because that's the number I'll stake the fee on, not the number I expect.</p>
+        <a href="/#ledger" class="btn btn-text">See what I keep finding →</a>
       </div>
-    </div>
-
-    <div class="ledger-grid reveal">
-      <div class="lg-cell"><div class="lg-num">24</div><div class="lg-lab">Leaks logged<br>across six audits</div></div>
-      <div class="lg-cell"><div class="lg-num">16</div><div class="lg-lab">Carried a defensible<br>dollar figure</div></div>
-      <div class="lg-cell"><div class="lg-num">8</div><div class="lg-lab">Named — and<br>deliberately not priced</div></div>
-      <div class="lg-cell"><div class="lg-num">14 of 24</div><div class="lg-lab">Landed in the<br>back office</div></div>
-    </div>
-
-    <div class="ledger-two">
-      <div class="reveal">
-        <span class="kicker">The two root causes</span>
-        <div class="root-list" style="margin-top: 1.2rem;">
-          <div class="root-row">
-            <span class="rc">i.</span>
-            <div>
-              <div class="rt">Nothing follows up unless a person remembers to.</div>
-              <div class="rd">Six of twenty-four leaks</div>
-            </div>
-          </div>
-          <div class="root-row">
-            <span class="rc">ii.</span>
-            <div>
-              <div class="rt">The owner's still doing work nobody needs the owner for.</div>
-              <div class="rd">Five of twenty-four leaks</div>
-            </div>
-          </div>
-        </div>
-        <p style="margin-top: 1.4rem; color: var(--ink-soft); font-size: 0.98rem; max-width: 480px;">Eleven of twenty-four leaks trace back to those two sentences. Different industries, different sizes, same two failures — which is why the audit doesn't care what business you're in.</p>
-      </div>
-
-      <div class="reveal">
-        <div class="np-box">
-          <span class="np-tag">● Named, not priced</span>
-          <h4 style="margin-top: 0.7rem;">A third of what I find gets no number at all.</h4>
-          <p>Eight of the twenty-four leaks were named and left unpriced on purpose. One was a hundred thousand dollars in aged invoices — real, and still not a yearly loss, so it doesn't get counted like one.</p>
-          <p>Forcing a figure onto those would make the report look better and be worth less. If I can't defend a number in front of your accountant, you get the leak without the number.</p>
-        </div>
+      <div class="pc-right">
+        <div class="pc-stat"><div class="pc-num">24</div><div class="pc-lab">Leaks logged<br>across six audits</div></div>
+        <div class="pc-stat"><div class="pc-num">$30–40K</div><div class="pc-lab">Typical yearly<br>total found</div></div>
+        <div class="pc-stat"><div class="pc-num">8</div><div class="pc-lab">Named — and<br>not priced</div></div>
       </div>
     </div>
   </div>
