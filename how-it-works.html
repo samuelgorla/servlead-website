@@ -422,6 +422,47 @@
   .gb-cta a { background: #fff; color: var(--ink); padding: 1rem 1.9rem; border-radius: 999px; font-weight: 700; text-decoration: none; display: inline-block; transition: transform 0.2s; }
   .gb-cta a:hover { transform: translateY(-2px); }
 
+  /* AGENTIC FLEET SIMULATION */
+  .fleet { border: 1px solid var(--ink); background: var(--ink); margin-top: 2.4rem; overflow: hidden; box-shadow: 0 4px 12px rgba(20,32,46,0.12), 0 12px 28px rgba(20,32,46,0.14); }
+  .fleet-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.75rem 1.3rem; border-bottom: 1px solid rgba(249,247,242,0.16); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8fa0ba; }
+  .fleet-bar .fb-live { color: var(--gold); display: inline-flex; align-items: center; gap: 0.45rem; }
+  .fleet-bar .fb-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse-gold 2.2s infinite; }
+  @keyframes pulse-gold { 0%,100% { box-shadow: 0 0 0 0 rgba(232,182,76,0.35); } 50% { box-shadow: 0 0 0 6px rgba(232,182,76,0); } }
+  /* node row */
+  .fleet-nodes { display: grid; grid-template-columns: repeat(3, 1fr) 0.9fr; gap: 0; border-bottom: 1px solid rgba(249,247,242,0.16); }
+  .fnode { position: relative; padding: 1.3rem 1rem 1.4rem; border-right: 1px solid rgba(249,247,242,0.1); text-align: center; transition: background var(--base) var(--ease); }
+  .fnode:last-child { border-right: none; }
+  .fnode .fn-ic { width: 34px; height: 34px; margin: 0 auto 0.7rem; border: 1.5px solid rgba(249,247,242,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.9rem; color: #8fa0ba; transition: all var(--base) var(--ease); }
+  .fnode .fn-name { font-family: var(--serif); font-size: 1.08rem; color: var(--paper); line-height: 1.2; }
+  .fnode .fn-role { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8fa0ba; margin-top: 0.35rem; }
+  .fnode.active { background: rgba(232,182,76,0.08); }
+  .fnode.active .fn-ic { border-color: var(--gold); color: var(--ink); background: var(--gold); transform: scale(1.08); box-shadow: 0 0 0 4px rgba(232,182,76,0.18); }
+  .fnode.done .fn-ic { border-color: var(--green); color: var(--green); }
+  .fnode.approve.active .fn-ic { border-color: var(--gold); background: var(--gold); }
+  /* connector token */
+  .fnode:not(:last-child)::after { content: ''; position: absolute; right: -5px; top: calc(1.3rem + 17px); width: 9px; height: 9px; border-radius: 50%; background: var(--gold); opacity: 0; transform: translateX(-14px); z-index: 2; }
+  .fnode.firing::after { animation: token-pass 0.55s var(--ease) forwards; }
+  @keyframes token-pass { 0% { opacity: 0; transform: translateX(-14px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(6px); } }
+  /* activity log */
+  .fleet-log { padding: 1.3rem 1.4rem; min-height: 200px; display: flex; flex-direction: column; gap: 0.7rem; }
+  .flog { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; align-items: baseline; opacity: 0; transform: translateY(8px); transition: opacity var(--base) var(--ease), transform var(--base) var(--ease); }
+  .flog.show { opacity: 1; transform: translateY(0); }
+  .flog .fl-who { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); white-space: nowrap; padding-top: 0.15rem; }
+  .flog .fl-line { font-size: 0.94rem; color: #cdd5e2; line-height: 1.45; }
+  .flog .fl-line b { color: var(--paper); font-weight: 600; }
+  .flog.you .fl-who { color: var(--green); }
+  .flog.you .fl-line { color: var(--paper); }
+  .fleet-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1rem 1.4rem; border-top: 1px solid rgba(249,247,242,0.16); background: rgba(0,0,0,0.12); }
+  .fleet-foot .ff-sum { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--paper); }
+  .fleet-foot .ff-sum b { color: var(--gold); font-style: normal; font-weight: 500; }
+  .fleet-foot .ff-note { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7d8494; }
+  .fleet-cap { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); margin-top: 1rem; text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fleet .fnode.firing::after { animation: none; }
+    .fb-dot { animation: none; }
+  }
+
   @media (max-width: 1024px) {
     .fix-grid { grid-template-columns: 1fr 1fr; }
     .fix-cell:nth-child(2) { border-right: none; }
@@ -440,8 +481,11 @@
     .fix-cell { border-right: none; border-bottom: 1px solid var(--line); }
     .fix-cell:last-child { border-bottom: none; }
     .flagship { padding: 1.9rem 1.5rem; }
-    .block-row { grid-template-columns: 2rem 1fr; }
-    .block-row .live { grid-column: 2; justify-self: start; margin-top: 0.3rem; }
+    .fleet-nodes { grid-template-columns: 1fr 1fr; }
+    .fnode:nth-child(2) { border-right: none; }
+    .fnode:nth-child(1), .fnode:nth-child(2) { border-bottom: 1px solid rgba(249,247,242,0.1); }
+    .fnode:not(:last-child)::after { display: none; }
+    .fleet-log { min-height: 240px; }
   }
 </style>
 </head>
@@ -572,6 +616,41 @@
       <p class="fl-kicker">The question was never "should I use agents." It's "which of my repeating tasks is worth handing off first." That's the smaller question — and it's the one that pays.</p>
     </div>
 
+    <div class="fleet reveal" id="fleet" aria-hidden="true">
+      <div class="fleet-bar">
+        <span>An after-hours lead, handled by a fleet</span>
+        <span class="fb-live"><span class="fb-dot"></span>Simulation</span>
+      </div>
+      <div class="fleet-nodes">
+        <div class="fnode" data-node="0">
+          <div class="fn-ic">1</div>
+          <div class="fn-name">Responder</div>
+          <div class="fn-role">catches &amp; qualifies</div>
+        </div>
+        <div class="fnode" data-node="1">
+          <div class="fn-ic">2</div>
+          <div class="fn-name">Router</div>
+          <div class="fn-role">checks &amp; routes</div>
+        </div>
+        <div class="fnode" data-node="2">
+          <div class="fn-ic">3</div>
+          <div class="fn-name">Scribe</div>
+          <div class="fn-role">logs &amp; flags</div>
+        </div>
+        <div class="fnode approve" data-node="3">
+          <div class="fn-ic">✓</div>
+          <div class="fn-name">You</div>
+          <div class="fn-role">approve what matters</div>
+        </div>
+      </div>
+      <div class="fleet-log" id="fleetLog"></div>
+      <div class="fleet-foot">
+        <span class="ff-sum" id="fleetSum">&nbsp;</span>
+        <span class="ff-note">Illustration of how a fleet hands work down the line</span>
+      </div>
+    </div>
+    <p class="fleet-cap reveal">Same shape, whatever the job: one agent finds it, the next does it, the next files it — you approve the one step that needs you.</p>
+
     <p class="blocks-foot reveal">Whatever gets built runs on its own or as part of a fleet, and it's built to hand off — you run it yourself, unless you'd rather I manage it. <b><a href="/#demos" style="color: var(--rust); border-bottom: 2px solid var(--rust); padding-bottom: 1px; text-decoration: none;">Want to see real ones in action? Watch the live demos →</a></b></p>
   </div>
 </section>
@@ -645,6 +724,95 @@
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+})();
+
+// Agentic fleet simulation
+(function () {
+  var fleet = document.getElementById('fleet');
+  if (!fleet) return;
+  var logEl = document.getElementById('fleetLog');
+  var sumEl = document.getElementById('fleetSum');
+  var nodes = fleet.querySelectorAll('.fnode');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var steps = [
+    { node: 0, who: 'Responder', line: 'After-hours lead caught \u2014 <b>7:42 PM</b>. \u201cNeed a quote on a 4,000 sq ft buildout, tight timeline.\u201d' },
+    { node: 0, who: 'Responder', line: 'Two questions asked and answered. <b>Qualified \u2014 hot.</b>' },
+    { node: 1, who: 'Router', line: 'Calendar checked. Tuesday 9:00 AM offered and held.' },
+    { node: 1, who: 'Router', line: 'Hot lead routed to you. <b>Text sent.</b>' },
+    { node: 2, who: 'Scribe', line: 'Logged to the CRM, tagged buildout, follow-up flagged for the call.' },
+    { node: 3, who: 'You', line: 'One thing waiting: <b>approve the Tuesday hold.</b>', you: true },
+    { node: 3, who: 'You', line: 'Approved. \u2713', you: true, done: true }
+  ];
+
+  var token = 0;
+
+  function reset() {
+    nodes.forEach(function (n) { n.classList.remove('active', 'done', 'firing'); });
+    logEl.innerHTML = '';
+    sumEl.innerHTML = '&nbsp;';
+  }
+
+  function settle() {
+    nodes.forEach(function (n) { n.classList.remove('active', 'firing'); n.classList.add('done'); });
+    sumEl.innerHTML = '<b>3 agents</b> · 1 approval from you · while you were on the roof';
+  }
+
+  function renderAll() {
+    // reduced-motion: show final state, no animation
+    reset();
+    steps.forEach(function (s) {
+      var row = document.createElement('div');
+      row.className = 'flog show' + (s.you ? ' you' : '');
+      row.innerHTML = '<span class="fl-who">' + s.who + '</span><span class="fl-line">' + s.line + '</span>';
+      logEl.appendChild(row);
+    });
+    settle();
+  }
+
+  function run() {
+    if (reduce) { renderAll(); return; }
+    var my = ++token;
+    reset();
+    var i = 0;
+    function next() {
+      if (my !== token) return;
+      if (i >= steps.length) {
+        settle();
+        setTimeout(function () { if (my === token) run(); }, 4500);
+        return;
+      }
+      var s = steps[i++];
+      var prevActive = fleet.querySelector('.fnode.active');
+      if (prevActive && prevActive !== nodes[s.node]) { prevActive.classList.remove('active'); prevActive.classList.add('done'); }
+      var node = nodes[s.node];
+      node.classList.add('active');
+      // fire the connector token from the node handing off
+      if (s.node > 0) {
+        var from = nodes[s.node - 1];
+        from.classList.add('firing');
+        setTimeout(function () { from.classList.remove('firing'); }, 560);
+      }
+      if (s.done) node.classList.add('done');
+      var row = document.createElement('div');
+      row.className = 'flog' + (s.you ? ' you' : '');
+      row.innerHTML = '<span class="fl-who">' + s.who + '</span><span class="fl-line">' + s.line + '</span>';
+      logEl.appendChild(row);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { row.classList.add('show'); }); });
+      setTimeout(next, s.you ? 1500 : 1350);
+    }
+    next();
+  }
+
+  // Start when visible; pause (stop looping) when scrolled away
+  var running = false;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !running) { running = true; run(); }
+      else if (!e.isIntersecting && running) { running = false; token++; /* halt loop */ }
+    });
+  }, { threshold: 0.3 });
+  obs.observe(fleet);
 })();
 </script>
 
