@@ -422,45 +422,60 @@
   .gb-cta a { background: #fff; color: var(--ink); padding: 1rem 1.9rem; border-radius: 999px; font-weight: 700; text-decoration: none; display: inline-block; transition: transform 0.2s; }
   .gb-cta a:hover { transform: translateY(-2px); }
 
-  /* AGENTIC FLEET SIMULATION */
-  .fleet { border: 1px solid var(--ink); background: var(--ink); margin-top: 2.4rem; overflow: hidden; box-shadow: 0 4px 12px rgba(20,32,46,0.12), 0 12px 28px rgba(20,32,46,0.14); }
-  .fleet-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.75rem 1.3rem; border-bottom: 1px solid rgba(249,247,242,0.16); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8fa0ba; }
-  .fleet-bar .fb-live { color: var(--gold); display: inline-flex; align-items: center; gap: 0.45rem; }
-  .fleet-bar .fb-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse-gold 2.2s infinite; }
-  @keyframes pulse-gold { 0%,100% { box-shadow: 0 0 0 0 rgba(232,182,76,0.35); } 50% { box-shadow: 0 0 0 6px rgba(232,182,76,0); } }
-  /* node row */
-  .fleet-nodes { display: grid; grid-template-columns: repeat(3, 1fr) 0.9fr; gap: 0; border-bottom: 1px solid rgba(249,247,242,0.16); }
-  .fnode { position: relative; padding: 1.3rem 1rem 1.4rem; border-right: 1px solid rgba(249,247,242,0.1); text-align: center; transition: background var(--base) var(--ease); }
-  .fnode:last-child { border-right: none; }
-  .fnode .fn-ic { width: 34px; height: 34px; margin: 0 auto 0.7rem; border: 1.5px solid rgba(249,247,242,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.9rem; color: #8fa0ba; transition: all var(--base) var(--ease); }
-  .fnode .fn-name { font-family: var(--serif); font-size: 1.08rem; color: var(--paper); line-height: 1.2; }
-  .fnode .fn-role { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8fa0ba; margin-top: 0.35rem; }
-  .fnode.active { background: rgba(232,182,76,0.08); }
-  .fnode.active .fn-ic { border-color: var(--gold); color: var(--ink); background: var(--gold); transform: scale(1.08); box-shadow: 0 0 0 4px rgba(232,182,76,0.18); }
-  .fnode.done .fn-ic { border-color: var(--green); color: var(--green); }
-  .fnode.approve.active .fn-ic { border-color: var(--gold); background: var(--gold); }
-  /* connector token */
-  .fnode:not(:last-child)::after { content: ''; position: absolute; right: -5px; top: calc(1.3rem + 17px); width: 9px; height: 9px; border-radius: 50%; background: var(--gold); opacity: 0; transform: translateX(-14px); z-index: 2; }
-  .fnode.firing::after { animation: token-pass 0.55s var(--ease) forwards; }
-  @keyframes token-pass { 0% { opacity: 0; transform: translateX(-14px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(6px); } }
-  /* activity log */
-  .fleet-log { padding: 1.3rem 1.4rem; min-height: 200px; display: flex; flex-direction: column; gap: 0.7rem; }
-  .flog { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; align-items: baseline; opacity: 0; transform: translateY(8px); transition: opacity var(--base) var(--ease), transform var(--base) var(--ease); }
-  .flog.show { opacity: 1; transform: translateY(0); }
-  .flog .fl-who { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); white-space: nowrap; padding-top: 0.15rem; }
-  .flog .fl-line { font-size: 0.94rem; color: #cdd5e2; line-height: 1.45; }
-  .flog .fl-line b { color: var(--paper); font-weight: 600; }
-  .flog.you .fl-who { color: var(--green); }
-  .flog.you .fl-line { color: var(--paper); }
-  .fleet-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1rem 1.4rem; border-top: 1px solid rgba(249,247,242,0.16); background: rgba(0,0,0,0.12); }
-  .fleet-foot .ff-sum { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--paper); }
-  .fleet-foot .ff-sum b { color: var(--gold); font-style: normal; font-weight: 500; }
-  .fleet-foot .ff-note { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7d8494; }
-  .fleet-cap { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); margin-top: 1rem; text-align: center; }
+  /* AGENTIC FLEET — COWORKERS */
+  .crew { border: 1px solid var(--ink); background: linear-gradient(180deg, #16232f 0%, #111b26 100%); margin-top: 2.4rem; overflow: hidden; box-shadow: 0 4px 14px rgba(20,32,46,0.18), 0 18px 40px rgba(20,32,46,0.22); }
+  .crew-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.8rem 1.4rem; border-bottom: 1px solid rgba(249,247,242,0.12); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8fa0ba; }
+  .crew-bar .cb-live { color: var(--gold); display: inline-flex; align-items: center; gap: 0.45rem; }
+  .crew-bar .cb-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse-gold 2.4s infinite; }
+  @keyframes pulse-gold { 0%,100% { box-shadow: 0 0 0 0 rgba(232,182,76,0.4); } 50% { box-shadow: 0 0 0 5px rgba(232,182,76,0); } }
+
+  .crew-floor { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding: 2.6rem 1.2rem 1.4rem; }
+  .desk { position: relative; display: flex; flex-direction: column; align-items: center; padding: 0 0.6rem; }
+  /* the person: avatar disc + subtle shoulders */
+  .desk .who { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; transition: transform var(--base) var(--ease); }
+  .desk .ava { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border: 2px solid rgba(249,247,242,0.22); background: #223243; transition: all var(--base) var(--ease); position: relative; }
+  .desk .ava svg { width: 52px; height: 52px; display: block; }
+  .desk .ava .ch-skin { fill: #e9c9a8; }
+  .desk .ava .ch-line { stroke: var(--ink); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .desk .ava::after { content: ''; position: absolute; bottom: -13px; width: 50px; height: 20px; border-radius: 40px 40px 0 0; background: #223243; border: 2px solid rgba(249,247,242,0.22); border-bottom: none; transition: all var(--base) var(--ease); z-index: -1; }
+  .desk .nm { font-family: var(--serif); font-size: 1.12rem; color: var(--paper); margin-top: 1.5rem; line-height: 1; }
+  .desk .rl { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7d8ea3; margin-top: 0.45rem; text-align: center; }
+  /* desktop surface line */
+  .crew-floor::before { content: ''; position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.4rem; height: 1px; background: rgba(249,247,242,0.12); }
+  /* active state — the coworker "leans in" */
+  .desk .ava { --accent: #7d8ea3; }
+  .desk .ava .ch-accent { fill: var(--accent); transition: fill var(--base) var(--ease); }
+  .desk .ava .ch-accent-s { stroke: var(--accent); transition: stroke var(--base) var(--ease); }
+  .desk.active .who { transform: translateY(-4px); }
+  .desk.active .ava { border-color: var(--gold); background: linear-gradient(180deg, #2a3d4f, #223243); box-shadow: 0 0 0 5px rgba(232,182,76,0.12), 0 6px 16px rgba(0,0,0,0.3); --accent: var(--gold); }
+  .desk.active .ava::after { border-color: var(--gold); background: #2a3d4f; }
+  .desk.done .ava { border-color: var(--green); --accent: var(--green); }
+  .desk.done .ava::after { border-color: var(--green); }
+  .desk.you .ava { background: #1d3a2e; border-color: rgba(34,118,79,0.5); }
+  .desk.you .ava::after { background: #1d3a2e; border-color: rgba(34,118,79,0.5); }
+  .desk.you.active .ava { border-color: var(--gold); background: linear-gradient(180deg, #2a4d3c, #1d3a2e); color: var(--gold); box-shadow: 0 0 0 5px rgba(232,182,76,0.16), 0 6px 16px rgba(0,0,0,0.3); }
+  .desk.you.active .ava::after { border-color: var(--gold); background: #2a4d3c; }
+  /* speech bubble */
+  .desk .bubble { position: absolute; top: -6px; left: 50%; transform: translate(-50%, -8px) scale(0.94); width: max-content; max-width: 210px; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 0.82rem; line-height: 1.4; padding: 0.6rem 0.8rem; border-radius: 12px; box-shadow: 0 8px 22px rgba(0,0,0,0.28); opacity: 0; pointer-events: none; transition: opacity var(--base) var(--ease), transform var(--base) var(--ease); z-index: 5; }
+  .desk .bubble::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 12px; height: 12px; background: var(--paper); border-radius: 0 0 3px 0; }
+  .desk .bubble b { color: var(--rust); font-weight: 600; }
+  .desk.talking .bubble { opacity: 1; transform: translate(-50%, -14px) scale(1); }
+  .desk.you .bubble b { color: var(--green); }
+  /* the job card that travels */
+  .job-card { position: absolute; bottom: 1.9rem; width: 92px; padding: 0.45rem 0.55rem; background: var(--gold); color: var(--ink); border-radius: 7px; box-shadow: 0 6px 16px rgba(0,0,0,0.32); font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.3; z-index: 3; opacity: 0; transition: left 0.75s var(--ease), opacity 0.4s var(--ease); }
+  .job-card .jc-h { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; text-transform: none; letter-spacing: 0; }
+  .job-card.show { opacity: 1; }
+
+  .crew-cap { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); margin-top: 1rem; text-align: center; }
+  .crew-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1rem 1.4rem; border-top: 1px solid rgba(249,247,242,0.12); background: rgba(0,0,0,0.16); }
+  .crew-foot .cf-sum { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--paper); min-height: 1.4em; }
+  .crew-foot .cf-sum b { color: var(--gold); font-style: normal; font-weight: 500; }
+  .crew-foot .cf-note { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7d8494; }
 
   @media (prefers-reduced-motion: reduce) {
-    .fleet .fnode.firing::after { animation: none; }
-    .fb-dot { animation: none; }
+    .cb-dot { animation: none; }
+    .desk .bubble { transition: opacity 0.01s; }
+    .job-card { transition: opacity 0.01s; }
   }
 
   @media (max-width: 1024px) {
@@ -481,11 +496,10 @@
     .fix-cell { border-right: none; border-bottom: 1px solid var(--line); }
     .fix-cell:last-child { border-bottom: none; }
     .flagship { padding: 1.9rem 1.5rem; }
-    .fleet-nodes { grid-template-columns: 1fr 1fr; }
-    .fnode:nth-child(2) { border-right: none; }
-    .fnode:nth-child(1), .fnode:nth-child(2) { border-bottom: 1px solid rgba(249,247,242,0.1); }
-    .fnode:not(:last-child)::after { display: none; }
-    .fleet-log { min-height: 240px; }
+    .crew-floor { grid-template-columns: 1fr 1fr; gap: 2.4rem 0; padding: 2.4rem 1rem 1.4rem; }
+    .crew-floor::before { display: none; }
+    .desk .bubble { max-width: 150px; font-size: 0.76rem; }
+    .job-card { display: none; }
   }
 </style>
 </head>
@@ -616,40 +630,36 @@
       <p class="fl-kicker">The question was never "should I use agents." It's "which of my repeating tasks is worth handing off first." That's the smaller question — and it's the one that pays.</p>
     </div>
 
-    <div class="fleet reveal" id="fleet" aria-hidden="true">
-      <div class="fleet-bar">
-        <span>An after-hours lead, handled by a fleet</span>
-        <span class="fb-live"><span class="fb-dot"></span>Simulation</span>
+    <div class="crew reveal" id="crew" aria-hidden="true">
+      <div class="crew-bar">
+        <span>A lead comes in after hours. Watch the team pass it down.</span>
+        <span class="cb-live"><span class="cb-dot"></span>Simulation</span>
       </div>
-      <div class="fleet-nodes">
-        <div class="fnode" data-node="0">
-          <div class="fn-ic">1</div>
-          <div class="fn-name">Responder</div>
-          <div class="fn-role">catches &amp; qualifies</div>
+      <div class="crew-floor" id="crewFloor">
+        <div class="job-card" id="jobCard"><span class="jc-h">New lead</span><br>7:42 PM · buildout</div>
+        <div class="desk" data-i="0">
+          <div class="bubble"></div>
+          <div class="who"><div class="ava"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path class="ch-accent" d="M14 60c0-10 8-16 18-16s18 6 18 16z"/><rect class="ch-skin" x="28" y="34" width="8" height="10" rx="3"/><circle class="ch-skin" cx="32" cy="27" r="12"/><path class="ch-accent" d="M20 27a12 12 0 0 1 24 0c0-2-1-4-2-5-3 2-6 2-10 2s-7 0-10-2c-1 1-2 3-2 5z"/><path class="ch-accent-s" style="fill:none;stroke-width:2.6" d="M19 30a3 3 0 0 0 0 4M45 30a3 3 0 0 1 0 4M19 32v-4M45 32v-4a13 13 0 0 0-26 0M45 33c0 4-3 6-7 7"/><circle class="ch-line" cx="27" cy="27" r="1.1" style="fill:var(--ink);stroke:none"/><circle class="ch-line" cx="37" cy="27" r="1.1" style="fill:var(--ink);stroke:none"/><path class="ch-line" d="M29 32c1 1 3 1 4 0" style="stroke-width:1.8"/></svg></div><div class="nm">Zara</div><div class="rl">Front desk</div></div>
         </div>
-        <div class="fnode" data-node="1">
-          <div class="fn-ic">2</div>
-          <div class="fn-name">Router</div>
-          <div class="fn-role">checks &amp; routes</div>
+        <div class="desk" data-i="1">
+          <div class="bubble"></div>
+          <div class="who"><div class="ava"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path class="ch-accent" d="M14 60c0-10 8-16 18-16s18 6 18 16z"/><rect class="ch-skin" x="28" y="34" width="8" height="10" rx="3"/><circle class="ch-skin" cx="32" cy="27" r="12"/><path class="ch-accent" d="M20 25c1-7 6-11 12-11s11 4 12 11c-2-3-3-4-5-4-2 1-4 1-7 1s-5 0-7-1c-2 0-3 1-5 4z"/><circle class="ch-line" cx="27" cy="27" r="1.1" style="fill:var(--ink);stroke:none"/><circle class="ch-line" cx="37" cy="27" r="1.1" style="fill:var(--ink);stroke:none"/><path class="ch-line" d="M29 32c1 1 3 1 4 0" style="stroke-width:1.8"/><path class="ch-line" d="M26 22c1-1 3-1 4 0M34 22c1-1 3-1 4 0" style="stroke-width:1.6"/></svg></div><div class="nm">Tomas</div><div class="rl">Scheduling</div></div>
         </div>
-        <div class="fnode" data-node="2">
-          <div class="fn-ic">3</div>
-          <div class="fn-name">Scribe</div>
-          <div class="fn-role">logs &amp; flags</div>
+        <div class="desk" data-i="2">
+          <div class="bubble"></div>
+          <div class="who"><div class="ava"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path class="ch-accent" d="M14 60c0-10 8-16 18-16s18 6 18 16z"/><rect class="ch-skin" x="28" y="34" width="8" height="10" rx="3"/><circle class="ch-skin" cx="32" cy="27" r="12"/><path class="ch-accent" d="M19 28c0-9 5-14 13-14s13 6 12 15c-1-4-2-6-4-6-1 3-3 4-8 4s-8-1-9-4c-2 1-3 3-4 5z"/><path class="ch-line" d="M23 27h6M35 27h6" style="stroke-width:2"/><circle class="ch-line" cx="26" cy="27.5" r="3.4" style="fill:none;stroke-width:2"/><circle class="ch-line" cx="38" cy="27.5" r="3.4" style="fill:none;stroke-width:2"/><path class="ch-line" d="M29.4 27.5h5.2" style="stroke-width:2"/><path class="ch-line" d="M29 33c1 1 3 1 4 0" style="stroke-width:1.8"/></svg></div><div class="nm">Sal</div><div class="rl">The books</div></div>
         </div>
-        <div class="fnode approve" data-node="3">
-          <div class="fn-ic">✓</div>
-          <div class="fn-name">You</div>
-          <div class="fn-role">approve what matters</div>
+        <div class="desk you" data-i="3">
+          <div class="bubble"></div>
+          <div class="who"><div class="ava"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path class="ch-accent" d="M14 60c0-10 8-16 18-16s18 6 18 16z"/><rect class="ch-skin" x="28" y="36" width="8" height="9" rx="3"/><circle class="ch-skin" cx="32" cy="29" r="11"/><circle class="ch-line" cx="28" cy="29" r="1.1" style="fill:var(--ink);stroke:none"/><circle class="ch-line" cx="36" cy="29" r="1.1" style="fill:var(--ink);stroke:none"/><path class="ch-line" d="M29 34c1 1 3 1 4 0" style="stroke-width:1.8"/><path class="ch-line" d="M24 30c0 3 3 6 8 6s8-3 8-6" style="stroke:none;fill:none"/><path class="ch-accent" d="M17 24h30v3H17z"/><path class="ch-accent" d="M21 24c0-8 5-12 11-12s11 4 11 12c-3-2-7-3-11-3s-8 1-11 3z"/><path class="ch-line" d="M32 12v-2" style="stroke-width:2"/></svg></div><div class="nm">You</div><div class="rl">The one call that's yours</div></div>
         </div>
       </div>
-      <div class="fleet-log" id="fleetLog"></div>
-      <div class="fleet-foot">
-        <span class="ff-sum" id="fleetSum">&nbsp;</span>
-        <span class="ff-note">Illustration of how a fleet hands work down the line</span>
+      <div class="crew-foot">
+        <span class="cf-sum" id="crewSum">&nbsp;</span>
+        <span class="cf-note">Illustration — this is how a fleet hands work down the line</span>
       </div>
     </div>
-    <p class="fleet-cap reveal">Same shape, whatever the job: one agent finds it, the next does it, the next files it — you approve the one step that needs you.</p>
+    <p class="crew-cap reveal">Three handoffs, one decision that's yours. That's a fleet — not a tool waiting to be told what to do.</p>
 
     <p class="blocks-foot reveal">Whatever gets built runs on its own or as part of a fleet, and it's built to hand off — you run it yourself, unless you'd rather I manage it. <b><a href="/#demos" style="color: var(--rust); border-bottom: 2px solid var(--rust); padding-bottom: 1px; text-decoration: none;">Want to see real ones in action? Watch the live demos →</a></b></p>
   </div>
@@ -726,94 +736,99 @@
   document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
 })();
 
-// Agentic fleet simulation
+// Agentic fleet — coworkers passing a job down the line
 (function () {
-  var fleet = document.getElementById('fleet');
-  if (!fleet) return;
-  var logEl = document.getElementById('fleetLog');
-  var sumEl = document.getElementById('fleetSum');
-  var nodes = fleet.querySelectorAll('.fnode');
+  var crew = document.getElementById('crew');
+  if (!crew) return;
+  var floor = document.getElementById('crewFloor');
+  var desks = crew.querySelectorAll('.desk');
+  var bubbles = crew.querySelectorAll('.desk .bubble');
+  var card = document.getElementById('jobCard');
+  var sumEl = document.getElementById('crewSum');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var steps = [
-    { node: 0, who: 'Responder', line: 'After-hours lead caught \u2014 <b>7:42 PM</b>. \u201cNeed a quote on a 4,000 sq ft buildout, tight timeline.\u201d' },
-    { node: 0, who: 'Responder', line: 'Two questions asked and answered. <b>Qualified \u2014 hot.</b>' },
-    { node: 1, who: 'Router', line: 'Calendar checked. Tuesday 9:00 AM offered and held.' },
-    { node: 1, who: 'Router', line: 'Hot lead routed to you. <b>Text sent.</b>' },
-    { node: 2, who: 'Scribe', line: 'Logged to the CRM, tagged buildout, follow-up flagged for the call.' },
-    { node: 3, who: 'You', line: 'One thing waiting: <b>approve the Tuesday hold.</b>', you: true },
-    { node: 3, who: 'You', line: 'Approved. \u2713', you: true, done: true }
+  var script = [
+    { i: 0, say: "Lead just came in \u2014 <b>7:42</b>, warehouse buildout. I've got them talking." },
+    { i: 1, say: "Nice. Tuesday 9's open \u2014 <b>texting the owner now.</b>" },
+    { i: 2, say: "Logged it and flagged the follow-up so nothing slips." },
+    { i: 3, say: "One thing for you: <b>approve Tuesday?</b>", you: true },
+    { i: 3, say: "Done. \u2713", you: true, done: true }
   ];
+
+  function cardTo(i, cb) {
+    var fRect = floor.getBoundingClientRect();
+    var dRect = desks[i].getBoundingClientRect();
+    var left = (dRect.left - fRect.left) + (dRect.width / 2) - (card.offsetWidth / 2);
+    card.style.left = left + 'px';
+    if (cb) setTimeout(cb, 780);
+  }
 
   var token = 0;
 
-  function reset() {
-    nodes.forEach(function (n) { n.classList.remove('active', 'done', 'firing'); });
-    logEl.innerHTML = '';
+  function clearAll() {
+    desks.forEach(function (d) { d.classList.remove('active', 'talking', 'done'); });
+    bubbles.forEach(function (b) { b.innerHTML = ''; });
+    card.classList.remove('show');
     sumEl.innerHTML = '&nbsp;';
   }
 
   function settle() {
-    nodes.forEach(function (n) { n.classList.remove('active', 'firing'); n.classList.add('done'); });
-    sumEl.innerHTML = '<b>3 agents</b> · 1 approval from you · while you were on the roof';
+    desks.forEach(function (d) { d.classList.remove('active', 'talking'); d.classList.add('done'); });
+    card.classList.remove('show');
+    card.style.left = '-200px';
+    sumEl.innerHTML = '<b>Three teammates</b>, one approval from you \u2014 while you were on the roof.';
   }
 
-  function renderAll() {
-    // reduced-motion: show final state, no animation
-    reset();
-    steps.forEach(function (s) {
-      var row = document.createElement('div');
-      row.className = 'flog show' + (s.you ? ' you' : '');
-      row.innerHTML = '<span class="fl-who">' + s.who + '</span><span class="fl-line">' + s.line + '</span>';
-      logEl.appendChild(row);
-    });
+  function showFinal() {
+    clearAll();
+    script.forEach(function (s) { desks[s.i].classList.add('talking'); bubbles[s.i].innerHTML = s.say; });
     settle();
   }
 
   function run() {
-    if (reduce) { renderAll(); return; }
+    if (reduce) { showFinal(); return; }
     var my = ++token;
-    reset();
-    var i = 0;
-    function next() {
+    clearAll();
+    card.classList.add('show');
+    cardTo(0);
+    var idx = 0;
+    function step() {
       if (my !== token) return;
-      if (i >= steps.length) {
+      if (idx >= script.length) {
         settle();
-        setTimeout(function () { if (my === token) run(); }, 4500);
+        setTimeout(function () { if (my === token) run(); }, 4800);
         return;
       }
-      var s = steps[i++];
-      var prevActive = fleet.querySelector('.fnode.active');
-      if (prevActive && prevActive !== nodes[s.node]) { prevActive.classList.remove('active'); prevActive.classList.add('done'); }
-      var node = nodes[s.node];
-      node.classList.add('active');
-      // fire the connector token from the node handing off
-      if (s.node > 0) {
-        var from = nodes[s.node - 1];
-        from.classList.add('firing');
-        setTimeout(function () { from.classList.remove('firing'); }, 560);
-      }
-      if (s.done) node.classList.add('done');
-      var row = document.createElement('div');
-      row.className = 'flog' + (s.you ? ' you' : '');
-      row.innerHTML = '<span class="fl-who">' + s.who + '</span><span class="fl-line">' + s.line + '</span>';
-      logEl.appendChild(row);
-      requestAnimationFrame(function () { requestAnimationFrame(function () { row.classList.add('show'); }); });
-      setTimeout(next, s.you ? 1500 : 1350);
+      var s = script[idx++];
+      desks.forEach(function (d, di) { if (di !== s.i) d.classList.remove('active', 'talking'); });
+      var d = desks[s.i];
+      cardTo(s.i, function () {
+        if (my !== token) return;
+        d.classList.add('active', 'talking');
+        bubbles[s.i].innerHTML = s.say;
+        if (s.done) { d.classList.add('done'); card.classList.remove('show'); card.style.left = '-200px'; }
+        setTimeout(step, s.you ? 2000 : 1750);
+      });
     }
-    next();
+    setTimeout(step, 650);
   }
 
-  // Start when visible; pause (stop looping) when scrolled away
   var running = false;
-  var obs = new IntersectionObserver(function (entries) {
+  var vobs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting && !running) { running = true; run(); }
-      else if (!e.isIntersecting && running) { running = false; token++; /* halt loop */ }
+      else if (!e.isIntersecting && running) { running = false; token++; }
     });
   }, { threshold: 0.3 });
-  obs.observe(fleet);
+  vobs.observe(crew);
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (running) { token++; running = true; run(); } }, 300);
+  });
 })();
+
 </script>
 
 </body>
