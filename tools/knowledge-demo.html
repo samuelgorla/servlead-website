@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Servlead · The knowledge in 2–3 heads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@400;500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2f2f1; --paper-deep:#e9e9e7; --ink:#14202e; --rust:#a63d1c;
+    --muted:#7d8494; --green:#22764f; --green-deep:#0f5136; --green-pale:#e4f0ea;
+    --red:#a32d2d; --red-pale:#f6e3dd; --card:#ffffff; --hair:rgba(20,32,46,0.12);
+    --sans:'Archivo',system-ui,sans-serif; --serif:'Newsreader',Georgia,serif;
+    --mono:'Spline Sans Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{background:var(--paper-deep);}
+  body{font-family:var(--sans);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;}
+  .phone{width:100%;max-width:400px;background:var(--paper);border-radius:22px;padding:22px 20px 20px;position:relative;overflow:hidden;}
+  .eyebrow{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .eyebrow .dot{width:3px;height:3px;border-radius:50%;background:var(--muted);}
+  h1{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.2;letter-spacing:-0.01em;margin-bottom:16px;}
+  h1 em{font-style:italic;color:var(--rust);}
+
+  .day{margin-bottom:12px;}
+  .day-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .day-label{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .day-status{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green-deep);transition:color .3s;}
+  .day-status.stopped{color:var(--red);}
+  .track{height:8px;background:var(--paper-deep);border-radius:99px;overflow:hidden;position:relative;}
+  .fill{height:100%;width:0%;background:var(--green);border-radius:99px;transition:width .4s linear, background .25s;}
+  .fill.stopped{background:var(--red);}
+  .marks{position:relative;height:10px;margin-top:3px;}
+  .mark{position:absolute;top:0;width:2px;height:10px;background:var(--red);opacity:0;transition:opacity .3s;}
+  .mark.on{opacity:1;}
+
+  .stage{background:var(--card);border:0.5px solid var(--hair);border-radius:14px;padding:15px 14px;min-height:330px;position:relative;overflow:hidden;}
+  .panel{transition:opacity .35s ease, transform .35s ease;}
+  .panel.out{opacity:0;transform:translateX(-24px);position:absolute;inset:15px 14px;pointer-events:none;}
+  .panel.in-from-right{opacity:0;transform:translateX(24px);position:absolute;inset:15px 14px;pointer-events:none;}
+  .panel.shown{opacity:1;transform:none;position:relative;inset:auto;pointer-events:auto;}
+  .tag-row{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+  .tag{font-family:var(--mono);font-size:11px;font-weight:500;padding:3px 9px;border-radius:6px;letter-spacing:.02em;}
+  .tag.before{background:var(--red-pale);color:#7a2a12;}
+  .tag.after{background:var(--green-pale);color:var(--green-deep);}
+  .tag-note{font-size:13px;color:var(--muted);}
+
+  .ping{display:flex;align-items:flex-start;gap:9px;margin-bottom:11px;opacity:0;transform:translateY(8px);transition:opacity .3s, transform .3s;}
+  .ping.show{opacity:1;transform:none;}
+  .ping.buzz{animation:buzz .45s ease;}
+  @keyframes buzz{0%,100%{transform:translateX(0)}15%{transform:translateX(-4px)}30%{transform:translateX(4px)}45%{transform:translateX(-3px)}60%{transform:translateX(3px)}75%{transform:translateX(-1px)}}
+  .ping .t{font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:10px;min-width:46px;}
+  .ping .msg{background:var(--paper);border:0.5px solid var(--hair);font-size:13.5px;line-height:1.45;padding:9px 12px;border-radius:11px;flex:1;}
+
+  .verdict{border-radius:11px;padding:11px 13px;display:flex;align-items:flex-start;gap:9px;margin-top:3px;font-size:12.5px;line-height:1.42;opacity:0;transform:translateY(6px);transition:opacity .4s, transform .4s;}
+  .verdict.show{opacity:1;transform:none;}
+  .verdict.bad{background:var(--red-pale);color:#7a2a12;}
+  .verdict.good{background:var(--green-pale);color:var(--green-deep);}
+  .verdict svg{flex-shrink:0;margin-top:1px;}
+
+  .q{display:flex;justify-content:flex-end;margin-bottom:12px;min-height:38px;}
+  .q span{background:#e7eef6;color:#123;font-size:13.5px;line-height:1.45;padding:9px 12px;border-radius:13px 13px 3px 13px;max-width:82%;}
+  .caret{display:inline-block;width:2px;height:14px;background:#123;vertical-align:-2px;margin-left:2px;animation:blink .8s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0}}
+  .kb-wrap{display:flex;justify-content:flex-start;margin-bottom:14px;opacity:0;transform:translateY(8px);transition:opacity .4s, transform .4s;}
+  .kb-wrap.show{opacity:1;transform:none;}
+  .kb{background:var(--green-pale);border:0.5px solid #b9dccb;border-radius:13px 13px 13px 3px;padding:12px 14px;max-width:93%;}
+  .kb-head{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+  .kb-head span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green-deep);}
+  .kb-body{font-size:13.5px;line-height:1.5;color:#123a2a;margin-bottom:8px;}
+  .kb-src{font-size:11px;line-height:1.4;color:var(--green-deep);font-family:var(--mono);}
+
+  .btn{width:100%;margin-top:14px;padding:13px;background:var(--ink);color:var(--paper);border:none;border-radius:12px;font-family:var(--sans);font-size:14.5px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;transition:transform .08s, opacity .3s;}
+  .btn:active{transform:scale(.985);}
+  .btn.ghost{background:transparent;color:var(--ink);border:0.5px solid var(--hair);}
+  .btn[disabled]{opacity:.35;cursor:default;}
+  .foot{font-family:var(--mono);font-size:11px;line-height:1.4;color:var(--muted);margin-top:14px;padding:0 2px;}
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important;}
+  }
+</style>
+</head>
+<body>
+<main class="phone">
+  <div class="eyebrow"><span>servlead</span><span class="dot"></span><span>the knowledge in 2–3 heads</span></div>
+  <h1>Your best people, pulled off the work all day — <em>to answer what the shop should already know.</em></h1>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-label" id="dayLabel">your afternoon · 1:00 → 5:00</span>
+      <span class="day-status" id="dayStatus">working</span>
+    </div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="marks">
+      <div class="mark" id="m1" style="left:4%"></div>
+      <div class="mark" id="m2" style="left:41%"></div>
+      <div class="mark" id="m3" style="left:76%"></div>
+    </div>
+  </div>
+
+  <section class="stage">
+    <div class="panel shown" id="before">
+      <div class="tag-row"><span class="tag before">before</span><span class="tag-note">one afternoon, one owner</span></div>
+      <div class="ping" id="p1"><span class="t">1:10 pm</span><span class="msg">Hey, what do we charge for a standard change-order / add-on?</span></div>
+      <div class="ping" id="p2"><span class="t">2:40 pm</span><span class="msg">Customer wants that add-on price again — what do I tell him?</span></div>
+      <div class="ping" id="p3"><span class="t">4:05 pm</span><span class="msg">New guy's quoting one now. Same number as always?</span></div>
+      <div class="verdict bad" id="v1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#a32d2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Same answer, three times, only in your head. Every time, you stop what you're doing.</span>
+      </div>
+    </div>
+
+    <div class="panel in-from-right" id="after">
+      <div class="tag-row"><span class="tag after">after</span><span class="tag-note">it lives in the shop, not your head</span></div>
+      <div class="q"><span id="qText"></span></div>
+      <div class="kb-wrap" id="kb">
+        <div class="kb">
+          <div class="kb-head">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0f5136" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>shop knowledge base</span>
+          </div>
+          <div class="kb-body">Add-ons run our standard labor rate plus materials and the usual markup — same as the last dozen. Confirm scope in writing before the crew starts.</div>
+          <div class="kb-src">How we've always done it · captured once, from you</div>
+        </div>
+      </div>
+      <div class="verdict good" id="v2">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0f5136" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Anyone can get the answer. You stay on the job.</span>
+      </div>
+    </div>
+  </section>
+
+  <button class="btn" id="mainBtn">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <span id="btnLabel">Play the afternoon</span>
+  </button>
+  <button class="btn ghost" id="replayBtn" style="display:none">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+    <span>Replay</span>
+  </button>
+
+  <p class="foot">A demonstration of the workflow — not a recording of your system.</p>
+</main>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var fill=$('fill'), status=$('dayStatus'), label=$('dayLabel');
+  var before=$('before'), after=$('after');
+  var mainBtn=$('mainBtn'), btnLabel=$('btnLabel'), replayBtn=$('replayBtn');
+  var phase='idle'; var timers=[];
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var Q='What do we charge for a standard change-order / add-on?';
+
+  function wait(ms,fn){timers.push(setTimeout(fn,reduced?0:ms));}
+  function clearAll(){timers.forEach(clearTimeout);timers=[];}
+  function setFill(p,stopped){fill.style.width=p+'%';fill.classList.toggle('stopped',!!stopped);status.classList.toggle('stopped',!!stopped);status.textContent=stopped?'stopped':'working';}
+  function vibrate(){if(navigator.vibrate)try{navigator.vibrate(40);}catch(e){}}
+
+  function ping(id,mark,at,t){
+    wait(t,function(){setFill(at,true);$(mark).classList.add('on');var p=$(id);p.classList.add('show','buzz');vibrate();});
+    wait(t+700,function(){setFill(at,false);});
+  }
+
+  function playBefore(){
+    phase='before'; clearAll();
+    mainBtn.disabled=true; btnLabel.textContent='Playing…';
+    replayBtn.style.display='none';
+    label.textContent='your afternoon · 1:00 → 5:00';
+    before.className='panel shown'; after.className='panel in-from-right';
+    ['p1','p2','p3'].forEach(function(i){$(i).className='ping';});
+    ['m1','m2','m3'].forEach(function(i){$(i).classList.remove('on');});
+    $('v1').classList.remove('show');
+    setFill(0,false);
+    wait(100,function(){setFill(4,false);});
+    ping('p1','m1',4,600);
+    wait(1300,function(){setFill(41,false);});
+    ping('p2','m2',41,2400);
+    wait(3100,function(){setFill(76,false);});
+    ping('p3','m3',76,4200);
+    wait(4900,function(){setFill(80,false);});
+    wait(5300,function(){$('v1').classList.add('show');});
+    wait(5700,function(){
+      phase='ready';
+      mainBtn.disabled=false;
+      btnLabel.textContent='See the same day, fixed';
+      mainBtn.querySelector('svg').innerHTML='<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>';
+    });
+  }
+
+  function typeQ(done){
+    var el=$('qText'); el.textContent=''; var i=0;
+    var caret=document.createElement('span'); caret.className='caret';
+    el.appendChild(caret);
+    if(reduced){el.textContent=Q;done();return;}
+    var iv=setInterval(function(){
+      i++; el.textContent=Q.slice(0,i); el.appendChild(caret);
+      if(i>=Q.length){clearInterval(iv);setTimeout(function(){caret.remove();done();},250);}
+    },22);
+    timers.push(iv);
+  }
+
+  function playAfter(){
+    phase='after'; clearAll();
+    mainBtn.disabled=true; btnLabel.textContent='Playing…';
+    label.textContent='same afternoon · 1:00 → 5:00';
+    ['m1','m2','m3'].forEach(function(i){$(i).classList.remove('on');});
+    $('kb').classList.remove('show'); $('v2').classList.remove('show');
+    before.className='panel out'; after.className='panel shown';
+    setFill(0,false);
+    wait(350,function(){typeQ(function(){
+      wait(150,function(){$('kb').classList.add('show');});
+      wait(500,function(){setFill(35,false);});
+      wait(1200,function(){setFill(70,false);});
+      wait(1900,function(){setFill(100,false);status.textContent='done';});
+      wait(2300,function(){$('v2').classList.add('show');});
+      wait(2700,function(){
+        phase='done';
+        mainBtn.style.display='none';
+        replayBtn.style.display='flex';
+      });
+    });});
+  }
+
+  mainBtn.addEventListener('click',function(){
+    if(phase==='idle')playBefore();
+    else if(phase==='ready')playAfter();
+  });
+  replayBtn.addEventListener('click',function(){
+    mainBtn.style.display='flex';
+    mainBtn.querySelector('svg').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    phase='idle'; playBefore();
+  });
+})();
+</script>
+</body>
+</html>
