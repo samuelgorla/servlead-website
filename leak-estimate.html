@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Leak Estimate — What Your Business Is Leaking Each Year | Servlead Solutions</title>
+<meta name="description" content="Ten quick questions, your own numbers, the same math used on real audits. See roughly what your business is leaking each year, stage by stage.">
+<link rel="canonical" href="https://servleadsolutions.com/leak-estimate">
+<meta property="og:title" content="The Leak Estimate — Servlead Solutions">
+<meta property="og:description" content="Ten quick questions. A yearly dollar figure for your business, kept low on purpose.">
+<meta property="og:url" content="https://servleadsolutions.com/leak-estimate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2f2f1; --paper-deep: #e9e9e7; --ink: #14202e; --ink-soft: #46536a; --muted: #7d8494;
+    --rust: #a63d1c; --line: #d6d6d2; --line-dark: #14202e; --green: #22764f; --gold: #e8b64c;
+    --serif: 'Newsreader', Georgia, serif; --sans: 'Archivo', system-ui, sans-serif; --mono: 'Spline Sans Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1); --fast: 0.18s; --base: 0.32s; --slow: 0.55s;
+    --lift-1: 0 1px 2px rgba(20,32,46,0.04), 0 2px 8px rgba(20,32,46,0.05);
+    --lift-2: 0 4px 12px rgba(20,32,46,0.07), 0 12px 28px rgba(20,32,46,0.08);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--rust); color: #fff; }
+  .kicker { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(242,242,241,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1160px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--serif); font-weight: 500; font-size: 1.3rem; color: var(--ink); text-decoration: none; }
+  .logo img { width: 38px; height: 38px; object-fit: contain; }
+  .nav-back { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
+  .nav-back:hover { color: var(--rust); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.06; letter-spacing: -0.015em; margin: 0.8rem 0 1rem; }
+  h1 em { color: var(--rust); font-style: italic; }
+  .lede { font-size: 1.1rem; color: var(--ink-soft); max-width: 620px; }
+  .meta { display: flex; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.3rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .card { background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); margin-top: 2.2rem; scroll-margin-top: 90px; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.3rem; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .card-head .count { color: var(--muted); }
+  .stages { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .stages div { padding: 0.6rem 0.4rem; text-align: center; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-right: 1px solid var(--line); position: relative; }
+  .stages div:last-child { border-right: none; }
+  .stages div.on { color: var(--ink); font-weight: 600; }
+  .stages div.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--rust); }
+  .stages div.done { color: var(--green); }
+  .q-body { padding: 2rem 1.6rem 1.6rem; min-height: 330px; }
+  .q-title { font-family: var(--serif); font-size: clamp(1.4rem, 3.4vw, 1.85rem); line-height: 1.2; font-weight: 400; }
+  .q-help { color: var(--muted); font-size: 0.95rem; margin-top: 0.45rem; }
+  .opts { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
+  .opt { text-align: left; font-family: var(--sans); font-size: 1.02rem; font-weight: 600; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 10px; padding: 0.95rem 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease); }
+  .opt::after { content: '→'; color: var(--muted); opacity: 0; transition: opacity var(--fast) var(--ease); }
+  .opt:hover { border-color: var(--ink); background: #fff; }
+  .opt:hover::after { opacity: 1; }
+  .opt.sel { border-color: var(--rust); background: #fff; }
+  .opt.sel::after { content: '✓'; color: var(--rust); opacity: 1; }
+  .q-foot { display: flex; justify-content: space-between; align-items: center; padding: 0 1.6rem 1.3rem; }
+  .back { background: none; border: none; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); cursor: pointer; }
+  .back:hover { color: var(--rust); }
+  .back[hidden] { display: none; }
+  .bar { height: 3px; background: var(--paper-deep); }
+  .bar i { display: block; height: 100%; width: 0; background: var(--rust); transition: width var(--base) var(--ease); }
+  .fade { animation: fade var(--base) var(--ease); }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .total-block { padding: 2rem 1.6rem 1.4rem; }
+  .total-lab { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .total-amt { font-family: var(--serif); font-size: clamp(3rem, 9vw, 4.6rem); line-height: 1; margin: 0.4rem 0 0.3rem; letter-spacing: -0.02em; }
+  .total-amt small { font-size: 0.35em; color: var(--muted); letter-spacing: 0; }
+  .total-note { color: var(--ink-soft); font-size: 0.98rem; max-width: 560px; }
+  .gauge { margin-top: 1.5rem; }
+  .gauge-track { position: relative; height: 12px; background: var(--paper-deep); border-radius: 999px; }
+  .gauge-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--ink); width: 0; transition: width var(--slow) var(--ease); }
+  .gauge-fill.over { background: var(--rust); }
+  .gauge-mark { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--gold); }
+  .gauge-legend { display: flex; justify-content: space-between; margin-top: 0.55rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .gmark-lab { position: absolute; transform: translateX(-12px); white-space: nowrap; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .gmark-lab b { color: var(--ink); font-weight: 600; }
+  .breakdown { border-top: 1px solid var(--line); padding: 1.6rem; }
+  .bd-row { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+  .bd-stage { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); }
+  .bd-amt { font-family: var(--serif); font-size: 1.5rem; text-align: right; grid-row: span 2; align-self: center; }
+  .bd-amt.zero { color: var(--muted); font-size: 1.05rem; }
+  .bd-lines { font-size: 0.92rem; color: var(--ink-soft); }
+  .bd-meter { grid-column: 1 / -1; height: 5px; background: var(--paper-deep); border-radius: 999px; margin-top: 0.3rem; }
+  .bd-meter i { display: block; height: 100%; border-radius: 999px; background: var(--ink); width: 0; transition: width var(--slow) var(--ease); }
+  .first { margin-top: 1.4rem; border-left: 3px solid var(--rust); background: var(--paper); padding: 1rem 1.2rem; }
+  .first .kicker { font-size: 0.68rem; }
+  .first h4 { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; margin-top: 0.3rem; line-height: 1.25; }
+  .first p { font-size: 0.95rem; color: var(--ink-soft); margin-top: 0.35rem; }
+  .np { margin-top: 1rem; font-size: 0.92rem; color: var(--ink-soft); border: 1px dashed var(--muted); padding: 0.85rem 1rem; }
+  .np b { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); display: block; margin-bottom: 0.2rem; }
+  .cant { border-top: 1px solid var(--line); padding: 1.6rem; }
+  .cant h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; line-height: 1.2; margin-top: 0.3rem; }
+  .cant ol { list-style: none; counter-reset: c; margin-top: 1rem; display: grid; gap: 0.85rem; }
+  .cant li { counter-increment: c; display: grid; grid-template-columns: 2rem 1fr; }
+  .cant li::before { content: counter(c, lower-roman) "."; font-family: var(--serif); font-style: italic; color: var(--rust); font-size: 1.1rem; }
+  .cant li b { display: block; font-size: 1rem; }
+  .cant li span { color: var(--ink-soft); font-size: 0.94rem; }
+  .review { border-top: 1px solid var(--line); padding: 1.6rem; background: var(--paper); }
+  .review h3 { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; line-height: 1.2; margin-top: 0.3rem; }
+  .review p.sub { color: var(--ink-soft); font-size: 0.98rem; margin: 0.45rem 0 1rem; max-width: 600px; }
+  .gets { list-style: none; margin: 0 0 1.3rem; display: grid; gap: 0.4rem; }
+  .gets li { font-size: 0.95rem; padding-left: 1.3rem; position: relative; }
+  .gets li::before { content: '→'; position: absolute; left: 0; color: var(--rust); }
+  .thanks h3 { color: var(--green); }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .fields label { display: block; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.3rem; }
+  .fields input, .fields select { width: 100%; font-family: var(--sans); font-size: 1rem; padding: 0.75rem 0.85rem; border: 1.5px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); }
+  .fields input:focus, .fields select:focus { outline: none; border-color: var(--rust); }
+  .fields .bad { border-color: var(--rust); background: #fbf1ee; }
+  .hp { position: absolute; left: -9999px; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; border: none; cursor: pointer; background: var(--ink); color: var(--paper); padding: 1.05rem 2.1rem; border-radius: 999px; text-decoration: none; transition: background var(--base) var(--ease), transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
+  .btn-primary:hover { background: var(--rust); transform: translateY(-3px); box-shadow: var(--lift-2); }
+  .gate-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .fine { font-size: 0.82rem; color: var(--muted); max-width: 360px; }
+  .err { color: var(--rust); font-size: 0.88rem; margin-top: 0.7rem; min-height: 1.2em; }
+  .close { background: var(--ink); color: var(--paper); padding: 1.8rem 1.6rem; }
+  .close .kicker { color: var(--gold); }
+  .close h3 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.22; margin: 0.5rem 0 0.6rem; }
+  .close p { color: #d3d8df; font-size: 0.98rem; max-width: 580px; }
+  .close .g { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--paper); border-left: 2px solid var(--rust); padding-left: 1rem; margin: 1.1rem 0 1.3rem; }
+  .close .price { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-top: 0.9rem; }
+  .close .btn-primary { background: var(--paper); color: var(--ink); }
+  .close .btn-primary:hover { background: var(--rust); color: #fff; }
+  .close a.alt { color: var(--paper); font-weight: 600; margin-left: 1.2rem; text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .how { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  .how div { border-top: 1px solid var(--ink); padding-top: 0.8rem; }
+  .how h5 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); font-weight: 500; }
+  .how p { font-size: 0.93rem; color: var(--ink-soft); margin-top: 0.35rem; }
+  footer { border-top: 1px solid var(--line-dark); padding: 2rem 1.5rem 3rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
+  footer a { color: var(--ink-soft); text-decoration: none; margin: 0 0.6rem; }
+  footer a:hover { color: var(--rust); }
+  @media (max-width: 640px) {
+    .nav-inner { padding: 0.9rem 1.2rem; }
+    .nav-back { display: none; }
+    .wrap { padding-top: 2.4rem; }
+    .fields { grid-template-columns: 1fr; }
+    .how { grid-template-columns: 1fr; }
+    .stages div { font-size: 0.55rem; letter-spacing: 0.04em; padding: 0.55rem 0.2rem; }
+    .close a.alt { margin: 1rem 0 0; display: inline-block; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="Servlead Solutions">Servlead Solutions</a>
+    <a href="/" class="nav-back">← Back to the site</a>
+  </div>
+</nav>
+<main class="wrap">
+  <span class="kicker">The Leak Estimate · about 3 minutes</span>
+  <h1>What's your business leaking <em>every year?</em></h1>
+  <p class="lede">Ten quick taps, your own numbers, and the same math used on real audits. You'll see a yearly dollar figure broken out across the four stages of your business, kept on the low side on purpose. Your full result shows right away. No email required.</p>
+  <div class="meta"><span><b>10</b> questions</span><span><b>4</b> money stages</span><span>No quiz score. <b>Dollars.</b></span></div>
+  <section class="card" id="app" aria-live="polite">
+    <div class="card-head"><span id="headLab">Your business</span><span class="count" id="count">1 of 10</span></div>
+    <div class="stages" id="stages"><div>Getting customers</div><div>Serving customers</div><div>Getting paid</div><div>Back office</div></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div id="screen"></div>
+  </section>
+  <div class="how">
+    <div><h5>Your numbers</h5><p>Every figure comes from your answers. Nothing is borrowed from another business.</p></div>
+    <div><h5>Kept low</h5><p>Only half of the hours you name get counted, at modest hourly rates. Lost jobs count at half their value.</p></div>
+    <div><h5>An estimate</h5><p>It's a starting point, not a finding. The audit is where a real number gets shown and defended.</p></div>
+  </div>
+</main>
+<footer>
+  <a href="tel:8608691385">(860) 869-1385</a>
+  <a href="mailto:info@servleadsolutions.com">info@servleadsolutions.com</a>
+  <a href="/privacy">Privacy</a>
+  <div style="margin-top:0.7rem;">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
+</footer>
+<script>
+(function () {
+  var WEBHOOK = 'https://caped-eagle.pikapod.net/webhook/leak-estimate';
+  var BOOK = 'https://cal.com/samgorla/consultation';
+  var THRESHOLD = 10000;
+  var STAGES = ['Getting customers', 'Serving customers', 'Getting paid', 'Back office'];
+  var HRS = [['None', 0], ['1–2 hours', 1.5], ['3–5 hours', 4], ['6–10 hours', 8], ['More than 10', 12]];
+  // Revenue values match the Notion CRM options exactly (under $1M / over $20M go to Notes).
+  var REVENUE = ['Under $1M', '$1M-$2M', '$2M–$5M', '$5M–$10M', '$10M–$20M', 'Over $20M'];
+  var REV_LAB = { '$1M-$2M': '$1M–$2M' };
+  var INDUSTRY = ['Commercial GC / Specialty Contractor', 'HVAC', 'Wholesale & Distribution', 'Manufacturing / Fabrication', 'Insurance Agency', 'Accounting / CPA', 'Law Firm', 'Property Management', 'Healthcare Practice', 'Mortgage / Title', 'Real Estate Team / Brokerage', 'Church organization', 'Other'];
+
+  var Q = [
+    { id: 'inq', s: 0, q: 'How many new inquiries come in a month?', h: 'Calls, web forms, emails, referrals. Anyone asking about work.',
+      o: [['Under 5', 3], ['5 to 15', 10], ['15 to 40', 25], ['More than 40', 50]] },
+    { id: 'deal', s: 0, q: "What's a typical job or customer worth to you?", h: 'Rough is fine.',
+      o: [['Under $2,500', 1500], ['$2,500 to $10,000', 4000], ['$10,000 to $50,000', 15000], ['Over $50,000', 40000]] },
+    { id: 'speed', s: 0, q: 'How fast does a new inquiry usually hear back?', h: "Be honest. Nobody's grading this.",
+      o: [['Within the hour', 0], ['Same day', 0.02], ['Next day', 0.05], ["Two days or more, or it depends who's around", 0.10]] },
+    { id: 'prospect', s: 0, q: 'How many hours a week does someone spend hunting for new work by hand?', h: 'Building lists, looking up contacts, cold outreach.', o: HRS },
+    { id: 'pricer', s: 1, q: 'Who can price or quote the work?', h: 'If that person is out for a week, does quoting keep going?',
+      o: [['Anyone we train', 0], ['Two or more people', 0], ['Only one person', 1], ['Only me', 2]] },
+    { id: 'quote', s: 1, q: 'How many hours a week go into quotes and estimates?', o: HRS },
+    { id: 'recon', s: 2, q: 'How many hours a week go into matching payments or reconciling by hand?', h: 'Deposits, card batches, job costs, vendor bills.', o: HRS },
+    { id: 'ar', s: 2, q: 'How much is owed to you past 30 days right now?',
+      o: [['Almost nothing', 0], ['Under $25,000', 1], ['$25,000 to $100,000', 2], ['Over $100,000', 3]] },
+    { id: 'owner', s: 3, q: 'How many hours a week do you spend on work someone else could do?', h: 'Reports, scheduling, approvals, chasing people for updates.', o: HRS },
+    { id: 'double', s: 3, q: 'How many hours a week does the same information get typed into more than one system?', h: 'Across your whole team.', o: HRS }
+  ];
+  var AR_LAB = ['', 'under $25,000', '$25,000 to $100,000', 'over $100,000'];
+
+  var ans = {}, lab = {}, i = 0, result = null;
+  var screen = document.getElementById('screen');
+  function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  // Same method as the live audit calculator: hours x rate x 50 weeks, counted at half. Lost jobs at half value.
+  function calc() {
+    var lines = [
+      { s: 0, v: ans.inq * 12 * ans.speed * ans.deal * 0.5, n: 'Slow replies to new inquiries', why: 'Inquiries that wait often go to whoever answered first. The usual starting point is a simple rule: every inquiry gets a reply the same hour, even if a person isn\u2019t free yet.' },
+      { s: 0, v: ans.prospect * 30 * 50 * 0.5, n: 'Prospecting by hand', why: 'Hours spent building lists by hand are hours not spent talking to buyers. Most of the finding can run on its own.' },
+      { s: 1, v: ans.pricer >= 1 ? ans.quote * (ans.pricer === 2 ? 45 : 30) * 50 * 0.5 : 0, n: ans.pricer === 2 ? 'Only you can price the work' : 'Only one person can price the work', why: 'When pricing lives in one head, quoting stops whenever that person is busy or away. The fix is getting how you price out of your head and into something the team can use.' },
+      { s: 2, v: ans.recon * 22 * 50 * 0.5, n: 'Reconciling payments by hand', why: 'Line-by-line matching is repeatable work, and repeatable work is usually the cheapest leak to close.' },
+      { s: 3, v: ans.owner * 45 * 50 * 0.5, n: 'You doing work nobody needs you for', why: 'Every hour here is an owner-priced hour spent on admin-priced work. It\u2019s often the leak owners feel most and measure least.' },
+      { s: 3, v: ans.double * 22 * 50 * 0.5, n: 'The same numbers typed twice', why: 'Double entry doubles the errors as well as the hours. The fix is often a connection between systems you already pay for.' }
+    ];
+    var byStage = [0, 0, 0, 0], raw = 0, top = lines[0];
+    lines.forEach(function (l) { byStage[l.s] += l.v; raw += l.v; if (l.v > top.v) top = l; });
+    return { lines: lines, byStage: byStage, total: Math.floor(raw / 500) * 500, top: top };
+  }
+
+  function setStages(active, doneAll) {
+    var els = document.getElementById('stages').children;
+    for (var k = 0; k < els.length; k++) els[k].className = doneAll || k < active ? 'done' : (k === active ? 'on' : '');
+  }
+
+  function renderQ() {
+    var q = Q[i];
+    setStages(q.s, false);
+    document.getElementById('count').textContent = (i + 1) + ' of ' + Q.length;
+    document.getElementById('headLab').textContent = STAGES[q.s];
+    document.getElementById('bar').style.width = (i / Q.length * 100) + '%';
+    var html = '<div class="q-body fade"><div class="q-title">' + q.q + '</div>' + (q.h ? '<div class="q-help">' + q.h + '</div>' : '') + '<div class="opts">';
+    q.o.forEach(function (o, idx) { html += '<button type="button" class="opt' + (lab[q.id] === o[0] ? ' sel' : '') + '" data-idx="' + idx + '">' + o[0] + '</button>'; });
+    html += '</div></div><div class="q-foot"><button type="button" class="back" id="back"' + (i === 0 ? ' hidden' : '') + '>← Back</button><span></span></div>';
+    screen.innerHTML = html;
+    screen.querySelectorAll('.opt').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var o = q.o[+b.getAttribute('data-idx')];
+        ans[q.id] = o[1]; lab[q.id] = o[0]; b.classList.add('sel');
+        setTimeout(next, 180);
+      });
+    });
+    var back = document.getElementById('back');
+    if (back) back.addEventListener('click', function () {
+      if (i > 0) { i--; if (Q[i].id === 'quote' && ans.pricer === 0) i--; renderQ(); }
+    });
+  }
+
+  function next() {
+    i++;
+    if (Q[i] && Q[i].id === 'quote' && ans.pricer === 0) { ans.quote = 0; lab.quote = 'Skipped (pricing not a bottleneck)'; i++; }
+    if (i < Q.length) renderQ(); else renderResult();
+  }
+
+  function gaugeHTML(total) {
+    var max = Math.max(THRESHOLD * 2, total * 1.15), pct = Math.min(100, total / max * 100), mark = THRESHOLD / max * 100;
+    return '<div class="gauge"><div class="gauge-track"><div class="gauge-fill' + (total >= THRESHOLD ? ' over' : '') + '" id="gFill" data-w="' + pct + '"></div>' +
+      '<div class="gauge-mark" style="left:' + mark + '%"></div></div>' +
+      '<div class="gauge-legend"><span>$0</span><span>' + fmt(max) + '</span></div>' +
+      '<div style="position:relative;height:1.2rem;"><span class="gmark-lab" style="left:' + mark + '%">▲ <b>$10,000</b> guarantee line</span></div></div>';
+  }
+
+  function options(list, labels) {
+    return '<option value="">Choose one</option>' + list.map(function (v) { return '<option value="' + esc(v) + '">' + esc((labels && labels[v]) || v) + '</option>'; }).join('');
+  }
+
+  function renderResult() {
+    result = calc();
+    setStages(0, true);
+    document.getElementById('bar').style.width = '100%';
+    document.getElementById('count').textContent = 'Done';
+    document.getElementById('headLab').textContent = 'Your estimate';
+    var t = result.total, top = result.top, over = t >= THRESHOLD;
+    var max = Math.max.apply(null, result.byStage.concat([1]));
+
+    var rows = '';
+    STAGES.forEach(function (s, k) {
+      var items = result.lines.filter(function (l) { return l.s === k && l.v > 0; }).map(function (l) { return l.n + ' · ' + fmt(l.v); });
+      var amt = result.byStage[k];
+      rows += '<div class="bd-row"><div class="bd-stage">' + ['i', 'ii', 'iii', 'iv'][k] + '. ' + s + '</div>' +
+        '<div class="bd-amt' + (amt ? '' : ' zero') + '">' + (amt ? fmt(amt) : 'Nothing counted') + '</div>' +
+        '<div class="bd-lines">' + (items.length ? items.join('<br>') : 'Nothing in your answers points here.') + '</div>' +
+        '<div class="bd-meter"><i data-w="' + (amt / max * 100) + '"></i></div></div>';
+    });
+    var firstHTML = top.v > 0 ? '<div class="first"><span class="kicker">Where to look first</span><h4>' + top.n + '</h4><p>' + top.why + '</p></div>' : '';
+    var arHTML = ans.ar >= 1 ? '<div class="np"><b>Named, not priced</b>You have ' + AR_LAB[ans.ar] + ' owed past 30 days. That\u2019s cash sitting in someone else\u2019s account, not a yearly loss, so it isn\u2019t in your number. It\u2019s still worth a hard look.</div>' : '';
+
+    var cant =
+      '<div class="cant"><span class="kicker">Read this before you trust the number</span><h3>What this estimate can\u2019t tell you.</h3><ol>' +
+      '<li><div><b>It only counts the leaks it asks about.</b><span>Ten questions can\u2019t see what nobody thought to ask. The audit follows the money through all four stages and names what\u2019s actually there.</span></div></li>' +
+      '<li><div><b>It runs on your guesses.</b><span>Most owners underestimate their own hours. The audit follows the actual work, not the memory of it.</span></div></li>' +
+      '<li><div><b>It says how much, not what to do.</b><span>The audit ranks the fixes. Sometimes that\u2019s a build. Sometimes it\u2019s a tool you already pay for, a hire, or a process change.</span></div></li>' +
+      '<li><div><b>Nobody\u2019s standing behind it.</b><span>This estimate costs nothing and promises nothing. The audit is staked on the result.</span></div></li>' +
+      '</ol></div>';
+
+    var review =
+      '<div class="review" id="review"><span class="kicker">A second set of eyes</span>' +
+      '<h3>Want Sam to look at your numbers?</h3>' +
+      '<p class="sub">Sam Gorla reads your answers himself and replies by email within two business days. No mailing list, no automated sequence.</p>' +
+      '<ul class="gets"><li>The number he\u2019d push on, and why</li><li>What to look at first, plus one thing you can check this week</li><li>What this estimate can\u2019t see in your kind of business</li></ul>' +
+      '<form id="rvForm" novalidate><div class="fields">' +
+      '<div><label for="f_name">Your name</label><input id="f_name" autocomplete="name"></div>' +
+      '<div><label for="f_biz">Business</label><input id="f_biz" autocomplete="organization"></div>' +
+      '<div><label for="f_email">Email</label><input id="f_email" type="email" autocomplete="email"></div>' +
+      '<div><label for="f_phone">Phone</label><input id="f_phone" type="tel" autocomplete="tel"></div>' +
+      '<div><label for="f_rev">Annual revenue</label><select id="f_rev">' + options(REVENUE, REV_LAB) + '</select></div>' +
+      '<div><label for="f_ind">Industry</label><select id="f_ind">' + options(INDUSTRY) + '</select></div>' +
+      '</div><input class="hp" id="f_web" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<div class="err" id="err"></div>' +
+      '<div class="gate-row"><button type="submit" class="btn-primary">Send my numbers to Sam →</button>' +
+      '<span class="fine">Your answers go to Sam only. He may call or email about your results.</span></div></form></div>';
+
+    var close = over
+      ? '<div class="close"><span class="kicker">When you want the real number</span>' +
+        '<h3>The AI &amp; Efficiency Audit.</h3>' +
+        '<p>Sixty minutes, live. Sam follows the money through all four stages of your business and names what\u2019s leaking while you watch, with a figure on each one he can defend. The written plan lands within 48 hours.</p>' +
+        '<div class="g">If I don\u2019t show you at least $10,000 a year leaking out of your business, audit is free.</div>' +
+        '<a class="btn-primary" href="' + BOOK + '">Book your audit →</a><a class="alt" href="tel:8608691385">Or call (860) 869-1385</a>' +
+        '<div class="price">$1,000 · $500 to book · $500 when the plan lands</div></div>'
+      : '<div class="close"><span class="kicker">An honest answer</span>' +
+        '<h3>The audit probably isn\u2019t worth $1,000 to you right now.</h3>' +
+        '<p>Your answers point to less than $10,000 a year, and that\u2019s good news. If something here doesn\u2019t match what you see day to day, send your numbers to Sam above and he\u2019ll tell you straight.</p></div>';
+
+    screen.innerHTML =
+      '<div class="total-block fade"><div class="total-lab">Your answers point to about</div>' +
+      '<div class="total-amt">' + fmt(t) + '<small> a year</small></div>' +
+      '<p class="total-note">' + (over ? 'That\u2019s above the $10,000 line the audit guarantee is built on.' : 'That\u2019s under the $10,000 line the audit guarantee is built on.') + ' Built from your answers, and on the low side on purpose.</p>' +
+      gaugeHTML(t) + '</div>' +
+      '<div class="breakdown fade">' + rows + firstHTML + arHTML + '</div>' + cant + review + close;
+
+    requestAnimationFrame(function () {
+      var g = document.getElementById('gFill'); g.style.width = g.getAttribute('data-w') + '%';
+      document.querySelectorAll('.bd-meter i').forEach(function (m) { m.style.width = m.getAttribute('data-w') + '%'; });
+    });
+    document.getElementById('rvForm').addEventListener('submit', submit);
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function submit(e) {
+    e.preventDefault();
+    var f = { name: 'f_name', business: 'f_biz', email: 'f_email', phone: 'f_phone', revenue: 'f_rev', industry: 'f_ind' }, v = {}, ok = true;
+    Object.keys(f).forEach(function (k) {
+      var el = document.getElementById(f[k]); v[k] = el.value.trim();
+      var good = v[k].length > 1;
+      if (k === 'email') good = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v[k]);
+      if (k === 'phone') good = v[k].replace(/\D/g, '').length >= 10;
+      el.classList.toggle('bad', !good); if (!good) ok = false;
+    });
+    if (!ok) { document.getElementById('err').textContent = 'Please fill in all six so Sam can reply properly.'; return; }
+    if (!document.getElementById('f_web').value) send(v);
+    document.getElementById('review').innerHTML =
+      '<div class="thanks fade"><span class="kicker">Sent</span><h3>Got it, ' + esc(v.name.split(' ')[0]) + '.</h3>' +
+      '<p class="sub">Sam will read your answers and reply to ' + esc(v.email) + ' within two business days.</p></div>';
+  }
+
+  function send(v) {
+    var p = new URLSearchParams();
+    ['name', 'business', 'email', 'phone', 'revenue', 'industry'].forEach(function (k) { p.append(k, v[k]); });
+    p.append('total', fmt(result.total));
+    STAGES.forEach(function (s, k) { p.append('stage_' + (k + 1), s + ': ' + fmt(result.byStage[k])); });
+    p.append('look_first', result.top.v > 0 ? result.top.n + ' (' + fmt(result.top.v) + ')' : 'None');
+    p.append('owed_past_30', AR_LAB[ans.ar] || 'Almost nothing');
+    Q.forEach(function (q) { p.append('a_' + q.id, q.q + ' → ' + (lab[q.id] || '')); });
+    p.append('page', location.href);
+    p.append('submitted', new Date().toISOString());
+    try { fetch(WEBHOOK, { method: 'POST', mode: 'no-cors', body: p }); } catch (err) {}
+  }
+
+  renderQ();
+})();
+</script>
+</body>
+</html>
