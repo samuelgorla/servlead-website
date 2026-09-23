@@ -182,7 +182,7 @@
   var STAGES = ['Getting customers', 'Serving customers', 'Getting paid', 'Back office'];
   var HRS = [['None', 0], ['1–2 hours', 1.5], ['3–5 hours', 4], ['6–10 hours', 8], ['More than 10', 12]];
   // Revenue values match the Notion CRM options exactly (under $1M / over $20M go to Notes).
-  var REVENUE = ['Under $1M', '$1M-$2M', '$2M–$5M', '$5M–$10M', '$10M–$20M', 'Over $20M'];
+  var REVENUE = ['Prefer not to say', 'Under $1M', '$1M-$2M', '$2M–$5M', '$5M–$10M', '$10M–$20M', 'Over $20M'];
   var REV_LAB = { '$1M-$2M': '$1M–$2M' };
   var INDUSTRY = ['Commercial GC / Specialty Contractor', 'HVAC', 'Wholesale & Distribution', 'Manufacturing / Fabrication', 'Insurance Agency', 'Accounting / CPA', 'Law Firm', 'Property Management', 'Healthcare Practice', 'Mortgage / Title', 'Real Estate Team / Brokerage', 'Church organization', 'Other'];
 
@@ -310,7 +310,7 @@
       '<div><label for="f_biz">Business</label><input id="f_biz" autocomplete="organization"></div>' +
       '<div><label for="f_email">Email</label><input id="f_email" type="email" autocomplete="email"></div>' +
       '<div><label for="f_phone">Phone</label><input id="f_phone" type="tel" autocomplete="tel"></div>' +
-      '<div><label for="f_rev">Annual revenue</label><select id="f_rev">' + options(REVENUE, REV_LAB) + '</select></div>' +
+      '<div><label for="f_rev">Roughly, annual revenue (optional)</label><select id="f_rev">' + options(REVENUE, REV_LAB) + '</select></div>' +
       '<div><label for="f_ind">Industry</label><select id="f_ind">' + options(INDUSTRY) + '</select></div>' +
       '</div><input class="hp" id="f_web" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<div class="err" id="err"></div>' +
@@ -349,11 +349,12 @@
     Object.keys(f).forEach(function (k) {
       var el = document.getElementById(f[k]); v[k] = el.value.trim();
       var good = v[k].length > 1;
+      if (k === 'revenue') { good = true; if (!v[k]) v[k] = 'Prefer not to say'; }
       if (k === 'email') good = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v[k]);
       if (k === 'phone') good = v[k].replace(/\D/g, '').length >= 10;
       el.classList.toggle('bad', !good); if (!good) ok = false;
     });
-    if (!ok) { document.getElementById('err').textContent = 'Please fill in all six so Sam can reply properly.'; return; }
+    if (!ok) { document.getElementById('err').textContent = 'Please fill in the highlighted fields so Sam can reply properly.'; return; }
     if (!document.getElementById('f_web').value) send(v);
     document.getElementById('review').innerHTML =
       '<div class="thanks fade"><span class="kicker">Sent</span><h3>Got it, ' + esc(v.name.split(' ')[0]) + '.</h3>' +
