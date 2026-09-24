@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servlead Solutions: the AI &amp; Efficiency Audit</title>
+<!-- Brand fonts. Offline, it falls back to Georgia / Arial / Consolas and still plays. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2f2f1; --paper-deep:#e9e9e7; --ink:#14202e; --ink-soft:#46536a;
+  --muted:#7d8494; --rust:#a63d1c; --green:#22764f; --gold:#e8b64c; --line:#d6d6d2;
+  --on-ink:#bcc3ce;
+  --serif:'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono:'Spline Sans Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#1c2733;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+#wrap{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.stage{position:absolute;left:0;top:0;width:1080px;height:1080px;overflow:hidden;background:var(--paper);color:var(--ink);transform-origin:0 0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.stage[data-format="wide"]{width:1920px}
+.bg{position:absolute;inset:0}
+.bg.ink{background:var(--ink)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 90px;text-align:center}
+[data-in]{opacity:0;visibility:hidden;will-change:opacity,transform}
+.h1,.h2,.h3,.guar,.final,.big,.sub{text-wrap:balance}
+
+/* ---------- 1. Open: money leaking, the owner's head, who Sam is ---------- */
+.s1{justify-content:flex-start;padding-top:92px}
+.s1-head{display:grid;width:920px;min-height:336px;text-align:left;align-content:start}
+.s1-head>.ph{grid-area:1/1}
+.h1{font-family:var(--serif);font-weight:400;font-size:82px;line-height:1.04;letter-spacing:-.018em;color:var(--paper)}
+.s1 .sub{font-size:33px;line-height:1.3;color:var(--on-ink);margin-top:22px;font-weight:500;max-width:820px}
+.s1 .gold{font-family:var(--serif);font-size:58px;line-height:1.1;color:var(--gold);margin-top:20px}
+.s1 .who{font-size:28px;font-weight:600;color:var(--gold);margin-bottom:14px}
+.card{width:920px;border-radius:8px;text-align:left;position:relative}
+.card.empty{background:var(--paper);padding:24px 36px 26px;margin-top:28px}
+.chead{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:14px}
+.chead .ttl{font-family:var(--serif);font-size:32px;line-height:1.1}
+.mono{font-family:var(--mono);font-size:19px;color:var(--muted);letter-spacing:.01em}
+.erow{display:grid;grid-template-columns:54px 1fr 170px;align-items:center;height:58px;border-top:1px solid var(--line)}
+.pbar{height:14px;background:var(--paper-deep);border-radius:3px}
+.pfig{justify-self:end;width:120px;height:14px;background:var(--paper-deep);border-radius:3px}
+.etally{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--ink);padding-top:12px}
+.etally .v{font-weight:800;font-size:40px;color:var(--muted)}
+.drips{position:absolute;left:0;right:0;top:100%;height:190px;pointer-events:none}
+.drop{position:absolute;top:-6px;width:20px;height:20px;background:var(--rust);border-radius:0 50% 50% 50%;transform-origin:50% 50%}
+.ripple{position:absolute;top:168px;width:48px;height:48px;border:2px solid var(--rust);border-radius:50%;opacity:0}
+
+/* ---------- 2. The audit ---------- */
+.kick{font-family:var(--mono);font-size:22px;color:var(--rust);margin-bottom:18px}
+.h2{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.02;letter-spacing:-.018em}
+.s2 .sub{font-size:36px;line-height:1.3;color:var(--ink-soft);margin-top:22px;font-weight:500}
+.clock{font-family:var(--mono);font-weight:500;font-size:108px;line-height:1;color:var(--rust);margin-top:44px;font-variant-numeric:tabular-nums}
+.clock small{font-size:30px;color:var(--muted);margin-left:12px}
+.stages{width:920px;margin-top:46px}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.chip{border:2px solid var(--line);background:var(--paper);border-radius:8px;padding:16px 16px 18px;min-height:116px;text-align:left;font-weight:700;font-size:25px;line-height:1.18;color:var(--muted);transition:background .35s,color .35s,border-color .35s}
+.chip .n{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;color:var(--line);margin-bottom:6px;transition:color .35s}
+.chip.lit{background:var(--ink);border-color:var(--ink);color:var(--paper);animation:pop .5s cubic-bezier(.2,.8,.3,1)}
+.chip.lit .n{color:var(--gold)}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.05)}100%{transform:scale(1)}}
+.track{position:relative;height:6px;background:var(--paper-deep);border-radius:3px;margin-top:30px}
+.track .fill{position:absolute;left:0;top:0;bottom:0;background:var(--rust);border-radius:3px}
+.track .dot{position:absolute;top:50%;width:40px;height:40px;border-radius:50%;background:var(--rust);color:var(--paper);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;box-shadow:0 0 0 6px var(--paper)}
+
+/* ---------- 3. The ledger fills ---------- */
+.s3{padding:60px 80px}
+.h3{font-family:var(--serif);font-weight:400;font-size:56px;line-height:1.05;letter-spacing:-.012em;margin-bottom:24px}
+.card.full{background:var(--paper-deep);border:1.5px solid var(--ink);padding:26px 38px 30px}
+.chead .client{font-weight:700;font-size:27px;display:block;margin-top:4px;color:var(--ink)}
+.slot{position:relative;border-top:1px solid #cdcdc8;min-height:104px}
+.phrow{position:absolute;inset:0;display:grid;grid-template-columns:56px 1fr 170px;column-gap:16px;align-items:center}
+.phrow .pbar,.phrow .pfig{background:#dcdcd7}
+.lrow{display:grid;grid-template-columns:56px 1fr auto;column-gap:16px;align-items:center;padding:16px 10px;margin:0 -10px;min-height:104px;border-radius:4px}
+.lrow .rk{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--rust)}
+.nm{font-weight:700;font-size:31px;line-height:1.15}
+.sb{font-size:21px;line-height:1.3;color:var(--ink-soft);margin-top:5px}
+.fig{font-weight:800;font-size:44px;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.fig.np{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;color:var(--muted);letter-spacing:0}
+.tally{border-top:2px solid var(--ink);padding-top:16px}
+.trow{display:flex;justify-content:space-between;align-items:baseline}
+.tnum{font-weight:800;font-size:52px;color:var(--rust);font-variant-numeric:tabular-nums}
+.bar{position:relative;height:18px;background:#d6d6d0;border-radius:2px;margin-top:40px}
+.bar .band{position:absolute;left:0;top:0;bottom:0;background:rgba(166,61,28,.26)}
+.bar .lo{position:absolute;left:0;top:0;bottom:0;background:var(--rust)}
+.bar .tick{position:absolute;left:16.667%;top:-34px;bottom:-6px;width:2px;background:var(--ink)}
+.bar .tlab{position:absolute;left:calc(16.667% + 10px);top:-36px;font-family:var(--mono);font-size:18px;color:var(--ink);white-space:nowrap;transition:color .3s}
+.bar.passed .tlab{color:var(--green)}
+.bar.passed .tlab::before{content:"\2713  "}
+.final{font-family:var(--serif);font-size:38px;line-height:1.25;margin-top:24px;max-width:920px}
+
+/* ---------- 4. Offer + guarantee ---------- */
+.price{font-family:var(--serif);font-weight:400;font-size:220px;line-height:1;letter-spacing:-.025em}
+.price-lab{font-size:33px;font-weight:500;color:var(--ink-soft);margin-top:12px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:920px;margin-top:46px}
+.half{border-radius:8px;padding:28px 32px 30px;text-align:left}
+.half.a{background:var(--ink);color:var(--paper)}
+.half.b{background:var(--paper-deep);border:2px solid var(--ink)}
+.half .v{font-weight:800;font-size:64px;line-height:1.05}
+.half .d{font-size:29px;line-height:1.25;font-weight:500;margin-top:8px}
+.rule{width:120px;height:5px;background:var(--rust);margin-bottom:46px}
+.guar{font-family:var(--serif);font-weight:400;font-size:72px;line-height:1.13;letter-spacing:-.012em;max-width:930px}
+
+/* ---------- 5. Close ---------- */
+.s5 .big{font-family:var(--serif);font-weight:400;font-size:132px;line-height:1.02;letter-spacing:-.018em;color:var(--paper)}
+.s5 .cta{font-size:48px;font-weight:700;color:var(--paper);margin-top:50px}
+.s5 .url{font-family:var(--mono);font-size:36px;color:var(--gold);margin-top:16px}
+.s5 .mark{position:absolute;left:0;right:0;bottom:76px;font-family:var(--serif);font-size:36px;color:var(--paper)}
+.s5 .mark span{display:block;font-family:var(--sans);font-size:21px;color:#9aa3b2;margin-top:6px}
+
+/* ---------- 16:9 layouts: side by side instead of stacked ---------- */
+.stage[data-format="wide"] .s1{display:grid;grid-template-columns:760px 920px;column-gap:90px;align-content:center;justify-content:center;padding:0 80px 150px}
+.stage[data-format="wide"] .s1-head{width:760px;align-self:center}
+.stage[data-format="wide"] .s1 .card.empty{margin-top:0;align-self:center}
+.stage[data-format="wide"] .s3{display:grid;grid-template-columns:600px 920px;grid-template-rows:auto auto;column-gap:90px;align-content:center;justify-content:center;text-align:left}
+.stage[data-format="wide"] .s3 .h3{grid-column:1;grid-row:1;align-self:end;font-size:72px;margin-bottom:0}
+.stage[data-format="wide"] .s3 .final{grid-column:1;grid-row:2;align-self:start;margin-top:28px}
+.stage[data-format="wide"] .s3 .card.full{grid-column:2;grid-row:1/span 2}
+.stage[data-format="wide"] .guar{max-width:1300px;font-size:84px}
+
+/* ---------- Controls (outside the stage; H hides them for recording) ---------- */
+.controls{display:flex;align-items:center;gap:10px;height:56px;margin-top:12px;padding:0 14px;color:#dfe3ea;font-size:14px;width:min(1100px,96vw)}
+.controls button{font:600 14px var(--sans);background:#2d3a4a;color:#f2f2f1;border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
+.controls button:hover{background:#3b4a5d}
+.controls button:focus-visible,.controls input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.controls input[type=range]{flex:1;accent-color:var(--rust)}
+.controls .time{font-family:var(--mono);min-width:92px;text-align:right}
+.controls .hint{color:#8e98a8;font-size:12px;white-space:nowrap}
+body.clean .controls{display:none}
+body.clean #wrap{box-shadow:none}
+body.clean .stage{cursor:none}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+<div class="stage" id="stage" data-format="square" role="img" aria-label="Servlead Solutions: AI &amp; Efficiency Audit explainer animation">
+
+  <div class="bg ink" data-in="-1" data-dur=".01" data-out="7.6" data-odur=".6" data-fx="fade"></div>
+
+  <!-- 1. Open -->
+  <section class="scene s1">
+    <div class="s1-head">
+      <div class="ph">
+        <h1 class="h1" data-in=".3" data-out="2.8">Money’s leaking out of the business.</h1>
+        <p class="sub" data-in="1.0" data-out="2.8">It goes out through work nobody’s written down.</p>
+      </div>
+      <div class="ph">
+        <h1 class="h1" data-in="3.0" data-out="4.9">The business runs through your head.</h1>
+        <p class="gold" data-in="3.7" data-out="4.9">I help you fix that.</p>
+      </div>
+      <div class="ph">
+        <p class="who" data-in="5.05" data-out="7.5">I’m Sam Gorla.</p>
+        <h1 class="h1" data-in="5.2" data-out="7.5">I put AI to work for owner‑run businesses.</h1>
+        <p class="sub" data-in="6.0" data-out="7.5">The first step isn’t software. It’s following the money.</p>
+      </div>
+    </div>
+    <div class="card empty" data-in=".25" data-dur=".8" data-out="7.5">
+      <div class="chead"><span class="ttl">Where the money goes</span><span class="mono">a year</span></div>
+      <div class="erow"><span></span><div class="pbar" style="width:72%"></div><div class="pfig"></div></div>
+      <div class="erow"><span></span><div class="pbar" style="width:58%"></div><div class="pfig"></div></div>
+      <div class="erow"><span></span><div class="pbar" style="width:64%"></div><div class="pfig"></div></div>
+      <div class="erow"><span></span><div class="pbar" style="width:50%"></div><div class="pfig"></div></div>
+      <div class="etally"><span class="mono">Shown so far</span><span class="v">$0</span></div>
+      <div class="drips">
+        <span class="drop" style="left:24%"></span><span class="ripple" style="left:calc(24% + 10px)"></span>
+        <span class="drop" style="left:51%"></span><span class="ripple" style="left:calc(51% + 10px)"></span>
+        <span class="drop" style="left:77%"></span><span class="ripple" style="left:calc(77% + 10px)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The audit -->
+  <section class="scene s2">
+    <p class="kick" data-in="7.7" data-out="10.8" data-odur=".35">Sixty minutes, live</p>
+    <h2 class="h2" data-in="7.75" data-out="10.8" data-odur=".35">The AI &amp; Efficiency Audit</h2>
+    <p class="sub" data-in="8.0" data-out="10.8" data-odur=".35">I follow the money through your business, end to end.</p>
+    <div class="clock" data-in="8.1" data-out="10.8" data-odur=".35"><span id="clock">0</span><small>of 60 min</small></div>
+    <div class="stages" data-in="8.1" data-out="10.8" data-odur=".35">
+      <div class="chips">
+        <div class="chip" data-lit="8.2"><span class="n">i.</span>Getting customers</div>
+        <div class="chip" data-lit="8.8"><span class="n">ii.</span>Serving customers</div>
+        <div class="chip" data-lit="9.4"><span class="n">iii.</span>Getting paid</div>
+        <div class="chip" data-lit="10.0"><span class="n">iv.</span>Running the back office</div>
+      </div>
+      <div class="track"><div class="fill" id="tfill"></div><div class="dot" id="tdot">$</div></div>
+    </div>
+  </section>
+
+  <!-- 3. The ledger fills -->
+  <section class="scene s3">
+    <h2 class="h3" data-in="11.0" data-out="19.1">Every leak gets a name and a rank.</h2>
+    <div class="card full" data-in="11.05" data-dur=".6" data-out="19.1" data-fx="scale">
+      <div class="chead">
+        <span><span class="mono">From a real audit</span><span class="client">A Lehigh Valley contractor</span></span>
+        <span class="mono">a year</span>
+      </div>
+
+      <div class="slot"><div class="phrow" data-in="11.2" data-out="11.5" data-odur=".2" data-fx="fade"><span></span><div class="pbar" style="width:64%"></div><div class="pfig"></div></div>
+      <div class="lrow" data-in="11.5" data-dur=".75" data-fx="pour" data-flash="1">
+        <span class="rk">i.</span>
+        <div><div class="nm">Bids priced by hand</div><div class="sb">5–8 hours a bid, 53 bids a year, from memory</div></div>
+        <div class="fig"><span data-num="11.8,.9,26" data-pre="$" data-suf="K"></span>–<span data-num="11.8,.9,42" data-pre="$" data-suf="K"></span></div>
+      </div></div>
+
+      <div class="slot"><div class="phrow" data-in="11.2" data-out="12.8" data-odur=".2" data-fx="fade"><span></span><div class="pbar" style="width:52%"></div><div class="pfig"></div></div>
+      <div class="lrow" data-in="12.8" data-dur=".75" data-fx="pour" data-flash="1">
+        <span class="rk">ii.</span>
+        <div><div class="nm">Drawings paid for, then underbid</div><div class="sb">Competitors take the full scope and bid it lower</div></div>
+        <div class="fig"><span data-num="13.1,.9,6000" data-pre="~$"></span></div>
+      </div></div>
+
+      <div class="slot"><div class="phrow" data-in="11.2" data-out="14.1" data-odur=".2" data-fx="fade"><span></span><div class="pbar" style="width:58%"></div><div class="pfig"></div></div>
+      <div class="lrow" data-in="14.1" data-dur=".75" data-fx="pour" data-flash="1">
+        <span class="rk">iii.</span>
+        <div><div class="nm">Daily lookups to the owner</div><div class="sb">Only one person knows where the numbers are</div></div>
+        <div class="fig"><span data-num="14.4,.9,5850" data-pre="~$"></span></div>
+      </div></div>
+
+      <div class="slot"><div class="phrow" data-in="11.2" data-out="15.3" data-odur=".2" data-fx="fade"><span></span><div class="pbar" style="width:48%"></div><div class="pfig"></div></div>
+      <div class="lrow" data-in="15.3" data-dur=".75" data-fx="pour" data-flash="1">
+        <span class="rk">iv.</span>
+        <div><div class="nm">No backup for pricing judgment</div><div class="sb">A real risk, left unpriced on purpose</div></div>
+        <div class="fig np">Named, not priced</div>
+      </div></div>
+
+      <div class="tally">
+        <div class="trow"><span class="mono">Shown so far</span><span class="tnum" id="tnum">$0</span></div>
+        <div class="bar" id="bar">
+          <div class="band" id="bband"></div>
+          <div class="lo" id="blo"></div>
+          <div class="tick"></div>
+          <div class="tlab">$10,000 guarantee line</div>
+        </div>
+      </div>
+    </div>
+    <p class="final" data-in="16.3" data-out="19.1">About $38,000–$54,000 a year. It leaks again every year it isn’t fixed.</p>
+  </section>
+
+  <!-- 4a. Price -->
+  <section class="scene s4a">
+    <div class="price" data-in="19.3" data-dur=".7" data-out="22.0" data-fx="scale">$1,000</div>
+    <p class="price-lab" data-in="19.6" data-out="22.0">Sixty minutes live. Written plan within 48 hours.</p>
+    <div class="split">
+      <div class="half a" data-in="20.0" data-out="22.0"><div class="v">$500</div><div class="d">to book</div></div>
+      <div class="half b" data-in="20.55" data-out="22.0"><div class="v">$500</div><div class="d">when the written plan lands</div></div>
+    </div>
+  </section>
+
+  <!-- 4b. Guarantee: exact public line -->
+  <section class="scene s4b">
+    <div class="rule" data-in="22.15" data-out="26.3" data-fx="left"></div>
+    <p class="guar" data-in="22.3" data-dur=".8" data-out="26.3">If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
+  </section>
+
+  <!-- 5. Close -->
+  <div class="bg ink" data-in="26.3" data-dur=".6" data-fx="fade"></div>
+  <section class="scene s5">
+    <h2 class="big" data-in="26.6">Got sixty minutes?</h2>
+    <p class="cta" data-in="27.3">Book the audit.</p>
+    <p class="url" data-in="27.6">cal.com/samgorla/consultation</p>
+    <div class="mark" data-in="28.0" data-fx="fade">Servlead Solutions<span>Lehigh Valley, PA</span></div>
+  </section>
+
+</div>
+</div>
+
+<div class="controls" id="controls">
+  <button id="play" type="button">Play</button>
+  <button id="restart" type="button">Restart</button>
+  <input id="scrub" type="range" min="0" max="31" step="0.01" value="0" aria-label="Scrub timeline">
+  <span class="time" id="time">0.0 / 31s</span>
+  <button id="fmt" type="button">Format: 1:1</button>
+  <button id="hide" type="button">Hide controls</button>
+  <span class="hint">Space play · R restart · F format · H hide</span>
+</div>
+
+<script>
+(() => {
+  const DUR = 31;
+  const stage = document.getElementById('stage');
+  const wrap = document.getElementById('wrap');
+  const controls = document.getElementById('controls');
+  const playBtn = document.getElementById('play');
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const fmtBtn = document.getElementById('fmt');
+
+  const clamp = x => x < 0 ? 0 : x > 1 ? 1 : x;
+  const eOut = x => 1 - Math.pow(1 - x, 3);
+  const eBack = x => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+
+  const els = [...stage.querySelectorAll('[data-in]')].map(el => ({
+    el,
+    tin: parseFloat(el.dataset.in),
+    dur: parseFloat(el.dataset.dur || '.55'),
+    tout: el.dataset.out ? parseFloat(el.dataset.out) : null,
+    odur: parseFloat(el.dataset.odur || '.4'),
+    fx: el.dataset.fx || 'up',
+    flash: !!el.dataset.flash
+  }));
+  const nums = [...stage.querySelectorAll('[data-num]')].map(el => {
+    const [t0, d, target] = el.dataset.num.split(',').map(parseFloat);
+    return { el, t0, d, target, pre: el.dataset.pre || '', suf: el.dataset.suf || '' };
+  });
+  const chips = [...stage.querySelectorAll('[data-lit]')];
+  const drops = [...stage.querySelectorAll('.drop')];
+  const ripples = [...stage.querySelectorAll('.ripple')];
+  const clockEl = document.getElementById('clock');
+  const tfill = document.getElementById('tfill');
+  const tdot = document.getElementById('tdot');
+  const tnum = document.getElementById('tnum');
+  const bar = document.getElementById('bar');
+  const bband = document.getElementById('bband');
+  const blo = document.getElementById('blo');
+
+  // Running total in $K, matching the report: 26–42, then +~6, then +~5.85 = about 38–54.
+  const steps = [
+    { t: 11.8, lo: 26, hi: 42 },
+    { t: 13.1, lo: 32, hi: 48 },
+    { t: 14.4, lo: 37.85, hi: 53.85 }
+  ];
+  const BAR_MAX = 60;
+
+  function tallyAt(t) {
+    let lo = 0, hi = 0, pLo = 0, pHi = 0;
+    for (const s of steps) {
+      const p = eOut(clamp((t - s.t) / 0.9));
+      lo = pLo + (s.lo - pLo) * p;
+      hi = pHi + (s.hi - pHi) * p;
+      if (p < 1) break;
+      pLo = s.lo; pHi = s.hi;
+    }
+    return { lo, hi };
+  }
+
+  function render(t) {
+    for (const o of els) {
+      const pi = clamp((t - o.tin) / o.dur);
+      const po = o.tout == null ? 0 : clamp((t - o.tout) / o.odur);
+      const fadeIn = o.fx === 'pour' ? eOut(clamp(pi * 1.8)) : eOut(pi);
+      const a = fadeIn * (1 - eOut(po));
+      let tr = '';
+      if (o.fx === 'up') tr = `translateY(${(1 - eOut(pi)) * 30 - eOut(po) * 14}px)`;
+      else if (o.fx === 'pour') tr = `translateY(${(1 - eBack(pi)) * -84}px)`;
+      else if (o.fx === 'scale') tr = `scale(${0.95 + 0.05 * eOut(pi)})`;
+      else if (o.fx === 'left') tr = `translateX(${(1 - eOut(pi)) * -40}px)`;
+      o.el.style.opacity = a.toFixed(3);
+      o.el.style.transform = tr;
+      o.el.style.visibility = a <= 0.001 ? 'hidden' : 'visible';
+      if (o.flash) {
+        // A warm highlight as the row lands, fading back to the ledger.
+        const f = clamp((t - o.tin - 0.35) / 1.3);
+        const k = t < o.tin + 0.35 ? 0 : (1 - eOut(f));
+        o.el.style.background = `rgba(232,182,76,${(0.32 * k).toFixed(3)})`;
+      }
+    }
+
+    // Drips out of the empty ledger, landing in small ripples
+    drops.forEach((d, i) => {
+      const f = ((t * 0.75 + i * 0.34) % 1 + 1) % 1;
+      const fall = clamp(f / 0.8);
+      const y = fall * fall * 170;
+      const s = f < 0.12 ? 0.35 + 0.65 * (f / 0.12) : 1;
+      const stretch = 1 + 0.35 * fall;
+      d.style.transform = `translateY(${y}px) scaleY(${stretch}) rotate(45deg) scale(${s})`;
+      d.style.opacity = f < 0.8 ? 1 : 0;
+      const r = clamp((f - 0.8) / 0.2);
+      const rs = 0.2 + 1.3 * r;
+      ripples[i].style.transform = `translateX(-50%) scale(${rs}, ${rs * 0.32})`;
+      ripples[i].style.opacity = f < 0.8 ? 0 : ((1 - r) * 0.85).toFixed(3);
+    });
+
+    // Sixty-minute clock + the money moving through the four stages
+    clockEl.textContent = Math.round(clamp((t - 8.2) / 2.0) * 60);
+    const lin = clamp((t - 8.2) / 1.8);
+    const x = 12.5 + 75 * lin;
+    tdot.style.left = x + '%';
+    tfill.style.width = x + '%';
+    chips.forEach(c => c.classList.toggle('lit', t >= parseFloat(c.dataset.lit) - 0.01));
+
+    // Leak figures measuring in
+    for (const n of nums) {
+      const v = n.target * eOut(clamp((t - n.t0) / n.d));
+      n.el.textContent = n.pre + Math.round(v).toLocaleString('en-US') + n.suf;
+    }
+
+    // Running total + bar against the $10K line
+    const { lo, hi } = tallyAt(t);
+    tnum.textContent = hi < 0.5 ? '$0' : `$${Math.round(lo)}K–$${Math.round(hi)}K`;
+    blo.style.width = (lo / BAR_MAX * 100) + '%';
+    bband.style.width = (hi / BAR_MAX * 100) + '%';
+    bar.classList.toggle('passed', lo >= 10);
+  }
+
+  // Playback
+  let t = 0, playing = false, last = null;
+  function setPlaying(v) {
+    if (v && t >= DUR) t = 0;
+    playing = v; last = null;
+    playBtn.textContent = playing ? 'Pause' : (t >= DUR ? 'Replay' : 'Play');
+  }
+  function tick(now) {
+    if (playing) {
+      const dt = last == null ? 0 : (now - last) / 1000;
+      last = now;
+      t = Math.min(DUR, t + dt);
+      if (t >= DUR) setPlaying(false);
+    }
+    render(t);
+    scrub.value = t;
+    timeEl.textContent = `${t.toFixed(1)} / ${DUR}s`;
+    requestAnimationFrame(tick);
+  }
+
+  // Fit the stage to the window
+  function fit() {
+    const W = stage.dataset.format === 'wide' ? 1920 : 1080, H = 1080;
+    const clean = document.body.classList.contains('clean');
+    const availH = window.innerHeight - (clean ? 0 : controls.offsetHeight + 24);
+    const availW = window.innerWidth - (clean ? 0 : 24);
+    const s = Math.min(availW / W, availH / H);
+    stage.style.transform = `scale(${s})`;
+    wrap.style.width = Math.floor(W * s) + 'px';
+    wrap.style.height = Math.floor(H * s) + 'px';
+  }
+  function toggleFormat() {
+    const wide = stage.dataset.format !== 'wide';
+    stage.dataset.format = wide ? 'wide' : 'square';
+    fmtBtn.textContent = 'Format: ' + (wide ? '16:9' : '1:1');
+    fit();
+  }
+  function toggleClean() {
+    document.body.classList.toggle('clean');
+    document.getElementById('hide').textContent = 'Hide controls';
+    fit();
+  }
+
+  playBtn.onclick = () => setPlaying(!playing);
+  document.getElementById('restart').onclick = () => { t = 0; setPlaying(true); };
+  scrub.oninput = () => { t = parseFloat(scrub.value); setPlaying(false); };
+  fmtBtn.onclick = toggleFormat;
+  document.getElementById('hide').onclick = toggleClean;
+  window.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' && e.code !== 'Space') return;
+    if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); }
+    else if (e.key === 'r' || e.key === 'R') { t = 0; setPlaying(true); }
+    else if (e.key === 'f' || e.key === 'F') toggleFormat();
+    else if (e.key === 'h' || e.key === 'H') toggleClean();
+  });
+  window.addEventListener('resize', fit);
+
+  fit();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { fit(); render(t); });
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
