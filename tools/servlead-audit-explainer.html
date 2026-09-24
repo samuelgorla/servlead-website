@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <title>Servlead Solutions: the AI &amp; Efficiency Audit</title>
 <!-- Brand fonts. Offline, it falls back to Georgia / Arial / Consolas and still plays. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,6 +124,22 @@ body{background:#1c2733;font-family:var(--sans);display:flex;flex-direction:colu
 .stage[data-format="wide"] .s3 .card.full{grid-column:2;grid-row:1/span 2}
 .stage[data-format="wide"] .guar{max-width:1300px;font-size:84px}
 
+.s5 a.url{display:inline-block;text-decoration:none}
+.s5 a.url:hover{text-decoration:underline}
+
+/* ---------- Embed mode (?embed): no control bar, click to play ---------- */
+body.embed{background:var(--paper)}
+body.embed .controls{display:none}
+body.embed #wrap{box-shadow:none}
+body.embed .stage{cursor:pointer}
+.poster{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;background:rgba(20,32,46,.10);cursor:pointer;font:inherit}
+body.embed .poster.show{display:flex}
+.poster .pbtn{width:84px;height:84px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(242,242,241,.9)}
+.poster .pbtn::before{content:"";margin-left:7px;border-style:solid;border-width:16px 0 16px 26px;border-color:transparent transparent transparent var(--paper)}
+.poster .plab{font-family:var(--mono);font-size:14px;color:var(--ink);background:var(--paper);padding:6px 12px;border-radius:999px}
+.poster:hover .pbtn{background:var(--rust)}
+.poster:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+
 /* ---------- Controls (outside the stage; H hides them for recording) ---------- */
 .controls{display:flex;align-items:center;gap:10px;height:56px;margin-top:12px;padding:0 14px;color:#dfe3ea;font-size:14px;width:min(1100px,96vw)}
 .controls button{font:600 14px var(--sans);background:#2d3a4a;color:#f2f2f1;border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
@@ -204,8 +221,8 @@ body.clean .stage{cursor:none}
       <div class="slot"><div class="phrow" data-in="11.2" data-out="11.5" data-odur=".2" data-fx="fade"><span></span><div class="pbar" style="width:64%"></div><div class="pfig"></div></div>
       <div class="lrow" data-in="11.5" data-dur=".75" data-fx="pour" data-flash="1">
         <span class="rk">i.</span>
-        <div><div class="nm">Bids priced by hand</div><div class="sb">5–8 hours a bid, 53 bids a year, from memory</div></div>
-        <div class="fig"><span data-num="11.8,.9,26" data-pre="$" data-suf="K"></span>–<span data-num="11.8,.9,42" data-pre="$" data-suf="K"></span></div>
+        <div><div class="nm">Bids priced by hand</div><div class="sb">8 hours a bid, 53 bids a year, from memory</div></div>
+        <div class="fig"><span data-num="11.8,.9,32000" data-pre="$"></span></div>
       </div></div>
 
       <div class="slot"><div class="phrow" data-in="11.2" data-out="12.8" data-odur=".2" data-fx="fade"><span></span><div class="pbar" style="width:52%"></div><div class="pfig"></div></div>
@@ -239,7 +256,7 @@ body.clean .stage{cursor:none}
         </div>
       </div>
     </div>
-    <p class="final" data-in="16.3" data-out="19.1">About $38,000–$54,000 a year. It leaks again every year it isn’t fixed.</p>
+    <p class="final" data-in="16.3" data-out="19.1">About $44,000 a year. It leaks again every year it isn’t fixed.</p>
   </section>
 
   <!-- 4a. Price -->
@@ -263,11 +280,12 @@ body.clean .stage{cursor:none}
   <section class="scene s5">
     <h2 class="big" data-in="26.6">Got sixty minutes?</h2>
     <p class="cta" data-in="27.3">Book the audit.</p>
-    <p class="url" data-in="27.6">cal.com/samgorla/consultation</p>
+    <a class="url" data-in="27.6" href="https://cal.com/samgorla/consultation" target="_top" rel="noopener">cal.com/samgorla/consultation</a>
     <div class="mark" data-in="28.0" data-fx="fade">Servlead Solutions<span>Lehigh Valley, PA</span></div>
   </section>
 
 </div>
+<button class="poster" id="poster" type="button" aria-label="Play the 31-second audit explainer"><span class="pbtn"></span><span class="plab" id="plab">Play · 31 sec</span></button>
 </div>
 
 <div class="controls" id="controls">
@@ -283,6 +301,12 @@ body.clean .stage{cursor:none}
 <script>
 (() => {
   const DUR = 31;
+  const EMBED = new URLSearchParams(location.search).has('embed');
+  const POSTER_T = 17.6; // the finished ledger: the most useful still frame
+  if (EMBED) document.body.classList.add('embed');
+  const poster = document.getElementById('poster');
+  const plab = document.getElementById('plab');
+  let started = false;
   const stage = document.getElementById('stage');
   const wrap = document.getElementById('wrap');
   const controls = document.getElementById('controls');
@@ -319,11 +343,11 @@ body.clean .stage{cursor:none}
   const bband = document.getElementById('bband');
   const blo = document.getElementById('blo');
 
-  // Running total in $K, matching the report: 26–42, then +~6, then +~5.85 = about 38–54.
+  // Running total in $K, matching the site's ledger: 32, then +~6, then +~5.85 = about 44.
   const steps = [
-    { t: 11.8, lo: 26, hi: 42 },
-    { t: 13.1, lo: 32, hi: 48 },
-    { t: 14.4, lo: 37.85, hi: 53.85 }
+    { t: 11.8, lo: 32, hi: 32 },
+    { t: 13.1, lo: 38, hi: 38 },
+    { t: 14.4, lo: 43.85, hi: 43.85 }
   ];
   const BAR_MAX = 60;
 
@@ -392,7 +416,7 @@ body.clean .stage{cursor:none}
 
     // Running total + bar against the $10K line
     const { lo, hi } = tallyAt(t);
-    tnum.textContent = hi < 0.5 ? '$0' : `$${Math.round(lo)}K–$${Math.round(hi)}K`;
+    tnum.textContent = hi < 0.5 ? '$0' : `$${Math.round(hi)}K`;
     blo.style.width = (lo / BAR_MAX * 100) + '%';
     bband.style.width = (hi / BAR_MAX * 100) + '%';
     bar.classList.toggle('passed', lo >= 10);
@@ -401,9 +425,15 @@ body.clean .stage{cursor:none}
   // Playback
   let t = 0, playing = false, last = null;
   function setPlaying(v) {
+    if (v && EMBED && !started) { t = 0; started = true; }
     if (v && t >= DUR) t = 0;
     playing = v; last = null;
     playBtn.textContent = playing ? 'Pause' : (t >= DUR ? 'Replay' : 'Play');
+    if (EMBED) {
+      poster.classList.toggle('show', !playing);
+      plab.textContent = !started ? 'Play · 31 sec' : (t >= DUR ? 'Replay' : 'Resume');
+      poster.setAttribute('aria-label', plab.textContent === 'Replay' ? 'Replay the audit explainer' : 'Play the audit explainer');
+    }
   }
   function tick(now) {
     if (playing) {
@@ -420,8 +450,13 @@ body.clean .stage{cursor:none}
 
   // Fit the stage to the window
   function fit() {
+    if (EMBED) {
+      // Pick the layout that matches the frame it's embedded in.
+      const wide = window.innerWidth / window.innerHeight > 1.3;
+      stage.dataset.format = wide ? 'wide' : 'square';
+    }
     const W = stage.dataset.format === 'wide' ? 1920 : 1080, H = 1080;
-    const clean = document.body.classList.contains('clean');
+    const clean = EMBED || document.body.classList.contains('clean');
     const availH = window.innerHeight - (clean ? 0 : controls.offsetHeight + 24);
     const availW = window.innerWidth - (clean ? 0 : 24);
     const s = Math.min(availW / W, availH / H);
@@ -446,7 +481,13 @@ body.clean .stage{cursor:none}
   scrub.oninput = () => { t = parseFloat(scrub.value); setPlaying(false); };
   fmtBtn.onclick = toggleFormat;
   document.getElementById('hide').onclick = toggleClean;
+  poster.onclick = () => setPlaying(true);
+  stage.addEventListener('click', e => {
+    if (!EMBED || e.target.closest('a')) return;
+    setPlaying(!playing);
+  });
   window.addEventListener('keydown', e => {
+    if (EMBED && e.code !== 'Space') return;
     if (e.target.tagName === 'INPUT' && e.code !== 'Space') return;
     if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); }
     else if (e.key === 'r' || e.key === 'R') { t = 0; setPlaying(true); }
@@ -455,6 +496,7 @@ body.clean .stage{cursor:none}
   });
   window.addEventListener('resize', fit);
 
+  if (EMBED) { t = POSTER_T; setPlaying(false); }
   fit();
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { fit(); render(t); });
   requestAnimationFrame(tick);
