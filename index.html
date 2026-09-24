@@ -200,7 +200,7 @@
 
   /* AUDIT WALKTHROUGH */
   .audit { background: var(--paper-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .walk { display: grid; grid-template-columns: 1fr 420px; gap: 3.5rem; align-items: start; }
+  .walk { display: block; max-width: 820px; }
   .walk-stages { border-top: 1px solid var(--line-dark); }
   .stage { border-bottom: 1px solid var(--line); cursor: pointer; transition: background var(--base) var(--ease); position: relative; }
   .stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rust); transform: scaleY(0); transform-origin: top; transition: transform var(--base) var(--ease); }
@@ -396,95 +396,6 @@
   .footer-links a:hover { color: var(--rust); }
   .footer-fine { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
 
-  /* ===== FLAGSHIP DEMOS (knowledge base + chief of staff) ===== */
-  .flag { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 3rem; align-items: center; padding-bottom: 4rem; margin-bottom: 4rem; border-bottom: 1px solid var(--line); }
-  .flag-k { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); }
-  .flag-title { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -0.015em; margin: 0.7rem 0 1rem; }
-  .flag-title em { font-style: italic; color: var(--rust); }
-  .flag-copy { font-size: 1rem; color: var(--ink-soft); max-width: 440px; }
-  .flag-copy + .flag-copy { margin-top: 0.8rem; }
-  .flag-link { display: inline-block; margin-top: 1.4rem; font-weight: 600; font-size: 0.95rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rust); padding-bottom: 2px; transition: color var(--base) var(--ease); }
-  .flag-link:hover { color: var(--rust); }
-  .flag-note { margin-top: 1.1rem; font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
-  .flag-video { position: relative; border-radius: 20px; overflow: hidden; background: var(--ink); box-shadow: 0 30px 60px -30px rgba(20, 32, 46, 0.45); aspect-ratio: 1040 / 582; }
-  .flag-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .flag-cos { grid-template-columns: 1fr; gap: 1.8rem; }
-  .flag-cos .flag-head { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 3rem; align-items: end; }
-  .flag-cos .flag-copy { max-width: 560px; }
-  .shelf-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 1.6rem; }
-  .shelf-head h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; }
-  .shelf-head p { font-size: 0.95rem; color: var(--ink-soft); max-width: 460px; }
-
-  /* chief of staff stage */
-  .cos-stage { position: relative; background: var(--ink); border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(20, 32, 46, 0.45), inset 0 0 0 1px rgba(242, 242, 241, 0.14); }
-  .cos-stage canvas { display: block; width: 100%; }
-  .cos-ov { position: absolute; inset: 0; pointer-events: none; }
-  .cos-rail { position: absolute; left: 26px; top: 22px; width: min(320px, 32%); height: 250px; }
-  .cos-card { position: absolute; left: 0; top: 0; width: 100%; background: rgba(242, 242, 241, 0.05); border: 1px solid rgba(242, 242, 241, 0.14); border-radius: 12px; padding: 11px 13px; opacity: 0; transform: translateX(-18px); transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), top 0.5s var(--ease); }
-  .cos-card.on { opacity: 1; transform: none; }
-  .cos-card.slotB { top: 118px; }
-  .cos-card.gone { opacity: 0; transform: translateY(-14px) scale(0.96); }
-  .cos-card .hd { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
-  .cos-card .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
-  .cos-card .who { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: #98a1b0; white-space: nowrap; }
-  .cos-card .b { font-size: 13px; line-height: 1.45; color: #dfe3e9; }
-  .cos-card .r { display: grid; grid-template-columns: 3.6rem 1fr; gap: 6px; font-size: 12.5px; line-height: 1.4; color: #dfe3e9; }
-  .cos-card .r i { font-style: normal; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #98a1b0; padding-top: 2px; }
-  .cos-card.crm .k { color: #4fc28c; }
-  .cos-meter { height: 8px; margin-top: 9px; background: rgba(242, 242, 241, 0.1); border-radius: 99px; overflow: hidden; }
-  .cos-meter i { display: block; height: 100%; width: 0; background: #4fc28c; border-radius: 99px; transition: width 1.3s var(--ease) 0.35s; }
-  .cos-card.on .cos-meter i { width: 60%; }
-  .cos-count { position: absolute; right: 26px; top: 22px; text-align: right; }
-  .cos-count b { display: block; font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1; color: var(--paper); font-variant-numeric: tabular-nums; }
-  .cos-count span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-  .cos-count em { display: block; margin-top: 6px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #e0603a; opacity: 0; transition: opacity 0.4s; }
-  .cos-count em.on { opacity: 1; }
-  .cos-chap { position: absolute; left: 26px; bottom: 24px; max-width: min(460px, 44%); }
-  .cos-chap .n { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; opacity: 0; transition: opacity 0.35s; }
-  .cos-chap .t { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.7vw, 32px); line-height: 1.12; letter-spacing: -0.01em; color: var(--paper); opacity: 0; transform: translateY(8px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
-  .cos-chap .t em { font-style: italic; color: var(--gold); }
-  .cos-chap.on .n, .cos-chap.on .t { opacity: 1; transform: none; }
-  .cos-held { position: absolute; right: 26px; bottom: 24px; width: min(340px, 33%); background: rgba(242, 242, 241, 0.96); color: var(--ink); border-radius: 16px 16px 4px 16px; padding: 12px 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.45s var(--ease), transform 0.45s var(--ease); }
-  .cos-held.on { opacity: 1; transform: none; }
-  .cos-held .h { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-  .cos-held p { font-size: 13.5px; line-height: 1.45; }
-  .cos-stamp { display: inline-block; margin-top: 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); border: 1.5px solid var(--rust); border-radius: 3px; padding: 3px 7px; transform: rotate(-2deg); }
-  .cos-tl { margin-top: 14px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
-  .cos-play { width: 52px; height: 52px; border-radius: 50%; border: none; background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; transition: transform 0.12s var(--ease); }
-  .cos-play:hover { transform: scale(1.04); }
-  .cos-play:focus-visible, .cos-ch:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
-  .cos-chaps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-  .cos-chaps::before { content: ''; position: absolute; left: 0; right: 0; top: 5px; height: 2px; background: rgba(20, 32, 46, 0.12); border-radius: 2px; }
-  .cos-prog { position: absolute; left: 0; top: 5px; height: 2px; width: 0; background: var(--rust); border-radius: 2px; }
-  .cos-ch { position: relative; background: none; border: none; text-align: left; padding: 14px 0 0; cursor: pointer; font-family: var(--sans); }
-  .cos-ch::before { content: ''; position: absolute; left: 0; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid #b7bdc8; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
-  .cos-ch.live::before { border-color: var(--rust); background: var(--rust); transform: scale(1.15); }
-  .cos-ch.past::before { border-color: var(--rust); }
-  .cos-ch i { display: block; font-style: normal; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-  .cos-ch b { display: block; font-weight: 500; font-size: 13.5px; color: var(--ink); margin-top: 2px; }
-
-  @media (max-width: 1024px) {
-    .flag, .flag-cos .flag-head { grid-template-columns: 1fr; gap: 1.6rem; }
-  }
-  @media (max-width: 760px) {
-    .cos-ov { position: static; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 18px; }
-    .cos-chap { position: static; max-width: none; order: -1; }
-    .cos-rail { position: static; width: auto; height: auto; display: flex; flex-direction: column; gap: 8px; }
-    .cos-card { position: relative; top: auto !important; transform: none; }
-    .cos-card:not(.on) { display: none; }
-    .cos-held { position: static; width: auto; display: none; }
-    .cos-held.on { display: block; }
-    .cos-count { position: static; text-align: left; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-    .cos-count b { font-size: 28px; }
-    .cos-count em { margin-top: 0; }
-    .cos-chaps { gap: 4px; }
-    .cos-ch b { display: none; }
-    .cos-ch i { font-size: 9px; letter-spacing: 0.02em; }
-    .shelf-head { flex-direction: column; gap: 0.6rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cos-card, .cos-held, .cos-chap .n, .cos-chap .t, .cos-meter i, .cos-count em { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
-  }
 
   @media (prefers-reduced-motion: no-preference) {
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -526,6 +437,17 @@
     .lg-cell { border-right: none; border-bottom: 1px solid var(--line); }
     .lg-cell:last-child { border-bottom: none; }
   }
+  /* ===== AUDIT EXPLAINER (31-second video, embedded from /tools/audit-explainer) ===== */
+  .explainer { margin: 0 0 3.5rem; }
+  .explainer-frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line-dark); background: var(--paper); }
+  .explainer-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .explainer-cap { font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem; max-width: 640px; }
+  @media (max-width: 768px) { .explainer-frame { aspect-ratio: 1 / 1; } }
+
+  /* ===== WHO YOU'D BE WORKING WITH (Why + About merged) ===== */
+  .why-side .about-photo { max-width: 300px; margin: 0 0 2.4rem; }
+  .why-side .about-photo figcaption { color: var(--muted); }
+  .why .btn-text { color: var(--gold); margin-top: 0.6rem; }
 </style>
 </head>
 <body>
@@ -537,8 +459,7 @@
       <a href="#audit">The Audit</a>
       <a href="/how-it-works">How it works</a>
       <a href="#ledger">What I Find</a>
-      <a href="#demos">Demos</a>
-      <a href="#why">Why Servlead</a>
+      <a href="/how-it-works#builds">Demos</a>
       <a href="#about">About</a>
       <a href="https://cal.com/samgorla/consultation" class="nav-cta">Book your audit</a>
     </div>
@@ -603,8 +524,15 @@
       <span class="sec-num">01 / The Audit</span>
       <div>
         <h2 class="sec-title">Sixty minutes. Four questions. <em>Every number I can defend.</em></h2>
-        <p class="sec-intro">The audit follows the money through four stages of your business. Tap each one to see the question I ask and something real I've turned up there. Then tick the panel on the right — it's the same conversation, run against your own business.</p>
+        <p class="sec-intro">The audit follows the money through four stages of your business. Watch the 31-second version, or tap each stage below to see the question I ask and something real I've turned up there.</p>
       </div>
+    </div>
+
+    <div class="explainer reveal">
+      <div class="explainer-frame">
+        <iframe src="/tools/audit-explainer?embed" title="The AI and Efficiency Audit in 31 seconds" loading="lazy"></iframe>
+      </div>
+      <p class="explainer-cap">Figures are from a real audit at a Lehigh Valley contractor, with identifying details removed.</p>
     </div>
 
     <div class="walk">
@@ -660,56 +588,8 @@
           <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your audit →</a>
           <span class="audit-note">$1,000 · $500 to book · $500 when the plan lands</span>
         </div>
+        <p class="audit-note" style="margin-top: 1.2rem;">Not ready to book? <a href="/leak-estimate" style="color: var(--rust); font-weight: 600;">Run your own numbers in 3 minutes →</a></p>
       </div>
-
-      <aside class="selfcheck reveal" id="selfcheck" aria-label="Self-check">
-        <div class="sc-head"><span>Tick what's true</span><span class="tag">● your business</span></div>
-
-        <div class="sc-row" data-stage="0" data-amt="13300">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">Someone prospects for new work by hand
-            <span class="sc-sub">Measured elsewhere: $13,300/yr · 8 hrs a week</span></span>
-        </div>
-
-        <div class="sc-row" data-stage="1" data-amt="32000">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">One person is the only one who can price the work
-            <span class="sc-sub">Measured elsewhere: $32,000/yr · 8 hrs a bid</span></span>
-        </div>
-
-        <div class="sc-row" data-stage="2" data-amt="16494">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">Cash or payments get reconciled by hand
-            <span class="sc-sub">Measured elsewhere: $16,494/yr · four sites</span></span>
-        </div>
-
-        <div class="sc-row" data-stage="2" data-amt="0">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">Money owed sits until someone remembers to chase it
-            <span class="sc-sub np">Named, not priced — cash timing, not a yearly loss</span></span>
-        </div>
-
-        <div class="sc-row" data-stage="3" data-amt="37440">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">Nothing follows up unless a person remembers to
-            <span class="sc-sub">Measured elsewhere: $37,440/yr · most common leak</span></span>
-        </div>
-
-        <div class="sc-row" data-stage="3" data-amt="24960">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">The owner still does work nobody needs the owner for
-            <span class="sc-sub">Measured elsewhere: $24,960/yr · 8 hrs every Monday</span></span>
-        </div>
-
-        <div class="sc-row" data-stage="3" data-amt="18000">
-          <span class="sc-box" aria-hidden="true">✓</span>
-          <span class="sc-lab">The same numbers get typed into two systems
-            <span class="sc-sub">Measured elsewhere: $18,000/yr · two people, part-time</span></span>
-        </div>
-
-        <div class="sc-total"><div class="nm">WHAT THESE COST SOMEBODY ELSE</div><div class="amt" id="scTotal">$0</div></div>
-        <div class="sc-foot">Real figures from real audits at other businesses — not a forecast for yours. Yours will land somewhere different. Finding out where is the hour.<br><br><a href="/leak-estimate" style="color: var(--rust); font-weight: 600;">Run your own numbers in 3 minutes →</a></div>
-      </aside>
     </div>
   </div>
 </section>
@@ -818,161 +698,30 @@
   </div>
 </div>
 
-<section class="demos" id="demos" data-screen-label="Demos">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="sec-num">04 / Proof</span>
-      <div>
-        <h2 class="sec-title">Built and running. <em>Shown only when the audit calls for one.</em></h2>
-        <p class="sec-intro">These aren't concepts. They're working systems, and none of them is the offer. If the audit turns up a leak one of them already solves, you'll see the real thing. If it doesn't, you won't hear about them.</p>
-      </div>
-    </div>
-
-    <!-- Flagship 1: knowledge base -->
-    <div class="flag reveal">
-      <div>
-        <span class="flag-k">The knowledge base</span>
-        <h3 class="flag-title">What the business knows, <em>kept.</em></h3>
-        <p class="flag-copy">Right now it lives in two or three heads. This catches it from work the crew already does: a voice memo, a supplier email, a closed work order.</p>
-        <p class="flag-copy">Anyone can ask, and the answer comes back with where it came from. Every job makes it smarter.</p>
-        <a class="flag-link" href="/tools/servlead-knowledge-full">Play the full demo</a>
-        <p class="flag-note">Illustration. Made-up business content.</p>
-      </div>
-      <div class="flag-video">
-        <video src="/kb-demo.mp4" poster="/kb-demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Animated illustration of a business knowledge base filling up and answering a question"></video>
-      </div>
-    </div>
-
-    <!-- Flagship 2: chief of staff -->
-    <div class="flag flag-cos reveal" id="chief-of-staff">
-      <div class="flag-head">
-        <div>
-          <span class="flag-k">The chief of staff</span>
-          <h3 class="flag-title">A chief of staff that <em>runs on a clock.</em></h3>
-        </div>
-        <div>
-          <p class="flag-copy">It knows your business. It's plugged into the tools you already use. It handles the jobs that repeat, on schedule, so you don't have to remember to ask. It drafts. You approve.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="cos-stage" id="cosStage" aria-label="Animated illustration of a chief of staff agent working through a day">
-          <canvas id="cosCanvas" aria-hidden="true"></canvas>
-          <div class="cos-ov">
-            <div class="cos-rail" id="cosRail">
-              <div class="cos-card" data-at="3400">
-                <div class="hd"><span class="k">8:00 AM · check-in</span><span class="who">to you</span></div>
-                <div class="r"><i>Decide</i><span>Hartline quote. Send it or hold?</span></div>
-                <div class="r"><i>Stuck</i><span>Permit call, day 4. No callback yet.</span></div>
-                <div class="r"><i>Figure</i><span>$6,200 in invoices past 30 days.</span></div>
-              </div>
-              <div class="cos-card" data-at="7400">
-                <div class="hd"><span class="k">11:38 AM · voice note</span><span class="who">you, from the truck</span></div>
-                <div class="b">"Just left Kessler Mechanical. Ray wants a lighting quote by Friday."</div>
-              </div>
-              <div class="cos-card crm" data-at="9700">
-                <div class="hd"><span class="k">11:39 AM · CRM row</span><span class="who">written for you</span></div>
-                <div class="b">Kessler Mechanical · Ray, owner · Wants a lighting quote · Next: quote by Friday</div>
-              </div>
-              <div class="cos-card" data-at="13000">
-                <div class="hd"><span class="k">1:12 PM · inbox</span><span class="who">Hartline Distribution</span></div>
-                <div class="b">Can you confirm the revised Q4 number? We'd like to sign this week.</div>
-              </div>
-              <div class="cos-card crm" data-at="21000">
-                <div class="hd"><span class="k">Mon 8:15 AM · weekly sheet</span><span class="who">its own meter</span></div>
-                <div class="b">60% of the included weekly budget used.</div>
-                <div class="cos-meter"><i></i></div>
-              </div>
-            </div>
-            <div class="cos-count"><b id="cosN">0</b><span>jobs done on the clock</span><em id="cosWait">1 waiting on you</em></div>
-            <div class="cos-chap" id="cosChap"><div class="n"></div><div class="t"></div></div>
-            <div class="cos-held" id="cosHeld">
-              <div class="h">Draft on the thread · 1:49 PM</div>
-              <p>Hi Lauren, confirming the revised Q4 figure of $18,400, same scope we discussed.</p>
-              <span class="cos-stamp">Draft · not sent · waiting on you</span>
-            </div>
-          </div>
-        </div>
-        <div class="cos-tl">
-          <button class="cos-play" id="cosPlay" aria-label="Play"></button>
-          <div class="cos-chaps">
-            <div class="cos-prog" id="cosProg"></div>
-            <button class="cos-ch" data-t="0"><i>8:00 AM</i><b>Check-in</b></button>
-            <button class="cos-ch" data-t="5500"><i>11:38 AM</i><b>After a visit</b></button>
-            <button class="cos-ch" data-t="11000"><i>1:49 PM</i><b>Money mail</b></button>
-            <button class="cos-ch" data-t="18000"><i>Monday</i><b>The meter</b></button>
-            <button class="cos-ch" data-t="23500"><i>Always</i><b>You approve</b></button>
-          </div>
-        </div>
-        <p class="flag-note">Simulation. Fictional business, fictional data. Mirrors the jobs the real agent runs.</p>
-      </div>
-    </div>
-
-    <!-- The shelf: smaller builds -->
-    <div class="shelf-head reveal">
-      <h3>Smaller builds, also running.</h3>
-      <p>Pick one. The window on the right runs a simulation of what it does.</p>
-    </div>
-
-    <div class="demo-layout">
-      <div class="reveal">
-        <div class="demo-list" id="demoList">
-          <div class="demo-item active" data-demo="0"><span class="n">01</span><span class="t">Lead Responder</span><span class="live"><span class="live-dot"></span>Live</span></div>
-          <div class="demo-item" data-demo="1"><span class="n">02</span><span class="t">Invoice Collections Bot</span><span class="live"><span class="live-dot"></span>Live</span></div>
-          <div class="demo-item" data-demo="2"><span class="n">03</span><span class="t">Inbox Autopilot</span><span class="live"><span class="live-dot"></span>Live</span></div>
-          <div class="demo-item" data-demo="3"><span class="n">04</span><span class="t">Document Autopilot</span><span class="live"><span class="live-dot"></span>Live</span></div>
-          <div class="demo-item" data-demo="4"><span class="n">05</span><span class="t">Lead Discovery &amp; Outreach</span><span class="live"><span class="live-dot"></span>Live</span></div>
-        </div>
-        <p class="demo-desc-line" id="demoDesc">Enquiries that arrive after hours sit until somebody opens the inbox. This answers in under 30 seconds — qualifies, routes the hot ones, and notifies you. Day or night.</p>
-      </div>
-
-      <div class="demo-screen reveal">
-        <div class="demo-screen-bar"><span id="demoBarTitle">lead-responder</span><span class="st"><span class="live-dot"></span><span id="demoBarStatus">running</span></span></div>
-        <div class="chat" id="chatWindow"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="why" id="why" data-screen-label="Why Servlead">
+<section class="why" id="about" data-screen-label="Who you'd be working with">
   <div class="container">
     <div class="why-grid">
       <div class="reveal">
-        <span class="kicker">05 / Why "Servlead"</span>
-        <h2 class="why-title">The name means <em>servant leadership.</em> That's not branding — it's the operating model.</h2>
-        <p>Servlead comes from the leadership Jesus modeled: lead by serving. My faith isn't a marketing angle — it's the foundation of how I work, and it's why this business runs the way it does.</p>
-        <p>In practice, that means I put my own fee on the line before I ask for the rest of it — <b>if I don't show you at least $10,000 a year leaking out of your business, audit is free</b>. It means a third of what I find carries no dollar figure, because forcing one would be dishonest. And it means if you're not a good fit, I'll tell you — kindly — instead of selling you something that won't work.</p>
+        <span class="kicker">04 / Who you'd be working with</span>
+        <h2 class="why-title" id="why">One consultant. <em>Start to finish.</em></h2>
+        <p>I'm Sam. I spent 14 years in analytics, automation, and ERP before starting Servlead — long enough to know that most "AI transformation" pitches are noise, and that the real wins are specific, measurable, and usually unglamorous.</p>
+        <p>When you work with me, <b>I'm the one doing the work</b>. No account managers, no junior team, no passing you off to someone else. The audit works best at owner-run businesses where the owner is still close enough to the work to answer questions about it directly — and I'll tell you honestly if that's not you.</p>
+        <p>The name comes from servant leadership, the leadership Jesus modeled: lead by serving. My faith isn't a marketing angle — it's the foundation of how I work, and it's why this business runs the way it does.</p>
+        <p>In practice, that means I put my own fee on the line before I ask for the rest of it. It means a third of what I find carries no dollar figure, because forcing one would be dishonest. And it means if you're not a good fit, I'll tell you — kindly — instead of selling you something that won't work.</p>
         <div class="verse">
           <div class="vtext">"Act justly, love mercy, and walk humbly before your God."</div>
           <div class="vref">Micah 6:8 — the standard I hold myself to</div>
         </div>
       </div>
-      <div class="creed reveal">
-        <div class="creed-row"><span class="cn">i.</span><div><div class="ct">Act justly</div><div class="cd">Honest numbers, honest scoping. Nothing gets a figure I can't defend to your accountant.</div></div></div>
-        <div class="creed-row"><span class="cn">ii.</span><div><div class="ct">Love mercy</div><div class="cd">No pressure, no guilt, no closing tactics. If the timing's wrong, the door stays open.</div></div></div>
-        <div class="creed-row"><span class="cn">iii.</span><div><div class="ct">Walk humbly</div><div class="cd">I don't have all the answers. When I don't know, I say so — then go find out.</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="about" id="about" data-screen-label="About Sam">
-  <div class="container">
-    <div class="about-grid">
-      <figure class="about-photo reveal">
-        <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla, founder of Servlead Solutions">
-        <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
-      </figure>
-      <div class="about-body reveal">
-        <span class="sec-num">06 / About</span>
-        <h2 class="sec-title" style="margin-top: 0.8rem;">One consultant. <em>No handoffs.</em></h2>
-        <p>I'm Sam. I spent 14 years in analytics, automation, and ERP before starting Servlead — long enough to know that most "AI transformation" pitches are noise, and that the real wins are specific, measurable, and usually unglamorous.</p>
-        <p>When you work with me, <b>I'm the one doing the work</b>. No account managers, no junior team, no handoff. The audit works best at owner-run businesses where the owner is still close enough to the work to answer questions about it directly — and I'll tell you honestly if that's not you.</p>
-        <div class="about-facts">
-          <div><div class="fact-num">14 yrs</div><div class="fact-label">Analytics · automation · ERP</div></div>
-          <div><div class="fact-num">MS</div><div class="fact-label">Business Analytics</div></div>
-          <div><div class="fact-num">$10K</div><div class="fact-label">Shown, or you don't pay</div></div>
-          <div><div class="fact-num">48 hrs</div><div class="fact-label">Plan turnaround</div></div>
+      <div class="why-side reveal">
+        <figure class="about-photo">
+          <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla, founder of Servlead Solutions">
+          <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
+        </figure>
+        <div class="creed">
+          <div class="creed-row"><span class="cn">i.</span><div><div class="ct">Act justly</div><div class="cd">Honest numbers, honest scoping. Nothing gets a figure I can't defend to your accountant.</div></div></div>
+          <div class="creed-row"><span class="cn">ii.</span><div><div class="ct">Love mercy</div><div class="cd">No pressure, no guilt, no closing tactics. If the timing's wrong, the door stays open.</div></div></div>
+          <div class="creed-row"><span class="cn">iii.</span><div><div class="ct">Walk humbly</div><div class="cd">I don't have all the answers. When I don't know, I say so — then go find out.</div></div></div>
         </div>
         <a href="https://www.linkedin.com/in/samuelgorla" class="btn btn-text">Find me on LinkedIn →</a>
       </div>
@@ -983,7 +732,7 @@
 <section class="proof" id="reviews" data-screen-label="What clients say">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="sec-num">07 / What clients say</span>
+      <span class="sec-num">05 / What clients say</span>
       <div>
         <h2 class="sec-title">I'd rather you hear it <em>from them.</em></h2>
         <p class="sec-intro">Every review below is public on Google, word for word. Click through and read the full thing.</p>
@@ -1024,7 +773,7 @@
 
 <section class="cta" id="contact" data-screen-label="CTA">
   <span class="kicker">$1,000 · 60 minutes · written plan in 48 hours</span>
-  <h2 class="cta-title">If I don't show you at least $10,000 a year leaking out of your business, <em>audit is free.</em></h2>
+  <h2 class="cta-title">Got sixty minutes? <em>Book the audit.</em></h2>
   <p class="cta-sub">One hour. Your leaks, named and costed. A written plan to fix them within two days, yours to keep whether or not you build any of it with me.</p>
   <div class="cta-row">
     <a href="https://cal.com/samgorla/consultation" class="btn btn-primary">Book your AI Audit →</a>
@@ -1084,63 +833,14 @@
   document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
 })();
 
-// Audit stages + self-check
+// Audit stages
 (function () {
-  var stages = document.querySelectorAll('.stage');
-  var rows = document.querySelectorAll('.sc-row');
-  var totalEl = document.getElementById('scTotal');
-  var displayed = 0;
-
-  function fmt(n) { return '$' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-
-  function updateTotal() {
-    var target = 0;
-    rows.forEach(function (r) {
-      if (r.classList.contains('on')) target += parseInt(r.dataset.amt, 10) || 0;
-    });
-    var from = displayed, start = null;
-    function tick(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / 550, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      displayed = Math.round(from + (target - from) * eased);
-      totalEl.textContent = fmt(displayed);
-      if (p < 1) requestAnimationFrame(tick);
-      else { displayed = target; totalEl.textContent = fmt(target); }
-    }
-    requestAnimationFrame(tick);
-  }
-
-  rows.forEach(function (r) {
-    r.setAttribute('role', 'button');
-    r.setAttribute('tabindex', '0');
-    r.setAttribute('aria-pressed', 'false');
-    function toggle() {
-      r.classList.toggle('on');
-      r.setAttribute('aria-pressed', r.classList.contains('on') ? 'true' : 'false');
-      updateTotal();
-    }
-    r.addEventListener('click', toggle);
-    r.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
-  });
-
+  var stages = document.querySelectorAll('.walk-stages .stage');
   stages.forEach(function (st) {
     st.addEventListener('click', function () {
       var wasOpen = st.classList.contains('open');
       stages.forEach(function (s) { s.classList.remove('open'); });
-      rows.forEach(function (r) { r.classList.remove('hint'); });
-      if (!wasOpen) {
-        st.classList.add('open');
-        var key = st.dataset.stage;
-        rows.forEach(function (r) {
-          if (r.dataset.stage === key) {
-            r.classList.add('hint');
-            setTimeout(function () { r.classList.remove('hint'); }, 1400);
-          }
-        });
-      }
+      if (!wasOpen) st.classList.add('open');
     });
   });
 
@@ -1152,368 +852,8 @@
   }, { threshold: 0.4 });
   autoObs.observe(document.getElementById('walkStages'));
 })();
-
-// Demo chat simulations
-(function () {
-  var scripts = {
-    0: { title: 'lead-responder', desc: "Enquiries that arrive after hours sit until somebody opens the inbox. This answers in under 30 seconds — qualifies, routes the hot ones, and notifies you. Day or night.",
-      steps: [
-        { type: 'in', meta: 'New lead · web form · 7:42 PM', text: "Hi — need a quote on a 4,000 sq ft warehouse buildout. Timeline is tight." },
-        { type: 'typing', dur: 1400 },
-        { type: 'out', meta: 'AI reply · 7:42 PM · 22 seconds later', text: "Thanks for reaching out! Happy to help with the buildout. Two quick questions so we quote it right: what's your target completion date, and is the space shell or partially finished?" },
-        { type: 'in', meta: 'Lead · 7:44 PM', text: "Need it done by October. It's a shell." },
-        { type: 'sys', text: '✓ QUALIFIED — HOT · routed to Sam · SMS sent' }
-      ] },
-    1: { title: 'collections-bot', desc: "Unpaid invoices age because following up is awkward and easy to postpone. This bot does the polite, persistent follow-up for you — and escalates only when a human touch is needed.",
-      steps: [
-        { type: 'sys', text: 'INVOICE #1042 · $8,400 · 14 days overdue' },
-        { type: 'typing', dur: 1200 },
-        { type: 'out', meta: 'Auto follow-up · day 14', text: "Hi Dana — friendly nudge on invoice #1042 ($8,400), due two weeks back. Here's the payment link if it slipped through. Anything holding it up on your end?" },
-        { type: 'in', meta: 'Client · 2 hrs later', text: "Sorry! Processing it today." },
-        { type: 'sys', text: '✓ PAID — $8,400 · cycle: 15 days (was 38)' }
-      ] },
-    2: { title: 'inbox-autopilot', desc: "Your inbox is a job you never applied for. This triages every incoming email, drafts replies in your voice for the routine ones, and surfaces only what genuinely needs you.",
-      steps: [
-        { type: 'sys', text: '47 EMAILS OVERNIGHT · triaging…' },
-        { type: 'typing', dur: 1300 },
-        { type: 'out', meta: 'Drafted for review', text: "Hi Marcus — yes, we can move Thursday's walkthrough to 2pm. I've updated the invite. See you then." },
-        { type: 'sys', text: '31 archived · 9 drafted · 7 need you' },
-        { type: 'in', meta: 'Flagged · needs Sam', text: "Re: change order on the Fulton project — need your call on the structural piece." }
-      ] },
-    3: { title: 'document-autopilot', desc: "POs, invoices, packing slips, intake forms — re-keyed by hand, hours every week. This reads them, extracts what matters, and pushes it into your system untouched by humans.",
-      steps: [
-        { type: 'in', meta: 'Inbound · PDF attachment', text: "📄 PO_4471_Hartline_Distribution.pdf" },
-        { type: 'typing', dur: 1500 },
-        { type: 'sys', text: 'EXTRACTED — 14 line items · PO #4471 · $23,610' },
-        { type: 'out', meta: 'Pushed to ERP · 41 seconds', text: "Order #4471 created in NetSuite. Quantities matched against inventory — one flag: item SKU-2280 shows 3-week lead time. Flagged for review." },
-        { type: 'sys', text: '✓ 0 keystrokes · 0 re-keying errors' }
-      ] },
-    4: { title: 'lead-discovery', desc: "Instead of waiting for leads, this finds businesses that match your best-customer profile, researches them properly, and drafts outreach that doesn't sound like spam — because it isn't.",
-      steps: [
-        { type: 'sys', text: 'SCANNING — GCs, 10–50 employees, Lehigh Valley' },
-        { type: 'typing', dur: 1400 },
-        { type: 'sys', text: '12 MATCHES · researching top 3…' },
-        { type: 'out', meta: 'Draft outreach · for your approval', text: "Hi Tom — saw Keystone just picked up the Bethlehem school renovation. We help GCs your size cut bid-prep time roughly in half. Worth a 15-minute look?" },
-        { type: 'in', meta: 'Reply · next morning', text: "Interesting timing, actually. Give me a call this week." }
-      ] }
-  };
-
-  var chatEl = document.getElementById('chatWindow');
-  var descEl = document.getElementById('demoDesc');
-  var barTitle = document.getElementById('demoBarTitle');
-  var items = document.querySelectorAll('.demo-item');
-  var current = 0, runToken = 0;
-
-  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
-  function run(idx) {
-    var token = ++runToken;
-    var sc = scripts[idx];
-    chatEl.innerHTML = '';
-    barTitle.textContent = sc.title;
-    descEl.textContent = sc.desc;
-    var i = 0;
-    function next() {
-      if (token !== runToken) return;
-      if (i >= sc.steps.length) { setTimeout(function () { if (token === runToken) run(idx); }, 5000); return; }
-      var step = sc.steps[i++];
-      if (step.type === 'typing') {
-        var t = document.createElement('div');
-        t.className = 'msg in show';
-        t.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
-        chatEl.appendChild(t);
-        setTimeout(function () { if (token === runToken) { t.remove(); next(); } }, step.dur);
-        return;
-      }
-      var m = document.createElement('div');
-      m.className = 'msg ' + step.type;
-      m.innerHTML = (step.meta ? '<div class="meta">' + esc(step.meta) + '</div>' : '') + esc(step.text);
-      chatEl.appendChild(m);
-      requestAnimationFrame(function () { requestAnimationFrame(function () { m.classList.add('show'); }); });
-      setTimeout(next, 1700);
-    }
-    next();
-  }
-
-  items.forEach(function (it) {
-    it.addEventListener('click', function () {
-      items.forEach(function (x) { x.classList.remove('active'); });
-      it.classList.add('active');
-      current = parseInt(it.dataset.demo, 10);
-      run(current);
-    });
-  });
-
-  // Start when visible
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); run(0); } });
-  }, { threshold: 0.3 });
-  obs.observe(chatEl);
-})();
 </script>
 
-<script>
-/* Chief of staff demo: a day on the clock */
-(function () {
-  var stage = document.getElementById('cosStage'); if (!stage) return;
-  var cv = document.getElementById('cosCanvas'), ctx = cv.getContext('2d');
-  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var TAU = Math.PI * 2, END = 27000;
-  var C = { ink: '#14202e', ink2: '#1a2737', paper: '#f2f2f1', gold: '#e8b64c', green: '#4fc28c', blue: '#a9bbd6', rust: '#e0603a', muted: '#7d8494' };
-  var CHAPS = [
-    [0, '8:00 AM · the check-in', 'Three lines before your day starts. <em>Quiet if there\'s nothing.</em>'],
-    [5500, 'After a visit · the CRM', 'You say what happened. <em>It writes the row.</em>'],
-    [11000, '1:49 PM · the money mail', 'It drafts the reply. <em>Then it stops at you.</em>'],
-    [18000, 'Monday · the meter', 'Every Monday, it checks <em>its own usage.</em>'],
-    [23500, 'The rule', 'You approve money, outbound, <em>and anything you can\'t undo.</em>']
-  ];
-  // simulated clock: [ms, minutes since Tue 00:00]
-  var KEYS = [[0, 390], [2500, 480], [5500, 480], [7000, 698], [11000, 698], [12500, 829], [18000, 829], [19800, 9135], [END, 9135]];
-  var PARTS = [
-    { a: 'core', b: 'you', t0: 2600, d: 1000, c: C.gold },
-    { a: 'you', b: 'core', t0: 7200, d: 1000, c: C.paper },
-    { a: 'core', b: 'crm', t0: 8600, d: 1000, c: C.green },
-    { a: 'inbox', b: 'core', t0: 12800, d: 1000, c: C.blue },
-    { a: 'core', b: 'gate', t0: 14600, d: 1200, c: C.rust, hold: true },
-    { a: 'core', b: 'sheet', t0: 20000, d: 1000, c: C.gold }
-  ];
-  var PULSES = [2600, 8600, 14200, 20000];
-  var DONE = [3600, 9600, 15800, 21000];
-  var HELD = 15800;
-  var DAYS = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'];
-
-  var W, H, L, mob;
-  var S = { t: RM ? END : 0, playing: false, last: 0, visible: false, started: false, chap: -1 };
-
-  function ease(p) { return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
-  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-
-  function layout() {
-    var DPR = Math.min(2, window.devicePixelRatio || 1);
-    W = stage.clientWidth; mob = W < 760;
-    H = Math.round(mob ? Math.max(280, W * 0.82) : clamp(W * 0.56, 440, 600));
-    cv.width = W * DPR; cv.height = H * DPR; cv.style.height = H + 'px';
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    var cx = mob ? W * 0.5 : W * 0.6, cy = mob ? H * 0.5 : H * 0.47;
-    var R = mob ? Math.min(W, H) * 0.25 : H * 0.27, r2 = R * (mob ? 1.62 : 1.55);
-    function at(deg, label) { var a = deg * Math.PI / 180; return { x: cx + Math.cos(a) * r2, y: cy + Math.sin(a) * r2, label: label }; }
-    L = { cx: cx, cy: cy, R: R, r2: r2, nodes: { you: at(180, 'You'), sheet: at(-70, 'Weekly sheet'), crm: at(-20, 'CRM'), inbox: at(12, 'Inbox') } };
-    L.gate = { x: L.nodes.you.x + 34, y: L.nodes.you.y };
-    L.core = { x: cx, y: cy };
-    render(performance.now());
-  }
-
-  function pt(n) { return n === 'core' ? L.core : n === 'gate' ? L.gate : L.nodes[n]; }
-  function ctrl(a, b) { var dx = b.x - a.x, dy = b.y - a.y; return { x: (a.x + b.x) / 2 - dy * 0.15, y: (a.y + b.y) / 2 + dx * 0.15 }; }
-  function qp(a, c, b, p) { var q = 1 - p; return { x: q * q * a.x + 2 * q * p * c.x + p * p * b.x, y: q * q * a.y + 2 * q * p * c.y + p * p * b.y }; }
-  function minutesAt(t) {
-    for (var i = 1; i < KEYS.length; i++) if (t <= KEYS[i][0]) {
-      var k0 = KEYS[i - 1], k1 = KEYS[i], p = k1[0] === k0[0] ? 1 : ease((t - k0[0]) / (k1[0] - k0[0]));
-      return k0[1] + (k1[1] - k0[1]) * p;
-    }
-    return KEYS[KEYS.length - 1][1];
-  }
-  function fmt(m) {
-    var d = Math.floor(m / 1440), mm = m % 1440, h = Math.floor(mm / 60), mi = Math.floor(mm % 60);
-    var ap = h >= 12 ? 'PM' : 'AM', h12 = h % 12 === 0 ? 12 : h % 12;
-    return DAYS[clamp(d, 0, 6)] + ' ' + h12 + ':' + (mi < 10 ? '0' : '') + mi + ' ' + ap;
-  }
-  function glow(name, t) {
-    var g = 0;
-    PARTS.forEach(function (p) {
-      var arr = p.t0 + p.d;
-      if (p.b === name && t >= arr && t < arr + 1800) g = Math.max(g, 1 - (t - arr) / 1800);
-      if (p.a === name && t >= p.t0 - 300 && t < p.t0 + 500) g = Math.max(g, 1 - Math.abs(t - p.t0) / 500);
-    });
-    return g;
-  }
-  function inFlight(name, t) {
-    return PARTS.some(function (p) { return (p.a === name || p.b === name) && t >= p.t0 && t <= p.t0 + p.d; });
-  }
-
-  function icon(name, x, y) {
-    ctx.save(); ctx.strokeStyle = 'rgba(242,242,241,0.75)'; ctx.fillStyle = 'rgba(242,242,241,0.75)'; ctx.lineWidth = 1.3;
-    if (name === 'crm') { for (var i = -1; i <= 1; i++) { ctx.beginPath(); ctx.moveTo(x - 7, y + i * 4.5); ctx.lineTo(x + 7, y + i * 4.5); ctx.stroke(); } }
-    else if (name === 'inbox') { ctx.strokeRect(x - 7.5, y - 5, 15, 10); ctx.beginPath(); ctx.moveTo(x - 7.5, y - 5); ctx.lineTo(x, y + 1); ctx.lineTo(x + 7.5, y - 5); ctx.stroke(); }
-    else if (name === 'sheet') { ctx.strokeRect(x - 7.5, y - 3, 15, 6); ctx.fillRect(x - 7.5, y - 3, 9, 6); }
-    else if (name === 'you') { ctx.beginPath(); ctx.arc(x, y - 3, 3.6, 0, TAU); ctx.stroke(); ctx.beginPath(); ctx.arc(x, y + 8, 7, Math.PI * 1.15, Math.PI * 1.85); ctx.stroke(); }
-    ctx.restore();
-  }
-
-  function render(now) {
-    if (!L) return;
-    var t = S.t, n = RM ? 0 : now;
-    ctx.fillStyle = C.ink; ctx.fillRect(0, 0, W, H);
-    var g = ctx.createRadialGradient(L.cx, L.cy, 0, L.cx, L.cy, L.r2 * 1.7);
-    g.addColorStop(0, 'rgba(232,182,76,0.07)'); g.addColorStop(1, 'rgba(20,32,46,0)');
-    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-
-    // orbit + drifting dust
-    ctx.save(); ctx.setLineDash([2, 6]); ctx.strokeStyle = 'rgba(242,242,241,0.10)'; ctx.beginPath(); ctx.arc(L.cx, L.cy, L.r2, 0, TAU); ctx.stroke(); ctx.restore();
-    for (var i = 0; i < 40; i++) {
-      var a = i / 40 * TAU + n * 0.00005 * (i % 2 ? 1 : -1), rr = L.r2 + Math.sin(i * 7.3) * 14;
-      ctx.fillStyle = 'rgba(242,242,241,' + (0.06 + 0.08 * ((i * 13) % 5) / 5) + ')';
-      ctx.beginPath(); ctx.arc(L.cx + Math.cos(a) * rr, L.cy + Math.sin(a) * rr, 1, 0, TAU); ctx.fill();
-    }
-
-    // links core -> nodes
-    Object.keys(L.nodes).forEach(function (k) {
-      var b = k === 'you' ? L.gate : L.nodes[k], c = ctrl(L.core, b), on = inFlight(k, t) || (k === 'you' && inFlight('gate', t));
-      ctx.strokeStyle = 'rgba(242,242,241,' + (on ? 0.32 : 0.08) + ')'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(L.core.x, L.core.y); ctx.quadraticCurveTo(c.x, c.y, b.x, b.y); ctx.stroke();
-    });
-
-    // dial
-    var R = L.R;
-    ctx.fillStyle = 'rgba(26,39,55,0.85)'; ctx.beginPath(); ctx.arc(L.cx, L.cy, R, 0, TAU); ctx.fill();
-    ctx.strokeStyle = 'rgba(242,242,241,0.22)'; ctx.lineWidth = 1; ctx.stroke();
-    for (i = 0; i < 60; i++) {
-      var ang = i / 60 * TAU - Math.PI / 2, hr = i % 5 === 0, r0 = R - (hr ? 10 : 5);
-      ctx.strokeStyle = hr ? 'rgba(242,242,241,0.45)' : 'rgba(242,242,241,0.14)'; ctx.lineWidth = hr ? 1.4 : 1;
-      ctx.beginPath(); ctx.moveTo(L.cx + Math.cos(ang) * r0, L.cy + Math.sin(ang) * r0); ctx.lineTo(L.cx + Math.cos(ang) * (R - 2), L.cy + Math.sin(ang) * (R - 2)); ctx.stroke();
-    }
-    ctx.fillStyle = 'rgba(242,242,241,0.4)'; ctx.font = (mob ? 9 : 10) + 'px "Spline Sans Mono", ui-monospace, monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    [['12', 0], ['3', 3], ['6', 6], ['9', 9]].forEach(function (q) { var a2 = q[1] / 12 * TAU - Math.PI / 2; ctx.fillText(q[0], L.cx + Math.cos(a2) * (R - 22), L.cy + Math.sin(a2) * (R - 22)); });
-
-    // routine marks on the rim: 8:00, 1:49, Mon 8:15
-    var m = minutesAt(t);
-    [[480, 2500, C.gold], [829, 12500, C.gold], [495, 19800, C.green]].forEach(function (r) {
-      var a3 = ((r[0] / 60) % 12) / 12 * TAU - Math.PI / 2, lit = t >= r[1];
-      var x = L.cx + Math.cos(a3) * (R + 9), y = L.cy + Math.sin(a3) * (R + 9);
-      ctx.fillStyle = lit ? r[2] : 'rgba(242,242,241,0.25)'; ctx.beginPath(); ctx.arc(x, y, lit ? 3.4 : 2.4, 0, TAU); ctx.fill();
-      if (lit) { ctx.strokeStyle = r[2]; ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.arc(x, y, 7, 0, TAU); ctx.stroke(); ctx.globalAlpha = 1; }
-    });
-
-    // hands
-    var mm = m % 1440, ha = ((mm / 60) % 12) / 12 * TAU - Math.PI / 2, ma = (mm % 60) / 60 * TAU - Math.PI / 2;
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = 'rgba(242,242,241,0.5)'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(L.cx, L.cy); ctx.lineTo(L.cx + Math.cos(ma) * R * 0.8, L.cy + Math.sin(ma) * R * 0.8); ctx.stroke();
-    ctx.strokeStyle = C.paper; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(L.cx, L.cy); ctx.lineTo(L.cx + Math.cos(ha) * R * 0.52, L.cy + Math.sin(ha) * R * 0.52); ctx.stroke();
-    ctx.lineCap = 'butt';
-
-    // readout
-    var rw = mob ? 96 : 124, rh = mob ? 32 : 40, ry = L.cy + R * 0.38;
-    ctx.fillStyle = 'rgba(20,32,46,0.92)'; roundRect(L.cx - rw / 2, ry, rw, rh, 8); ctx.fill();
-    ctx.fillStyle = C.gold; ctx.font = (mob ? 7.5 : 9) + 'px "Spline Sans Mono", ui-monospace, monospace'; ctx.fillText('ON THE CLOCK', L.cx, ry + (mob ? 9 : 11));
-    ctx.fillStyle = C.paper; ctx.font = (mob ? 13 : 17) + 'px Newsreader, Georgia, serif'; ctx.fillText(fmt(m), L.cx, ry + (mob ? 22 : 28));
-
-    // core pulses
-    PULSES.forEach(function (e) {
-      var dt = t - e; if (dt < 0 || dt > 1200) return; var p = dt / 1200;
-      ctx.strokeStyle = 'rgba(232,182,76,' + (1 - p) * 0.8 + ')'; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.arc(L.cx, L.cy, 8 + p * R * 0.9, 0, TAU); ctx.stroke();
-    });
-
-    // nodes
-    Object.keys(L.nodes).forEach(function (k) {
-      var nd = L.nodes[k], gl = glow(k, t), col = k === 'crm' ? C.green : k === 'inbox' ? C.blue : C.gold;
-      if (gl > 0) { var gg = ctx.createRadialGradient(nd.x, nd.y, 0, nd.x, nd.y, 40); gg.addColorStop(0, hexA(col, 0.45 * gl)); gg.addColorStop(1, hexA(col, 0)); ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(nd.x, nd.y, 40, 0, TAU); ctx.fill(); }
-      ctx.fillStyle = C.ink2; ctx.beginPath(); ctx.arc(nd.x, nd.y, 18, 0, TAU); ctx.fill();
-      ctx.strokeStyle = gl > 0 ? hexA(col, 0.5 + 0.5 * gl) : 'rgba(242,242,241,0.25)'; ctx.lineWidth = 1.2; ctx.stroke();
-      icon(k, nd.x, nd.y);
-      ctx.fillStyle = 'rgba(242,242,241,0.6)'; ctx.font = '10px "Spline Sans Mono", ui-monospace, monospace';
-      if (mob || k === 'you') { ctx.textAlign = 'center'; ctx.fillText(nd.label.toUpperCase(), nd.x, nd.y + 31); }
-      else { ctx.textAlign = 'left'; ctx.fillText(nd.label.toUpperCase(), nd.x + 26, nd.y + 1); }
-    });
-    ctx.textAlign = 'center';
-
-    // the gate: nothing outbound passes without you
-    var gs = t >= 23500 ? 1 : t >= HELD ? 0.75 : 0.3, gy = L.nodes.you;
-    ctx.strokeStyle = hexA(C.rust, gs); ctx.lineWidth = t >= 23500 ? 3 : 2;
-    ctx.beginPath(); ctx.arc(gy.x, gy.y, 34, -Math.PI / 3, Math.PI / 3); ctx.stroke();
-    if (t >= 23500 && !RM) { var pw = 0.5 + 0.5 * Math.sin(n / 260); ctx.strokeStyle = hexA(C.rust, 0.25 * pw); ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(gy.x, gy.y, 34, -Math.PI / 3, Math.PI / 3); ctx.stroke(); }
-
-    // particles
-    PARTS.forEach(function (p) {
-      var a = pt(p.a), b = pt(p.b), c = ctrl(a, b), dt = t - p.t0;
-      if (dt >= 0 && dt <= p.d) {
-        var pr = ease(dt / p.d);
-        for (var k = 9; k >= 0; k--) {
-          var q = clamp(pr - k * 0.025, 0, 1), P = qp(a, c, b, q);
-          ctx.fillStyle = hexA(p.c, k === 0 ? 1 : 0.5 * (1 - k / 10)); ctx.beginPath(); ctx.arc(P.x, P.y, k === 0 ? 4.5 : 3 * (1 - k / 12), 0, TAU); ctx.fill();
-        }
-      } else if (p.hold && dt > p.d) {
-        var pul = RM ? 0.6 : 0.5 + 0.5 * Math.sin(n / 300);
-        ctx.fillStyle = hexA(p.c, 0.25 * pul); ctx.beginPath(); ctx.arc(b.x, b.y, 7 + 6 * pul, 0, TAU); ctx.fill();
-        ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(b.x, b.y, 5, 0, TAU); ctx.fill();
-      }
-    });
-
-    // core
-    var cg = ctx.createRadialGradient(L.cx, L.cy, 0, L.cx, L.cy, 26); cg.addColorStop(0, 'rgba(232,182,76,0.55)'); cg.addColorStop(1, 'rgba(232,182,76,0)');
-    ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(L.cx, L.cy, 26, 0, TAU); ctx.fill();
-    ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(L.cx, L.cy, 6.5 + (RM ? 0 : Math.sin(n / 500) * 0.8), 0, TAU); ctx.fill();
-  }
-
-  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
-  function hexA(h, a) { var v = parseInt(h.slice(1), 16); return 'rgba(' + (v >> 16) + ',' + ((v >> 8) & 255) + ',' + (v & 255) + ',' + a + ')'; }
-
-  // overlays
-  var cards = Array.prototype.slice.call(document.querySelectorAll('#cosRail .cos-card'));
-  var chap = document.getElementById('cosChap'), held = document.getElementById('cosHeld');
-  var num = document.getElementById('cosN'), wait = document.getElementById('cosWait');
-  var prog = document.getElementById('cosProg'), play = document.getElementById('cosPlay');
-  var chBtns = Array.prototype.slice.call(document.querySelectorAll('.cos-ch'));
-  var ICON = {
-    play: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>',
-    pause: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>',
-    replay: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>'
-  };
-  var iconState = '';
-
-  function sync() {
-    var t = S.t;
-    var shown = cards.filter(function (c) { return t >= +c.dataset.at; }), vis = shown.slice(-2);
-    cards.forEach(function (c) {
-      var idx = vis.indexOf(c);
-      c.classList.toggle('on', idx >= 0);
-      c.classList.toggle('slotB', idx === 1);
-      c.classList.toggle('gone', idx < 0 && shown.indexOf(c) >= 0);
-    });
-    held.classList.toggle('on', t >= 16000);
-    wait.classList.toggle('on', t >= 16000);
-    num.textContent = DONE.filter(function (d) { return t >= d; }).length;
-    var ci = 0; CHAPS.forEach(function (c, i) { if (t >= c[0]) ci = i; });
-    if (ci !== S.chap) {
-      S.chap = ci; chap.classList.remove('on');
-      var set = function () { chap.querySelector('.n').textContent = CHAPS[ci][1]; chap.querySelector('.t').innerHTML = CHAPS[ci][2]; chap.classList.add('on'); };
-      if (RM) set(); else setTimeout(set, 180);
-    }
-    prog.style.width = (t / END * 100) + '%';
-    chBtns.forEach(function (b, i) { b.classList.toggle('live', i === ci); b.classList.toggle('past', i < ci); });
-    var want = S.playing ? 'pause' : (t >= END ? 'replay' : 'play');
-    if (want !== iconState) { iconState = want; play.innerHTML = ICON[want]; play.setAttribute('aria-label', want === 'pause' ? 'Pause' : want === 'replay' ? 'Replay' : 'Play'); }
-  }
-
-  function frame(now) {
-    var dt = S.last ? Math.min(64, now - S.last) : 16; S.last = now;
-    if (S.playing && S.visible) { S.t += dt; if (S.t >= END) { S.t = END; S.playing = false; } }
-    if (S.visible) { render(now); sync(); }
-    requestAnimationFrame(frame);
-  }
-
-  play.addEventListener('click', function () {
-    if (S.playing) { S.playing = false; }
-    else { if (S.t >= END) S.t = 0; S.playing = !RM; if (RM) S.t = END; }
-    S.started = true; sync();
-  });
-  chBtns.forEach(function (b) {
-    b.addEventListener('click', function () { S.t = +b.dataset.t; S.playing = !RM; S.started = true; render(performance.now()); sync(); });
-  });
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) {
-      S.visible = es[0].isIntersecting;
-      if (S.visible && !S.started && !RM) { S.started = true; S.playing = true; }
-    }, { threshold: 0.35 }).observe(stage);
-  } else { S.visible = true; S.playing = !RM; }
-
-  window.addEventListener('resize', function () { layout(); sync(); });
-  layout(); sync(); requestAnimationFrame(frame);
-})();
-</script>
 
 </body>
 </html>
