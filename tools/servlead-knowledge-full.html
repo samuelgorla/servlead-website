@@ -160,7 +160,7 @@ canvas.grab{cursor:grab}canvas.grabbing{cursor:grabbing}
     </div>
   </div>
   <!-- audio: servlead-knowledge-bed.mp3 — drop at /tools/audio/servlead-knowledge-bed.mp3 (next to audit-explainer-bed.mp3). Only the first 28.2s is used; it fades out into finish(). -->
-  <audio id="bed" src="/tools/audio/servlead-knowledge-bed.mp3" preload="auto" playsinline></audio>
+  <audio id="bed" src="/tools/audio/servlead-knowledge-bed.mp3" preload="none" playsinline></audio>
   <div class="who" id="who">
     <span class="l">who knew it?</span>
     <button class="chip" data-o="mike"><span class="sw" style="background:#e8b64c"></span>Mike</button>
@@ -305,25 +305,54 @@ let playing=false,t0=0,el=0,last=performance.now(),fired=new Set(),ivs=[];
 let spot=0,spotOn=false;   // chapter 04 signature: dim the field, light the path
 
 // ---------- audio bed (locked to el; starts only from Play / chapter click)
-const bed=$('bed'),BED_VOL=0.28,FADE_IN=400,FADE_OUT=1000,DRIFT=250;
-let bedOn=!RM,bedCtx=null,bedGain=null,bedLive=false; // reduced motion: muted by default, user can unmute
+// Decoded once and played as a Web Audio buffer: sample-accurate seeks, no media-element buffering or re-seek
+// stutter on phones, and a gain node iOS respects. <audio id="bed"> declares the file and is the fallback player.
+const bed=$('bed'),BED_SRC=bed?bed.getAttribute('src'):null,BED_VOL=0.28,FADE_IN=.4,FADE_OUT=1,DRIFT=300;
+let bedOn=!RM; // reduced motion: muted by default, user can unmute
+let bedCtx=null,bedGain=null,bedBytes=null,bedBuf=null,bedSrc=null,bedT=0,bedOff=0,bedGen=0,bedFix=0,bedEl=false;
 const ICO_ON='<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><path d="M16.5 9a4 4 0 0 1 0 6"/><path d="M19 6.5a7.5 7.5 0 0 1 0 11"/>',
       ICO_OFF='<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><line x1="17" y1="9.5" x2="22" y2="14.5"/><line x1="22" y1="9.5" x2="17" y2="14.5"/>';
 function bedIcon(){$('sIco').innerHTML=bedOn?ICO_ON:ICO_OFF;$('snd').setAttribute('aria-pressed',bedOn);$('snd').setAttribute('aria-label',bedOn?'Mute sound':'Turn sound on');}
-// Web Audio gain so volume is honoured on iOS too (media.volume is read-only there). Created inside a click.
-function bedInit(){if(bedCtx||!bed)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;bedCtx=new AC();bedGain=bedCtx.createGain();bedGain.gain.value=0;bedCtx.createMediaElementSource(bed).connect(bedGain).connect(bedCtx.destination);}catch(e){bedCtx=null;bedGain=null;}}
-function bedSet(v){if(bedGain)bedGain.gain.value=v;else if(bed)try{bed.volume=v;}catch(e){}}
-function bedLevel(ms){if(!bedOn)return 0;return BED_VOL*Math.max(0,Math.min(1,(ms-bedStart)/FADE_IN,(END-ms)/FADE_OUT));}
-let bedStart=0;
-function bedPlay(from){if(!bed)return;bedInit();bedStart=from;bedSet(0);bedLive=true;
-  try{if(bedCtx&&bedCtx.state==='suspended')bedCtx.resume().catch(()=>{});bed.currentTime=from/1000;}catch(e){}
-  const p=bed.play();if(p&&p.catch)p.catch(()=>{bedLive=false;});}
-function bedStop(){bedLive=false;if(!bed)return;bedSet(0);try{bed.pause();}catch(e){}}
-function bedTick(ms){if(!bedLive||!bed)return;
-  if(ms>=END){bedStop();return;}
-  bedSet(bedLevel(ms));
-  if(!bed.paused&&!bed.seeking&&Math.abs(bed.currentTime*1000-ms)>DRIFT){try{bed.currentTime=ms/1000;}catch(e){}}}
-function bedToggle(){bedOn=!bedOn;bedIcon();if(bedOn&&playing){bedStart=el;if(!bedLive||bed.paused)bedPlay(el);}else bedSet(bedLevel(el));}
+// fetch + decode quietly on load (nothing plays; an offline context needs no tap), so Play starts the bed instantly
+function bedTrim(c,full){const len=Math.min(full.length,Math.ceil(full.sampleRate*(END/1000+.1))),buf=c.createBuffer(full.numberOfChannels,len,full.sampleRate);
+  for(let i=0;i<full.numberOfChannels;i++)buf.getChannelData(i).set(full.getChannelData(i).subarray(0,len));return buf;}   // first END ms only
+function bedDec(c,b){return new Promise((ok,no)=>{const q=c.decodeAudioData(b.slice(0),ok,no);if(q&&q.catch)q.catch(no);}).then(f=>bedTrim(c,f));}
+if(BED_SRC&&window.fetch)fetch(BED_SRC).then(r=>r.ok?r.arrayBuffer():null).then(b=>{if(!b)return;bedBytes=b;
+  const OAC=window.OfflineAudioContext||window.webkitOfflineAudioContext;if(!OAC)return;
+  return bedDec(new OAC(2,44100,44100),b).then(buf=>{if(!bedBuf)bedBuf=buf;bedBytes=null;});}).catch(()=>{});
+// context is created inside the Play/chapter click so mobile browsers allow it
+function bedInit(){if(bedCtx)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+  try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch(e){}   // iOS: play even with the silent switch on
+  bedCtx=new AC();bedGain=bedCtx.createGain();bedGain.gain.value=0;bedGain.connect(bedCtx.destination);}catch(e){bedCtx=null;bedGain=null;}}
+function bedDecode(){if(bedBuf)return Promise.resolve(bedBuf);   // fallback if the load-time decode hasn't finished
+  const bytes=bedBytes?Promise.resolve(bedBytes):fetch(BED_SRC).then(r=>r.arrayBuffer());
+  return bytes.then(b=>bedDec(bedCtx,b)).then(buf=>{bedBytes=null;return bedBuf=bedBuf||buf;});}
+// gain envelope scheduled on the audio clock (no per-frame volume writes → no zipper noise)
+function bedEnv(ms,rampIn){if(!bedGain)return;const g=bedGain.gain,t=bedCtx.currentTime;g.cancelScheduledValues(t);g.setValueAtTime(g.value,t);
+  if(!bedOn){g.linearRampToValueAtTime(0,t+.08);return;}
+  const endT=t+(END-ms)/1000,fs=endT-FADE_OUT;
+  if(fs>t+.05){g.linearRampToValueAtTime(BED_VOL,Math.min(t+rampIn,fs));g.setValueAtTime(BED_VOL,fs);}
+  g.linearRampToValueAtTime(0,Math.max(t+.02,endT));}
+function bedKill(){if(bedSrc){try{bedSrc.onended=null;bedSrc.stop();}catch(e){}try{bedSrc.disconnect();}catch(e){}bedSrc=null;}}
+function bedStartAt(ms){bedKill();if(!bedBuf||ms>=END-50)return;const s=bedCtx.createBufferSource(),off=ms/1000;s.buffer=bedBuf;s.connect(bedGain);
+  s.start(0,off,END/1000-off);bedSrc=s;bedT=bedCtx.currentTime;bedOff=ms;bedFix=performance.now();}
+function bedPlay(from){bedStop();if(!BED_SRC)return;const gen=bedGen;bedInit();
+  if(!bedCtx)return bedElPlay(from);
+  try{if(bedCtx.state!=='running')bedCtx.resume().catch(()=>{});}catch(e){}
+  bedDecode().then(()=>{if(gen!==bedGen||!playing)return;const ms=el;bedStartAt(ms);bedEnv(ms,FADE_IN);}).catch(()=>{});}   // fail silently
+function bedStop(){bedGen++;bedKill();if(bedGain){const g=bedGain.gain,t=bedCtx.currentTime;g.cancelScheduledValues(t);g.setValueAtTime(0,t);}
+  if(bedEl){bedEl=false;try{bed.pause();}catch(e){}}}
+// resync only if the audio clock really wandered (e.g. phone suspended the context); rate-limited, clean restart
+function bedTick(ms){if(bedEl)return bedElTick(ms);if(!bedSrc||!bedCtx)return;
+  if(bedCtx.state!=='running'){try{bedCtx.resume().catch(()=>{});}catch(e){}return;}
+  const pos=bedOff+(bedCtx.currentTime-bedT)*1000,now=performance.now();
+  if(Math.abs(pos-ms)>DRIFT&&now-bedFix>1500&&ms<END-FADE_OUT*1000){bedStartAt(ms);bedEnv(ms,.15);}}
+function bedToggle(){bedOn=!bedOn;bedIcon();if(!playing)return;
+  if(bedEl){bedElTick(el);return;}
+  if(bedOn&&!bedSrc)bedPlay(el);else bedEnv(el,.3);}
+// fallback: plain <audio> (only if Web Audio is unavailable)
+function bedElPlay(from){if(!bed)return;bedEl=true;try{bed.volume=0;bed.currentTime=from/1000;}catch(e){}const p=bed.play();if(p&&p.catch)p.catch(()=>{bedEl=false;});}
+function bedElTick(ms){if(ms>=END){bedStop();return;}try{bed.volume=bedOn?BED_VOL*Math.max(0,Math.min(1,(END-ms)/(FADE_OUT*1000))):0;}catch(e){}}
 function chap(n,t){$('chN').textContent=n;$('chT').innerHTML=t;const c=$('chap');c.classList.remove('on');void c.offsetWidth;c.classList.add('on');}
 function later(ms,fn){const id=setTimeout(fn,RM?0:ms);ivs.push(id);}
 function every(ms,fn,count){let k=0;const id=setInterval(()=>{if(k++>=count){clearInterval(id);return;}fn(k-1);},RM?1:ms);ivs.push(id);}
