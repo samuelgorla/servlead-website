@@ -5,6 +5,10 @@
       tools/audio/audit-explainer-bed.mp3
   Rename the supplied servlead-audit-explainer-bed.mp3 to exactly audit-explainer-bed.mp3.
   If the MP3 is missing or fails to load, the animation plays silently as before.
+  Playback engine (Sept 25 2026): the MP3 is fetched once, decoded into memory and
+  played through Web Audio. No <audio> element and no currentTime seeks, which is
+  what made the bed stutter and drift on phones. Music plays on http(s) only; a local
+  file:// preview plays silently.
 -->
 <html lang="en">
 <head>
@@ -161,8 +165,6 @@ body.clean .stage{cursor:none}
 </style>
 </head>
 <body>
-
-<audio id="bed" src="audio/audit-explainer-bed.mp3" preload="metadata"></audio>
 
 <div id="wrap">
 <div class="stage" id="stage" data-format="square" role="img" aria-label="Servlead Solutions: AI &amp; Efficiency Audit explainer animation">
@@ -434,72 +436,106 @@ body.clean .stage{cursor:none}
   // Playback
   let t = 0, playing = false, last = null;
 
-  // ---------- Music bed: follows the animation clock ----------
-  // The animation clock (t) is the master. The audio is started, paused, seeked
-  // and faded from it, and nudged back if it drifts. Audio only ever starts inside
-  // a user gesture (Play, poster, stage click, Space, R), so autoplay rules are met.
-  const bed = document.getElementById('bed');
+  // ---------- Music bed: decoded buffer, played through Web Audio ----------
+  // The MP3 is fetched once and decoded into memory. Each play starts a fresh
+  // buffer source at the current t, with the fades scheduled on the audio clock,
+  // so nothing is written per frame and the audio is never seeked. While music
+  // plays, the animation clock eases toward the audio clock instead of the other
+  // way round, so drift is corrected without a glitch in the sound.
+  // Audio only starts inside a user gesture (Play, poster, stage tap, Space, R).
+  const BED_URL = 'audio/audit-explainer-bed.mp3';
   const BED_VOL = 0.28;      // quiet bed
   const FADE_IN = 1.0;       // seconds, from each start/resume
   const FADE_OUT = 2.5;      // seconds, before DUR
-  const DRIFT = 0.25;        // seconds of drift tolerated before a re-seek
-  let audioOK = !!bed, ctx = null, gainNode = null, fadeFrom = 0;
-  if (bed) bed.addEventListener('error', () => { audioOK = false; });
+  const SNAP = 0.5;          // drift beyond this jumps; below it, eases
+  const AC = window.AudioContext || window.webkitAudioContext;
+  let audioOK = !!AC && /^https?:$/.test(location.protocol);
+  let ctx = null, gainNode = null, buf = null, raw = null, src = null;
+  let srcAt = 0, srcFrom = 0, wantAudio = false, decoding = false;
 
-  function envelope(now) {
-    const fin = clamp((now - fadeFrom) / 1000 / FADE_IN);
-    const fout = clamp((DUR - t) / FADE_OUT);
-    return BED_VOL * fin * fout;
+  // Download the file early (no decoding, no sound) so the first tap is instant.
+  const rawReady = audioOK
+    ? fetch(BED_URL).then(r => { if (!r.ok) throw 0; return r.arrayBuffer(); })
+        .then(a => { raw = a; }).catch(() => { audioOK = false; })
+    : Promise.resolve();
+
+  function decode() {
+    if (buf || decoding || !audioOK || !ctx) return;
+    decoding = true;
+    rawReady.then(() => {
+      if (!raw) throw 0;
+      return new Promise((ok, no) => {
+        const r = ctx.decodeAudioData(raw, ok, no);   // callback form for older Safari
+        if (r && r.then) r.then(ok, no);
+      });
+    }).then(b => { buf = b; raw = null; if (wantAudio && playing) audioStart(); })
+      .catch(() => { audioOK = false; });
   }
-  function setGain(g) {
-    if (gainNode) gainNode.gain.setTargetAtTime(g, ctx.currentTime, 0.03);
-    else if (bed) bed.volume = g;
-  }
-  function initAudioGraph() {
-    // Web Audio gain so the level holds on iPhone (iOS ignores audio.volume).
-    // Skipped for file:// where browsers block it; audio.volume is used there instead.
-    if (ctx || !/^https?:$/.test(location.protocol)) return;
-    const AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return;
+  function ensureCtx() {
+    if (ctx || !audioOK) return;
     try {
       ctx = new AC();
       gainNode = ctx.createGain();
       gainNode.gain.value = 0;
-      ctx.createMediaElementSource(bed).connect(gainNode).connect(ctx.destination);
-      bed.volume = 1;
-    } catch (e) { ctx = null; gainNode = null; }
+      gainNode.connect(ctx.destination);
+    } catch (e) { ctx = null; audioOK = false; }
   }
-  function seekAudio() {
-    if (!audioOK) return;
-    try { bed.currentTime = Math.min(t, DUR); } catch (e) {}
+  function killSource(fadeSec) {
+    if (!src) return;
+    const now = ctx.currentTime, g = gainNode.gain;
+    try {
+      g.cancelScheduledValues(now);
+      g.setValueAtTime(g.value, now);
+      g.linearRampToValueAtTime(0, now + fadeSec);
+      src.stop(now + fadeSec + 0.02);
+    } catch (e) {}
+    src.onended = null; src = null;
   }
   function audioStart() {
+    wantAudio = true;
     if (!audioOK) return;
-    try {
-      initAudioGraph();
-      if (ctx && ctx.state === 'suspended') ctx.resume();
-      fadeFrom = performance.now();
-      setGain(0);
-      seekAudio();
-      const p = bed.play();
-      if (p && p.catch) p.catch(() => {});
-    } catch (e) {}
+    ensureCtx();
+    if (!ctx) return;
+    if (ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} }
+    if (!buf) { decode(); return; }            // starts itself once decoded
+    killSource(0.05);
+    const from = Math.min(t, DUR), left = Math.min(DUR, buf.duration) - from;
+    if (left <= 0.05) return;
+    const now = ctx.currentTime + 0.03, g = gainNode.gain;
+    const outStart = DUR - FADE_OUT;
+    g.cancelScheduledValues(now);
+    g.setValueAtTime(0, now);
+    if (from < outStart) {
+      g.linearRampToValueAtTime(BED_VOL, now + Math.min(FADE_IN, outStart - from));
+      g.setValueAtTime(BED_VOL, now + (outStart - from));
+    } else {
+      const lvl = BED_VOL * (DUR - from) / FADE_OUT;
+      g.linearRampToValueAtTime(lvl, now + Math.min(0.3, left / 2));
+    }
+    g.linearRampToValueAtTime(0, now + left);
+    src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(gainNode);
+    src.start(now, from, left);                // plays only the first DUR seconds
+    srcAt = now; srcFrom = from;
+    const me = src;
+    src.onended = () => { if (src === me) src = null; };
   }
   function audioStop() {
-    if (!bed) return;
-    try { setGain(0); bed.pause(); } catch (e) {}
+    wantAudio = false;
+    if (ctx) killSource(0.08);
   }
-  function audioTick(now) {
-    if (!audioOK || !playing) return;
-    if (t >= DUR) { audioStop(); return; }
-    if (!bed.paused && !bed.seeking && bed.readyState >= 3 && Math.abs(bed.currentTime - t) > DRIFT) seekAudio();
-    setGain(envelope(now));
+  // Where the music actually is, in animation seconds (null when not sounding).
+  function audioClock() {
+    if (!src || !ctx || ctx.state !== 'running') return null;
+    const a = srcFrom + (ctx.currentTime - srcAt);
+    return a < srcFrom ? null : a;
   }
   function setPlaying(v) {
     if (v && EMBED && !started) { t = 0; started = true; }
     if (v && t >= DUR) t = 0;
     playing = v; last = null;
-    if (playing) audioStart(); else { audioStop(); seekAudio(); }
+    if (playing) audioStart(); else audioStop();
     playBtn.textContent = playing ? 'Pause' : (t >= DUR ? 'Replay' : 'Play');
     if (EMBED) {
       poster.classList.toggle('show', !playing);
@@ -511,10 +547,15 @@ body.clean .stage{cursor:none}
     if (playing) {
       const dt = last == null ? 0 : (now - last) / 1000;
       last = now;
-      t = Math.min(DUR, t + dt);
+      t += dt;
+      const a = audioClock();
+      if (a != null) {
+        const d = a - t;
+        t = Math.abs(d) > SNAP ? a : t + d * 0.12;
+      }
+      t = Math.min(DUR, t);
       if (t >= DUR) setPlaying(false);
     }
-    audioTick(now);
     render(t);
     scrub.value = t;
     timeEl.textContent = `${t.toFixed(1)} / ${DUR}s`;
@@ -568,6 +609,7 @@ body.clean .stage{cursor:none}
     else if (e.key === 'h' || e.key === 'H') toggleClean();
   });
   window.addEventListener('resize', fit);
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) setPlaying(false); });
 
   if (EMBED) { t = POSTER_T; setPlaying(false); }
   fit();
