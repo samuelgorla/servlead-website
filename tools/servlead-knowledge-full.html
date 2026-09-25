@@ -70,7 +70,10 @@ canvas.grab{cursor:grab}canvas.grabbing{cursor:grabbing}
 .on{opacity:1!important;transform:none!important}
 
 /* timeline / controls */
-.tl{margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.tl{margin-top:14px;display:grid;grid-template-columns:auto auto 1fr;gap:14px;align-items:center}
+.snd{width:34px;height:34px;margin-left:-6px;border-radius:50%;border:1px solid var(--hair);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.snd:hover{border-color:rgba(20,32,46,.3)}.snd[aria-pressed="false"]{color:var(--muted)}
+.play:focus-visible,.snd:focus-visible,.ch:focus-visible,.chip:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
 .play{width:52px;height:52px;border-radius:50%;border:none;background:var(--ink);color:var(--paper);display:grid;place-items:center;cursor:pointer;transition:transform .12s var(--ease),background .2s}
 .play:hover{transform:scale(1.04)}.play:active{transform:scale(.97)}
 .play[disabled]{background:#9aa3b1;cursor:default}
@@ -146,6 +149,7 @@ canvas.grab{cursor:grab}canvas.grabbing{cursor:grabbing}
 
   <div class="tl">
     <button class="play" id="play" aria-label="Play"><svg id="pIco" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></button>
+    <button class="snd" id="snd" aria-label="Sound" aria-pressed="true" title="Sound on / off"><svg id="sIco" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button>
     <div class="chaps" id="chaps">
       <div class="prog" id="prog"></div>
       <button class="ch" data-t="0"><i>01</i><b>Caught</b></button>
@@ -155,6 +159,8 @@ canvas.grab{cursor:grab}canvas.grabbing{cursor:grabbing}
       <button class="ch" data-t="22900"><i>05</i><b>Keeps growing</b></button>
     </div>
   </div>
+  <!-- audio: servlead-knowledge-bed.mp3 — drop at /tools/audio/servlead-knowledge-bed.mp3 (next to audit-explainer-bed.mp3). Only the first 28.2s is used; it fades out into finish(). -->
+  <audio id="bed" src="/tools/audio/servlead-knowledge-bed.mp3" preload="auto" playsinline></audio>
   <div class="who" id="who">
     <span class="l">who knew it?</span>
     <button class="chip" data-o="mike"><span class="sw" style="background:#e8b64c"></span>Mike</button>
@@ -297,6 +303,27 @@ function draw(){
 const END=28200;
 let playing=false,t0=0,el=0,last=performance.now(),fired=new Set(),ivs=[];
 let spot=0,spotOn=false;   // chapter 04 signature: dim the field, light the path
+
+// ---------- audio bed (locked to el; starts only from Play / chapter click)
+const bed=$('bed'),BED_VOL=0.28,FADE_IN=400,FADE_OUT=1000,DRIFT=250;
+let bedOn=!RM,bedCtx=null,bedGain=null,bedLive=false; // reduced motion: muted by default, user can unmute
+const ICO_ON='<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><path d="M16.5 9a4 4 0 0 1 0 6"/><path d="M19 6.5a7.5 7.5 0 0 1 0 11"/>',
+      ICO_OFF='<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><line x1="17" y1="9.5" x2="22" y2="14.5"/><line x1="22" y1="9.5" x2="17" y2="14.5"/>';
+function bedIcon(){$('sIco').innerHTML=bedOn?ICO_ON:ICO_OFF;$('snd').setAttribute('aria-pressed',bedOn);$('snd').setAttribute('aria-label',bedOn?'Mute sound':'Turn sound on');}
+// Web Audio gain so volume is honoured on iOS too (media.volume is read-only there). Created inside a click.
+function bedInit(){if(bedCtx||!bed)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;bedCtx=new AC();bedGain=bedCtx.createGain();bedGain.gain.value=0;bedCtx.createMediaElementSource(bed).connect(bedGain).connect(bedCtx.destination);}catch(e){bedCtx=null;bedGain=null;}}
+function bedSet(v){if(bedGain)bedGain.gain.value=v;else if(bed)try{bed.volume=v;}catch(e){}}
+function bedLevel(ms){if(!bedOn)return 0;return BED_VOL*Math.max(0,Math.min(1,(ms-bedStart)/FADE_IN,(END-ms)/FADE_OUT));}
+let bedStart=0;
+function bedPlay(from){if(!bed)return;bedInit();bedStart=from;bedSet(0);bedLive=true;
+  try{if(bedCtx&&bedCtx.state==='suspended')bedCtx.resume().catch(()=>{});bed.currentTime=from/1000;}catch(e){}
+  const p=bed.play();if(p&&p.catch)p.catch(()=>{bedLive=false;});}
+function bedStop(){bedLive=false;if(!bed)return;bedSet(0);try{bed.pause();}catch(e){}}
+function bedTick(ms){if(!bedLive||!bed)return;
+  if(ms>=END){bedStop();return;}
+  bedSet(bedLevel(ms));
+  if(!bed.paused&&!bed.seeking&&Math.abs(bed.currentTime*1000-ms)>DRIFT){try{bed.currentTime=ms/1000;}catch(e){}}}
+function bedToggle(){bedOn=!bedOn;bedIcon();if(bedOn&&playing){bedStart=el;if(!bedLive||bed.paused)bedPlay(el);}else bedSet(bedLevel(el));}
 function chap(n,t){$('chN').textContent=n;$('chT').innerHTML=t;const c=$('chap');c.classList.remove('on');void c.offsetWidth;c.classList.add('on');}
 function later(ms,fn){const id=setTimeout(fn,RM?0:ms);ivs.push(id);}
 function every(ms,fn,count){let k=0;const id=setInterval(()=>{if(k++>=count){clearInterval(id);return;}fn(k-1);},RM?1:ms);ivs.push(id);}
@@ -325,18 +352,19 @@ const CUES=[
  [END,finish],
 ];
 function reset(){for(const id of ivs){clearTimeout(id);clearInterval(id);}ivs=[];nodes=[];edges=[];mode='seed';released=0;relOn=false;focus='all';halos={heads:0,shop:0};fired.clear();done=false;$('n').textContent='0';['c1','c2','c3','c4','c5'].forEach(i=>{const c=$(i);c.className='card'+((i==='c2'||i==='c4')?' slotB':'');c.style.removeProperty('--sx');c.style.removeProperty('--sy');});spot=0;spotOn=false;stage.classList.remove('explore');$('bub').classList.remove('on');$('ans').classList.remove('on');$('who').classList.remove('show');document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('live',c.dataset.o==='all'));cv.classList.remove('grab');}
-function play(from){reset();playing=true;el=from;t0=performance.now()-from;$('play').disabled=true;$('pIco').innerHTML='<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>';
+function play(from){reset();playing=true;el=from;t0=performance.now()-from;bedPlay(from);$('play').disabled=true;$('pIco').innerHTML='<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>';
   if(from>0){for(const[t,f]of CUES){if(t<from){fired.add(t);f();}}for(const id of ivs){clearTimeout(id);clearInterval(id);}ivs=[];
     // materialise everything that would exist by `from`, instantly and still
     const want=from>=7700?SEED.length:from>=7100?15:from>=5700?12:from>=4300?9:from>=2900?6:from>=1500?3:0;while(nodes.length<want)mk(nodes.length);
     layout(true);for(const n of nodes){n.a=1;n.birth=0;n.lit=0;}for(const e of edges){e.lit=0;e.pulse=-1;}
     halos.heads=mode==='heads'?1:0;halos.shop=mode==='shop'?1:0;released=relOn?1:0;['c1','c2','c3','c4','c5'].forEach(i=>$(i).className='card gone off');}}
-function finish(){playing=false;done=true;$('play').disabled=false;$('pIco').innerHTML='<polyline points="1 4 1 10 7 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';$('who').classList.add('show');cv.classList.add('grab');stage.classList.add('explore');chap('explore','Drag it. Tap a name to see <em>what only they knew.</em>');}
+function finish(){playing=false;done=true;bedStop();$('play').disabled=false;$('pIco').innerHTML='<polyline points="1 4 1 10 7 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';$('who').classList.add('show');cv.classList.add('grab');stage.classList.add('explore');chap('explore','Drag it. Tap a name to see <em>what only they knew.</em>');}
 function tl(ms){$('prog').style.width=(Math.min(1,ms/END)*100)+'%';const cs=[...document.querySelectorAll('.ch')];let cur=null;cs.forEach(c=>{const t=+c.dataset.t;c.classList.toggle('past',t<ms);if(t<=ms)cur=c;});cs.forEach(c=>c.classList.toggle('live',c===cur));}
 function loop(now){const dt=Math.min(2.2,(now-last)/16.67);last=now;
-  if(playing){el=now-t0;for(const[t,f]of CUES){if(!fired.has(t)&&el>=t){fired.add(t);f();}}tl(el);}
+  if(playing){el=now-t0;for(const[t,f]of CUES){if(!fired.has(t)&&el>=t){fired.add(t);f();}}tl(el);bedTick(el);}
   step(RM?3:dt);draw();requestAnimationFrame(loop);}
 $('play').addEventListener('click',()=>play(0));
+$('snd').addEventListener('click',bedToggle);bedIcon();
 document.querySelectorAll('.ch').forEach(c=>c.addEventListener('click',()=>play(+c.dataset.t)));
 addEventListener('keydown',e=>{if(e.code==='Space'&&!$('play').disabled){e.preventDefault();play(0);}});
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{if(!done)return;const o=c.dataset.o;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('live'));c.classList.add('live');focus=o;
