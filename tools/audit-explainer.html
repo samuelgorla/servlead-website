@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!--
+  MUSIC BED PATH: audio/audit-explainer-bed.mp3  (relative to this file)
+  On the site this file lives at /tools/audit-explainer.html, so the MP3 goes at:
+      tools/audio/audit-explainer-bed.mp3
+  Rename the supplied servlead-audit-explainer-bed.mp3 to exactly audit-explainer-bed.mp3.
+  If the MP3 is missing or fails to load, the animation plays silently as before.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -154,6 +161,8 @@ body.clean .stage{cursor:none}
 </style>
 </head>
 <body>
+
+<audio id="bed" src="audio/audit-explainer-bed.mp3" preload="metadata"></audio>
 
 <div id="wrap">
 <div class="stage" id="stage" data-format="square" role="img" aria-label="Servlead Solutions: AI &amp; Efficiency Audit explainer animation">
@@ -424,10 +433,73 @@ body.clean .stage{cursor:none}
 
   // Playback
   let t = 0, playing = false, last = null;
+
+  // ---------- Music bed: follows the animation clock ----------
+  // The animation clock (t) is the master. The audio is started, paused, seeked
+  // and faded from it, and nudged back if it drifts. Audio only ever starts inside
+  // a user gesture (Play, poster, stage click, Space, R), so autoplay rules are met.
+  const bed = document.getElementById('bed');
+  const BED_VOL = 0.28;      // quiet bed
+  const FADE_IN = 1.0;       // seconds, from each start/resume
+  const FADE_OUT = 2.5;      // seconds, before DUR
+  const DRIFT = 0.25;        // seconds of drift tolerated before a re-seek
+  let audioOK = !!bed, ctx = null, gainNode = null, fadeFrom = 0;
+  if (bed) bed.addEventListener('error', () => { audioOK = false; });
+
+  function envelope(now) {
+    const fin = clamp((now - fadeFrom) / 1000 / FADE_IN);
+    const fout = clamp((DUR - t) / FADE_OUT);
+    return BED_VOL * fin * fout;
+  }
+  function setGain(g) {
+    if (gainNode) gainNode.gain.setTargetAtTime(g, ctx.currentTime, 0.03);
+    else if (bed) bed.volume = g;
+  }
+  function initAudioGraph() {
+    // Web Audio gain so the level holds on iPhone (iOS ignores audio.volume).
+    // Skipped for file:// where browsers block it; audio.volume is used there instead.
+    if (ctx || !/^https?:$/.test(location.protocol)) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    try {
+      ctx = new AC();
+      gainNode = ctx.createGain();
+      gainNode.gain.value = 0;
+      ctx.createMediaElementSource(bed).connect(gainNode).connect(ctx.destination);
+      bed.volume = 1;
+    } catch (e) { ctx = null; gainNode = null; }
+  }
+  function seekAudio() {
+    if (!audioOK) return;
+    try { bed.currentTime = Math.min(t, DUR); } catch (e) {}
+  }
+  function audioStart() {
+    if (!audioOK) return;
+    try {
+      initAudioGraph();
+      if (ctx && ctx.state === 'suspended') ctx.resume();
+      fadeFrom = performance.now();
+      setGain(0);
+      seekAudio();
+      const p = bed.play();
+      if (p && p.catch) p.catch(() => {});
+    } catch (e) {}
+  }
+  function audioStop() {
+    if (!bed) return;
+    try { setGain(0); bed.pause(); } catch (e) {}
+  }
+  function audioTick(now) {
+    if (!audioOK || !playing) return;
+    if (t >= DUR) { audioStop(); return; }
+    if (!bed.paused && !bed.seeking && bed.readyState >= 3 && Math.abs(bed.currentTime - t) > DRIFT) seekAudio();
+    setGain(envelope(now));
+  }
   function setPlaying(v) {
     if (v && EMBED && !started) { t = 0; started = true; }
     if (v && t >= DUR) t = 0;
     playing = v; last = null;
+    if (playing) audioStart(); else { audioStop(); seekAudio(); }
     playBtn.textContent = playing ? 'Pause' : (t >= DUR ? 'Replay' : 'Play');
     if (EMBED) {
       poster.classList.toggle('show', !playing);
@@ -442,6 +514,7 @@ body.clean .stage{cursor:none}
       t = Math.min(DUR, t + dt);
       if (t >= DUR) setPlaying(false);
     }
+    audioTick(now);
     render(t);
     scrub.value = t;
     timeEl.textContent = `${t.toFixed(1)} / ${DUR}s`;
