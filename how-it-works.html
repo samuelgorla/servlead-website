@@ -520,7 +520,12 @@
   .cos-held .h { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
   .cos-held p { font-size: 13.5px; line-height: 1.45; }
   .cos-stamp { display: inline-block; margin-top: 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); border: 1.5px solid var(--rust); border-radius: 3px; padding: 3px 7px; transform: rotate(-2deg); }
-  .cos-tl { margin-top: 14px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .cos-tl { margin-top: 14px; display: grid; grid-template-columns: auto auto 1fr; gap: 14px; align-items: center; }
+  .cos-snd { width: 34px; height: 34px; margin-left: -6px; border-radius: 50%; border: 1px solid rgba(20, 32, 46, 0.12); background: #fff; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: border-color 0.2s; }
+  .cos-snd:hover { border-color: rgba(20, 32, 46, 0.3); }
+  .cos-snd[aria-pressed="false"] { color: var(--muted); }
+  .cos-snd:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+  .cos-snd[hidden] { display: none; }
   .cos-play { width: 52px; height: 52px; border-radius: 50%; border: none; background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; transition: transform 0.12s var(--ease); }
   .cos-play:hover { transform: scale(1.04); }
   .cos-play:focus-visible, .cos-ch:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
@@ -551,6 +556,9 @@
     .cos-chaps { gap: 4px; }
     .cos-ch b { display: none; }
     .cos-ch i { font-size: 9px; letter-spacing: 0.02em; }
+    .cos-tl { grid-template-columns: auto 1fr; row-gap: 8px; }
+    .cos-chaps { grid-column: 2; grid-row: 1; }
+    .cos-snd { grid-column: 1; grid-row: 2; justify-self: center; width: 30px; height: 30px; margin-left: 0; }
     .shelf-head { flex-direction: column; gap: 0.6rem; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -742,8 +750,11 @@
             </div>
           </div>
         </div>
+        <!-- audio: servlead-cos-clock-bed.mp3 — lives at /tools/audio/servlead-cos-clock-bed.mp3 (next to servlead-knowledge-bed.mp3). Only the first 27.0s (END) is used. Sound starts only from a tap on Play, a chapter, or the speaker. -->
+        <audio id="cosBed" src="/tools/audio/servlead-cos-clock-bed.mp3" preload="none" playsinline></audio>
         <div class="cos-tl">
           <button class="cos-play" id="cosPlay" aria-label="Play"></button>
+          <button class="cos-snd" id="cosSnd" aria-label="Turn sound on" aria-pressed="false" title="Sound on / off"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button>
           <div class="cos-chaps">
             <div class="cos-prog" id="cosProg"></div>
             <button class="cos-ch" data-t="0"><i>8:00 AM</i><b>Check-in</b></button>
@@ -1168,16 +1179,77 @@
     var dt = S.last ? Math.min(64, now - S.last) : 16; S.last = now;
     if (S.playing && S.visible) { S.t += dt; if (S.t >= END) { S.t = END; S.playing = false; } }
     if (S.visible) { render(now); sync(); }
+    bedTick();
     requestAnimationFrame(frame);
   }
 
+  // ---------- audio bed: follows S.t; armed only by a user tap (never on load or on scroll-in auto-start)
+  // Decoded Web Audio buffer + gain envelope (same engine as the knowledge-base page); plain <audio> is the fallback.
+  var bedEl = document.getElementById('cosBed'), snd = document.getElementById('cosSnd');
+  var BED_SRC = bedEl ? bedEl.getAttribute('src') : null, BED_VOL = 0.2, FADE_IN = 0.4, FADE_OUT = 1.2, DRIFT = 300;
+  var B = { on: !RM, armed: false, ctx: null, gain: null, bytes: null, buf: null, src: null, t: 0, off: 0, fix: 0, jump: false, loading: false, el: false };
+  var ICO_ON = '<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><path d="M16.5 9a4 4 0 0 1 0 6"/><path d="M19 6.5a7.5 7.5 0 0 1 0 11"/>',
+      ICO_OFF = '<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><line x1="17" y1="9.5" x2="22" y2="14.5"/><line x1="22" y1="9.5" x2="17" y2="14.5"/>';
+  function bedIcon() { var on = B.armed && B.on; snd.querySelector('svg').innerHTML = on ? ICO_ON : ICO_OFF; snd.setAttribute('aria-pressed', on); snd.setAttribute('aria-label', on ? 'Mute sound' : 'Turn sound on'); }
+  function bedTrim(c, f) { var len = Math.min(f.length, Math.ceil(f.sampleRate * (END / 1000 + 0.1))), b = c.createBuffer(f.numberOfChannels, len, f.sampleRate);
+    for (var i = 0; i < f.numberOfChannels; i++) b.getChannelData(i).set(f.getChannelData(i).subarray(0, len)); return b; }   // first END ms only
+  function bedDec(c, bytes) { return new Promise(function (ok, no) { var q = c.decodeAudioData(bytes.slice(0), ok, no); if (q && q.catch) q.catch(no); }).then(function (f) { return bedTrim(c, f); }); }
+  // download + decode once the demo is near the screen (nothing plays; an offline context needs no tap)
+  function bedLoad() { if (B.loading || !BED_SRC || !window.fetch) return; B.loading = true;
+    fetch(BED_SRC).then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (b) { if (!b) return; B.bytes = b;
+      var OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext; if (!OAC) return;
+      return bedDec(new OAC(2, 44100, 44100), b).then(function (buf) { if (!B.buf) B.buf = buf; B.bytes = null; });
+    }).catch(function () {}); }
+  // called only inside a click: unlocks audio for this page visit
+  function bedArm() { if (RM || !BED_SRC) return; B.armed = true; bedLoad();
+    if (!B.ctx) { try { var AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) { try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+        B.ctx = new AC(); B.gain = B.ctx.createGain(); B.gain.gain.value = 0; B.gain.connect(B.ctx.destination); } } catch (e) { B.ctx = null; B.gain = null; } }
+    if (B.ctx) { try { if (B.ctx.state !== 'running') B.ctx.resume().catch(function () {}); } catch (e) {}
+      if (!B.buf) { var go = B.bytes ? Promise.resolve(B.bytes) : fetch(BED_SRC).then(function (r) { return r.arrayBuffer(); });
+        go.then(function (b) { return B.buf ? B.buf : bedDec(B.ctx, b); }).then(function (buf) { B.buf = B.buf || buf; B.bytes = null; }).catch(function () {}); } }
+    else if (bedEl) { try { bedEl.volume = 0; var p = bedEl.play(); if (p && p.catch) p.catch(function () {}); bedEl.pause(); } catch (e) {} }   // unlock fallback player
+    B.jump = true; bedIcon(); }
+  function bedEnv(ms, rampIn) { if (!B.gain) return; var g = B.gain.gain, t = B.ctx.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t);
+    if (!B.on) { g.linearRampToValueAtTime(0, t + 0.08); return; }
+    var endT = t + (END - ms) / 1000, fs = endT - FADE_OUT;
+    if (fs > t + 0.05) { g.linearRampToValueAtTime(BED_VOL, Math.min(t + rampIn, fs)); g.setValueAtTime(BED_VOL, fs); }
+    g.linearRampToValueAtTime(0, Math.max(t + 0.02, endT)); }
+  function bedKill() { if (B.src) { try { B.src.stop(); } catch (e) {} try { B.src.disconnect(); } catch (e) {} B.src = null; } }
+  function bedStartAt(ms, rampIn) { bedKill(); if (!B.buf || ms >= END - 50) return; var s = B.ctx.createBufferSource(), off = ms / 1000;
+    s.buffer = B.buf; s.connect(B.gain); s.start(0, off, END / 1000 - off); B.src = s; B.t = B.ctx.currentTime; B.off = ms; B.fix = performance.now(); bedEnv(ms, rampIn); }
+  function bedStop() { bedKill(); if (B.gain) { var g = B.gain.gain, t = B.ctx.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(0, t); }
+    if (B.el) { B.el = false; try { bedEl.pause(); } catch (e) {} } }
+  // every frame: bed runs only while the demo is actually advancing (playing, on screen, tab visible)
+  function bedTick() { if (!B.armed) return;
+    var want = B.on && S.playing && S.visible && !document.hidden && S.t < END;
+    if (!want) { if (B.src || B.el) bedStop(); B.jump = true; return; }
+    if (B.ctx) {
+      if (B.ctx.state !== 'running') { try { B.ctx.resume().catch(function () {}); } catch (e) {} return; }
+      if (!B.buf) return;
+      if (!B.src || B.jump) { B.jump = false; bedStartAt(S.t, FADE_IN); return; }
+      var pos = B.off + (B.ctx.currentTime - B.t) * 1000, now = performance.now();
+      if (Math.abs(pos - S.t) > DRIFT && now - B.fix > 1500 && S.t < END - FADE_OUT * 1000) bedStartAt(S.t, 0.15);
+    } else if (bedEl) {
+      if (!B.el || B.jump) { B.jump = false; B.el = true; try { bedEl.currentTime = S.t / 1000; var p = bedEl.play(); if (p && p.catch) p.catch(function () { B.el = false; }); } catch (e) {} }
+      try { bedEl.volume = BED_VOL * clamp(Math.min((END - S.t) / (FADE_OUT * 1000), 1), 0, 1); } catch (e) {}
+    } }
+  if (RM) snd.hidden = true;
+  snd.addEventListener('click', function () {
+    if (!B.armed) { B.on = true; bedArm(); }
+    else { B.on = !B.on; bedIcon(); if (B.src) bedEnv(S.t, 0.3); else B.jump = true; if (!B.on) bedStop(); }
+  });
+  bedIcon();
+  if ('IntersectionObserver' in window) { new IntersectionObserver(function (es) { if (es[0].isIntersecting) bedLoad(); }, { rootMargin: '600px 0px' }).observe(stage); }
+
   play.addEventListener('click', function () {
+    bedArm();
     if (S.playing) { S.playing = false; }
     else { if (S.t >= END) S.t = 0; S.playing = !RM; if (RM) S.t = END; }
     S.started = true; sync();
   });
   chBtns.forEach(function (b) {
-    b.addEventListener('click', function () { S.t = +b.dataset.t; S.playing = !RM; S.started = true; render(performance.now()); sync(); });
+    b.addEventListener('click', function () { bedArm(); S.t = +b.dataset.t; S.playing = !RM; S.started = true; render(performance.now()); sync(); });
   });
 
   if ('IntersectionObserver' in window) {
