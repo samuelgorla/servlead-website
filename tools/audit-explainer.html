@@ -130,7 +130,7 @@ body{background:#1c2733;font-family:var(--sans);display:flex;flex-direction:colu
 
 /* ---------- 5. Close ---------- */
 .s5 .big{font-family:var(--serif);font-weight:400;font-size:132px;line-height:1.02;letter-spacing:-.018em;color:var(--paper)}
-.s5 .cta{font-size:48px;font-weight:700;color:var(--paper);margin-top:50px}
+.s5 .cta{font-size:44px;font-weight:700;color:var(--paper);margin-top:36px;max-width:900px;line-height:1.15}
 .s5 .url{font-family:var(--mono);font-size:36px;color:var(--gold);margin-top:16px}
 .s5 .mark{position:absolute;left:0;right:0;bottom:76px;font-family:var(--serif);font-size:36px;color:var(--paper)}
 .s5 .mark span{display:block;font-family:var(--sans);font-size:21px;color:#9aa3b2;margin-top:6px}
@@ -300,13 +300,13 @@ body.clean .stage{cursor:none}
   <div class="bg ink" data-in="26.3" data-dur=".6" data-fx="fade"></div>
   <section class="scene s5">
     <h2 class="big" data-in="26.6">Got sixty minutes?</h2>
-    <p class="cta" data-in="27.3">Book the audit.</p>
+    <p class="cta" data-in="27.3">Book the AI &amp; Efficiency Audit.</p>
     <a class="url" data-in="27.6" href="https://cal.com/samgorla/consultation" target="_top" rel="noopener">cal.com/samgorla/consultation</a>
     <div class="mark" data-in="28.0" data-fx="fade">Servlead Solutions<span>Lehigh Valley, PA</span></div>
   </section>
 
 </div>
-<button class="poster" id="poster" type="button" aria-label="Play the 31-second audit explainer"><span class="pbtn"></span><span class="plab" id="plab">Play · 31 sec</span></button>
+<button class="poster" id="poster" type="button" aria-label="Play the 31-second AI &amp; Efficiency Audit explainer"><span class="pbtn"></span><span class="plab" id="plab">Play · 31 sec</span></button>
 </div>
 
 <div class="controls" id="controls">
@@ -550,7 +550,7 @@ body.clean .stage{cursor:none}
     if (EMBED) {
       poster.classList.toggle('show', !playing);
       plab.textContent = !started ? 'Play · 31 sec' : (t >= DUR ? 'Replay' : 'Resume');
-      poster.setAttribute('aria-label', plab.textContent === 'Replay' ? 'Replay the audit explainer' : 'Play the audit explainer');
+      poster.setAttribute('aria-label', plab.textContent === 'Replay' ? 'Replay the AI & Efficiency Audit explainer' : 'Play the AI & Efficiency Audit explainer');
     }
   }
   function tick(now) {
