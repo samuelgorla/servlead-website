@@ -188,7 +188,7 @@
       "name": "Is this only for the Lehigh Valley?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "I work across Allentown, Bethlehem, Easton, and the surrounding Lehigh Valley. Phone or Teams is fine. If you'd rather sit down, I'll come to you."
+        "text": "I work with owner-run businesses in the Lehigh Valley. Phone or Teams is fine. If you'd rather sit down, I'll come to you."
       }
     },
     {
@@ -203,9 +203,7 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
     --paper: #f2f2f1;
@@ -269,8 +267,6 @@
   .hero-label .kicker.soft { color: var(--ink-soft) !important; }
   .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(3rem, 7.2vw, 6.2rem); line-height: 1.0; letter-spacing: -0.028em; max-width: 1050px; }
   .hero-title em { font-style: italic; color: var(--rust); font-weight: 300; }
-  .hero-title .word { display: inline-block; opacity: 0; transform: translateY(0.5em); animation: word-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
-  @keyframes word-rise { to { opacity: 1; transform: translateY(0); } }
   .hero-bottom { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4rem; margin-top: 3rem; align-items: end; }
   .hero-sub { font-size: 1.16rem; line-height: 1.65; color: var(--ink-soft); max-width: 560px; }
   .hero-sub b { color: var(--ink); }
@@ -555,8 +551,11 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-title .word { opacity: 1; transform: none; animation: none; }
     .ticker-track, .live-dot { animation: none; }
+    .ticker { overflow: visible; }
+    .ticker-track { width: auto; max-width: 100%; flex-wrap: wrap; padding: 0 2rem; gap: 0.35rem 0.2rem; }
+    .ticker-track span { white-space: normal; max-width: 100%; }
+    .ticker-track span i { margin-right: 0.8rem; }
   }
 
   @media (max-width: 1024px) {
@@ -586,7 +585,19 @@
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--line); align-items: flex-start; }
     .nav-links.open { display: flex; }
     .mobile-toggle { display: block; }
-    section { padding: 4.5rem 0; }
+    section { padding: 3.4rem 0; }
+    .hero { padding: 2.1rem 0 1.8rem; }
+    .hero-label { margin-bottom: 0.95rem; flex-wrap: wrap; row-gap: 0.3rem; }
+    .hero-label .rule-seg { display: none; }
+    .hero-title { font-size: clamp(2.35rem, 11.5vw, 3rem); }
+    .hero-bottom { margin-top: 1.25rem; gap: 1.5rem; }
+    .hero-ctas { margin-top: 1.15rem; }
+    .hero-price { margin-top: 1rem; }
+    .ticker { overflow: visible; }
+    .ticker-track { animation: none; width: auto; max-width: 100%; flex-wrap: wrap; gap: 0.35rem 0.15rem; padding: 0 1.3rem; }
+    .ticker-track span { white-space: normal; max-width: 100%; }
+    .ticker-track span i { margin-right: 0.75rem; }
+    .cta { padding: 3.6rem 1.3rem; }
     .sec-head { grid-template-columns: 1fr; gap: 0.8rem; }
     .stage-body-inner { padding-left: 0.5rem; }
     .ledger-grid { grid-template-columns: 1fr; }
@@ -610,6 +621,13 @@
   .faq-item { padding: 1.45rem 0.2rem; border-bottom: 1px solid var(--line); }
   .faq-item h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; letter-spacing: -0.01em; line-height: 1.25; }
   .faq-item p { color: var(--ink-soft); font-size: 1.05rem; max-width: 720px; margin-top: 0.55rem; }
+
+  .news { border-top: 1px solid var(--line); padding: 2.4rem 0 0; max-width: 640px; }
+  .news p { color: var(--ink-soft); font-size: 1.05rem; max-width: 520px; margin: 0.45rem 0 0.85rem; }
+  .news-foot { display: flex; align-items: baseline; gap: 0.7rem 1.2rem; flex-wrap: wrap; width: 100%; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--line); }
+  .news-foot p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+  .news-foot a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .news-foot a:hover { color: var(--rust); }
 </style>
 </head>
 <body>
@@ -622,6 +640,7 @@
       <a href="/how-it-works">How it works</a>
       <a href="#ledger">What I Find</a>
       <a href="/how-it-works#builds">Demos</a>
+      <a href="/leak-estimate">Free tools</a>
       <a href="#about">About</a>
       <a href="https://cal.com/samgorla/quick-connect" class="nav-cta">Book a 30-minute call</a>
     </div>
@@ -632,7 +651,7 @@
 <section class="hero" data-screen-label="Hero">
   <div class="container">
     <div class="hero-label">
-      <span class="kicker">AI automation · Allentown, Bethlehem, Easton</span>
+      <span class="kicker">Practical AI for owner-run businesses · Lehigh Valley, PA</span>
       <span class="rule-seg"></span>
       <span class="kicker soft">Est. on servant leadership</span>
     </div>
@@ -686,7 +705,7 @@
       <span class="sec-num">01 / Start here</span>
       <div>
         <h2 class="sec-title">Your business runs through your head. <em>I help you fix that.</em></h2>
-        <p class="sec-intro">It starts with a free 30-minute look at one or two workflows, on the phone or Teams. If you're in Allentown, Bethlehem, Easton, or the surrounding Lehigh Valley and would rather sit down, I'll come to you. There's no charge for it.</p>
+        <p class="sec-intro">It starts with a free 30-minute look at one or two workflows, on the phone or Teams. If you're in the Lehigh Valley and would rather sit down, I'll come to you. There's no charge for it.</p>
         <p class="sec-intro">I work with owner-run businesses in three groups: contractors and trades; professional services (CPAs, law firms, insurance agencies, agencies); and healthcare practices (dental, PT, chiropractic, counseling). For healthcare, only scheduling, intake, and billing follow-up. Never clinical work or patient records.</p>
       </div>
     </div>
@@ -1044,12 +1063,17 @@
       </div>
       <div class="faq-item reveal">
         <h3>Is this only for the Lehigh Valley?</h3>
-        <p>I work across Allentown, Bethlehem, Easton, and the surrounding Lehigh Valley. Phone or Teams is fine. If you'd rather sit down, I'll come to you.</p>
+        <p>I work with owner-run businesses in the Lehigh Valley. Phone or Teams is fine. If you'd rather sit down, I'll come to you.</p>
       </div>
       <div class="faq-item reveal">
         <h3>Who does the work?</h3>
         <p>Me. Sam Gorla. I have 14 years in technology consulting for Fortune 1000 companies. No account managers, no junior team, no handoff.</p>
       </div>
+    </div>
+    <div class="news">
+      <span class="kicker">Out of the Owner's Head</span>
+      <p>One usable takeaway a week for owner-run businesses.</p>
+      <a class="btn btn-text" href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
     </div>
   </div>
 </section>
@@ -1066,6 +1090,11 @@
 
 <footer>
   <div class="container">
+    <div class="news-foot">
+      <span class="kicker">Out of the Owner's Head</span>
+      <p>One usable takeaway a week for owner-run businesses.</p>
+      <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+    </div>
     <div class="footer-inner">
       <div class="footer-brand"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="" width="30" height="30">Servlead Solutions</div>
       <div class="footer-links">
@@ -1075,38 +1104,18 @@
         <a href="https://www.linkedin.com/company/servlead-solutions">LinkedIn</a>
         <a href="/privacy">Privacy</a>
       </div>
-      <div class="footer-fine">© 2026 Servlead Solutions · Allentown, Bethlehem &amp; Easton</div>
+      <div class="footer-fine">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
     </div>
   </div>
 </footer>
 
 <script>
-// Hero word-rise
-(function () {
-  var h = document.getElementById('heroTitle');
-  var walker = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
-  var nodes = [];
-  while (walker.nextNode()) nodes.push(walker.currentNode);
-  var i = 0;
-  nodes.forEach(function (node) {
-    var frag = document.createDocumentFragment();
-    node.textContent.split(/(\s+)/).forEach(function (part) {
-      if (/^\s+$/.test(part) || part === '') { frag.appendChild(document.createTextNode(part)); return; }
-      var s = document.createElement('span');
-      s.className = 'word';
-      s.style.animationDelay = (0.08 + i * 0.07) + 's';
-      s.textContent = part;
-      frag.appendChild(s);
-      i++;
-    });
-    node.parentNode.replaceChild(frag, node);
-  });
-})();
-
-// Ticker duplicate
+// Ticker loops on a wide screen. On a phone, and when motion is reduced, the industries stay put so none are clipped.
 (function () {
   var t = document.getElementById('tickerTrack');
-  t.innerHTML += t.innerHTML;
+  var motion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  var wide = window.matchMedia('(min-width: 769px)').matches;
+  if (motion && wide) t.innerHTML += t.innerHTML;
 })();
 
 // Reveal on scroll
