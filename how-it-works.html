@@ -27,9 +27,7 @@
 <meta name="twitter:description" content="What happens after the audit finds the money — the plan, the fix, and a handoff your team can run.">
 <meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
     --paper: #f2f2f1;
@@ -80,8 +78,7 @@
   .hero-label .rule-seg { flex: 1; height: 1px; background: var(--line); }
   .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(3rem, 7.2vw, 6.2rem); line-height: 1.0; letter-spacing: -0.028em; max-width: 1050px; }
   .hero-title em { font-style: italic; color: var(--rust); font-weight: 300; }
-  .hero-title .word { display: inline-block; opacity: 0; transform: translateY(0.5em); animation: word-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
-  @keyframes word-rise { to { opacity: 1; transform: translateY(0); } }
+  .hero-title .word { display: inline-block; }
   .hero-bottom { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4rem; margin-top: 3rem; align-items: end; }
   .hero-sub { font-size: 1.16rem; line-height: 1.65; color: var(--ink-soft); max-width: 560px; }
   .hero-sub b { color: var(--ink); }
@@ -298,6 +295,10 @@
   .footer-links a { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
   .footer-links a:hover { color: var(--rust); }
   .footer-fine { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+  .news-foot { display: flex; align-items: baseline; gap: 0.7rem 1.2rem; flex-wrap: wrap; width: 100%; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--line); }
+  .news-foot p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+  .news-foot a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .news-foot a:hover { color: var(--rust); }
 
   @media (prefers-reduced-motion: no-preference) {
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -578,6 +579,7 @@
       <a href="/how-it-works">How it works</a>
       <a href="/#ledger">What I Find</a>
       <a href="#builds">Demos</a>
+      <a href="/leak-estimate">Free tools</a>
       <a href="/#about">About</a>
       <a href="https://cal.com/samgorla/quick-connect" class="nav-cta">Book a 30-minute call</a>
     </div>
@@ -817,6 +819,11 @@
 
 <footer>
   <div class="container">
+    <div class="news-foot">
+      <span class="kicker">Out of the Owner's Head</span>
+      <p>One usable takeaway a week for owner-run businesses.</p>
+      <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+    </div>
     <div class="footer-inner">
       <div class="footer-brand"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="" width="30" height="30">Servlead Solutions</div>
       <div class="footer-links">
@@ -825,7 +832,7 @@
         <a href="https://www.linkedin.com/company/servlead-solutions">LinkedIn</a>
         <a href="/privacy">Privacy</a>
       </div>
-      <div class="footer-fine">© 2026 Servlead Solutions · Allentown, Bethlehem &amp; Easton</div>
+      <div class="footer-fine">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
     </div>
   </div>
 </footer>

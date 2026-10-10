@@ -9,9 +9,7 @@
 <meta property="og:title" content="The Leak Estimate — Servlead Solutions">
 <meta property="og:description" content="Ten quick questions. A yearly dollar figure for your business, kept low on purpose.">
 <meta property="og:url" content="https://servleadsolutions.com/leak-estimate">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
     --paper: #f2f2f1; --paper-deep: #e9e9e7; --ink: #14202e; --ink-soft: #46536a; --muted: #7d8494;
@@ -122,7 +120,13 @@
   .close p { color: #d3d8df; font-size: 0.98rem; max-width: 580px; }
   .close .g { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--paper); border-left: 2px solid var(--rust); padding-left: 1rem; margin: 1.1rem 0 1.3rem; }
   .close .price { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-top: 0.9rem; }
-  .close .btn-primary { background: var(--paper); color: var(--ink); }
+  .close .btn-primary { background: var(--paper); color: var(--ink); margin-top: 1.15rem; }
+  .newslet { border-top: 1px solid var(--line); padding: 1.45rem 1.6rem 1.6rem; background: #fff; }
+  .newslet p { color: var(--ink-soft); font-size: 0.98rem; margin: 0.4rem 0 0.75rem; max-width: 520px; }
+  .newslet a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .newslet a:hover { color: var(--rust); }
+  .foot-news { margin: 0 auto 0.9rem; max-width: 640px; }
+  .foot-news p { margin: 0.35rem 0 0.45rem; }
   .close .btn-primary:hover { background: var(--rust); color: #fff; }
   .close a.alt { color: var(--paper); font-weight: 600; margin-left: 1.2rem; text-decoration: none; border-bottom: 2px solid var(--rust); }
   .how { margin-top: 2.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
@@ -132,6 +136,8 @@
   footer { border-top: 1px solid var(--line-dark); padding: 2rem 1.5rem 3rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
   footer a { color: var(--ink-soft); text-decoration: none; margin: 0 0.6rem; }
   footer a:hover { color: var(--rust); }
+  .foot-news a { color: var(--ink); margin: 0; font-weight: 700; border-bottom: 2px solid var(--rust); }
+  .foot-news a:hover { color: var(--rust); }
   @media (max-width: 640px) {
     .nav-inner { padding: 0.9rem 1.2rem; }
     .nav-back { display: none; }
@@ -169,10 +175,15 @@
   </div>
 </main>
 <footer>
+  <div class="foot-news">
+    <span class="kicker">Out of the Owner's Head</span>
+    <p>One usable takeaway a week for owner-run businesses.</p>
+    <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+  </div>
   <a href="tel:8608691385">(860) 869-1385</a>
   <a href="mailto:info@servleadsolutions.com">info@servleadsolutions.com</a>
   <a href="/privacy">Privacy</a>
-  <div style="margin-top:0.7rem;">© 2026 Servlead Solutions · Allentown, Bethlehem &amp; Easton</div>
+  <div style="margin-top:0.7rem;">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
 </footer>
 <script>
 (function () {
@@ -322,18 +333,20 @@
         '<h3>Start with a free 30-minute look.</h3>' +
         '<p>A free 30-minute look at one or two workflows. Tell Sam where they get stuck, and he\u2019ll name the bottleneck. If it\u2019s worth a closer look, the next step is the AI &amp; Efficiency Audit: sixty minutes, live, a figure he can defend on every leak, and the written plan within 48 hours.</p>' +
         '<div class="g">If I don\u2019t show you at least $10,000 a year leaking out of your business, audit is free.</div>' +
-        '<a class="btn-primary" href="' + BOOK + '">Book a 30-minute call →</a><a class="alt" href="tel:8608691385">Or call (860) 869-1385</a>' +
+        '<a class="btn-primary" href="' + BOOK + '">Check this on a free 30-minute call →</a><a class="alt" href="tel:8608691385">Or call (860) 869-1385</a>' +
         '<div class="price">The audit: $1,000 · $500 to book · $500 when the plan lands</div></div>'
       : '<div class="close"><span class="kicker">An honest answer</span>' +
         '<h3>The audit probably isn\u2019t worth $1,000 to you right now.</h3>' +
-        '<p>Your answers point to less than $10,000 a year, and that\u2019s good news. If something here doesn\u2019t match what you see day to day, send your numbers to Sam above and he\u2019ll tell you straight.</p></div>';
+        '<p>Your answers point to less than $10,000 a year, and that\u2019s good news. If something here doesn\u2019t match what you see day to day, send your numbers to Sam above and he\u2019ll tell you straight.</p>' +
+        '<a class="btn-primary" href="' + BOOK + '">Check this on a free 30-minute call →</a></div>';
 
     screen.innerHTML =
       '<div class="total-block fade"><div class="total-lab">Your answers point to about</div>' +
       '<div class="total-amt">' + fmt(t) + '<small> a year</small></div>' +
       '<p class="total-note">' + (over ? 'That\u2019s above the $10,000 line the audit guarantee is built on.' : 'That\u2019s under the $10,000 line the audit guarantee is built on.') + ' Built from your answers, and on the low side on purpose.</p>' +
       gaugeHTML(t) + '</div>' +
-      '<div class="breakdown fade">' + rows + firstHTML + arHTML + '</div>' + cant + review + close;
+      '<div class="breakdown fade">' + rows + firstHTML + arHTML + '</div>' + cant + review + close +
+      '<div class="newslet"><span class="kicker">Out of the Owner\u2019s Head</span><p>One usable takeaway a week for owner-run businesses.</p><a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a></div>';
 
     requestAnimationFrame(function () {
       var g = document.getElementById('gFill'); g.style.width = g.getAttribute('data-w') + '%';
