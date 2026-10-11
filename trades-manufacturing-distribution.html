@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Contractors, Manufacturers &amp; Distributors | Lehigh Valley | Servlead</title>
+<meta name="description" content="Owner-run Lehigh Valley contractors and trades, manufacturers, and distributors. A free 30-minute look at the jobs still living in the owner's head.">
+<meta name="author" content="Sam Gorla — Servlead Solutions">
+<link rel="canonical" href="https://servleadsolutions.com/trades-manufacturing-distribution">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Servlead Solutions">
+<meta property="og:title" content="AI for Contractors, Manufacturers &amp; Distributors | Lehigh Valley | Servlead">
+<meta property="og:description" content="Owner-run Lehigh Valley contractors and trades, manufacturers, and distributors. A free 30-minute look at the jobs still living in the owner's head.">
+<meta property="og:url" content="https://servleadsolutions.com/trades-manufacturing-distribution">
+<meta property="og:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Servlead Solutions — practical AI for owner-run contractors, manufacturers, and distributors in the Lehigh Valley.">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI for Contractors, Manufacturers &amp; Distributors | Lehigh Valley | Servlead">
+<meta name="twitter:description" content="Owner-run Lehigh Valley contractors and trades, manufacturers, and distributors. A free 30-minute look at the jobs still living in the owner's head.">
+<meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI for contractors, manufacturers, and distributors",
+  "serviceType": "Practical AI for owner-run contractors, manufacturers, and distributors",
+  "url": "https://servleadsolutions.com/trades-manufacturing-distribution",
+  "description": "A free 30-minute look at one or two jobs for owner-run Lehigh Valley contractors and trades, manufacturers, and distributors. The manufacturing and distribution example is AIG Safety: findings from an AI & Efficiency Audit, not a finished build.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://servleadsolutions.com/#business",
+    "name": "Servlead Solutions",
+    "url": "https://servleadsolutions.com/"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Lehigh Valley, PA",
+    "description": "Allentown, Bethlehem, Easton, and surrounding"
+  },
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Owner-run contractors and trades, manufacturers, and distributors"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Free 30-minute look",
+      "price": "0",
+      "priceCurrency": "USD",
+      "url": "https://cal.com/samgorla/quick-connect",
+      "description": "A free 30-minute look at one or two jobs. This is not the AI & Efficiency Audit."
+    },
+    {
+      "@type": "Offer",
+      "name": "AI & Efficiency Audit",
+      "price": "1000",
+      "priceCurrency": "USD",
+      "url": "https://cal.com/samgorla/consultation",
+      "description": "Sixty minutes, live. $500 to book, $500 when the plan lands. If I don't show you at least $10,000 a year leaking out of your business, audit is free."
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --paper: #f2f2f1;
+    --paper-deep: #e9e9e7;
+    --ink: #14202e;
+    --ink-soft: #46536a;
+    --muted: #7d8494;
+    --rust: #a63d1c;
+    --line: #d6d6d2;
+    --line-dark: #14202e;
+    --green: #22764f;
+    --gold: #e8b64c;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'Archivo', system-ui, sans-serif;
+    --mono: 'Spline Sans Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --base: 0.32s;
+    --slow: 0.55s;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+  ::selection { background: var(--rust); color: #fff; }
+  .kicker { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(242, 242, 241, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1160px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--serif); font-weight: 500; font-size: 1.3rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .logo img { width: 38px; height: 38px; object-fit: contain; }
+  .nav-links { display: flex; align-items: center; gap: 1.6rem; }
+  .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-cta { border: 1.5px solid var(--ink); color: var(--ink) !important; padding: 0.55rem 1.25rem; border-radius: 999px; }
+  .nav-cta:hover { background: var(--ink); color: var(--paper) !important; }
+  .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; max-width: 100%; }
+  .btn-primary { background: var(--ink); color: var(--paper); padding: 1.05rem 2.1rem; border-radius: 999px; }
+  .btn-primary:hover { background: var(--rust); }
+  .btn-text { color: var(--ink); border-bottom: 2px solid var(--rust); padding-bottom: 2px; }
+  .btn-text:hover { color: var(--rust); }
+
+  .hero { padding: 5.2rem 0 3.2rem; }
+  .hero-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; }
+  .hero-label .rule-seg { flex: 1; height: 1px; background: var(--line); min-width: 1.5rem; }
+  .hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.45rem, 5.6vw, 4.5rem); line-height: 1.05; letter-spacing: -0.028em; max-width: 920px; }
+  .hero-title em { font-style: italic; color: var(--rust); font-weight: 300; }
+  .hero-sub { font-size: 1.16rem; line-height: 1.65; color: var(--ink-soft); max-width: 640px; margin-top: 1.4rem; }
+  .group-nav { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
+  .group-nav a { font-size: 0.95rem; font-weight: 600; color: var(--ink); text-decoration: none; border: 1px solid var(--line-dark); border-radius: 999px; padding: 0.55rem 1rem; background: #fff; }
+  .group-nav a:hover { color: var(--rust); border-color: var(--rust); }
+  .cred { margin-top: 1.5rem; max-width: 640px; font-size: 0.98rem; color: var(--ink-soft); }
+  .cred b { color: var(--ink); font-weight: 600; }
+
+  section { padding: 5.2rem 0; }
+  .group { scroll-margin-top: 5.5rem; }
+  .band { background: var(--paper-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .sec-num { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); display: block; margin-bottom: 0.8rem; }
+  .sec-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -0.02em; max-width: 760px; }
+  .sec-title em { font-style: italic; color: var(--rust); }
+  .sec-intro { font-size: 1.1rem; color: var(--ink-soft); max-width: 640px; margin-top: 1.1rem; }
+  .sec-intro a, .stage-body-inner a { color: var(--rust); font-weight: 600; }
+  .who { margin-top: 0.8rem; max-width: 640px; color: var(--ink); font-size: 1rem; }
+
+  .probs { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 2rem; margin-top: 1.6rem; max-width: 760px; }
+  .probs li { font-family: var(--serif); font-size: 1.2rem; line-height: 1.35; padding-top: 0.7rem; border-top: 1px solid var(--line-dark); }
+
+  .walk-hint { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 2rem 0 0.4rem; }
+  .walk-stages { border-top: 1px solid var(--line-dark); max-width: 820px; }
+  .stage { border-bottom: 1px solid var(--line); cursor: pointer; position: relative; }
+  .stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rust); transform: scaleY(0); transform-origin: top; transition: transform var(--base) var(--ease); }
+  .stage.open::before { transform: scaleY(1); }
+  .stage-head { display: grid; grid-template-columns: 3rem 1fr auto; align-items: baseline; gap: 1.2rem; padding: 1.35rem 0.5rem; background: none; border: 0; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+  .stage-num { font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--muted); }
+  .stage.open .stage-num { color: var(--rust); }
+  .stage-title { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; letter-spacing: -0.01em; line-height: 1.25; }
+  .stage-toggle { font-family: var(--mono); font-size: 1.1rem; color: var(--muted); }
+  .stage.open .stage-toggle { color: var(--rust); transform: rotate(45deg); display: inline-block; }
+  .stage-body { max-height: 0; overflow: hidden; transition: max-height var(--slow) var(--ease); }
+  .stage.open .stage-body { max-height: 28rem; }
+  .stage-body-inner { padding: 0 0.5rem 1.5rem 4.2rem; color: var(--ink-soft); max-width: 640px; }
+  .stage-body-inner p + p { margin-top: 0.75rem; }
+
+  .proof { margin-top: 2rem; max-width: 640px; border-left: 2px solid var(--rust); padding-left: 1.1rem; }
+  .proof p { font-size: 1.05rem; color: var(--ink); }
+  .proof p + p { margin-top: 0.45rem; }
+  .proof .fine { color: var(--muted); font-size: 0.9rem; }
+
+  .subhead { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -0.02em; margin-top: 2.2rem; scroll-margin-top: 5.5rem; }
+  .findings { margin-top: 2.6rem; max-width: 720px; background: #fff; border: 1px solid var(--line-dark); padding: 1.45rem 1.4rem 1.25rem; }
+  .findings h3 { font-family: var(--serif); font-weight: 400; font-size: 1.85rem; letter-spacing: -0.02em; }
+  .findings .lede { margin-top: 0.7rem; color: var(--ink-soft); max-width: 62ch; }
+  .findings ul { list-style: none; margin-top: 1rem; border-top: 1px solid var(--line-dark); }
+  .findings li { padding: 0.8rem 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  .findings li b { color: var(--ink); font-weight: 600; }
+  .findings .review-link { display: inline-block; margin-top: 1rem; color: var(--rust); font-weight: 600; }
+
+  .path-list { list-style: none; margin-top: 1.4rem; max-width: 720px; border-top: 1px solid var(--line-dark); }
+  .path-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.85rem 0.2rem; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--ink-soft); }
+  .path-list li b { color: var(--ink); font-weight: 600; }
+  .path-list .pn { font-family: var(--serif); font-style: italic; color: var(--rust); font-size: 1.15rem; }
+  .path-eg { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.92rem; }
+  .offer-note { margin-top: 1.2rem; max-width: 640px; color: var(--ink-soft); font-size: 0.98rem; }
+  .offer-note b { color: var(--ink); }
+  .audit-cta-row { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+  .cta { border-top: 1px solid var(--line-dark); text-align: center; padding: 5.5rem 1.3rem; }
+  .cta-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.06; letter-spacing: -0.025em; max-width: 760px; margin: 1.2rem auto 0; }
+  .cta-title em { font-style: italic; color: var(--rust); }
+  .cta-sub { font-size: 1.08rem; color: var(--ink-soft); max-width: 560px; margin: 1.2rem auto 2rem; }
+  .cta-row { display: flex; gap: 1.6rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+
+  footer { border-top: 1px solid var(--line-dark); padding: 2.2rem 0 4.5rem; }
+  .news-foot { display: flex; align-items: baseline; gap: 0.7rem 1.2rem; flex-wrap: wrap; width: 100%; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--line); }
+  .news-foot p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+  .news-foot a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-brand { display: flex; align-items: center; gap: 0.6rem; font-family: var(--serif); font-weight: 500; font-size: 1.05rem; }
+  .footer-brand img { width: 30px; height: 30px; object-fit: contain; }
+  .footer-links { display: flex; gap: 1.4rem 1.8rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
+  .footer-links a:hover { color: var(--rust); }
+  .footer-fine { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); flex-direction: column; padding: 1.5rem 1.3rem; gap: 1.2rem; border-bottom: 1px solid var(--line); align-items: flex-start; }
+    .nav-links.open { display: flex; }
+    .mobile-toggle { display: block; }
+    .container { padding: 0 1.3rem; }
+    .hero { padding: 2.4rem 0 2rem; }
+    .hero-label { flex-wrap: wrap; row-gap: 0.35rem; }
+    .hero-label .rule-seg { display: none; }
+    .probs { grid-template-columns: 1fr; }
+    .stage-head { grid-template-columns: 2.2rem 1fr auto; gap: 0.7rem; padding-left: 0; padding-right: 0; }
+    .stage-body-inner { padding-left: 0; }
+    section { padding: 3.4rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="Servlead Solutions" width="38" height="38">Servlead Solutions</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/#audit">AI &amp; Efficiency Audit</a>
+      <a href="/how-it-works">How it works</a>
+      <a href="/#ledger">What I Find</a>
+      <a href="/how-it-works#builds">Demos</a>
+      <a href="/leak-estimate">Free tools</a>
+      <a href="/#about">About</a>
+      <a href="https://cal.com/samgorla/quick-connect" class="nav-cta">Book a 30-minute call</a>
+    </div>
+    <button class="mobile-toggle" type="button" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">
+      <span class="kicker">Contractors, manufacturers, and distributors</span>
+      <span class="rule-seg"></span>
+      <span class="kicker" style="color: var(--muted);">Lehigh Valley, PA</span>
+    </div>
+    <h1 class="hero-title">The day still runs <em>through your head.</em></h1>
+    <p class="hero-sub">Estimates and quotes. Custom jobs. Orders, and the call about where it is. For owner-run businesses in the Lehigh Valley.</p>
+    <nav class="group-nav" aria-label="Choose your kind of business">
+      <a href="#contractors">Contractors &amp; trades</a>
+      <a href="#manufacturers">Manufacturers</a>
+      <a href="#distributors">Distributors</a>
+    </nav>
+    <p class="cred"><b>Sam Gorla.</b> 14 years in technology consulting for Fortune 1000 companies. I do the work myself.</p>
+  </div>
+</section>
+
+<section class="band group" id="contractors">
+  <div class="container">
+    <span class="sec-num">01 / Contractors and trades</span>
+    <h2 class="sec-title">The bid, the schedule, <em>and the office.</em></h2>
+    <p class="who">GCs, remodelers, roofing and exteriors, HVAC, electrical, plumbing, and specialty contractors.</p>
+    <ul class="probs">
+      <li>Estimates take hours</li>
+      <li>Quotes go quiet</li>
+      <li>The schedule and job details live in the owner's head</li>
+      <li>The office calls you all day</li>
+      <li>Invoices and change orders slip</li>
+    </ul>
+    <p class="sec-intro">Four examples of the kind of repeating job, not case studies. It works with what you already use: JobTread, Jobber, QuickBooks, even a spreadsheet.</p>
+    <p class="walk-hint">Tap an example</p>
+    <div class="walk-stages">
+      <div class="stage">
+        <button class="stage-head" type="button" aria-expanded="false">
+          <span class="stage-num">i.</span>
+          <span class="stage-title">Estimating from past jobs and a catalog</span>
+          <span class="stage-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="stage-body"><div class="stage-body-inner">
+          <p>A bid starts from the last similar job, then from a price list that lives in a spreadsheet or in someone's memory. The hours pile up before a number goes out.</p>
+          <p>A rebuild pulls the last comparable job and the catalog into one pass, so the estimate isn't rebuilt from scratch. You still set the price.</p>
+        </div></div>
+      </div>
+      <div class="stage">
+        <button class="stage-head" type="button" aria-expanded="false">
+          <span class="stage-num">ii.</span>
+          <span class="stage-title">Quote follow-up, with nudges you approve</span>
+          <span class="stage-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="stage-body"><div class="stage-body-inner">
+          <p>The quote goes out, then nothing. Follow-up waits until someone remembers.</p>
+          <p>A rebuild drafts the nudge and waits for you to approve it. Nothing goes to the customer until you say so.</p>
+        </div></div>
+      </div>
+      <div class="stage">
+        <button class="stage-head" type="button" aria-expanded="false">
+          <span class="stage-num">iii.</span>
+          <span class="stage-title">Job handoff from office to field</span>
+          <span class="stage-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="stage-body"><div class="stage-body-inner">
+          <p>The schedule and the job details are still in the owner's head. The field calls the office, and the office calls you.</p>
+          <p>A rebuild puts the handoff in one place the crew can open, so the day doesn't depend on you answering the phone.</p>
+        </div></div>
+      </div>
+      <div class="stage">
+        <button class="stage-head" type="button" aria-expanded="false">
+          <span class="stage-num">iv.</span>
+          <span class="stage-title">Invoice and change-order follow-up</span>
+          <span class="stage-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="stage-body"><div class="stage-body-inner">
+          <p>The work is done, or the scope changed, and the paper doesn't go out. Then it doesn't get chased.</p>
+          <p>A rebuild keeps the invoice and the change order moving, and shows what's still open. You approve what gets sent.</p>
+        </div></div>
+      </div>
+    </div>
+    <div class="proof">
+      <p>About <b>$38K–$54K</b> a year found, measured at a Lehigh Valley GC.</p>
+      <p>About <b>8 hours</b> per bid, at a Lehigh Valley contractor.</p>
+      <p class="fine">About, not a promise. The client isn't named. These two figures are from contractor work only.</p>
+    </div>
+  </div>
+</section>
+
+<section class="group" id="manufacturers">
+  <div class="container">
+    <span class="sec-num">02 / Manufacturers and distributors</span>
+    <h2 class="sec-title">One real audit. <em>Not a finished build.</em></h2>
+    <p class="sec-intro">Two lists, so you can find your business. The example under them is what an AI &amp; Efficiency Audit found at one company. Nothing in it has been built.</p>
+
+    <h3 class="subhead">Manufacturers</h3>
+    <p class="who">Job shops, fabricators, and small plants.</p>
+    <ul class="probs">
+      <li>Quoting custom jobs</li>
+      <li>RFQ follow-up</li>
+      <li>Scheduling and job-status questions</li>
+      <li>Handoffs between office and floor</li>
+      <li>Purchase-order and invoice chasing</li>
+    </ul>
+
+    <h3 class="subhead" id="distributors">Distributors</h3>
+    <p class="who">Wholesale and supply houses.</p>
+    <ul class="probs">
+      <li>Quote and order follow-up</li>
+      <li>Inbound order entry from emails and PDFs</li>
+      <li>Inventory and backorder questions</li>
+      <li>Customer status calls</li>
+    </ul>
+
+    <div class="findings">
+      <span class="kicker">AI &amp; Efficiency Audit</span>
+      <h3>AIG Safety</h3>
+      <p class="lede"><a href="/#aig-safety">AIG Safety</a> (Access Innovations Global) makes safety products and sells them through a dealer network of about 50 dealers. A lean team of four runs the business. This is what the audit found.</p>
+      <ul>
+        <li>Orders were entered by hand, and shipping documents were typed in again, because QuickBooks didn't connect to the shipping carriers. <b>About 6 hours a week.</b></li>
+        <li>Dealers send purchase orders in their own formats and their own part numbers. Those can be mapped to the manufacturer's part numbers automatically. Designed, not built.</li>
+        <li>Collections follow-up and inventory visibility were weak spots.</li>
+      </ul>
+      <a class="review-link" href="/#aig-safety">Read their review →</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="next">
+  <div class="container">
+    <span class="sec-num">03 / How it works</span>
+    <h2 class="sec-title">It starts with <em>thirty minutes.</em></h2>
+    <p class="sec-intro">A free 30-minute look at one or two jobs that eat the week, on the phone or Teams. If you're in the Lehigh Valley and would rather sit down, I'll come to you. You walk me through them. I name what's stuck. The call ends with a clear next step, and it isn't always the AI &amp; Efficiency Audit.</p>
+    <ol class="path-list">
+      <li><span class="pn">i.</span><div><b>Workflow Rebuild:</b> one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. <span class="path-eg">e.g., a quote follow-up system, a company knowledge base, or an AI assistant that keeps the owner on top of the day.</span></div></li>
+      <li><span class="pn">ii.</span><div><b>The AI &amp; Efficiency Audit ($1,000):</b> when the bigger picture needs finding.</div></li>
+      <li><span class="pn">iii.</span><div><b>A straight answer:</b> sometimes you don't need me. If it's simple, I'll tell you how to fix it yourself, or point you to someone who fits better.</div></li>
+    </ol>
+    <p class="offer-note">The AI &amp; Efficiency Audit is $1,000. $500 to book, $500 when the written plan lands. <b>If I don't show you at least $10,000 a year leaking out of your business, audit is free.</b></p>
+    <div class="audit-cta-row">
+      <a href="https://cal.com/samgorla/quick-connect" class="btn btn-primary">Book a 30-minute call →</a>
+      <a href="https://cal.com/samgorla/consultation" class="btn btn-text">Book the AI &amp; Efficiency Audit</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <span class="kicker">Free · 30 minutes · phone, Teams, or in person</span>
+  <h2 class="cta-title">Got thirty minutes? <em>Start there.</em></h2>
+  <p class="cta-sub">One or two jobs. I'll name what's stuck. The call isn't always the AI &amp; Efficiency Audit.</p>
+  <div class="cta-row">
+    <a href="https://cal.com/samgorla/quick-connect" class="btn btn-primary">Book a 30-minute call →</a>
+    <a href="mailto:info@servleadsolutions.com" class="btn btn-text">info@servleadsolutions.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="news-foot">
+      <span class="kicker">Out of the Owner's Head</span>
+      <p>One usable takeaway a week for owner-run businesses.</p>
+      <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="" width="30" height="30">Servlead Solutions</div>
+      <div class="footer-links">
+        <a href="tel:8608691385">(860) 869-1385</a>
+        <a href="mailto:info@servleadsolutions.com">info@servleadsolutions.com</a>
+        <a href="/trades-manufacturing-distribution">Trades, manufacturing &amp; distribution</a>
+        <a href="/professional-services">Professional services</a>
+        <a href="https://www.linkedin.com/company/servlead-solutions">LinkedIn</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+      <div class="footer-fine">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.querySelectorAll('.walk-stages').forEach(function (list) {
+    list.querySelectorAll('.stage').forEach(function (st) {
+      var btn = st.querySelector('.stage-head');
+      btn.addEventListener('click', function () {
+        var wasOpen = st.classList.contains('open');
+        list.querySelectorAll('.stage').forEach(function (s) {
+          s.classList.remove('open');
+          s.querySelector('.stage-head').setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          st.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
