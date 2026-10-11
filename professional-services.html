@@ -104,13 +104,15 @@
   .nav-links { display: flex; align-items: center; gap: 1.6rem; }
   .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; }
   .nav-links a:hover { color: var(--rust); }
-  .nav-cta { border: 1.5px solid var(--ink); color: var(--ink) !important; padding: 0.55rem 1.25rem; border-radius: 999px; }
-  .nav-cta:hover { background: var(--ink); color: var(--paper) !important; }
+  .nav-cta { border: 1.5px solid var(--rust); background: var(--rust); color: #fff !important; font-weight: 700; padding: 0.55rem 1.25rem; border-radius: 999px; box-shadow: 0 6px 14px rgba(166, 61, 28, 0.22); }
+  .nav-cta:hover { background: #7c2b13; border-color: #7c2b13; color: #fff !important; }
+  .nav-cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
 
   .btn { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; max-width: 100%; }
-  .btn-primary { background: var(--ink); color: var(--paper); padding: 1.05rem 2.1rem; border-radius: 999px; }
-  .btn-primary:hover { background: var(--rust); }
+  .btn-primary { background: var(--rust); color: #fff; padding: 1.05rem 2.15rem; border-radius: 999px; box-shadow: 0 8px 18px rgba(166, 61, 28, 0.24); }
+  .btn-primary:hover { background: #7c2b13; color: #fff; }
+  .btn-primary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .btn-text { color: var(--ink); border-bottom: 2px solid var(--rust); padding-bottom: 2px; }
   .btn-text:hover { color: var(--rust); }
 

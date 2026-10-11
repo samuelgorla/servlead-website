@@ -44,8 +44,9 @@
   .nav-links { display: flex; align-items: center; gap: 1.8rem; }
   .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--rust); }
-  .nav-cta { border: 1.5px solid var(--ink); color: var(--ink) !important; padding: 0.55rem 1.25rem; border-radius: 999px; transition: background 0.2s, color 0.2s !important; }
-  .nav-cta:hover { background: var(--ink); color: var(--paper) !important; }
+  .nav-cta { border: 1.5px solid var(--rust); background: var(--rust); color: #fff !important; font-weight: 700; padding: 0.55rem 1.25rem; border-radius: 999px; box-shadow: 0 6px 14px rgba(166, 61, 28, 0.22); transition: background 0.2s, border-color 0.2s !important; }
+  .nav-cta:hover { background: #7c2b13; border-color: #7c2b13; color: #fff !important; }
+  .nav-cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
 
   .head { padding: 4.5rem 0 2.5rem; border-bottom: 1px solid var(--line-dark); }
