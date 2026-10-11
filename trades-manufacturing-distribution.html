@@ -31,7 +31,7 @@
   "name": "AI for contractors, manufacturers, and distributors",
   "serviceType": "Practical AI for owner-run contractors, manufacturers, and distributors",
   "url": "https://servleadsolutions.com/trades-manufacturing-distribution",
-  "description": "A free 30-minute look at one or two workflows for owner-run Lehigh Valley contractors and trades, manufacturers, and distributors. No client is named.",
+  "description": "A free 30-minute look at one or two workflows for owner-run Lehigh Valley contractors and trades, manufacturers, and distributors. Includes findings from an AI & Efficiency Audit for AIG Safety. Those findings are not a finished build.",
   "provider": {
     "@type": "ProfessionalService",
     "@id": "https://servleadsolutions.com/#business",
@@ -157,6 +157,16 @@
   .proof p { font-size: 1.05rem; color: var(--ink); }
   .proof p + p { margin-top: 0.45rem; }
   .proof .fine { color: var(--muted); font-size: 0.9rem; }
+
+  .audit-box { margin-top: 2rem; max-width: 720px; background: #fff; border: 1px solid var(--line-dark); padding: 1.35rem 1.35rem 1.15rem; scroll-margin-top: 5.5rem; }
+  .audit-box h3 { font-family: var(--serif); font-weight: 400; font-size: 1.85rem; letter-spacing: -0.02em; margin-top: 0.45rem; }
+  .audit-box h3 a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .audit-box h3 a:hover { color: var(--rust); }
+  .audit-box .lede { margin-top: 0.7rem; color: var(--ink-soft); max-width: 62ch; }
+  .audit-box ul { list-style: none; margin-top: 1rem; border-top: 1px solid var(--line-dark); }
+  .audit-box li { padding: 0.8rem 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  .audit-box li b { color: var(--ink); font-weight: 600; }
+  .audit-box .review-link { display: inline-block; margin-top: 1rem; color: var(--rust); font-weight: 600; }
 
   .path-list { list-style: none; margin-top: 1.4rem; max-width: 720px; border-top: 1px solid var(--line-dark); }
   .path-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.85rem 0.2rem; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--ink-soft); }
@@ -289,6 +299,7 @@
     <h2 class="sec-title">The quote is <em>where it sticks.</em></h2>
     <p class="who">Job shops, fabricators, and small plants.</p>
     <p class="sec-intro">The hours sit in the quote, the job traveler, the schedule, and the handoff from the floor to the office. The critical knowledge sits in a few heads. If you already know that, we start there.</p>
+    <p class="sec-intro">One real audit, for a manufacturer that also sells through dealers, is below.</p>
   </div>
 </section>
 
@@ -297,7 +308,18 @@
     <span class="sec-num">03 / Distributors</span>
     <h2 class="sec-title">Orders still get <em>keyed in by hand.</em></h2>
     <p class="who">Wholesale and supply houses.</p>
-    <p class="sec-intro">Dealer paperwork gets keyed in by hand too. Unpaid invoices get chased by hand. There's no clear view of which dealers are active. That's the work. No figure on it.</p>
+    <p class="sec-intro">Dealer paperwork gets keyed in by hand too. Unpaid invoices get chased by hand. There's no clear view of which dealers are active.</p>
+    <aside class="audit-box" id="aig-audit">
+      <span class="kicker">From a real AI &amp; Efficiency Audit</span>
+      <h3><a href="/#aig-safety">AIG Safety</a></h3>
+      <p class="lede"><a href="/#aig-safety">AIG Safety</a> (Access Innovations Global) makes safety products and sells them through a dealer network of about 50 dealers. A lean team runs it.</p>
+      <ul>
+        <li>Orders were entered by hand, and shipping documents were re-keyed, because QuickBooks didn't connect to the carriers. <b>About 6 hours a week.</b></li>
+        <li>Dealers send purchase orders in their own formats and their own part numbers. A mapping to the manufacturer's part numbers was designed, not built.</li>
+        <li>Collections follow-up and inventory visibility were weak spots.</li>
+      </ul>
+      <a class="review-link" href="/#aig-safety">Read their review →</a>
+    </aside>
   </div>
 </section>
 
