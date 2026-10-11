@@ -161,6 +161,14 @@
     },
     {
       "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI & Efficiency Audit is $1,000: $500 to book, $500 on delivery. If I don't show you at least $10,000 a year leaking out of your business, audit is free. Workflow Rebuilds are quoted after the free call."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "How much does the AI & Efficiency Audit cost?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -249,7 +257,7 @@
   .nav-links a:not(.nav-cta):not(.nav-drop):hover { color: var(--rust); }
   .nav-links a:not(.nav-cta):not(.nav-drop):hover::after { transform: scaleX(1); }
   .nav-who { position: relative; }
-  .nav-who-menu { display: none; position: absolute; top: calc(100% + 0.85rem); right: 0; min-width: 18.5rem; background: #fff; border: 1px solid var(--line-dark); padding: 0.35rem 0; z-index: 30; box-shadow: var(--lift-2); }
+  .nav-who-menu { display: none; position: absolute; top: calc(100% + 0.85rem); right: 0; min-width: 22rem; background: #fff; border: 1px solid var(--line-dark); padding: 0.35rem 0; z-index: 30; box-shadow: var(--lift-2); }
   .nav-who:hover .nav-who-menu, .nav-who:focus-within .nav-who-menu { display: block; }
   .nav-drop { display: block; padding: 0.65rem 1rem; font-size: 0.92rem; font-weight: 600; color: var(--ink); text-decoration: none; line-height: 1.35; }
   .nav-drop:hover { color: var(--rust); background: var(--paper); }
@@ -525,7 +533,7 @@
   .quote-card:hover .logo-img,
   .quote-card:focus-within .logo-img { filter: none; opacity: 1; }
   .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-  #aig-safety { scroll-margin-top: 5.5rem; }
+  #aig-safety, #sm-klase, #chick-fil-a { scroll-margin-top: 5.5rem; }
   .quote-card { background: var(--paper); border: 1px solid var(--line-dark); padding: 1.5rem 1.45rem 1.35rem; display: flex; flex-direction: column; transition: transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
   .quote-card:hover { transform: translateY(-4px); box-shadow: var(--lift-2); }
   .quote-top { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.05rem; }
@@ -561,6 +569,9 @@
   .who-card a::after { content: ''; position: absolute; inset: 0; }
   .who-card:hover { border-color: var(--rust); }
   .who-card:hover a { color: #7c2b13; }
+  .who-more { margin: 1.15rem 0 0; font-size: 1.02rem; }
+  .who-more a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
+  .who-more a:hover { color: var(--rust); }
   @media (max-width: 768px) {
     .who-help { padding: 2.6rem 0 2.8rem; }
     .who-grid { grid-template-columns: 1fr; }
@@ -696,6 +707,7 @@
         <div class="nav-who-menu">
           <a class="nav-drop" href="/trades-manufacturing-distribution">Contractors, manufacturers &amp; distributors</a>
           <a class="nav-drop" href="/professional-services">CPAs, law firms &amp; insurance agencies</a>
+          <a class="nav-drop" href="/ai-consultant-lehigh-valley">AI consultant in the Lehigh Valley</a>
         </div>
       </div>
       <a href="https://cal.com/samgorla/quick-connect" class="nav-cta">Book a 30-minute call</a>
@@ -765,6 +777,7 @@
         <a href="/professional-services">See how →</a>
       </article>
     </div>
+    <p class="who-more"><a href="/ai-consultant-lehigh-valley">AI consultant in the Lehigh Valley, PA →</a></p>
   </div>
 </section>
 
@@ -1052,7 +1065,7 @@
       </ul>
     </div>
     <div class="proof-grid">
-      <article class="quote-card reveal">
+      <article class="quote-card reveal" id="sm-klase">
         <div class="quote-top">
           <div class="stars" aria-label="Five out of five stars">★★★★★</div>
           <img class="logo-img quote-logo" src="logos/sm-klase.svg" alt="S.M. Klase Custom Homes logo" width="168" height="52">
@@ -1066,7 +1079,7 @@
           <div class="qm">Custom home builder</div>
         </div>
       </article>
-      <article class="quote-card reveal">
+      <article class="quote-card reveal" id="chick-fil-a">
         <div class="quote-top">
           <div class="stars" aria-label="Five out of five stars">★★★★★</div>
           <img class="logo-img quote-logo" src="logos/chick-fil-a.svg" alt="Chick-fil-A logo" width="44" height="44">
@@ -1135,6 +1148,10 @@
         <p>The 30-minute call ends with a clear next step, and it isn't always the AI &amp; Efficiency Audit. Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. e.g., a quote follow-up system, a company knowledge base, or an AI assistant that keeps the owner on top of the day. The AI &amp; Efficiency Audit ($1,000): when the bigger picture needs finding. A straight answer: sometimes you don't need me. If it's simple, I'll tell you how to fix it yourself, or point you to someone who fits better.</p>
       </div>
       <div class="faq-item reveal">
+        <h3>How much does it cost?</h3>
+        <p>The AI &amp; Efficiency Audit is $1,000: $500 to book, $500 on delivery. If I don't show you at least $10,000 a year leaking out of your business, audit is free. Workflow Rebuilds are quoted after the free call.</p>
+      </div>
+      <div class="faq-item reveal">
         <h3>How much does the AI &amp; Efficiency Audit cost?</h3>
         <p>$1,000. $500 to book, $500 when the written plan lands within 48 hours. If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
       </div>
@@ -1190,6 +1207,7 @@
         <a href="https://www.linkedin.com/company/servlead-solutions">LinkedIn</a>
         <a href="/trades-manufacturing-distribution">Trades, manufacturing &amp; distribution</a>
         <a href="/professional-services">Professional services</a>
+        <a href="/ai-consultant-lehigh-valley">AI consultant, Lehigh Valley</a>
         <a href="/privacy">Privacy</a>
       </div>
       <div class="footer-fine">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
