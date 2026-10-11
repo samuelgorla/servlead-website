@@ -4,6 +4,7 @@
 
 ## Who it's for
 - Owner-run Lehigh Valley businesses in three groups: contractors and trades; professional services (CPAs, law firms, insurance agencies, agencies); and healthcare practices (dental, PT, chiropractic, counseling), limited to scheduling, intake, and billing follow-up, never clinical or patient records.
+- Professional services page: https://servleadsolutions.com/professional-services — owner-run CPA firms, law firms, insurance agencies, and agencies. Examples, not case studies: intake to an engagement letter, proposal and renewal follow-up, document-request chasing, and an internal knowledge base for procedures.
 
 ## What it costs
 - Free 30-minute look: a free 30-minute look at one or two workflows. Phone, Teams, or in person in the Lehigh Valley. This is not the AI & Efficiency Audit. Book: https://cal.com/samgorla/quick-connect
@@ -13,6 +14,7 @@
 
 ## Pages
 - [Home](https://servleadsolutions.com/): offer, guarantee, sample leaks, reviews
+- [Professional services](https://servleadsolutions.com/professional-services): owner-run CPA firms, law firms, insurance agencies, and agencies in the Lehigh Valley
 - [How it works](https://servleadsolutions.com/how-it-works): what happens after the AI & Efficiency Audit
 - [Leak Estimate](https://servleadsolutions.com/leak-estimate): 10-question yearly leak calculator
 
