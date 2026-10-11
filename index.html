@@ -210,7 +210,7 @@
     --paper-deep: #e9e9e7;
     --ink: #14202e;
     --ink-soft: #46536a;
-    --muted: #7d8494;
+    --muted: #61697a;
     --rust: #a63d1c;
     --rust-deep: #86300f;
     --line: #d6d6d2;
@@ -248,14 +248,16 @@
   .nav-links a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 1.5px; width: 100%; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform var(--base) var(--ease); }
   .nav-links a:not(.nav-cta):hover { color: var(--rust); }
   .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
-  .nav-cta { font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink) !important; padding: 0.55rem 1.25rem; border-radius: 999px; transition: background var(--base) var(--ease), color var(--base) var(--ease) !important; }
-  .nav-cta:hover { background: var(--ink); color: var(--paper) !important; }
+  .nav-cta { font-size: 0.9rem; font-weight: 700; text-decoration: none; border: 1.5px solid var(--rust); background: var(--rust); color: #fff !important; padding: 0.55rem 1.25rem; border-radius: 999px; box-shadow: 0 6px 14px rgba(166, 61, 28, 0.22); transition: background var(--base) var(--ease), border-color var(--base) var(--ease), box-shadow var(--base) var(--ease) !important; }
+  .nav-cta:hover { background: #7c2b13; border-color: #7c2b13; color: #fff !important; }
+  .nav-cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
 
   .btn { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: none; }
-  .btn-primary { background: var(--ink); color: var(--paper); padding: 1.05rem 2.1rem; border-radius: 999px; transition: background var(--base) var(--ease), transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
-  .btn-primary:hover { background: var(--rust); transform: translateY(-3px); box-shadow: var(--lift-2); }
-  .btn-primary:active { transform: translateY(-1px); transition-duration: var(--fast); }
+  .btn-primary { background: var(--rust); color: #fff; padding: 1.05rem 2.15rem; border-radius: 999px; box-shadow: 0 8px 18px rgba(166, 61, 28, 0.24); transition: background var(--base) var(--ease), transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
+  .btn-primary:hover { background: #7c2b13; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(124, 43, 19, 0.28); }
+  .btn-primary:active { transform: translateY(0); transition-duration: var(--fast); }
+  .btn-primary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .btn-text { color: var(--ink); border-bottom: 2px solid var(--rust); padding-bottom: 2px; transition: color var(--fast) var(--ease); }
   .btn-text:hover { color: var(--rust); }
 
@@ -318,7 +320,7 @@
   .sec-num { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
   .sec-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 780px; }
   .sec-title em { font-style: italic; color: var(--rust); }
-  .sec-intro { font-size: 1.1rem; color: var(--ink-soft); max-width: 640px; margin-top: 1.3rem; }
+  .sec-intro { font-size: 1.1rem; line-height: 1.65; color: var(--ink-soft); max-width: 640px; margin-top: 1.3rem; }
   .sec-intro a { color: var(--rust); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--line-dark); }
   .sec-intro a:hover { border-bottom-color: var(--rust); }
 
@@ -417,10 +419,20 @@
   .split-foot { margin-top: 1.6rem; font-size: 0.95rem; color: var(--ink-soft); max-width: 720px; }
   .split-foot b { color: var(--ink); }
   .path-list { list-style: none; counter-reset: path; margin-top: 0.4rem; max-width: 720px; border-top: 1px solid var(--line-dark); }
-  .path-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.85rem 0.2rem; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--ink-soft); }
+  .path-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.7rem; align-items: baseline; padding: 1.05rem 0.15rem; border-bottom: 1px solid var(--line); font-size: 1.02rem; line-height: 1.55; color: var(--ink-soft); }
   .path-list li b { color: var(--ink); font-weight: 600; }
   .path-list .pn { font-family: var(--serif); font-style: italic; color: var(--rust); font-size: 1.15rem; }
-  .path-eg { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.92rem; }
+  .path-eg { display: block; margin-top: 0.35rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+  .sample-list { margin: 1.5rem 0 0.2rem; max-width: 720px; background: #fff; border: 1px solid var(--line-dark); padding: 0.95rem 1rem 0.35rem; }
+  .sample-list figcaption { display: flex; align-items: baseline; gap: 0.65rem; flex-wrap: wrap; font-size: 0.95rem; line-height: 1.45; color: var(--ink-soft); margin-bottom: 0.75rem; }
+  .sample-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: #7c2b13; border: 1px solid #7c2b13; border-radius: 999px; padding: 0.12rem 0.48rem; }
+  .sample-head, .sample-rows li { display: grid; grid-template-columns: 1.35fr 0.75fr 0.85fr 0.85fr; gap: 0.55rem; align-items: baseline; }
+  .sample-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 0 0.35rem 0.45rem; }
+  .sample-rows { list-style: none; }
+  .sample-rows li { padding: 0.72rem 0.35rem; border-top: 1px solid var(--line); font-size: 0.98rem; color: var(--ink); }
+  .sample-rows li.quiet { background: #fbf3ef; box-shadow: inset 3px 0 0 #7c2b13; }
+  .sample-rows li.quiet .q-touch { color: #7c2b13; font-weight: 700; }
+  .q-name { font-weight: 600; }
 
   /* GUARANTEE BAND */
   .guarantee-band { background: var(--rust); color: #fff; padding: 3.2rem 0; }
@@ -487,7 +499,7 @@
   .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 4rem; align-items: start; }
   .about-photo { border: 1px solid var(--ink); padding: 0.6rem; background: #fff; transform: rotate(-1.2deg); box-shadow: var(--lift-1); transition: transform var(--slow) var(--ease), box-shadow var(--slow) var(--ease); }
   .about-photo:hover { transform: rotate(0deg) translateY(-3px); box-shadow: var(--lift-2); }
-  .about-photo img { width: 100%; aspect-ratio: 4/4.6; object-fit: cover; object-position: center 12%; display: block; filter: saturate(0.92); }
+  .about-photo img { width: 100%; aspect-ratio: 4/4.6; object-fit: cover; object-position: center 12%; display: block; }
   .about-photo figcaption { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); padding: 0.7rem 0.2rem 0.2rem; text-align: center; letter-spacing: 0.08em; }
   .about-body .sec-title { margin-bottom: 1.4rem; }
   .about-body p { color: var(--ink-soft); font-size: 1.05rem; max-width: 600px; margin-bottom: 1.1rem; }
@@ -534,10 +546,11 @@
   .proof-stat b { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.22rem; color: var(--rust); letter-spacing: -0.015em; }
 
   /* CTA */
-  .cta { border-top: 1px solid var(--line-dark); text-align: center; padding: 7rem 2rem; }
+  .cta { border-top: 1px solid var(--line-dark); text-align: center; padding: 5.5rem 2rem 6.2rem; }
+  .cta-face { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center 18%; border: 2px solid var(--ink); display: block; margin: 0 auto 1.15rem; }
   .cta-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.04; letter-spacing: -0.025em; max-width: 860px; margin: 1.6rem auto 0; }
   .cta-title em { font-style: italic; color: var(--rust); }
-  .cta-sub { font-size: 1.1rem; color: var(--ink-soft); max-width: 580px; margin: 1.6rem auto 2.6rem; }
+  .cta-sub { font-size: 1.1rem; line-height: 1.65; color: var(--ink-soft); max-width: 580px; margin: 1.35rem auto 2.2rem; }
   .cta-row { display: flex; gap: 1.6rem; justify-content: center; align-items: center; flex-wrap: wrap; }
 
   footer { border-top: 1px solid var(--line-dark); padding: 2.2rem 0 5.5rem; }
@@ -601,7 +614,13 @@
     .ticker-track { animation: none; width: auto; max-width: 100%; flex-wrap: wrap; gap: 0.35rem 0.15rem; padding: 0 1.3rem; }
     .ticker-track span { white-space: normal; max-width: 100%; }
     .ticker-track span i { margin-right: 0.75rem; }
-    .cta { padding: 3.6rem 1.3rem; }
+    .cta { padding: 3.2rem 1.3rem 3.6rem; }
+    .sample-head { display: none; }
+    .sample-rows li { grid-template-columns: 1fr auto; grid-template-areas: "name touch" "amt days"; row-gap: 0.15rem; }
+    .q-name { grid-area: name; }
+    .q-touch { grid-area: touch; justify-self: end; }
+    .q-amt { grid-area: amt; color: var(--ink-soft); }
+    .q-days { grid-area: days; justify-self: end; color: var(--ink-soft); }
     .gb-cta { white-space: normal; }
     .gb-cta a { white-space: normal; }
     .sec-head { grid-template-columns: 1fr; gap: 0.8rem; }
@@ -618,7 +637,7 @@
   @media (max-width: 768px) { .explainer-frame { aspect-ratio: 1 / 1; } }
 
   /* ===== WHO YOU'D BE WORKING WITH (Why + About merged) ===== */
-  .why-side .about-photo { max-width: 300px; margin: 0 0 2.4rem; }
+  .why-side .about-photo { max-width: 340px; margin: 0 0 2.4rem; }
   .why-side .about-photo figcaption { color: var(--muted); }
   .why .btn-text { color: var(--gold); margin-top: 0.6rem; }
 
@@ -626,7 +645,7 @@
   .faq-list { border-top: 1px solid var(--line-dark); max-width: 820px; }
   .faq-item { padding: 1.45rem 0.2rem; border-bottom: 1px solid var(--line); }
   .faq-item h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; letter-spacing: -0.01em; line-height: 1.25; }
-  .faq-item p { color: var(--ink-soft); font-size: 1.05rem; max-width: 720px; margin-top: 0.55rem; }
+  .faq-item p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; max-width: 720px; margin-top: 0.65rem; }
 
   .news { border-top: 1px solid var(--line); padding: 2.4rem 0 0; max-width: 640px; }
   .news p { color: var(--ink-soft); font-size: 1.05rem; max-width: 520px; margin: 0.45rem 0 0.85rem; }
@@ -736,6 +755,16 @@
         <li><span class="pn">ii.</span><div><b>The AI &amp; Efficiency Audit ($1,000):</b> when the bigger picture needs finding.</div></li>
         <li><span class="pn">iii.</span><div><b>A straight answer:</b> sometimes you don't need me. If it's simple, I'll tell you how to fix it yourself, or point you to someone who fits better.</div></li>
       </ol>
+      <figure class="sample-list">
+        <figcaption><span class="sample-tag">Sample</span> What a quote follow-up list looks like. Not a real client's quotes.</figcaption>
+        <div class="sample-head" aria-hidden="true"><span>Open quote</span><span>Amount</span><span>Days since sent</span><span>Last touch</span></div>
+        <ul class="sample-rows">
+          <li class="quiet"><span class="q-name">Kitchen addition</span><span class="q-amt">$18,400</span><span class="q-days">18 days</span><span class="q-touch">No reply</span></li>
+          <li><span class="q-name">Hall bath</span><span class="q-amt">$6,200</span><span class="q-days">4 days</span><span class="q-touch">Note sent</span></li>
+          <li class="quiet"><span class="q-name">South roof</span><span class="q-amt">$11,750</span><span class="q-days">26 days</span><span class="q-touch">No reply</span></li>
+          <li><span class="q-name">Deck repair</span><span class="q-amt">$3,480</span><span class="q-days">2 days</span><span class="q-touch">They replied</span></li>
+        </ul>
+      </figure>
     </div>
     <div class="audit-cta-row">
       <a href="https://cal.com/samgorla/quick-connect" class="btn btn-primary">Book a 30-minute call →</a>
@@ -1085,6 +1114,7 @@
 </section>
 
 <section class="cta" id="contact" data-screen-label="CTA">
+  <img class="cta-face" src="Sam Gorla_headshot.jpeg" alt="Sam Gorla" width="76" height="76">
   <span class="kicker">Free · 30 minutes · phone, Teams, or in person</span>
   <h2 class="cta-title">Got thirty minutes? <em>Start there.</em></h2>
   <p class="cta-sub">A free 30-minute look at one or two jobs that eat your week. I'll name what's stuck. The call ends with a clear next step, and it isn't always the AI &amp; Efficiency Audit.</p>

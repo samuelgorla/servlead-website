@@ -109,8 +109,9 @@
   .fields input:focus, .fields select:focus { outline: none; border-color: var(--rust); }
   .fields .bad { border-color: var(--rust); background: #fbf1ee; }
   .hp { position: absolute; left: -9999px; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; border: none; cursor: pointer; background: var(--ink); color: var(--paper); padding: 1.05rem 2.1rem; border-radius: 999px; text-decoration: none; transition: background var(--base) var(--ease), transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
-  .btn-primary:hover { background: var(--rust); transform: translateY(-3px); box-shadow: var(--lift-2); }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; border: none; cursor: pointer; background: var(--rust); color: #fff; padding: 1.05rem 2.15rem; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 18px rgba(166, 61, 28, 0.24); transition: background var(--base) var(--ease), transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
+  .btn-primary:hover { background: #7c2b13; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(124, 43, 19, 0.28); }
+  .btn-primary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .gate-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.2rem; }
   .fine { font-size: 0.82rem; color: var(--muted); max-width: 360px; }
   .err { color: var(--rust); font-size: 0.88rem; margin-top: 0.7rem; min-height: 1.2em; }
