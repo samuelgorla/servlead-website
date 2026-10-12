@@ -685,10 +685,9 @@
 
   .news { border-top: 1px solid var(--line); padding: 2.4rem 0 0; max-width: 640px; }
   .news p { color: var(--ink-soft); font-size: 1.05rem; max-width: 520px; margin: 0.45rem 0 0.85rem; }
-  .news-foot { display: flex; align-items: baseline; gap: 0.7rem 1.2rem; flex-wrap: wrap; width: 100%; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--line); }
-  .news-foot p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
-  .news-foot a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
-  .news-foot a:hover { color: var(--rust); }
+  .substack { width: 100%; max-width: 480px; padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--line); }
+  .substack-label { margin: 0 0 0.55rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .substack iframe { display: block; width: 100%; height: 150px; border: 1px solid var(--line); background: #fff; }
 </style>
 </head>
 <body>
@@ -1194,10 +1193,9 @@
 
 <footer>
   <div class="container">
-    <div class="news-foot">
-      <span class="kicker">Out of the Owner's Head</span>
-      <p>One usable takeaway a week for owner-run businesses.</p>
-      <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+    <div class="substack">
+      <p class="substack-label">Get one practical idea a week: Out of the Owner's Head</p>
+      <iframe src="https://outoftheownershead.substack.com/embed" title="Get one practical idea a week: Out of the Owner's Head" height="150" loading="lazy" frameborder="0" scrolling="no"></iframe>
     </div>
     <div class="footer-inner">
       <div class="footer-brand"><img src="Servlead_Solutions_logo-removebg-preview.png" alt="" width="30" height="30">Servlead Solutions</div>

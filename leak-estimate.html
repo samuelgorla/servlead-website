@@ -122,10 +122,9 @@
   .close .g { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--paper); border-left: 2px solid var(--rust); padding-left: 1rem; margin: 1.1rem 0 1.3rem; }
   .close .price { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-top: 0.9rem; }
   .close .btn-primary { background: var(--paper); color: var(--ink); margin-top: 1.15rem; }
-  .newslet { border-top: 1px solid var(--line); padding: 1.45rem 1.6rem 1.6rem; background: #fff; }
-  .newslet p { color: var(--ink-soft); font-size: 0.98rem; margin: 0.4rem 0 0.75rem; max-width: 520px; }
-  .newslet a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rust); }
-  .newslet a:hover { color: var(--rust); }
+  .substack { border-top: 1px solid var(--line); padding: 1.45rem 1.6rem 1.6rem; background: #fff; }
+  .substack-label { color: var(--ink-soft); font-size: 0.98rem; margin: 0 0 0.65rem; max-width: 520px; }
+  .substack iframe { display: block; width: 100%; max-width: 480px; height: 150px; border: 1px solid var(--line); background: #fff; }
   .foot-news { margin: 0 auto 0.9rem; max-width: 640px; }
   .foot-news p { margin: 0.35rem 0 0.45rem; }
   .close .btn-primary:hover { background: var(--rust); color: #fff; }
@@ -359,7 +358,7 @@
       '<p class="total-note">' + (over ? 'That\u2019s above the $10,000 line the AI &amp; Efficiency Audit guarantee is built on.' : 'That\u2019s under the $10,000 line the AI &amp; Efficiency Audit guarantee is built on.') + ' Built from your answers, and on the low side on purpose.</p>' +
       gaugeHTML(t) + '</div>' +
       '<div class="breakdown fade">' + rows + firstHTML + arHTML + '</div>' + cant + review + close +
-      '<div class="newslet"><span class="kicker">Out of the Owner\u2019s Head</span><p>One usable takeaway a week for owner-run businesses.</p><a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a></div>';
+      '<div class="substack"><p class="substack-label">Get one practical idea a week: Out of the Owner\'s Head</p><iframe src="https://outoftheownershead.substack.com/embed" title="Get one practical idea a week: Out of the Owner\'s Head" height="150" loading="lazy" frameborder="0" scrolling="no"></iframe></div>';
 
     requestAnimationFrame(function () {
       var g = document.getElementById('gFill'); g.style.width = g.getAttribute('data-w') + '%';

@@ -127,7 +127,11 @@
   .btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 1.25rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none; border: none; cursor: pointer; background: var(--rust); color: #fff; padding: 0.8rem 1.3rem; border-radius: 999px; box-shadow: 0 8px 18px rgba(166, 61, 28, 0.24); }
   .btn:hover { background: #7c2b13; color: #fff; }
   a:focus-visible, button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .fold-cta { margin-top: 1.15rem; }
   .result { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  .substack { margin-top: 1.4rem; padding-top: 1.15rem; border-top: 1px solid var(--line); }
+  .substack-label { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 0.65rem; }
+  .substack iframe { display: block; width: 100%; max-width: 480px; height: 150px; border: 1px solid var(--line); background: #fff; }
   .result[hidden] { display: none; }
   .result-line { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 11vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; }
   .result-line.long { font-size: clamp(1.65rem, 6.2vw, 2.4rem); }
@@ -193,6 +197,7 @@
   <span class="kicker">Free · about a minute</span>
   <h1>Quote follow-up calculator: what are unanswered quotes costing you?</h1>
   <p class="lede">You sent the quote. They didn't answer. Nobody followed up, because everybody was busy doing the work.</p>
+  <a class="btn fold-cta" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call</a>
   <p class="lede">It happens in every kind of business. A contractor's estimate. A distributor's quote on a big order. A CPA's engagement letter. Put in four numbers and see roughly what the quiet ones add up to in a year.</p>
   <p class="privacy-line">Takes about a minute. Nothing you type leaves your browser.</p>
   <p class="phrase">This quote follow-up calculator shows the cost of unanswered quotes.</p>
@@ -249,6 +254,10 @@
       <ul id="result-steps"></ul>
       <p class="formula">quotes per month × 12 × % that go quiet × close rate × average value</p>
       <p id="result-caveat" class="caveat"></p>
+      <div class="substack">
+        <p class="substack-label">Get one practical idea a week: Out of the Owner's Head</p>
+        <iframe src="https://outoftheownershead.substack.com/embed" title="Get one practical idea a week: Out of the Owner's Head" height="150" loading="lazy" frameborder="0" scrolling="no"></iframe>
+      </div>
     </div>
 
     <noscript>
