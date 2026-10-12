@@ -134,6 +134,12 @@
   .how div { border-top: 1px solid var(--ink); padding-top: 0.8rem; }
   .how h5 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); font-weight: 500; }
   .how p { font-size: 0.93rem; color: var(--ink-soft); margin-top: 0.35rem; }
+  .sibling { display: block; text-decoration: none; color: var(--ink); background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); padding: 1.1rem 1.15rem 1.15rem; margin-top: 1.3rem; }
+  .sibling:hover { border-color: var(--rust); }
+  .sibling:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .sibling strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.45rem; line-height: 1.2; margin-top: 0.35rem; }
+  .sibling p { color: var(--ink-soft); font-size: 0.98rem; margin-top: 0.4rem; }
+  .sibling .go { display: inline-block; margin-top: 0.75rem; font-weight: 700; border-bottom: 2px solid var(--rust); }
   footer { border-top: 1px solid var(--line-dark); padding: 2rem 1.5rem 3rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
   footer a { color: var(--ink-soft); text-decoration: none; margin: 0 0.6rem; }
   footer a:hover { color: var(--rust); }
@@ -163,6 +169,12 @@
   <h1>What's your business leaking <em>every year?</em></h1>
   <p class="lede">Ten quick taps, your own numbers, and the same math used on real AI &amp; Efficiency Audits. You'll see a yearly dollar figure broken out across the four stages of your business, kept on the low side on purpose. Your full result shows right away. No email required.</p>
   <div class="meta"><span><b>10</b> questions</span><span><b>4</b> money stages</span><span>No quiz score. <b>Dollars.</b></span></div>
+  <a class="sibling" href="/tools/quote-cost-calculator">
+    <span class="kicker">Also free</span>
+    <strong>Quote follow-up calculator</strong>
+    <p>What are unanswered quotes costing you? Four numbers, about a minute, and the math shown in plain words.</p>
+    <span class="go">Open the calculator →</span>
+  </a>
   <section class="card" id="app" aria-live="polite">
     <div class="card-head"><span id="headLab">Your business</span><span class="count" id="count">1 of 10</span></div>
     <div class="stages" id="stages"><div>Getting customers</div><div>Serving customers</div><div>Getting paid</div><div>Back office</div></div>
