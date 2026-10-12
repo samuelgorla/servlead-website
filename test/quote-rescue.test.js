@@ -6,6 +6,7 @@ import {
   parseModelPayload,
   cleanDraft,
   inventedDetail,
+  signatureProblem,
   refusalMessage,
   MODEL
 } from '../functions/api/quote-rescue.js';
@@ -75,6 +76,13 @@ test('inventedDetail blocks prices, dates, and discounts that were not in the qu
   assert.equal(inventedDetail('I will hold the March 3 price until April 2. Dan', source), 'date');
   assert.equal(inventedDetail('I can take 10% off the roof if you decide this week. Dan', source), 'discount');
   assert.equal(inventedDetail('Happy to walk through the roof proposal whenever you have a minute. Dan', source), '');
+});
+
+test('signatureProblem requires the owner name or a bracket', function () {
+  assert.equal(signatureProblem('See you.\nDan', 'Closing this out.\nDan', 'Dan'), '');
+  assert.match(signatureProblem('See you.', 'Closing this out.\nDan', 'Dan'), /Dan/);
+  assert.equal(signatureProblem('Thanks.\n[your first name]', 'Closing out.\n[your first name]', ''), '');
+  assert.match(signatureProblem('Thanks.\nAlex', 'Closing out.\nAlex', ''), /your first name/);
 });
 
 test('refusalMessage keeps a short sentence and drops anything with a price or a link', function () {
