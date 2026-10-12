@@ -72,9 +72,23 @@ export async function onRequestPost({ request, env }) {
     else if (typeof value === 'number' || typeof value === 'boolean') payload[key] = value;
   }
   payload.email = String(data.email).trim();
-  payload.source = 'leak-estimate';
+  const requestedSource = typeof data.source === 'string' ? data.source.trim() : '';
+  payload.source = requestedSource === 'quote-rescue' ? 'quote-rescue' : 'leak-estimate';
   payload.page = pageOf(data, request);
   payload.timestamp = new Date().toISOString();
+
+  // Quote Rescue must not forward the quote, the drafts, or any other extra field.
+  let outbound = payload;
+  if (payload.source === 'quote-rescue') {
+    outbound = {
+      email: payload.email,
+      name: typeof data.name === 'string' ? data.name.trim().slice(0, 80) : '',
+      businessType: typeof data.businessType === 'string' ? data.businessType.trim().slice(0, 80) : '',
+      source: 'quote-rescue',
+      page: payload.page,
+      timestamp: payload.timestamp
+    };
+  }
 
   const url = env && env.LEAD_WEBHOOK_URL;
   const key = env && env.LEAD_WEBHOOK_KEY;
@@ -86,7 +100,7 @@ export async function onRequestPost({ request, env }) {
           'content-type': 'application/json',
           'Authorization': 'Bearer ' + key
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(outbound)
       });
     } catch (err) {
       // Browser still gets 200. The n8n send does not depend on this one.
