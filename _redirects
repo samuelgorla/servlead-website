@@ -5,3 +5,6 @@
 /what-our-clients-say    /  301
 /tools                   /leak-estimate  301
 /tools/                  /leak-estimate  301
+/tools/servlead-knowledge-full      /tools/knowledge-demo  301
+/tools/servlead-knowledge-full/     /tools/knowledge-demo  301
+/tools/servlead-knowledge-full.html /tools/knowledge-demo  301

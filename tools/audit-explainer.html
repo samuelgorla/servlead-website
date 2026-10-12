@@ -30,6 +30,7 @@
 <meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
 <!-- Brand fonts. Offline, it falls back to Georgia / Arial / Consolas and still plays. -->
 <link rel="stylesheet" href="/fonts/fonts.css">
+<script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('is-embed');</script>
 <style>
 :root{
   --paper:#f2f2f1; --paper-deep:#e9e9e7; --ink:#14202e; --ink-soft:#46536a;
@@ -172,10 +173,40 @@ body.embed .poster.show{display:flex}
 body.clean .controls{display:none}
 body.clean #wrap{box-shadow:none}
 body.clean .stage{cursor:none}
+
+html.is-embed .page-intro{display:none}
+html:not(.is-embed),
+html:not(.is-embed) body{height:auto;min-height:100%}
+html:not(.is-embed) body{background:var(--paper);display:block;overflow:auto;color:var(--ink)}
+.page-intro{max-width:680px;margin:0 auto;padding:2.2rem 1.15rem 1.8rem}
+.page-intro .home{font-family:var(--serif);font-size:1.15rem;color:var(--ink);text-decoration:none}
+.page-intro h1{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,6vw,2.75rem);line-height:1.12;letter-spacing:-.02em;margin:.7rem 0 .2rem}
+.page-intro p{color:var(--ink-soft);font-size:1.05rem;line-height:1.6;margin-top:.8rem;max-width:62ch}
+.audit-next{margin-top:1.25rem}
+.page-btn{display:inline-flex;align-items:center;background:var(--rust);color:#fff;font-weight:700;font-size:1rem;text-decoration:none;padding:.9rem 1.3rem;border-radius:999px}
+.page-btn:hover{background:#7c2b13}
+.page-intro .guarantee-line{font-family:var(--serif);font-size:1.2rem;line-height:1.35;color:var(--ink);margin-top:.75rem;max-width:40ch}
+.free-next{margin-top:1.15rem}
+.page-link{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--rust)}
+.page-link:hover{color:var(--rust)}
+html:not(.is-embed) .player{background:#1c2733;display:flex;flex-direction:column;align-items:center;padding:12px 0 4px}
 </style>
 </head>
 <body>
 
+<header class="page-intro">
+  <a class="home" href="/">Servlead Solutions</a>
+  <h1>The $1,000 AI &amp; Efficiency Audit</h1>
+  <p>Sixty minutes, live, in person or on a call. I follow the money through four stages: getting work, doing the work, getting paid, and the back office.</p>
+  <p>Every leak gets a dollar figure, named and ranked. You get a written plan within 48 hours, one you can run with or without me. $500 to book, $500 when the plan lands.</p>
+  <div class="audit-next">
+    <a class="page-btn" href="https://cal.com/samgorla/consultation">Book the AI &amp; Efficiency Audit</a>
+    <p class="guarantee-line">If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
+  </div>
+  <p class="free-next"><a class="page-link" href="https://cal.com/samgorla/quick-connect">Book a 30-minute call →</a></p>
+</header>
+
+<div class="player">
 <div id="wrap">
 <div class="stage" id="stage" data-format="square" role="img" aria-label="Servlead Solutions: AI &amp; Efficiency Audit explainer animation">
 
@@ -317,6 +348,7 @@ body.clean .stage{cursor:none}
   <button id="fmt" type="button">Format: 1:1</button>
   <button id="hide" type="button">Hide controls</button>
   <span class="hint">Space play · R restart · F format · H hide</span>
+</div>
 </div>
 
 <script>
