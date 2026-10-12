@@ -138,6 +138,38 @@
   .offer { margin-top: 1.5rem; font-family: var(--serif); font-size: clamp(1.35rem, 4vw, 1.75rem); line-height: 1.28; letter-spacing: -0.015em; }
   .stake { margin-top: 1.15rem; font-size: 1.05rem; }
   .stake a { color: var(--rust); font-weight: 700; }
+  .flow { margin-top: 1rem; background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); padding: 1.15rem 1rem 1.2rem; min-width: 0; }
+  .flow h3 { font-size: clamp(1.35rem, 4vw, 1.7rem); margin-top: 0.35rem; }
+  .flow-lead { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.98rem; }
+  .flow-steps { list-style: none; margin-top: 1.05rem; display: flex; flex-direction: column; }
+  .flow-steps li { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 0.75rem; position: relative; padding-bottom: 1rem; }
+  .flow-steps li:last-child { padding-bottom: 0; }
+  .flow-steps li:not(:last-child)::before { content: ""; position: absolute; left: 22px; top: 46px; bottom: 0; width: 2px; background: var(--ink); }
+  .flow-icon { width: 46px; height: 46px; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--paper); display: grid; place-items: center; position: relative; z-index: 1; }
+  .flow-icon svg { width: 22px; height: 22px; stroke: var(--ink); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .flow-steps strong { display: block; font-size: 1rem; line-height: 1.3; }
+  .flow-steps p { margin-top: 0.2rem; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.4; }
+  .rail-wrap { margin-top: 1.15rem; background: var(--paper); border: 1px solid var(--line-dark); padding: 0.85rem 0.8rem 0.35rem; min-width: 0; }
+  .rail { list-style: none; margin-top: 0.7rem; }
+  .rail li { display: grid; grid-template-columns: 18px minmax(0, 1fr); column-gap: 0.7rem; position: relative; padding-bottom: 0.85rem; align-items: start; }
+  .rail li:last-child { padding-bottom: 0.55rem; }
+  .rail li:not(:last-child)::before { content: ""; position: absolute; left: 7px; top: 16px; bottom: 0; width: 2px; background: var(--ink); }
+  .rail-mark { grid-column: 1; grid-row: 1 / span 3; width: 14px; height: 14px; margin-top: 0.15rem; border: 2px solid var(--ink); border-radius: 50%; background: #fff; position: relative; z-index: 1; }
+  .rail-day, .rail-what, .badge { grid-column: 2; }
+  .rail-day { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); }
+  .rail-what { display: block; margin-top: 0.12rem; font-size: 0.98rem; line-height: 1.35; }
+  .badge { display: inline-block; margin-top: 0.4rem; background: var(--rust); color: #fff; font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.2; padding: 0.28rem 0.55rem; border-radius: 999px; }
+  .rail-hold {
+    margin-top: 0.2rem;
+    padding: 0.7rem 0.75rem 0.75rem;
+    background: #fbf1ee;
+    border: 1px solid var(--ink);
+    border-left: 4px solid var(--rust);
+  }
+  .rail-hold::before { display: none; }
+  .rail-hold .rail-mark { display: none; }
+  .rail-hold .rail-day, .rail-hold .rail-what, .rail-hold .badge { grid-column: 1; }
+  .flow .btn { margin-top: 1.05rem; }
   .when { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); }
   .draft { margin-top: 0.55rem; font-size: 1.05rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
   .save { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
@@ -171,6 +203,56 @@
     .email-row { flex-direction: row; align-items: stretch; }
     .email-row .text { flex: 1; min-width: 0; }
     .email-row .btn { width: auto; white-space: nowrap; padding-left: 1.2rem; padding-right: 1.2rem; }
+    .flow { padding: 1.3rem 1.25rem 1.25rem; }
+    .flow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; align-items: start; }
+    .flow-steps li { display: block; padding: 0; }
+    .flow-steps li:not(:last-child)::before { display: none; }
+    .flow-steps li:not(:last-child) .flow-icon::after {
+      content: "";
+      position: absolute;
+      left: 44px;
+      top: 16px;
+      width: calc(100cqi - 44px + 0.85rem);
+      height: 14px;
+      background:
+        linear-gradient(var(--ink), var(--ink)) left center / calc(100% - 8px) 2px no-repeat,
+        linear-gradient(135deg, transparent 50%, var(--ink) 50%) right 0 top 0 / 8px 7px no-repeat,
+        linear-gradient(45deg, var(--ink) 50%, transparent 50%) right 0 bottom 0 / 8px 7px no-repeat;
+    }
+    .flow-steps li { container-type: inline-size; }
+    .flow-icon { margin-bottom: 0.65rem; }
+    .rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0.75rem; }
+    .rail li:not(.rail-hold) { display: block; padding: 0 0.15rem 0.2rem 0; }
+    .rail li:not(.rail-hold)::before { display: none; }
+    .rail li:nth-child(-n+2) .rail-mark::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 0;
+      width: calc(100cqi + 0.75rem - 14px);
+      height: 14px;
+      background:
+        linear-gradient(var(--ink), var(--ink)) left center / calc(100% - 8px) 2px no-repeat,
+        linear-gradient(135deg, transparent 50%, var(--ink) 50%) right 0 top 0 / 8px 7px no-repeat,
+        linear-gradient(45deg, var(--ink) 50%, transparent 50%) right 0 bottom 0 / 8px 7px no-repeat;
+    }
+    .rail li:not(.rail-hold) { container-type: inline-size; }
+    .rail-mark { display: block; margin: 0 0 0.45rem; }
+    .rail-hold {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.75rem;
+      margin-top: 0.85rem;
+      padding: 0.75rem 0.8rem;
+      background: #fbf1ee;
+      border: 1px solid var(--ink);
+      border-left: 4px solid var(--rust);
+    }
+    .rail-hold .rail-mark { display: none; }
+    .rail-hold .rail-what { margin-top: 0; }
+    .rail-hold .badge { margin-top: 0; }
   }
   @media (max-width: 640px) {
     .nav-back { display: none; }
@@ -256,7 +338,62 @@
     <p class="stake" id="stake" hidden>A <span id="stake-amount"></span> quote going quiet. <a href="/tools/quote-cost-calculator">See what a year of those adds up to.</a></p>
 
     <p class="offer">This is one text. Want this to happen automatically on every quote, so you never have to remember?</p>
-    <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Get a free 30-minute look</a>
+
+    <section class="flow" aria-labelledby="flow-title">
+      <p class="kicker">How it works</p>
+      <h3 id="flow-title">Automatic follow-up, with you on the decisions</h3>
+      <p class="flow-lead">This page writes the one text above. The automatic version is what we set up on the call.</p>
+      <ol class="flow-steps">
+        <li>
+          <span class="flow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6.5 4.5h8l3.5 3.5v11.5h-11.5z"/><path d="M14.5 4.5v3.5h3.5"/><circle cx="12" cy="14.2" r="3.1"/><path d="M12 12.8v1.5l1.1.7"/></svg>
+          </span>
+          <strong>A quote goes quiet</strong>
+          <p>The system notices when there's no reply after the days you set.</p>
+        </li>
+        <li>
+          <span class="flow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 11.5L20 4.5l-6.2 15-2.4-6.2z"/><path d="M11.4 13.3L20 4.5"/></svg>
+          </span>
+          <strong>Follow-ups go out automatically</strong>
+          <p>On your schedule, in your voice, so you never have to remember.</p>
+        </li>
+        <li>
+          <span class="flow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/><path d="M8 12.2l2.4 2.4 5.2-5.4"/></svg>
+          </span>
+          <strong>You stay in control</strong>
+          <p>Anything that matters, like a price change, a discount, or a reply that needs judgment, comes to you to approve first.</p>
+        </li>
+      </ol>
+      <div class="rail-wrap">
+        <p class="kicker" id="rail-label">Example of a schedule you set</p>
+        <ol class="rail" aria-labelledby="rail-label">
+          <li>
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Day 0</span>
+            <span class="rail-what">Quote sent</span>
+          </li>
+          <li>
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Day 3</span>
+            <span class="rail-what">Auto follow-up</span>
+          </li>
+          <li>
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Day 7</span>
+            <span class="rail-what">Auto follow-up</span>
+          </li>
+          <li class="rail-hold">
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Reply</span>
+            <span class="rail-what">Asks for a discount or a new price</span>
+            <span class="badge">Needs your OK</span>
+          </li>
+        </ol>
+      </div>
+      <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Get a free 30-minute look</a>
+    </section>
 
     <form class="save" id="save" novalidate>
       <label for="save-email">Email me this follow-up plus one practical tip a week</label>
