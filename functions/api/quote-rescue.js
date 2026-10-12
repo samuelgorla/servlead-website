@@ -31,7 +31,7 @@ const SYSTEM = [
   '- Use only facts written in the quote text, the one optional line about the customer, or the owner\'s first name. Never invent facts, prices, dates, discounts, deadlines, scope, materials, addresses, promises, or earlier conversations.',
   '- Do not offer a discount, a lower price, a new scope, or a deadline unless those exact words are in the input.',
   '- If the customer\'s name is not in the input, greet them as [Customer name]. If you would otherwise need a detail that is not in the input, write it in [brackets] for the owner to fill in, like [Your name]. Brackets are blanks, not suggestions. Do not put a price, a date, or a discount inside brackets.',
-  '- If the owner\'s first name is given, sign with that name. If it is not given, sign [Your name].',
+  '- If the owner\'s first name is given, end each message with that name on its own line. If it is not given, end each message with [Your name] on its own line.',
   '- Say business if you need a word for the company. Do not call the company a shop. You may repeat a trade term that is actually in the quote, such as shop drawings.',
   '- Plain text. No markdown, no subject line, no bullet sales pitch, no hype, and no stacked exclamation points.',
   '- Each message is 2 to 5 sentences and under 80 words. Sound like a person, not a campaign.',
@@ -154,8 +154,17 @@ function asMessage(value) {
     .replace(/^subject\s*:[^\n]*\n+/i, '')
     .replace(/\*\*(.*?)\*\*/g, '$1')
     .replace(/^#+\s*/gm, '')
+    .replace(/\s*[—–]\s*/g, ', ')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+}
+
+function withSign(message, name) {
+  const sign = name || '[Your name]';
+  const trimmed = String(message || '').trim();
+  const last = trimmed.split('\n').pop().trim().replace(/[.,]$/, '');
+  if (last === sign || last.endsWith(' ' + sign)) return trimmed;
+  return trimmed + '\n\n' + sign;
 }
 
 function politeRefusal() {
@@ -299,7 +308,10 @@ export async function onRequestPost({ request, env }) {
     return json(422, { ok: false, error: 'I couldn\'t write those without adding a number that isn\'t in your quote. Try once more, or book a free 30-minute look and we\'ll draft them together.' });
   }
 
-  return json(200, { checkin: result.checkin, close: result.close });
+  return json(200, {
+    checkin: withSign(result.checkin, input.name),
+    close: withSign(result.close, input.name)
+  });
 }
 
 export {
@@ -309,6 +321,7 @@ export {
   inventedBits,
   parseModelJson,
   readModel,
+  withSign,
   BUSINESS_TYPES,
   MAX_QUOTE
 };
