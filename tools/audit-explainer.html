@@ -189,7 +189,12 @@ html:not(.is-embed) body{background:var(--paper);display:block;overflow:auto;col
 .free-next{margin-top:1.15rem}
 .page-link{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--rust)}
 .page-link:hover{color:var(--rust)}
-html:not(.is-embed) .player{background:#1c2733;display:flex;flex-direction:column;align-items:center;padding:12px 0 4px}
+html:not(.is-embed) .player{background:#1c2733;display:flex;flex-direction:column;align-items:center;padding:12px 0 4px;max-width:100%}
+html:not(.is-embed) .controls{min-width:0;max-width:100%}
+@media (max-width:720px){
+  .controls{flex-wrap:wrap;height:auto;row-gap:8px}
+  .controls .hint{display:none}
+}
 </style>
 </head>
 <body>
