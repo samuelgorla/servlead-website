@@ -308,6 +308,8 @@
   @keyframes lc-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   .lc-go { font-weight: 700; font-size: 0.98rem; display: inline-block !important; border-bottom: 2px solid var(--rust); padding-bottom: 2px; }
   .leak-card:hover .lc-go { color: var(--rust); }
+  .rescue-card .lc-title { font-size: 1.35rem; }
+  .rescue-card .lc-go { margin-top: 0.85rem; }
   .hero-price { margin-top: 1.8rem; border: 1px solid var(--line-dark); background: var(--paper); max-width: 560px; box-shadow: var(--lift-1); transition: transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
   .hero-price:hover { transform: translateY(-2px); box-shadow: var(--lift-2); }
   .hero-price .hp-top { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; padding: 0.75rem 1.1rem; border-bottom: 1px solid var(--line); }
@@ -751,6 +753,12 @@
             <span><i style="--w:55%"></i>Back office</span>
           </span>
           <span class="lc-go">Run the Leak Estimate →</span>
+        </a>
+        <a href="/tools/quote-rescue" class="leak-card rescue-card">
+          <span class="lc-kick">Also free</span>
+          <span class="lc-title">Free quote follow-up writer</span>
+          <span class="lc-sub">Paste one quiet quote, proposal, or engagement letter. One short follow-up, and you send it yourself.</span>
+          <span class="lc-go">Open Quote Rescue →</span>
         </a>
         <div class="hero-sig">
           <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla" width="64" height="64">

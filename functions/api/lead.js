@@ -15,6 +15,24 @@ function emailOk(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function clip(value, max) {
+  return String(value || '').trim().slice(0, max);
+}
+
+export function leadPayload(data, request) {
+  const payload = {
+    email: clip(data.email, 254),
+    source: clip(data.source, 40) === 'quote-rescue' ? 'quote-rescue' : 'leak-estimate',
+    page: pageOf(data, request),
+    timestamp: new Date().toISOString()
+  };
+  if (typeof data.name === 'string' && data.name.trim()) payload.name = clip(data.name, 200);
+  if (typeof data.business_type === 'string' && data.business_type.trim()) {
+    payload.business_type = clip(data.business_type, 200);
+  }
+  return payload;
+}
+
 function pageOf(data, request) {
   const fromBody = typeof data.page === 'string' ? data.page.trim() : '';
   if (fromBody) return fromBody.slice(0, 2000);
@@ -65,16 +83,7 @@ export async function onRequestPost({ request, env }) {
 
   if (!emailOk(data.email)) return json(400, { ok: false });
 
-  const payload = {};
-  for (const [key, value] of Object.entries(data)) {
-    if (HONEYPOTS.includes(key)) continue;
-    if (typeof value === 'string') payload[key] = value.slice(0, 2000);
-    else if (typeof value === 'number' || typeof value === 'boolean') payload[key] = value;
-  }
-  payload.email = String(data.email).trim();
-  payload.source = 'leak-estimate';
-  payload.page = pageOf(data, request);
-  payload.timestamp = new Date().toISOString();
+  const payload = leadPayload(data, request);
 
   const url = env && env.LEAD_WEBHOOK_URL;
   const key = env && env.LEAD_WEBHOOK_KEY;

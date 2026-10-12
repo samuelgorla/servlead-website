@@ -1,0 +1,3 @@
+# Unit tests are not part of the site.
+/test/
+test/

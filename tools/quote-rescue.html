@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Quote Follow-Up Writer | Servlead Solutions</title>
+<meta name="description" content="Paste a quote, proposal, or engagement letter that went quiet. Get one short follow-up in a plain owner voice. You send it. We don't store the text.">
+<link rel="canonical" href="https://servleadsolutions.com/tools/quote-rescue">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Servlead Solutions">
+<meta property="og:title" content="Free Quote Follow-Up Writer | Servlead Solutions">
+<meta property="og:description" content="Paste a quote, proposal, or engagement letter that went quiet. Get one short follow-up in a plain owner voice. You send it. We don't store the text.">
+<meta property="og:url" content="https://servleadsolutions.com/tools/quote-rescue">
+<meta property="og:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Quote Follow-Up Writer | Servlead Solutions">
+<meta name="twitter:description" content="Paste a quote, proposal, or engagement letter that went quiet. Get one short follow-up in a plain owner voice. You send it. We don't store the text.">
+<meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does this write?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One short follow-up from a quote, proposal, or engagement letter that went quiet. It checks in, and it says you will close the quote out unless you hear back. You copy it and send it yourself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it invent a price, a date, or a discount?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is instructed not to add a price, a date, or a discount, and the page checks the draft for those before showing it. It can still miss something. Read the note before you send it. If a name or a detail is missing, it leaves a [bracket] for you to fill in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my quote stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Your text is sent to an AI model to write the drafts and isn't stored by us. Remove names or prices first if you prefer. If you leave your email, that email, your first name, and your business type go to Sam. The quote does not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who sends the follow-up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You do. This page never emails your customer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many can I run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About five a day from one connection. It is a simple limit, not a precise one. If you hit it, the page will say so."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I want this on every quote?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is a workflow, not this page. Book a free 30-minute look and we will see if a follow-up should go out on its own, with you still approving what gets sent."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --paper: #f2f2f1; --paper-deep: #e9e9e7; --ink: #14202e; --ink-soft: #46536a; --muted: #5c6574;
+    --rust: #a63d1c; --line: #d6d6d2; --line-dark: #14202e;
+    --serif: 'Newsreader', Georgia, serif; --sans: 'Archivo', system-ui, sans-serif; --mono: 'Spline Sans Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --lift-1: 0 1px 2px rgba(20,32,46,0.04), 0 2px 8px rgba(20,32,46,0.05);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { overflow-x: clip; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  ::selection { background: var(--rust); color: #fff; }
+  .kicker { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(242,242,241,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1160px; margin: 0 auto; padding: 1rem 1.15rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+  .logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--ink); text-decoration: none; min-width: 0; }
+  .logo img { width: 38px; height: 38px; object-fit: contain; flex: none; }
+  .nav-back { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; flex: none; }
+  .nav-back:hover { color: var(--rust); }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 2.4rem 1.15rem 4rem; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.85rem, 7vw, 2.7rem); line-height: 1.12; letter-spacing: -0.02em; margin: 0.7rem 0 1rem; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 5vw, 2.1rem); line-height: 1.15; letter-spacing: -0.015em; margin: 2.4rem 0 0.9rem; }
+  .card > h2, .faq > h2, .out > h2 { margin-top: 0; }
+  h3 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; line-height: 1.25; }
+  .lede { font-size: 1.05rem; color: var(--ink-soft); margin-top: 0.85rem; }
+  .privacy-line { margin-top: 1rem; font-size: 0.95rem; color: var(--ink-soft); }
+  .card, .draft-card, .next-card { background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); padding: 1.15rem 1rem 1.25rem; margin-top: 1rem; min-width: 0; }
+  .field { margin-top: 1.15rem; }
+  .field label, .save label { display: block; font-weight: 700; font-size: 1rem; line-height: 1.35; }
+  textarea, select, .text {
+    display: block; width: 100%; max-width: 100%; margin-top: 0.4rem;
+    font-family: var(--sans); font-size: 16px; line-height: 1.45; color: var(--ink);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 8px; padding: 0.75rem 0.85rem;
+  }
+  textarea { min-height: 11rem; resize: vertical; }
+  select { min-height: 48px; width: 0; min-width: 100%; }
+  textarea:focus, select:focus, .text:focus { outline: 3px solid var(--ink); outline-offset: 3px; border-color: var(--rust); }
+  .bad { border-color: var(--rust); background: #fbf1ee; }
+  .help, .count { margin-top: 0.4rem; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.45; }
+  .count { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.02em; }
+  .count.over { color: var(--rust); font-weight: 700; }
+  .err { color: var(--rust); font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+  .err:not(:empty) { margin-top: 0.75rem; }
+  .btn, .copy, .btn-ghost {
+    display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px;
+    font-family: var(--sans); font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none;
+    cursor: pointer; border-radius: 999px;
+  }
+  .btn { margin-top: 1.25rem; border: none; background: var(--rust); color: #fff; padding: 0.85rem 1.2rem; box-shadow: 0 8px 18px rgba(166, 61, 28, 0.24); white-space: normal; line-height: 1.35; }
+  .btn:hover { background: #7c2b13; color: #fff; }
+  .btn:disabled { opacity: 0.65; cursor: wait; }
+  .copy, .btn-ghost { width: auto; margin-top: 0.85rem; padding: 0.55rem 1rem; background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .copy:hover, .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+  a:focus-visible, button:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .out { margin-top: 1.6rem; }
+  .out[hidden], [hidden] { display: none !important; }
+  .send-note { margin-top: 0.65rem; color: var(--ink-soft); }
+  .offer { margin-top: 1.5rem; font-family: var(--serif); font-size: clamp(1.35rem, 4vw, 1.75rem); line-height: 1.28; letter-spacing: -0.015em; }
+  .stake { margin-top: 1.15rem; font-size: 1.05rem; }
+  .stake a { color: var(--rust); font-weight: 700; }
+  .flow { margin-top: 1rem; background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); padding: 1.15rem 1rem 1.2rem; min-width: 0; }
+  .flow h3 { font-size: clamp(1.35rem, 4vw, 1.7rem); margin-top: 0.35rem; }
+  .flow-lead { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.98rem; }
+  .flow-steps { list-style: none; margin-top: 1.05rem; display: flex; flex-direction: column; min-width: 0; }
+  .flow-steps li { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 0.75rem; position: relative; padding-bottom: 1rem; min-width: 0; }
+  .flow-steps li:last-child { padding-bottom: 0; }
+  .flow-steps li:not(:last-child)::before { content: ""; position: absolute; left: 22px; top: 46px; bottom: 0; width: 2px; background: var(--ink); z-index: 0; }
+  .flow-icon { grid-column: 1; grid-row: 1 / span 2; width: 46px; height: 46px; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--paper); display: grid; place-items: center; position: relative; z-index: 1; }
+  .flow-icon svg { width: 22px; height: 22px; stroke: var(--ink); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .flow-steps strong, .flow-steps p { grid-column: 2; min-width: 0; }
+  .flow-steps strong { display: block; font-size: 1rem; line-height: 1.3; }
+  .flow-steps p { margin-top: 0.2rem; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.4; }
+  .rail-wrap { margin-top: 1.15rem; background: var(--paper); border: 1px solid var(--line-dark); padding: 0.85rem 0.8rem 0.35rem; min-width: 0; }
+  .rail { list-style: none; margin-top: 0.7rem; }
+  .rail li { display: grid; grid-template-columns: 18px minmax(0, 1fr); column-gap: 0.7rem; position: relative; padding-bottom: 0.85rem; align-items: start; }
+  .rail li:last-child { padding-bottom: 0.55rem; }
+  .rail li:not(:last-child)::before { content: ""; position: absolute; left: 7px; top: 16px; bottom: 0; width: 2px; background: var(--ink); }
+  .rail-mark { grid-column: 1; grid-row: 1 / span 3; width: 14px; height: 14px; margin-top: 0.15rem; border: 2px solid var(--ink); border-radius: 50%; background: #fff; position: relative; z-index: 1; }
+  .rail-day, .rail-what, .badge { grid-column: 2; }
+  .rail-day { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); }
+  .rail-what { display: block; margin-top: 0.12rem; font-size: 0.98rem; line-height: 1.35; }
+  .badge { display: inline-block; margin-top: 0.4rem; background: var(--rust); color: #fff; font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.2; padding: 0.28rem 0.55rem; border-radius: 999px; }
+  .rail-hold {
+    margin-top: 0.2rem;
+    padding: 0.7rem 0.75rem 0.75rem;
+    background: #fbf1ee;
+    border: 1px solid var(--ink);
+    border-left: 4px solid var(--rust);
+  }
+  .rail-hold::before { display: none; }
+  .rail-hold .rail-mark { display: none; }
+  .rail-hold { grid-template-columns: minmax(0, 1fr); }
+  .rail-hold .rail-day, .rail-hold .rail-what, .rail-hold .badge { grid-column: 1 / -1; min-width: 0; max-width: 100%; }
+  .rail-hold .badge { display: block; width: fit-content; max-width: 100%; white-space: nowrap; margin-top: 0.45rem; }
+  .flow .btn { margin-top: 1.05rem; }
+  .when { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); }
+  .draft { margin-top: 0.55rem; font-size: 1.05rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .save { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  .email-row { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.45rem; }
+  .email-row .text { margin-top: 0; }
+  .email-row .btn { margin-top: 0; }
+  .saved p { margin-top: 0.7rem; }
+  .saved a, .wider a { color: var(--rust); font-weight: 700; }
+  .faq h3 { margin-top: 0; }
+  .faq-item { padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  .faq-item:first-of-type { border-top: 1px solid var(--line-dark); }
+  .faq-item p { margin-top: 0.5rem; color: var(--ink-soft); font-size: 1.02rem; }
+  .closing { margin-top: 2.2rem; font-family: var(--serif); font-size: clamp(1.45rem, 4vw, 1.9rem); line-height: 1.25; }
+  .wider { margin-top: 0.9rem; font-size: 1.02rem; }
+  footer { border-top: 1px solid var(--line-dark); padding: 2rem 1.15rem 3rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
+  footer a { color: var(--ink-soft); text-decoration: none; margin: 0 0.6rem; }
+  footer a:hover { color: var(--rust); }
+  .foot-news { margin: 0 auto 0.9rem; max-width: 640px; }
+  .foot-news p { margin: 0.35rem 0 0.45rem; color: var(--ink-soft); }
+  .foot-news a { color: var(--ink); margin: 0; font-weight: 700; border-bottom: 2px solid var(--rust); }
+  .foot-news a:hover { color: var(--rust); }
+  .copy-right { margin-top: 0.7rem; }
+  .noscript { margin-top: 1rem; color: var(--ink-soft); }
+  .noscript a { color: var(--rust); font-weight: 700; }
+  @media (min-width: 720px) {
+    .nav-inner { padding: 1rem 2rem; }
+    .logo { font-size: 1.3rem; }
+    .wrap { padding-top: 3.5rem; }
+    .card, .draft-card { padding: 1.4rem 1.4rem 1.5rem; }
+    .btn-submit { width: auto; }
+    .email-row { flex-direction: row; align-items: stretch; }
+    .email-row .text { flex: 1; min-width: 0; }
+    .email-row .btn { width: auto; white-space: nowrap; padding-left: 1.2rem; padding-right: 1.2rem; }
+    .flow { padding: 1.3rem 1.25rem 1.25rem; }
+    .flow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; align-items: start; }
+    .flow-steps li { display: block; padding: 0; }
+    .flow-steps li:not(:last-child)::before { display: none; }
+    .flow-steps li:not(:last-child) .flow-icon::after {
+      content: "";
+      position: absolute;
+      left: 44px;
+      top: 16px;
+      width: calc(100cqi - 44px + 0.85rem);
+      height: 14px;
+      background:
+        linear-gradient(var(--ink), var(--ink)) left center / calc(100% - 8px) 2px no-repeat,
+        linear-gradient(135deg, transparent 50%, var(--ink) 50%) right 0 top 0 / 8px 7px no-repeat,
+        linear-gradient(45deg, var(--ink) 50%, transparent 50%) right 0 bottom 0 / 8px 7px no-repeat;
+    }
+    .flow-steps li { container-type: inline-size; }
+    .flow-icon { margin-bottom: 0.65rem; }
+    .rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0.75rem; }
+    .rail li:not(.rail-hold) { display: block; padding: 0 0.15rem 0.2rem 0; }
+    .rail li:not(.rail-hold)::before { display: none; }
+    .rail li:nth-child(-n+2) .rail-mark::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 0;
+      width: calc(100cqi + 0.75rem - 14px);
+      height: 14px;
+      background:
+        linear-gradient(var(--ink), var(--ink)) left center / calc(100% - 8px) 2px no-repeat,
+        linear-gradient(135deg, transparent 50%, var(--ink) 50%) right 0 top 0 / 8px 7px no-repeat,
+        linear-gradient(45deg, var(--ink) 50%, transparent 50%) right 0 bottom 0 / 8px 7px no-repeat;
+    }
+    .rail li:not(.rail-hold) { container-type: inline-size; }
+    .rail-mark { display: block; margin: 0 0 0.45rem; }
+    .rail-hold {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.75rem;
+      margin-top: 0.85rem;
+      padding: 0.75rem 0.8rem;
+      background: #fbf1ee;
+      border: 1px solid var(--ink);
+      border-left: 4px solid var(--rust);
+    }
+    .rail-hold .rail-mark { display: none; }
+    .rail-hold .rail-what { margin-top: 0; }
+    .rail-hold .badge { margin-top: 0; }
+  }
+  @media (max-width: 640px) {
+    .nav-back { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="/Servlead_Solutions_logo-removebg-preview.png" alt="Servlead Solutions" width="38" height="38">Servlead Solutions</a>
+    <a href="/" class="nav-back">← Back to the site</a>
+  </div>
+</nav>
+<main class="wrap">
+  <span class="kicker">Quote Rescue · free</span>
+  <h1>Free quote follow-up writer</h1>
+  <p class="lede">A quote, a proposal, or an engagement letter went out. Then it went quiet.</p>
+  <p class="lede">Paste one. You get one short follow-up in a plain voice. You send it. This page never does.</p>
+  <p class="privacy-line">Your text is sent to an AI model to write the drafts and isn't stored by us. Remove names or prices first if you prefer.</p>
+
+  <form class="card" id="rescue" novalidate>
+    <h2>The one that went quiet</h2>
+
+    <div class="field">
+      <label for="quote">Quote, proposal, or engagement letter</label>
+      <textarea id="quote" name="quote" maxlength="4000" required spellcheck="true" placeholder="Paste the whole thing. One only."></textarea>
+      <p class="count" id="count">0 / 4,000</p>
+    </div>
+
+    <div class="field">
+      <label for="amount">Quote amount (optional)</label>
+      <input class="text" id="amount" name="amount" type="text" inputmode="decimal" maxlength="20" autocomplete="off" placeholder="$14,800">
+      <p class="help">Only if you want to see what this one is worth. It stays on this page. It is not written into the follow-up.</p>
+    </div>
+
+    <div class="field">
+      <label for="business">What kind of business</label>
+      <select id="business" name="business_type" required>
+        <option value="">Choose one</option>
+        <option value="contractor">Contractor or trades</option>
+        <option value="manufacturer">Manufacturer or distributor</option>
+        <option value="professional">Professional services</option>
+      </select>
+      <p class="help">This only sets the tone. It does not add details.</p>
+    </div>
+
+    <div class="field">
+      <label for="customer">One line about the customer (optional)</label>
+      <input class="text" id="customer" name="customer" type="text" maxlength="200" autocomplete="off" placeholder="Who they are, and what they were deciding.">
+    </div>
+
+    <div class="field">
+      <label for="name">Your first name (optional)</label>
+      <input class="text" id="name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="So the note can be signed.">
+    </div>
+
+    <p class="hp" aria-hidden="true">
+      <label for="f_web">Company website</label>
+      <input id="f_web" name="f_web" type="text" tabindex="-1" autocomplete="off">
+    </p>
+
+    <button class="btn btn-submit" id="write" type="submit">Write the follow-up</button>
+    <p class="err" id="form-err" role="alert"></p>
+    <noscript>
+      <p class="noscript">The writer needs JavaScript. You can still <a href="mailto:SamGorla@ServleadSolutions.com?subject=Quote%20Rescue">email the quote to Sam</a>, or <a href="https://cal.com/samgorla/quick-connect">book a free 30-minute look</a>.</p>
+    </noscript>
+  </form>
+
+  <p class="sr-only" id="status" aria-live="polite"></p>
+  <section class="out" id="out" hidden>
+    <h2 id="out-title" tabindex="-1">One follow-up, in your voice</h2>
+    <p class="send-note">You send this yourself. Nothing here emails your customer. Read it before you send it. A [bracket] is a blank for you to fill in.</p>
+
+    <article class="draft-card">
+      <p class="when">The follow-up</p>
+      <div class="draft" id="followup"></div>
+      <button class="copy" type="button" id="copy-followup" aria-label="Copy the follow-up">Copy</button>
+    </article>
+
+    <p class="stake" id="stake" hidden>A <span id="stake-amount"></span> quote going quiet. <a href="/tools/quote-cost-calculator">See what a year of those adds up to.</a></p>
+
+    <p class="offer">This is one text. Want this to happen automatically on every quote, so you never have to remember?</p>
+
+    <section class="flow" aria-labelledby="flow-title">
+      <p class="kicker">How it works</p>
+      <h3 id="flow-title">Automatic follow-up, with you on the decisions</h3>
+      <p class="flow-lead">This page writes the one text above. The automatic version is what we set up on the call.</p>
+      <ol class="flow-steps">
+        <li>
+          <span class="flow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6.5 4.5h8l3.5 3.5v11.5h-11.5z"/><path d="M14.5 4.5v3.5h3.5"/><circle cx="12" cy="14.2" r="3.1"/><path d="M12 12.8v1.5l1.1.7"/></svg>
+          </span>
+          <strong>A quote goes quiet</strong>
+          <p>The system notices when there's no reply after the days you set.</p>
+        </li>
+        <li>
+          <span class="flow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 11.5L20 4.5l-6.2 15-2.4-6.2z"/><path d="M11.4 13.3L20 4.5"/></svg>
+          </span>
+          <strong>Follow-ups go out automatically</strong>
+          <p>On your schedule, in your voice, so you never have to remember.</p>
+        </li>
+        <li>
+          <span class="flow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/><path d="M8 12.2l2.4 2.4 5.2-5.4"/></svg>
+          </span>
+          <strong>You stay in control</strong>
+          <p>Anything that matters, like a price change, a discount, or a reply that needs judgment, comes to you to approve first.</p>
+        </li>
+      </ol>
+      <div class="rail-wrap">
+        <p class="kicker" id="rail-label">Example of a schedule you set</p>
+        <ol class="rail" aria-labelledby="rail-label">
+          <li>
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Day 0</span>
+            <span class="rail-what">Quote sent</span>
+          </li>
+          <li>
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Day 3</span>
+            <span class="rail-what">Auto follow-up</span>
+          </li>
+          <li>
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Day 7</span>
+            <span class="rail-what">Auto follow-up</span>
+          </li>
+          <li class="rail-hold">
+            <span class="rail-mark" aria-hidden="true"></span>
+            <span class="rail-day">Reply</span>
+            <span class="rail-what">Asks for a discount or a new price</span>
+            <span class="badge">Needs your OK</span>
+          </li>
+        </ol>
+      </div>
+      <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Get a free 30-minute look</a>
+    </section>
+
+    <form class="save" id="save" novalidate>
+      <label for="save-email">Email me this follow-up plus one practical tip a week</label>
+      <div class="email-row">
+        <input class="text" id="save-email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@yourbusiness.com">
+        <button class="btn" id="save-btn" type="submit">Send</button>
+      </div>
+      <p class="help">This sends your email, your first name, and the business type. Not the quote, and not the follow-up. Copy it above. The weekly note is Out of the Owner's Head.</p>
+      <p class="hp" aria-hidden="true">
+        <label for="save-web">Website</label>
+        <input id="save-web" name="f_web" type="text" tabindex="-1" autocomplete="off">
+      </p>
+      <p class="err" id="save-err" role="alert"></p>
+      <div class="saved" id="saved" hidden>
+        <p>Got it. Copy the follow-up above before you leave. The quote was not sent.</p>
+        <p><a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe to Out of the Owner's Head</a></p>
+      </div>
+    </form>
+
+    <button class="btn-ghost" id="again" type="button">Try another quote</button>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Questions people ask</h2>
+    <div class="faq-item">
+      <h3>What does this write?</h3>
+      <p>One short follow-up from a quote, proposal, or engagement letter that went quiet. It checks in, and it says you will close the quote out unless you hear back. You copy it and send it yourself.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will it invent a price, a date, or a discount?</h3>
+      <p>It is instructed not to add a price, a date, or a discount, and the page checks the draft for those before showing it. It can still miss something. Read the note before you send it. If a name or a detail is missing, it leaves a [bracket] for you to fill in.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is my quote stored?</h3>
+      <p>No. Your text is sent to an AI model to write the drafts and isn't stored by us. Remove names or prices first if you prefer. If you leave your email, that email, your first name, and your business type go to Sam. The quote does not.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Who sends the follow-up?</h3>
+      <p>You do. This page never emails your customer.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How many can I run?</h3>
+      <p>About five a day from one connection. It is a simple limit, not a precise one. If you hit it, the page will say so.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if I want this on every quote?</h3>
+      <p>That is a workflow, not this page. Book a free 30-minute look and we will see if a follow-up should go out on its own, with you still approving what gets sent.</p>
+    </div>
+  </section>
+
+  <p class="closing">Your business runs through your head. I help you fix that.</p>
+  <p class="wider">Want the yearly number first? <a href="/tools/quote-cost-calculator">Quote follow-up calculator.</a></p>
+</main>
+<footer>
+  <div class="foot-news">
+    <span class="kicker">Out of the Owner's Head</span>
+    <p>One usable takeaway a week for owner-run businesses.</p>
+    <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+  </div>
+  <a href="tel:8608691385">(860) 869-1385</a>
+  <a href="mailto:info@servleadsolutions.com">info@servleadsolutions.com</a>
+  <a href="/privacy">Privacy</a>
+  <div class="copy-right">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
+</footer>
+<script src="/tools/quote-rescue.js" defer></script>
+</body>
+</html>
