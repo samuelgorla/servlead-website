@@ -69,11 +69,16 @@
     if (tenths <= 0) return null;
     var whole = idiv(tenths, 10);
     var frac = tenths % 10;
-    return frac === 0 ? String(whole) : whole + '.' + frac;
+    var grouped = whole.toLocaleString('en-US');
+    return frac === 0 ? grouped : grouped + '.' + frac;
   }
 
   function formatMoney(n) {
     return '$' + n.toLocaleString('en-US');
+  }
+
+  function formatCount(n) {
+    return n.toLocaleString('en-US');
   }
 
   return {
@@ -82,6 +87,7 @@
     compute: compute,
     formatTenths: formatTenths,
     formatMoney: formatMoney,
+    formatCount: formatCount,
     headlineAmount: headlineAmount,
     boot: boot
   };
@@ -96,7 +102,13 @@
     var closeEdited = false;
     var hadResult = false;
     var result = document.getElementById('result');
+    var live = document.getElementById('result-live');
+    var summary = document.getElementById('result-summary');
+    var sub = document.getElementById('result-sub');
+    var steps = document.getElementById('result-steps');
+    var caveatEl = document.getElementById('result-caveat');
     var showBtn = document.getElementById('show');
+    var summaryText = '';
 
     fields.forEach(function (field) {
       field.input = document.getElementById(field.id);
@@ -143,28 +155,37 @@
         var show = !p.ok && (field.revealed || hadResult || fromSubmit);
         if (show) {
           field.revealed = true;
-          field.err.textContent = p.error;
+          if (field.err.textContent !== p.error) field.err.textContent = p.error;
           field.input.setAttribute('aria-invalid', 'true');
           field.input.closest('.control').classList.add('bad');
           if (!firstBad) firstBad = field.input;
         } else {
-          field.err.textContent = '';
+          if (field.err.textContent !== '') field.err.textContent = '';
           field.input.setAttribute('aria-invalid', 'false');
           field.input.closest('.control').classList.remove('bad');
         }
       });
       if (allOk) {
-        render(parsed);
+        render(parsed, fromSubmit);
         hadResult = true;
       } else {
         result.hidden = true;
-        result.replaceChildren();
+        if (!fromSubmit) {
+          clearSummary();
+          if (live.textContent !== '') live.textContent = '';
+        }
         hadResult = false;
       }
       return firstBad;
     }
 
-    function render(parsed) {
+    function clearSummary() {
+      summaryText = '';
+      summary.textContent = '';
+      summary.classList.remove('long');
+    }
+
+    function render(parsed, fromSubmit) {
       var quotes = parsed[0].value;
       var avg = parsed[1].value;
       var quiet = parsed[2].value;
@@ -173,37 +194,24 @@
       var quietLabel = formatTenths(calc.quietTenths);
       var jobsLabel = formatTenths(calc.jobsTenths);
       var money = calc.amount == null ? null : formatMoney(calc.amount);
+      var nextSummary = money == null ? 'Less than $100 a year' : 'About ' + money + ' a year';
 
-      result.replaceChildren();
-
-      var line = el('p', 'result-line');
-      if (money == null) {
-        line.appendChild(el('strong', null, 'Less than $100 a year'));
-      } else {
-        line.appendChild(document.createTextNode('About '));
-        line.appendChild(el('strong', 'money', money));
-        line.appendChild(document.createTextNode(' a year'));
-      }
-      result.appendChild(line);
-
-      result.appendChild(el('p', 'result-sub', money == null
+      sub.textContent = money == null
         ? "By these numbers, quiet quotes aren't costing you much. That's good news. No need to fix what isn't broken."
-        : 'in work you already quoted and never followed up on.'));
+        : 'in work you already quoted and never followed up on.';
 
-      result.appendChild(el('h3', null, 'How I got that'));
-
-      var list = document.createElement('ul');
-      list.appendChild(li([
-        'You send ', el('strong', null, String(quotes)), ' quotes a month. That\'s ',
-        el('strong', null, String(calc.year)), ' a year.'
+      steps.replaceChildren();
+      steps.appendChild(li([
+        'You send ', el('strong', null, formatCount(quotes)), ' quotes a month. That\'s ',
+        el('strong', null, formatCount(calc.year)), ' a year.'
       ]));
-      list.appendChild(li([
+      steps.appendChild(li([
         'About ', el('strong', null, quiet + '%'), ' go quiet with no follow-up. That\'s ',
         el('strong', null, quietLabel || 'less than 0.1'), ' quotes.'
       ]));
-      list.appendChild(li([
+      steps.appendChild(li([
         'If a follow-up brought back ', el('strong', null, close + '%'), ' of those, that\'s ',
-        jobsLabel ? document.createTextNode('about ') : document.createTextNode(''),
+        jobsLabel ? 'about ' : '',
         el('strong', null, jobsLabel || 'less than 0.1'), ' jobs.'
       ]));
       var lastBits = ['At ', el('strong', null, formatMoney(avg)), ' each, that comes to '];
@@ -215,19 +223,30 @@
         lastBits.push(el('strong', null, money));
       }
       lastBits.push(' a year.');
-      list.appendChild(li(lastBits));
-      result.appendChild(list);
-
-      result.appendChild(el('p', 'formula', 'quotes per month \u00d7 12 \u00d7 % that go quiet \u00d7 close rate \u00d7 average value'));
+      steps.appendChild(li(lastBits));
 
       var caveat = 'A few honest notes. ';
       caveat += closeEdited
         ? 'The close rate is the number you entered.'
         : 'The 10% close rate is my assumption, not a statistic.';
       caveat += ' Change it if you know yours. This is sales, not profit, so your margin comes off it. And I rounded down. It\'s a rough number to think with, not a promise.';
-      result.appendChild(el('p', 'caveat', caveat));
+      caveatEl.textContent = caveat;
 
       result.hidden = false;
+      if (summaryText !== nextSummary) {
+        summaryText = nextSummary;
+        summary.classList.toggle('long', !!(money && money.length >= 12));
+        summary.replaceChildren();
+        if (money == null) {
+          summary.appendChild(el('strong', null, nextSummary));
+        } else {
+          summary.appendChild(document.createTextNode('About '));
+          summary.appendChild(el('strong', 'money', money));
+          summary.appendChild(document.createTextNode(' a year'));
+        }
+      }
+      // Announce the short summary when the inputs change it, not the steps.
+      if (!fromSubmit && live.textContent !== nextSummary) live.textContent = nextSummary;
     }
 
     function el(tag, className, text) {

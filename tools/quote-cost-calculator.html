@@ -129,10 +129,12 @@
   a:focus-visible, button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   .result { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
   .result[hidden] { display: none; }
-  .result-line { font-family: var(--serif); font-weight: 400; font-size: clamp(1.2rem, 3.6vw, 2.7rem); line-height: 1.15; letter-spacing: -0.02em; }
+  .result-line { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 11vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; }
+  .result-line.long { font-size: clamp(1.65rem, 6.2vw, 2.4rem); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .money { white-space: nowrap; }
-  .result-sub { margin-top: 0.45rem; font-size: 1.05rem; color: var(--ink); }
-  .result h3 { margin-top: 1.3rem; }
+  .result-sub { margin-top: 0.55rem; font-size: 1.05rem; color: var(--ink); }
+  .result h3 { margin-top: 1.3rem; font-size: 1.35rem; }
   .result ul { list-style: none; margin-top: 0.7rem; display: grid; gap: 0.55rem; }
   .result li { padding-left: 1.15rem; position: relative; font-size: 1.02rem; }
   .result li::before { content: '→'; position: absolute; left: 0; color: var(--rust); }
@@ -204,7 +206,7 @@
         <input id="quotes" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="e.g. 20" aria-describedby="quotes-help quotes-err">
       </div>
       <p class="help" id="quotes-help">Estimates, bids, quotes, proposals, engagement letters. A rough count is fine.</p>
-      <p class="err" id="quotes-err"></p>
+      <p class="err" id="quotes-err" role="alert"></p>
     </div>
 
     <div class="field">
@@ -214,7 +216,7 @@
         <input id="value" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="e.g. 5,000" aria-describedby="value-help value-err">
       </div>
       <p class="help" id="value-help">What a typical one is worth when it closes.</p>
-      <p class="err" id="value-err"></p>
+      <p class="err" id="value-err" role="alert"></p>
     </div>
 
     <div class="field">
@@ -224,7 +226,7 @@
         <span class="affix" aria-hidden="true">%</span>
       </div>
       <p class="help" id="quiet-help">No answer from them, and no second touch from you. Not sure? Count last month's.</p>
-      <p class="err" id="quiet-err"></p>
+      <p class="err" id="quiet-err" role="alert"></p>
     </div>
 
     <div class="field">
@@ -234,17 +236,25 @@
         <span class="affix" aria-hidden="true">%</span>
       </div>
       <p class="help" id="close-help"><strong class="assume">Assumption, not a statistic.</strong> I start at 10% to stay conservative. If you know your number, use it.</p>
-      <p class="err" id="close-err"></p>
+      <p class="err" id="close-err" role="alert"></p>
     </div>
 
     <button type="button" class="btn" id="show">Show me the number</button>
 
-    <div id="result" class="result" aria-live="polite" aria-atomic="true" hidden></div>
+    <p id="result-live" class="sr-only" aria-live="polite"></p>
+    <div id="result" class="result" hidden>
+      <p id="result-summary" class="result-line"></p>
+      <p id="result-sub" class="result-sub"></p>
+      <h3>How I got that</h3>
+      <ul id="result-steps"></ul>
+      <p class="formula">quotes per month × 12 × % that go quiet × close rate × average value</p>
+      <p id="result-caveat" class="caveat"></p>
+    </div>
 
     <noscript>
       <div class="noscript">
         <p>The math, in words: quotes per month, times 12, times the share that go quiet, times the close rate, times your average job value. Then round down. The 10% close rate is an assumption, not a statistic. This is sales, not profit.</p>
-        <p><a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Start a Quote Rescue</a></p>
+        <p><a class="btn" href="mailto:SamGorla@ServleadSolutions.com?subject=Quote%20Rescue&amp;body=Here%20are%20the%20quotes%20that%20went%20quiet%3A">Start a Quote Rescue</a></p>
         <p><a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Book a free 30-minute call</a></p>
       </div>
     </noscript>
@@ -256,7 +266,7 @@
       <h3>Quote Rescue</h3>
       <p>Send me 10 quotes that went quiet, and I'll draft the follow-ups for you free this week. You approve every word, and you send them yourself.</p>
       <p>Estimates, proposals, engagement letters. Whatever you send, it counts. I never send anything on your behalf.</p>
-      <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Start a Quote Rescue</a>
+      <a class="btn" href="mailto:SamGorla@ServleadSolutions.com?subject=Quote%20Rescue&amp;body=Here%20are%20the%20quotes%20that%20went%20quiet%3A">Start a Quote Rescue</a>
     </article>
     <article class="next-card">
       <h3>A free 30-minute call</h3>
