@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Quote Follow-Up Writer | Servlead Solutions</title>
-<meta name="description" content="Paste a quote, proposal, or engagement letter that went quiet. Get two short follow-ups in a plain owner voice. You send them. We don't store the text.">
+<meta name="description" content="Paste a quote, proposal, or engagement letter that went quiet. Get one short follow-up in a plain owner voice. You send it. We don't store the text.">
 <link rel="canonical" href="https://servleadsolutions.com/tools/quote-rescue">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Servlead Solutions">
 <meta property="og:title" content="Free Quote Follow-Up Writer | Servlead Solutions">
-<meta property="og:description" content="Paste a quote, proposal, or engagement letter that went quiet. Get two short follow-ups in a plain owner voice. You send them. We don't store the text.">
+<meta property="og:description" content="Paste a quote, proposal, or engagement letter that went quiet. Get one short follow-up in a plain owner voice. You send it. We don't store the text.">
 <meta property="og:url" content="https://servleadsolutions.com/tools/quote-rescue">
 <meta property="og:image" content="https://servleadsolutions.com/servlead-og-banner.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free Quote Follow-Up Writer | Servlead Solutions">
-<meta name="twitter:description" content="Paste a quote, proposal, or engagement letter that went quiet. Get two short follow-ups in a plain owner voice. You send them. We don't store the text.">
+<meta name="twitter:description" content="Paste a quote, proposal, or engagement letter that went quiet. Get one short follow-up in a plain owner voice. You send it. We don't store the text.">
 <meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <script type="application/ld+json">
@@ -30,7 +30,7 @@
       "name": "What does this write?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two short notes from one quote, proposal, or engagement letter that went quiet. The first is a check-in to send about two days later. The second is a close-the-loop note for about a week later. You copy them and send them yourself."
+        "text": "One short follow-up from a quote, proposal, or engagement letter that went quiet. It checks in, and it says you will close the quote out unless you hear back. You copy it and send it yourself."
       }
     },
     {
@@ -38,7 +38,7 @@
       "name": "Will it invent a price, a date, or a discount?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It is instructed not to add a price, a date, or a discount, and the page checks the draft for those before showing it. It can still miss something. Read both notes before you send them. If a name or a detail is missing, it leaves a [bracket] for you to fill in."
+        "text": "It is instructed not to add a price, a date, or a discount, and the page checks the draft for those before showing it. It can still miss something. Read the note before you send it. If a name or a detail is missing, it leaves a [bracket] for you to fill in."
       }
     },
     {
@@ -135,6 +135,9 @@
   .out { margin-top: 1.6rem; }
   .out[hidden], [hidden] { display: none !important; }
   .send-note { margin-top: 0.65rem; color: var(--ink-soft); }
+  .offer { margin-top: 1.5rem; font-family: var(--serif); font-size: clamp(1.35rem, 4vw, 1.75rem); line-height: 1.28; letter-spacing: -0.015em; }
+  .stake { margin-top: 1.15rem; font-size: 1.05rem; }
+  .stake a { color: var(--rust); font-weight: 700; }
   .when { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); }
   .draft { margin-top: 0.55rem; font-size: 1.05rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
   .save { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
@@ -188,7 +191,7 @@
   <span class="kicker">Quote Rescue · free</span>
   <h1>Free quote follow-up writer</h1>
   <p class="lede">A quote, a proposal, or an engagement letter went out. Then it went quiet.</p>
-  <p class="lede">Paste one. You get two short notes in a plain voice: a check-in for about two days later, and a gentle close-the-loop for about a week later. You send them. This page never does.</p>
+  <p class="lede">Paste one. You get one short follow-up in a plain voice. You send it. This page never does.</p>
   <p class="privacy-line">Your text is sent to an AI model to write the drafts and isn't stored by us. Remove names or prices first if you prefer.</p>
 
   <form class="card" id="rescue" novalidate>
@@ -198,6 +201,12 @@
       <label for="quote">Quote, proposal, or engagement letter</label>
       <textarea id="quote" name="quote" maxlength="4000" required spellcheck="true" placeholder="Paste the whole thing. One only."></textarea>
       <p class="count" id="count">0 / 4,000</p>
+    </div>
+
+    <div class="field">
+      <label for="amount">Quote amount (optional)</label>
+      <input class="text" id="amount" name="amount" type="text" inputmode="decimal" maxlength="20" autocomplete="off" placeholder="$14,800">
+      <p class="help">Only if you want to see what this one is worth. It stays on this page. It is not written into the follow-up.</p>
     </div>
 
     <div class="field">
@@ -226,7 +235,7 @@
       <input id="f_web" name="f_web" type="text" tabindex="-1" autocomplete="off">
     </p>
 
-    <button class="btn btn-submit" id="write" type="submit">Write the two follow-ups</button>
+    <button class="btn btn-submit" id="write" type="submit">Write the follow-up</button>
     <p class="err" id="form-err" role="alert"></p>
     <noscript>
       <p class="noscript">The writer needs JavaScript. You can still <a href="mailto:SamGorla@ServleadSolutions.com?subject=Quote%20Rescue">email the quote to Sam</a>, or <a href="https://cal.com/samgorla/quick-connect">book a free 30-minute look</a>.</p>
@@ -235,39 +244,34 @@
 
   <p class="sr-only" id="status" aria-live="polite"></p>
   <section class="out" id="out" hidden>
-    <h2 id="out-title" tabindex="-1">Two notes, in your voice</h2>
-    <p class="send-note">You send these yourself. Nothing here emails your customer. Read both notes before you send them. A [bracket] is a blank for you to fill in.</p>
+    <h2 id="out-title" tabindex="-1">One follow-up, in your voice</h2>
+    <p class="send-note">You send this yourself. Nothing here emails your customer. Read it before you send it. A [bracket] is a blank for you to fill in.</p>
 
     <article class="draft-card">
-      <p class="when">Check-in · about 2 days later</p>
-      <h3>The first note</h3>
-      <div class="draft" id="checkin"></div>
-      <button class="copy" type="button" id="copy-checkin" aria-label="Copy the check-in">Copy</button>
+      <p class="when">The follow-up</p>
+      <div class="draft" id="followup"></div>
+      <button class="copy" type="button" id="copy-followup" aria-label="Copy the follow-up">Copy</button>
     </article>
 
-    <article class="draft-card">
-      <p class="when">Close the loop · about a week later</p>
-      <h3>The second note</h3>
-      <div class="draft" id="close"></div>
-      <button class="copy" type="button" id="copy-close" aria-label="Copy the close-the-loop note">Copy</button>
-    </article>
+    <p class="stake" id="stake" hidden>A <span id="stake-amount"></span> quote going quiet. <a href="/tools/quote-cost-calculator">See what a year of those adds up to.</a></p>
 
-    <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Want this running on every quote automatically? Book a free 30-minute look</a>
+    <p class="offer">This is one text. Want this to happen automatically on every quote, so you never have to remember?</p>
+    <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Get a free 30-minute look</a>
 
     <form class="save" id="save" novalidate>
-      <label for="save-email">Email me these drafts plus one practical tip a week</label>
+      <label for="save-email">Email me this follow-up plus one practical tip a week</label>
       <div class="email-row">
         <input class="text" id="save-email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@yourbusiness.com">
         <button class="btn" id="save-btn" type="submit">Send</button>
       </div>
-      <p class="help">This sends your email, your first name, and the business type. Not the quote, and not the drafts. Copy them above. The weekly note is Out of the Owner's Head.</p>
+      <p class="help">This sends your email, your first name, and the business type. Not the quote, and not the follow-up. Copy it above. The weekly note is Out of the Owner's Head.</p>
       <p class="hp" aria-hidden="true">
         <label for="save-web">Website</label>
         <input id="save-web" name="f_web" type="text" tabindex="-1" autocomplete="off">
       </p>
       <p class="err" id="save-err" role="alert"></p>
       <div class="saved" id="saved" hidden>
-        <p>Got it. Copy the drafts above before you leave. The quote was not sent.</p>
+        <p>Got it. Copy the follow-up above before you leave. The quote was not sent.</p>
         <p><a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe to Out of the Owner's Head</a></p>
       </div>
     </form>
@@ -279,11 +283,11 @@
     <h2 id="faq-heading">Questions people ask</h2>
     <div class="faq-item">
       <h3>What does this write?</h3>
-      <p>Two short notes from one quote, proposal, or engagement letter that went quiet. The first is a check-in to send about two days later. The second is a close-the-loop note for about a week later. You copy them and send them yourself.</p>
+      <p>One short follow-up from a quote, proposal, or engagement letter that went quiet. It checks in, and it says you will close the quote out unless you hear back. You copy it and send it yourself.</p>
     </div>
     <div class="faq-item">
       <h3>Will it invent a price, a date, or a discount?</h3>
-      <p>It is instructed not to add a price, a date, or a discount, and the page checks the draft for those before showing it. It can still miss something. Read both notes before you send them. If a name or a detail is missing, it leaves a [bracket] for you to fill in.</p>
+      <p>It is instructed not to add a price, a date, or a discount, and the page checks the draft for those before showing it. It can still miss something. Read the note before you send it. If a name or a detail is missing, it leaves a [bracket] for you to fill in.</p>
     </div>
     <div class="faq-item">
       <h3>Is my quote stored?</h3>

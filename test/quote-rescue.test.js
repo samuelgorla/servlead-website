@@ -78,8 +78,8 @@ test('stripDelimiter loops until a spaced token is gone', function () {
 });
 
 test('parseModelPayload reads fenced JSON and refusals', function () {
-  const drafts = parseModelPayload('```json\n{"checkin":"Hi Maria — Dan. Did you get a chance to look at the roof proposal?","close":"Maria — I will close the roof proposal out on my side unless I hear back. Dan"}\n```');
-  assert.match(drafts.checkin, /Maria/);
+  const drafts = parseModelPayload('```json\n{"followup":"Hi Maria — did you get a chance to look at the roof proposal? I will close it out unless I hear back. Dan"}\n```');
+  assert.match(drafts.followup, /Maria/);
   const refused = parseModelPayload('{"refuse":true,"message":"Paste a quote."}');
   assert.equal(refused.refuse, true);
   assert.equal(parseModelPayload('not json'), null);
@@ -107,10 +107,10 @@ test('inventedDetail blocks prices, dates, and discounts that were not in the qu
 });
 
 test('signatureProblem requires the owner name or a bracket', function () {
-  assert.equal(signatureProblem('See you.\nDan', 'Closing this out.\nDan', 'Dan'), '');
-  assert.equal(signatureProblem('See you.', 'Closing this out.\nDan', 'Dan'), 'name');
-  assert.equal(signatureProblem('Thanks.\n[your first name]', 'Closing out.\n[your first name]', ''), '');
-  assert.equal(signatureProblem('Thanks.\nAlex', 'Closing out.\nAlex', ''), 'bracket');
+  assert.equal(signatureProblem('See you.\nDan', 'Dan'), '');
+  assert.equal(signatureProblem('See you.', 'Dan'), 'name');
+  assert.equal(signatureProblem('Thanks.\n[your first name]', ''), '');
+  assert.equal(signatureProblem('Thanks.\nAlex', ''), 'bracket');
 });
 
 test('closesTheQuote wants a plain close-out sentence', function () {
@@ -187,16 +187,15 @@ test('draftFromModelText does not ask for another model call', function () {
     businessLabel: 'Contractor or trades'
   };
   const good = draftFromModelText(JSON.stringify({
-    checkin: 'Maria — did you get a chance to look at the roof proposal?\nDan',
-    close: 'Maria — I will close the quote out unless I hear back.\nDan'
+    followup: 'Maria — did you get a chance to look at the roof proposal? I will close the quote out unless I hear back.\nDan'
   }), fields);
-  assert.equal(good.checkin.includes('Maria'), true);
+  assert.equal(good.followup.includes('Maria'), true);
+  assert.equal(good.checkin, undefined);
   const invented = draftFromModelText(JSON.stringify({
-    checkin: 'Maria — I can take half off and start by Friday.\nDan',
-    close: 'Maria — I will close the quote out unless I hear back.\nDan'
+    followup: 'Maria — I can take half off and start by Friday. I will close the quote out unless I hear back.\nDan'
   }), fields);
   assert.equal(typeof invented.error, 'string');
-  assert.equal(invented.checkin, undefined);
+  assert.equal(invented.followup, undefined);
 });
 
 test('leadPayload keeps only the public fields', function () {

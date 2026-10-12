@@ -2,6 +2,7 @@
   var QUOTE_MAX = 4000;
   var form = document.getElementById('rescue');
   var quote = document.getElementById('quote');
+  var amount = document.getElementById('amount');
   var business = document.getElementById('business');
   var customer = document.getElementById('customer');
   var name = document.getElementById('name');
@@ -11,8 +12,9 @@
   var formErr = document.getElementById('form-err');
   var out = document.getElementById('out');
   var outTitle = document.getElementById('out-title');
-  var checkin = document.getElementById('checkin');
-  var closeNote = document.getElementById('close');
+  var followup = document.getElementById('followup');
+  var stake = document.getElementById('stake');
+  var stakeAmount = document.getElementById('stake-amount');
   var save = document.getElementById('save');
   var saveEmail = document.getElementById('save-email');
   var saveBtn = document.getElementById('save-btn');
@@ -41,11 +43,8 @@
     write();
   });
 
-  document.getElementById('copy-checkin').addEventListener('click', function () {
-    copyFrom(checkin, this, 'Copy the check-in');
-  });
-  document.getElementById('copy-close').addEventListener('click', function () {
-    copyFrom(closeNote, this, 'Copy the close-the-loop note');
+  document.getElementById('copy-followup').addEventListener('click', function () {
+    copyFrom(followup, this, 'Copy the follow-up');
   });
 
   save.addEventListener('submit', function (event) {
@@ -55,22 +54,27 @@
 
   document.getElementById('again').addEventListener('click', function () {
     quote.value = '';
+    amount.value = '';
     customer.value = '';
     setCount();
     formErr.textContent = '';
     quote.classList.remove('bad');
+    amount.classList.remove('bad');
     out.hidden = true;
-    checkin.textContent = '';
-    closeNote.textContent = '';
+    followup.textContent = '';
+    stake.hidden = true;
+    stakeAmount.textContent = '';
     quote.focus();
   });
 
   function write() {
     formErr.textContent = '';
     quote.classList.remove('bad');
+    amount.classList.remove('bad');
     business.classList.remove('bad');
     name.classList.remove('bad');
     var text = quote.value.trim();
+    var money = quoteAmount(amount.value);
     if (!text) {
       fail(quote, 'Paste the quote, proposal, or engagement letter.');
       return;
@@ -81,6 +85,10 @@
     }
     if (text.length < 40) {
       fail(quote, 'Paste more of it. A few words is not enough to write an honest follow-up.');
+      return;
+    }
+    if (!money.ok) {
+      fail(amount, 'Use the dollar amount from the quote, or leave it blank.');
       return;
     }
     if (!LABELS[business.value]) {
@@ -113,8 +121,8 @@
       });
     }).then(function (result) {
       var data = result.data;
-      if (data.checkin && data.close) {
-        showDrafts(data.checkin, data.close);
+      if (data.followup) {
+        showDraft(data.followup, money);
         return;
       }
       formErr.textContent = data.error || 'The writer didn\'t answer. Nothing was saved. Try again in a minute.';
@@ -122,16 +130,37 @@
       formErr.textContent = 'The writer didn\'t answer. Nothing was saved. Try again in a minute.';
     }).then(function () {
       writeBtn.disabled = false;
-      writeBtn.textContent = 'Write the two follow-ups';
+      writeBtn.textContent = 'Write the follow-up';
     });
   }
 
-  function showDrafts(checkinText, closeText) {
-    checkin.textContent = checkinText;
-    closeNote.textContent = closeText;
-    document.getElementById('status').textContent = 'Two follow-ups are ready. You send them yourself.';
-    document.getElementById('copy-checkin').textContent = 'Copy';
-    document.getElementById('copy-close').textContent = 'Copy';
+  function quoteAmount(raw) {
+    var text = String(raw || '').trim();
+    if (!text) return { ok: true, empty: true };
+    var match = text.match(/^\$?\s*(\d{1,3}(?:,\d{3})+|\d+)(?:\.(\d{1,2}))?\s*(?:dollars?)?$/i);
+    if (!match) return { ok: false };
+    var whole = match[1].replace(/,/g, '');
+    var cents = match[2] || '';
+    var value = Number(whole + (cents ? '.' + cents : ''));
+    if (!isFinite(value) || value <= 0 || value > 100000000) return { ok: false };
+    var formatted = Number(whole).toLocaleString('en-US');
+    if (cents && Number(cents) !== 0) {
+      formatted += '.' + (cents.length === 1 ? cents + '0' : cents);
+    }
+    return { ok: true, empty: false, display: '$' + formatted };
+  }
+
+  function showDraft(text, money) {
+    followup.textContent = text;
+    document.getElementById('status').textContent = 'The follow-up is ready. You send it yourself.';
+    document.getElementById('copy-followup').textContent = 'Copy';
+    if (money && !money.empty && money.display) {
+      stakeAmount.textContent = money.display;
+      stake.hidden = false;
+    } else {
+      stakeAmount.textContent = '';
+      stake.hidden = true;
+    }
     out.hidden = false;
     if (!emailed) {
       save.hidden = false;
