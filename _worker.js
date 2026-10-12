@@ -5,6 +5,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
+    if (path === "/test" || path.startsWith("/test/")) {
+      return new Response("Not found", {
+        status: 404,
+        headers: {
+          "content-type": "text/plain; charset=utf-8",
+          "cache-control": "no-store"
+        }
+      });
+    }
     if (path === "/api/lead" || path === "/api/quote-rescue") {
       if (request.method !== "POST") {
         return new Response(JSON.stringify({ ok: false }), {
