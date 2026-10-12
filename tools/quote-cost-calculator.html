@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quote Follow-Up Calculator: Cost of Unanswered Quotes</title>
+<meta name="description" content="Free quote follow-up calculator. Enter your monthly quotes or proposals, average job value, and how many go quiet to see the yearly cost of unanswered quotes.">
+<link rel="canonical" href="https://servleadsolutions.com/tools/quote-cost-calculator">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Servlead Solutions">
+<meta property="og:title" content="Quote Follow-Up Calculator: Cost of Unanswered Quotes">
+<meta property="og:description" content="Free quote follow-up calculator. Enter your monthly quotes or proposals, average job value, and how many go quiet to see the yearly cost of unanswered quotes.">
+<meta property="og:url" content="https://servleadsolutions.com/tools/quote-cost-calculator">
+<meta property="og:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quote Follow-Up Calculator: Cost of Unanswered Quotes">
+<meta name="twitter:description" content="Free quote follow-up calculator. Enter your monthly quotes or proposals, average job value, and how many go quiet to see the yearly cost of unanswered quotes.">
+<meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is the number calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quotes per month, times 12, times the share that go quiet, times the close rate, times your average job value. Then I round down. The page shows each step with your own numbers so you can check it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does the 10% close rate come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's an assumption, not a statistic. I picked a low number on purpose so the result doesn't oversell. If you know how often a follow-up brings a job back in your business, type that in instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this profit or revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Revenue. It's the sales value of the work, before your costs. Apply your own margin to see what it means for profit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What counts as a quote that went quiet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One where the customer didn't answer and nobody on your side followed up. If they said no, or you followed up and still heard nothing, leave it out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I send proposals or engagement letters, not quotes. Does this still work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The math is the same for a contractor's estimate, a distributor's quote, or a CPA's engagement letter. Use whatever you send and the average value of the work when it closes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you save my numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The math runs in your browser. Nothing you type is sent to me or stored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Quote Rescue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send me 10 quotes that went quiet, and I'll draft the follow-ups for you free this week. You approve every word, and you send them yourself. I never send anything on your behalf."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --paper: #f2f2f1; --paper-deep: #e9e9e7; --ink: #14202e; --ink-soft: #46536a; --muted: #5c6574;
+    --rust: #a63d1c; --line: #d6d6d2; --line-dark: #14202e;
+    --serif: 'Newsreader', Georgia, serif; --sans: 'Archivo', system-ui, sans-serif; --mono: 'Spline Sans Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1); --base: 0.32s;
+    --lift-1: 0 1px 2px rgba(20,32,46,0.04), 0 2px 8px rgba(20,32,46,0.05);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--rust); color: #fff; }
+  .kicker { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(242,242,241,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1160px; margin: 0 auto; padding: 1rem 1.15rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+  .logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--ink); text-decoration: none; min-width: 0; }
+  .logo img { width: 38px; height: 38px; object-fit: contain; flex: none; }
+  .nav-back { font-size: 0.9rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; flex: none; }
+  .nav-back:hover { color: var(--rust); }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 2.4rem 1.15rem 4rem; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.85rem, 7vw, 2.7rem); line-height: 1.12; letter-spacing: -0.02em; margin: 0.7rem 0 1rem; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 5vw, 2.1rem); line-height: 1.15; letter-spacing: -0.015em; margin: 2.4rem 0 0.9rem; }
+  .card > h2, .faq > h2 { margin-top: 0; }
+  h3 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; line-height: 1.25; margin-top: 0.2rem; }
+  .lede { font-size: 1.05rem; color: var(--ink-soft); margin-top: 0.85rem; }
+  .privacy-line { margin-top: 1rem; font-size: 0.95rem; color: var(--ink-soft); }
+  .phrase { margin-top: 0.85rem; font-size: 1.05rem; color: var(--ink); }
+  .card { background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); padding: 1.15rem 1rem 1.25rem; margin-top: 1rem; }
+  .field { margin-top: 1.15rem; }
+  .field label { display: block; font-weight: 700; font-size: 1rem; line-height: 1.35; }
+  .control { display: flex; align-items: stretch; margin-top: 0.4rem; border: 1.5px solid var(--line); border-radius: 8px; background: #fff; min-height: 48px; }
+  .control:focus-within { border-color: var(--rust); outline: 3px solid var(--ink); outline-offset: 3px; }
+  .control.bad { border-color: var(--rust); background: #fbf1ee; }
+  .affix { display: flex; align-items: center; padding: 0 0.75rem; font-weight: 700; color: var(--ink); flex: none; }
+  .control input { flex: 1; min-width: 0; width: 100%; border: 0; background: transparent; font-family: var(--sans); font-size: 16px; line-height: 1.3; color: var(--ink); padding: 0.75rem 0.85rem; min-height: 48px; }
+  .control input:focus { outline: none; }
+  .control input::placeholder { color: var(--ink-soft); opacity: 1; }
+  .help { margin-top: 0.4rem; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.45; }
+  .assume { color: var(--ink); font-weight: 700; }
+  .err { color: var(--rust); font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+  .err:not(:empty) { margin-top: 0.35rem; }
+  .btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 1.25rem; font-family: var(--sans); font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none; border: none; cursor: pointer; background: var(--rust); color: #fff; padding: 0.8rem 1.3rem; border-radius: 999px; box-shadow: 0 8px 18px rgba(166, 61, 28, 0.24); }
+  .btn:hover { background: #7c2b13; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .result { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  .result[hidden] { display: none; }
+  .result-line { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 11vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; }
+  .result-line.long { font-size: clamp(1.65rem, 6.2vw, 2.4rem); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .money { white-space: nowrap; }
+  .result-sub { margin-top: 0.55rem; font-size: 1.05rem; color: var(--ink); }
+  .result h3 { margin-top: 1.3rem; font-size: 1.35rem; }
+  .result ul { list-style: none; margin-top: 0.7rem; display: grid; gap: 0.55rem; }
+  .result li { padding-left: 1.15rem; position: relative; font-size: 1.02rem; }
+  .result li::before { content: '→'; position: absolute; left: 0; color: var(--rust); }
+  .formula { margin-top: 0.9rem; font-family: var(--mono); font-size: 0.92rem; line-height: 1.45; color: var(--ink); overflow-wrap: anywhere; }
+  .caveat { margin-top: 0.9rem; font-size: 1.02rem; line-height: 1.55; color: var(--ink); }
+  .noscript { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .noscript p { margin-top: 0.7rem; color: var(--ink-soft); }
+  .next-grid { display: grid; gap: 0.9rem; margin-top: 0.4rem; }
+  .next-card { background: #fff; border: 1px solid var(--ink); box-shadow: var(--lift-1); padding: 1.15rem 1rem 1.2rem; }
+  .next-card p { margin-top: 0.65rem; color: var(--ink-soft); font-size: 1.02rem; }
+  .next-card .btn { margin-top: 1rem; }
+  .audit-line { margin-top: 0.95rem; font-size: 0.98rem; line-height: 1.5; color: var(--ink-soft); }
+  .audit-line b { color: var(--ink); }
+  .faq h3 { margin-top: 0; }
+  .faq-item { padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  .faq-item:first-of-type { border-top: 1px solid var(--line-dark); }
+  .faq-item p { margin-top: 0.5rem; color: var(--ink-soft); font-size: 1.02rem; }
+  .closing { margin-top: 2.2rem; font-family: var(--serif); font-size: clamp(1.45rem, 4vw, 1.9rem); line-height: 1.25; }
+  .wider { margin-top: 0.9rem; font-size: 1.02rem; }
+  .wider a { color: var(--rust); font-weight: 700; }
+  footer { border-top: 1px solid var(--line-dark); padding: 2rem 1.15rem 3rem; text-align: center; font-size: 0.85rem; color: var(--muted); }
+  footer a { color: var(--ink-soft); text-decoration: none; margin: 0 0.6rem; }
+  footer a:hover { color: var(--rust); }
+  .foot-news { margin: 0 auto 0.9rem; max-width: 640px; }
+  .foot-news p { margin: 0.35rem 0 0.45rem; color: var(--ink-soft); }
+  .foot-news a { color: var(--ink); margin: 0; font-weight: 700; border-bottom: 2px solid var(--rust); }
+  .foot-news a:hover { color: var(--rust); }
+  .copy { margin-top: 0.7rem; }
+  @media (min-width: 720px) {
+    .nav-inner { padding: 1rem 2rem; }
+    .logo { font-size: 1.3rem; }
+    .wrap { padding-top: 3.5rem; }
+    .card, .next-card { padding: 1.4rem 1.4rem 1.5rem; }
+    .btn { width: auto; align-self: flex-start; }
+    .next-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .next-card { display: flex; flex-direction: column; }
+    .next-card .btn { margin-top: auto; }
+    .audit-line { margin-top: 0.95rem; }
+  }
+  @media (max-width: 640px) {
+    .nav-back { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="/Servlead_Solutions_logo-removebg-preview.png" alt="Servlead Solutions" width="38" height="38">Servlead Solutions</a>
+    <a href="/" class="nav-back">← Back to the site</a>
+  </div>
+</nav>
+<main class="wrap">
+  <span class="kicker">Free · about a minute</span>
+  <h1>Quote follow-up calculator: what are unanswered quotes costing you?</h1>
+  <p class="lede">You sent the quote. They didn't answer. Nobody followed up, because everybody was busy doing the work.</p>
+  <p class="lede">It happens in every kind of business. A contractor's estimate. A distributor's quote on a big order. A CPA's engagement letter. Put in four numbers and see roughly what the quiet ones add up to in a year.</p>
+  <p class="privacy-line">Takes about a minute. Nothing you type leaves your browser.</p>
+  <p class="phrase">This quote follow-up calculator shows the cost of unanswered quotes.</p>
+
+  <section class="card" id="calc" aria-labelledby="numbers-heading">
+    <h2 id="numbers-heading">Your numbers</h2>
+
+    <div class="field">
+      <label for="quotes">Quotes or proposals you send in a month</label>
+      <div class="control">
+        <input id="quotes" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="e.g. 20" aria-describedby="quotes-help quotes-err">
+      </div>
+      <p class="help" id="quotes-help">Estimates, bids, quotes, proposals, engagement letters. A rough count is fine.</p>
+      <p class="err" id="quotes-err" role="alert"></p>
+    </div>
+
+    <div class="field">
+      <label for="value">Average value of one job or engagement</label>
+      <div class="control">
+        <span class="affix" aria-hidden="true">$</span>
+        <input id="value" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="e.g. 5,000" aria-describedby="value-help value-err">
+      </div>
+      <p class="help" id="value-help">What a typical one is worth when it closes.</p>
+      <p class="err" id="value-err" role="alert"></p>
+    </div>
+
+    <div class="field">
+      <label for="quiet">How many go quiet with no follow-up? (%)</label>
+      <div class="control">
+        <input id="quiet" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="e.g. 30" aria-describedby="quiet-help quiet-err">
+        <span class="affix" aria-hidden="true">%</span>
+      </div>
+      <p class="help" id="quiet-help">No answer from them, and no second touch from you. Not sure? Count last month's.</p>
+      <p class="err" id="quiet-err" role="alert"></p>
+    </div>
+
+    <div class="field">
+      <label for="close">Close rate if you'd followed up (%, optional)</label>
+      <div class="control">
+        <input id="close" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="10" value="10" aria-describedby="close-help close-err">
+        <span class="affix" aria-hidden="true">%</span>
+      </div>
+      <p class="help" id="close-help"><strong class="assume">Assumption, not a statistic.</strong> I start at 10% to stay conservative. If you know your number, use it.</p>
+      <p class="err" id="close-err" role="alert"></p>
+    </div>
+
+    <button type="button" class="btn" id="show">Show me the number</button>
+
+    <p id="result-live" class="sr-only" aria-live="polite"></p>
+    <div id="result" class="result" hidden>
+      <p id="result-summary" class="result-line"></p>
+      <p id="result-sub" class="result-sub"></p>
+      <h3>How I got that</h3>
+      <ul id="result-steps"></ul>
+      <p class="formula">quotes per month × 12 × % that go quiet × close rate × average value</p>
+      <p id="result-caveat" class="caveat"></p>
+    </div>
+
+    <noscript>
+      <div class="noscript">
+        <p>The math, in words: quotes per month, times 12, times the share that go quiet, times the close rate, times your average job value. Then round down. The 10% close rate is an assumption, not a statistic. This is sales, not profit.</p>
+        <p><a class="btn" href="mailto:SamGorla@ServleadSolutions.com?subject=Quote%20Rescue&amp;body=Here%20are%20the%20quotes%20that%20went%20quiet%3A">Start a Quote Rescue</a></p>
+        <p><a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Book a free 30-minute call</a></p>
+      </div>
+    </noscript>
+  </section>
+
+  <h2>Two ways I can help</h2>
+  <div class="next-grid">
+    <article class="next-card">
+      <h3>Quote Rescue</h3>
+      <p>Send me 10 quotes that went quiet, and I'll draft the follow-ups for you free this week. You approve every word, and you send them yourself.</p>
+      <p>Estimates, proposals, engagement letters. Whatever you send, it counts. I never send anything on your behalf.</p>
+      <a class="btn" href="mailto:SamGorla@ServleadSolutions.com?subject=Quote%20Rescue&amp;body=Here%20are%20the%20quotes%20that%20went%20quiet%3A">Start a Quote Rescue</a>
+    </article>
+    <article class="next-card">
+      <h3>A free 30-minute call</h3>
+      <p>A free look at one or two workflows where money moves in your business: getting work, doing the work, getting paid, or the back office behind them. You'll leave knowing the bottleneck and the direction I'd take.</p>
+      <p>Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
+      <a class="btn" href="https://cal.com/samgorla/quick-connect" target="_blank" rel="noopener">Book a free 30-minute call</a>
+      <p class="audit-line">The call is free. The paid step, if you want it, is the AI &amp; Efficiency Audit. <b>$1,000</b>. Sixty minutes, live diagnosis. Written plan within 48 hours. If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
+    </article>
+  </div>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Questions people ask</h2>
+    <div class="faq-item">
+      <h3>How is the number calculated?</h3>
+      <p>Quotes per month, times 12, times the share that go quiet, times the close rate, times your average job value. Then I round down. The page shows each step with your own numbers so you can check it.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Where does the 10% close rate come from?</h3>
+      <p>It's an assumption, not a statistic. I picked a low number on purpose so the result doesn't oversell. If you know how often a follow-up brings a job back in your business, type that in instead.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this profit or revenue?</h3>
+      <p>Revenue. It's the sales value of the work, before your costs. Apply your own margin to see what it means for profit.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What counts as a quote that went quiet?</h3>
+      <p>One where the customer didn't answer and nobody on your side followed up. If they said no, or you followed up and still heard nothing, leave it out.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I send proposals or engagement letters, not quotes. Does this still work?</h3>
+      <p>Yes. The math is the same for a contractor's estimate, a distributor's quote, or a CPA's engagement letter. Use whatever you send and the average value of the work when it closes.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do you save my numbers?</h3>
+      <p>No. The math runs in your browser. Nothing you type is sent to me or stored.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is Quote Rescue?</h3>
+      <p>Send me 10 quotes that went quiet, and I'll draft the follow-ups for you free this week. You approve every word, and you send them yourself. I never send anything on your behalf.</p>
+    </div>
+  </section>
+
+  <p class="closing">Your business runs through your head. I help you fix that.</p>
+  <p class="wider">Want the wider picture? <a href="/leak-estimate">Try the leak estimate.</a></p>
+</main>
+<footer>
+  <div class="foot-news">
+    <span class="kicker">Out of the Owner's Head</span>
+    <p>One usable takeaway a week for owner-run businesses.</p>
+    <a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Subscribe, free →</a>
+  </div>
+  <a href="tel:8608691385">(860) 869-1385</a>
+  <a href="mailto:info@servleadsolutions.com">info@servleadsolutions.com</a>
+  <a href="/privacy">Privacy</a>
+  <div class="copy">© 2026 Servlead Solutions · Lehigh Valley, PA</div>
+</footer>
+<script src="/tools/quote-cost-calculator.js" defer></script>
+</body>
+</html>

@@ -20,7 +20,8 @@
 - [Contractors, manufacturers, and distributors](https://servleadsolutions.com/trades-manufacturing-distribution): owner-run contractors and trades, manufacturers, and distributors in the Lehigh Valley
 - [Professional services](https://servleadsolutions.com/professional-services): owner-run CPA firms, law firms, insurance agencies, and agencies in the Lehigh Valley
 - [How it works](https://servleadsolutions.com/how-it-works): what happens after the AI & Efficiency Audit
-- [Leak Estimate](https://servleadsolutions.com/leak-estimate): 10-question yearly leak calculator
+- [Leak Estimate](https://servleadsolutions.com/leak-estimate): 10-question yearly leak calculator. /tools redirects here. The page also links to the quote follow-up calculator.
+- [Quote follow-up calculator](https://servleadsolutions.com/tools/quote-cost-calculator): free calculator for the yearly sales value of quotes, proposals, or engagement letters that went quiet. The visitor types quotes per month, average job value, and the share that go quiet. The close rate starts at 10%, labeled an assumption, not a statistic. The result is sales, not profit, and it is rounded down. Nothing typed is sent or stored. Send quotes that went quiet for Quote Rescue by email to SamGorla@ServleadSolutions.com (subject: Quote Rescue). Book the free 30-minute call at https://cal.com/samgorla/quick-connect
 
 ## Contact
 Sam Gorla, founder. 14 years in technology consulting for Fortune 1000 companies. (860) 869-1385 · info@servleadsolutions.com · Lehigh Valley, PA (Allentown, Bethlehem, Easton, and surrounding)
