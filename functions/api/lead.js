@@ -65,14 +65,16 @@ export async function onRequestPost({ request, env }) {
 
   if (!emailOk(data.email)) return json(400, { ok: false });
 
+  const DROP = ['quote', 'checkin', 'close', 'draft', 'drafts', 'quote_text', 'customer', 'customer_line'];
   const payload = {};
   for (const [key, value] of Object.entries(data)) {
-    if (HONEYPOTS.includes(key)) continue;
+    if (HONEYPOTS.includes(key) || DROP.includes(key)) continue;
     if (typeof value === 'string') payload[key] = value.slice(0, 2000);
     else if (typeof value === 'number' || typeof value === 'boolean') payload[key] = value;
   }
   payload.email = String(data.email).trim();
-  payload.source = 'leak-estimate';
+  const requested = typeof data.source === 'string' ? data.source.trim() : '';
+  payload.source = requested === 'quote-rescue' ? 'quote-rescue' : 'leak-estimate';
   payload.page = pageOf(data, request);
   payload.timestamp = new Date().toISOString();
 
