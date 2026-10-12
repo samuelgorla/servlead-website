@@ -386,6 +386,17 @@
     p.append('page', location.href);
     p.append('submitted', new Date().toISOString());
     try { fetch(WEBHOOK, { method: 'POST', mode: 'no-cors', body: p }); } catch (err) {}
+    try {
+      var lead = {};
+      p.forEach(function (val, key) { lead[key] = val; });
+      var hp = document.getElementById('f_web');
+      lead.website = hp ? hp.value : '';
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lead)
+      }).catch(function () {});
+    } catch (err) {}
   }
 
   renderQ();
