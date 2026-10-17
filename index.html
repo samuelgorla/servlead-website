@@ -5,7 +5,7 @@
 <meta name="msvalidate.01" content="4DAD79FF853083102FF6201E6F1F86D7" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI &amp; Automation Consultant, Lehigh Valley PA | Servlead</title>
-<meta name="description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money leaks, then builds the fix. Free 30-minute call.">
+<meta name="description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money is leaking and what it's worth. Start with a free 30-minute call.">
 <meta name="author" content="Sam Gorla — Servlead Solutions">
 <link rel="canonical" href="https://servleadsolutions.com/">
 <link rel="icon" href="/favicon.ico">
@@ -14,18 +14,18 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Servlead Solutions">
 <meta property="og:title" content="AI &amp; Automation Consultant, Lehigh Valley PA | Servlead">
-<meta property="og:description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money leaks, then builds the fix. Free 30-minute call.">
+<meta property="og:description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money is leaking and what it's worth. Start with a free 30-minute call.">
 <meta property="og:url" content="https://servleadsolutions.com/">
 <meta property="og:image" content="https://servleadsolutions.com/images/servlead-og-2026.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Servlead Solutions. Every quote, call, and invoice. Followed up. If I don't show you at least $10,000 a year leaking out of your business, audit is free.">
+<meta property="og:image:alt" content="Servlead Solutions. Practical AI for owner-run Lehigh Valley businesses. Book a free 30-minute call.">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI &amp; Automation Consultant, Lehigh Valley PA | Servlead">
-<meta name="twitter:description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money leaks, then builds the fix. Free 30-minute call.">
+<meta name="twitter:description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money is leaking and what it's worth. Start with a free 30-minute call.">
 <meta name="twitter:image" content="https://servleadsolutions.com/images/servlead-og-2026.png">
 
 <!-- Motion is opt-in: the HTML is the resolved state. Only when motion is allowed does CSS set the "before" state. -->
@@ -164,7 +164,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       "name": "What happens after the free 30 minutes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A clear next step, and it isn't always the AI & Efficiency Audit. Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. The AI & Efficiency Audit ($1,000): when you want me to show you the bigger picture. A straight answer: sometimes you don't need me. If it's simple, I'll tell you how to fix it yourself, or point you to someone who fits better."
+        "text": "A clear next step, and it isn't always the AI & Efficiency Audit. Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. The AI & Efficiency Audit ($1,000): when you want me to show you the bigger picture. Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is."
       }
     },
     {
@@ -220,7 +220,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       "name": "Do you touch patient records or clinical work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No clinical work. Patient records only with the right safeguards in place. For dental, PT, chiropractic, and counseling practices, I work on the front office: missed calls, scheduling and no-show follow-up, the paperwork when someone new comes in, and billing follow-up. Nothing I build gives medical advice or makes care decisions."
+        "text": "No clinical work. Patient records only with the right safeguards in place. For dental, PT, chiropractic, and counseling practices, I only look at the front office: scheduling, the paperwork when someone new comes in, and billing follow-up. Nothing I build gives medical advice or makes care decisions."
       }
     }
   ]
@@ -375,7 +375,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .tool-link { display: inline-block; margin-top: 1.25rem; color: var(--slate-200); font-size: 0.95rem; text-underline-offset: 3px; }
   .tool-link:hover { color: var(--white); }
 
-  /* Morning screen */
+  /* Hero: example call notes */
   .screen { background: var(--navy-2); border: 1px solid var(--line-navy); border-radius: 14px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28); overflow: hidden; }
   .tabs { display: none; }
   .js .tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line-navy); }
@@ -391,6 +391,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .js .panel-name { display: none; }
   .scr-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--line-navy); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate-300); }
   .open-count { color: var(--white); font-variant-numeric: tabular-nums; }
+  .day-short { display: none; }
   .rows { list-style: none; padding: 0.4rem 1.25rem; }
   .row { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: 0.9rem; align-items: start; padding: 0.95rem 0; border-bottom: 1px solid var(--line-navy); transition: opacity 280ms var(--ease); }
   .row > div { padding-right: 8.5rem; }
@@ -401,15 +402,22 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .row-meta { margin-top: 0.2rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--slate-300); display: flex; align-items: center; flex-wrap: wrap; gap: 0 0.5rem; transition: opacity 280ms var(--ease); }
   .problem { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--white); }
   .problem::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: none; }
-  .row-action { margin-top: 0.4rem; min-height: 1.4em; font-size: 0.9375rem; line-height: 1.4; color: var(--slate-200); transition: opacity 280ms var(--ease), transform 280ms var(--ease); }
-  .row-action .arr { color: var(--steel); }
+  .row-action { margin-top: 0.4rem; min-height: 1.4em; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.5; color: var(--slate-300); transition: opacity 280ms var(--ease), transform 280ms var(--ease); }
+  /* Slate = named and sized. Gold stays on the problem only. */
+  .named { display: inline-block; padding: 0 0.45rem; border: 1px solid var(--slate-300); border-radius: 4px; color: var(--slate-200); }
   .chip-wrap { position: absolute; top: 0.95rem; right: 0; }
   .chip { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 28px; padding: 0 0.6rem; border-radius: 999px; font-family: var(--font-mono); font-size: 0.75rem; white-space: nowrap; }
   .chip-done { background: var(--slate-200); color: var(--navy); }
-  .chip-done svg { width: 12px; height: 12px; }
   .chip-problem { display: none; border: 1.5px solid var(--gold); color: var(--white); background: transparent; }
-  .scr-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 1.25rem; border-top: 1px solid var(--line-navy); }
-  .summary { font-weight: 500; font-size: 0.9375rem; color: var(--white); transition: opacity 280ms var(--ease); }
+  .scr-foot { padding: 0.9rem 1.25rem 1.1rem; border-top: 1px solid var(--line-navy); }
+  .summary { font-weight: 500; font-size: 0.9375rem; color: var(--white); }
+  .paths-h { margin-top: 0.7rem; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-300); }
+  .paths { list-style: none; counter-reset: path; margin-top: 0.4rem; display: grid; gap: 0.35rem; }
+  .paths li { counter-increment: path; position: relative; padding-left: 1.75rem; font-size: 0.875rem; line-height: 1.4; color: var(--slate-300); }
+  .paths li::before { content: counter(path); position: absolute; left: 0; top: 0.05rem; width: 1.15rem; height: 1.15rem; border: 1px solid var(--slate-300); border-radius: 50%; display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.625rem; color: var(--slate-200); }
+  .paths b { color: var(--white); font-weight: 600; }
+  .paths b::after { content: " · "; font-weight: 400; color: var(--slate-300); }
+  .summary, .paths-h, .paths li { transition: opacity 280ms var(--ease), transform 280ms var(--ease); }
   .screen-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 1rem; margin-top: 0.4rem; }
   .caption { font-size: 0.8125rem; color: var(--steel); }
   .play-btn { order: 3; min-height: 44px; min-width: 44px; padding: 0 0.75rem; background: none; border: 1px solid var(--line-navy); border-radius: 8px; color: var(--slate-200); font-family: var(--font-mono); font-size: 0.75rem; cursor: pointer; white-space: nowrap; }
@@ -429,8 +437,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .playing .row:not(.acted) .row-action { opacity: 0; transform: translateY(8px); }
   .playing .row:not(.done) .chip-done { display: none; }
   .playing .row.live:not(.done) .chip-problem { display: inline-flex; }
-  .playing .summary { opacity: 0; }
-  .playing .summary.on { opacity: 1; }
+  .foot-wait .summary:not(.on), .foot-wait .paths-h:not(.on), .foot-wait .paths li:not(.on) { opacity: 0; transform: translateY(6px); }
   .playing .row.done .chip-done, .playing .row.live:not(.done) .chip-problem { animation: chip-in 240ms var(--ease); }
   @keyframes chip-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
   .no-t, .no-t * { transition: none !important; }
@@ -660,7 +667,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .hero .kicker { font-size: 0.6875rem; }
     .hero h1 { font-size: 2.125rem; line-height: 1.12; margin-top: 0.5rem; }
     .hero-sub { font-size: 1rem; margin-top: 0.75rem; }
-    .hero-screen { margin-top: 1rem; }
+    /* Phones: CTA and guarantee straight under the H1, then the example call notes. */
+    .hero-grid { grid-template-areas: "top" "act" "screen"; }
+    .hero-screen { margin-top: 1.5rem; }
     .hero-act { padding-top: 1.1rem; }
     .btn-primary { width: 100%; }
     .guarantee-line { font-size: 0.9375rem; }
@@ -671,8 +680,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .tab { font-size: 0.75rem; padding: 0.4rem 0.35rem; min-height: 44px; }
     .t-x { display: none; }
     .t-s { display: inline; }
-    .hero-sub { display: none; }
-    .row-title .cat, .summary .s2, .row-action .q { display: none; }
+    .row-title .cat { display: none; }
     .scr-head { padding: 0.5rem 0.85rem; }
     .row { padding: 0.5rem 0; }
     .screen-bar { gap: 0 0.5rem; }
@@ -687,11 +695,19 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .row-title { font-size: 0.9375rem; }
     .row-meta { font-size: 0.75rem; }
     .row-meta .detail { display: none; }
-    .row-action { font-size: 0.8125rem; margin-top: 0.2rem; }
+    .row-action { font-size: 0.6875rem; margin-top: 0.2rem; }
     .chip-wrap { position: static; margin-left: auto; }
     .chip { min-height: 22px; padding: 0 0.5rem; font-size: 0.6875rem; }
     .scr-foot { padding: 0.6rem 0.85rem; }
     .summary { font-size: 0.8125rem; }
+    .paths-h { margin-top: 0.4rem; }
+    .paths { gap: 0.2rem; margin-top: 0.3rem; }
+    .paths li { font-size: 0.75rem; padding-left: 1.5rem; }
+    .day-long, .row-action .sz:not(.sz-key), .chip-done { display: none; }
+    .day-short { display: inline; }
+    .sz-key { white-space: nowrap; }
+    .open-count { white-space: nowrap; }
+    .scr-foot { padding: 0.55rem 0.85rem 0.65rem; }
     .screen-bar { margin-top: 0.4rem; }
     .caption { font-size: 0.75rem; }
     .logos { padding: 1.25rem 0 1.75rem; }
@@ -757,6 +773,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .band ul { margin-top: 0.75rem; padding-left: 1.1rem; font-size: 0.95rem; color: var(--slate-soft); display: grid; gap: 0.45rem; }
   /* DEMOS */
   .demos-h { margin-top: 2.5rem; font-family: var(--font-serif); font-weight: 400; font-size: 1.45rem; }
+  .demos-note { margin-top: 0.4rem; max-width: var(--measure); color: var(--slate-soft); font-size: 0.95rem; }
   .demos { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.75rem; margin-top: 1rem; }
   .demos a { display: block; height: 100%; min-height: 44px; padding: 1rem 1.1rem; background: var(--white); border: 1px solid var(--line); border-radius: 10px; color: var(--navy); text-decoration: none; }
   .demos a:hover, .demos a:focus-visible { border-color: var(--navy); }
@@ -779,11 +796,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <filter id="to-navy" color-interpolation-filters="sRGB"><feFlood flood-color="#14202e"/><feComposite in2="SourceAlpha" operator="in"/></filter>
   <symbol id="i-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
   <symbol id="i-cal" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></symbol>
   <symbol id="i-inbox" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 13l2.5-8h11L20 13v6H4zM4 13h5l1 2h4l1-2h5"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
-  <symbol id="i-check" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 8.5l3 3 7-7"/></symbol>
 </svg>
 
 <!-- S0 NAV -->
@@ -822,13 +837,13 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   <div class="wrap hero-grid">
     <div class="hero-top">
       <p class="kicker">Practical AI for owner-run businesses<span class="kick-sep"> · </span><span class="kick-place">Lehigh Valley, PA</span></p>
-      <h1 id="h1"><span>Every quote, call,</span> <span>and invoice.</span> <span>Followed up.</span></h1>
-      <p class="hero-sub">I'm Sam Gorla. I show you where your business is leaking money, then build the fix with your team. I do the work myself.</p>
+      <h1 id="h1"><span>Your business is leaking money.</span> <span>I'll show you where,</span> <span>and what it's worth.</span></h1>
+      <p class="hero-sub">I'm Sam Gorla. Start with a free 30-minute look at one or two workflows. I'll name what's stuck and size it with your numbers. I do the work myself.</p>
     </div>
 
     <div class="hero-screen">
       <figure class="screen example" id="screen" aria-labelledby="screen-cap">
-        <div class="tabs" role="tablist" aria-label="Example morning screen by type of business">
+        <div class="tabs" role="tablist" aria-label="Example call notes by type of business">
           <button class="tab" type="button" role="tab" id="tab-trades" aria-controls="panel-trades" aria-selected="true" aria-label="Trades &amp; contractors">Trades<span class="t-x"> &amp; contractors</span></button>
           <button class="tab" type="button" role="tab" id="tab-pro" aria-controls="panel-pro" aria-selected="false" tabindex="-1" aria-label="Professional services"><span class="t-x">Professional services</span><span class="t-s">Pro services</span></button>
           <button class="tab" type="button" role="tab" id="tab-health" aria-controls="panel-health" aria-selected="false" tabindex="-1" aria-label="Healthcare practices">Healthcare<span class="t-x"> practices</span></button>
@@ -836,103 +851,110 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 
         <div class="panel" id="panel-trades" data-tab="tab-trades">
           <p class="panel-name mono">Trades &amp; contractors</p>
-          <div class="scr-head"><span><span class="day-long">Tuesday</span> · 7:12 AM · Your morning</span><span class="open-count" aria-hidden="true" data-open>0 open</span></div>
+          <div class="scr-head"><span><span class="day-long">Free 30-minute call · 1 or 2 workflows</span><span class="day-short">Sized with your numbers</span></span><span class="open-count" aria-hidden="true" data-open>3 named</span></div>
           <ul class="rows">
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-doc"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Quote gone quiet · </span>Kitchen addition, Emmaus</p>
-                <p class="row-meta"><span class="problem" data-ticks="Sent 2 days|Sent 5 days|Quiet 9 days">Quiet 9 days</span><span class="detail">Quote $18,400</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Quiet 9 days</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Check-in text sent to Dana · 7:13 AM</p>
-              </div>
-            </li>
-            <li class="row">
-              <span class="ico" aria-hidden="true"><svg><use href="#i-phone"/></svg></span>
-              <div>
-                <p class="row-title"><span class="cat">Missed call · </span>(610) 555-0142</p>
-                <p class="row-meta"><span class="problem">Missed 6:48 AM</span><span class="detail">Crew on site, no voicemail</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Missed</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Texted back in 1 min<span class="q">: “Sorry I missed you. How can I help?”</span></p>
+                <p class="row-title"><span class="cat">Getting customers · </span>Quote gone quiet</p>
+                <p class="row-meta"><span class="problem" data-ticks="Sent 2 days|Sent 5 days|Quiet 9 days">Quiet 9 days</span><span class="detail">Nobody's chasing it</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Quiet 9 days</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: quote follow-up</span> <span class="sz">· sized with your numbers</span></p>
               </div>
             </li>
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-cal"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Schedule slip · </span>Deck job moved to Thursday</p>
-                <p class="row-meta"><span class="problem">Customer not told</span><span class="detail">Changed last night</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Not confirmed</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> New day sent to confirm · 7:14 AM</p>
-              </div>
-            </li>
-          </ul>
-          <div class="scr-foot"><p class="summary">3 followed up before 7:15 AM.<span class="s2"> You didn't touch any of them.</span></p></div>
-        </div>
-
-        <div class="panel" id="panel-pro" data-tab="tab-pro">
-          <p class="panel-name mono">Professional services</p>
-          <div class="scr-head"><span><span class="day-long">Tuesday</span> · 7:12 AM · Your morning</span><span class="open-count" aria-hidden="true" data-open>0 open</span></div>
-          <ul class="rows">
-            <li class="row">
-              <span class="ico" aria-hidden="true"><svg><use href="#i-inbox"/></svg></span>
-              <div>
-                <p class="row-title"><span class="cat">New client intake · </span>Website form</p>
-                <p class="row-meta"><span class="problem">In the inbox 2 days</span><span class="detail">No reply yet</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Waiting</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Intake form and a short welcome sent · 7:12 AM</p>
-              </div>
-            </li>
-            <li class="row">
-              <span class="ico" aria-hidden="true"><svg><use href="#i-doc"/></svg></span>
-              <div>
-                <p class="row-title"><span class="cat">Engagement letter · </span>Dana</p>
-                <p class="row-meta"><span class="problem" data-ticks="Sent 2 days|Sent 5 days|Quiet 9 days">Quiet 9 days</span><span class="detail">Waiting on the partner's follow-up</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Quiet 9 days</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Check-in sent in the partner's words · 7:13 AM</p>
+                <p class="row-title"><span class="cat">Serving customers · </span>Pricing lives in one head</p>
+                <p class="row-meta"><span class="problem">8 hours a bid</span><span class="detail">53 bids a year</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">One person</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: estimating</span> <span class="sz sz-key">· real audit: $32,000/yr</span></p>
               </div>
             </li>
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Client reminder · </span>Documents due Friday</p>
-                <p class="row-meta"><span class="problem">No reminder sent</span><span class="detail">Due this week</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Due Friday</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Reminder and upload link sent · 7:14 AM</p>
+                <p class="row-title"><span class="cat">Getting paid · </span>Invoices sitting unpaid</p>
+                <p class="row-meta"><span class="problem">Nobody chasing</span><span class="detail">Work done, not paid</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Unpaid</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: invoice chasing</span> <span class="sz">· late cash, not a yearly loss</span></p>
               </div>
             </li>
           </ul>
-          <div class="scr-foot"><p class="summary">3 followed up before 7:15 AM.<span class="s2"> You didn't touch any of them.</span></p></div>
         </div>
 
-        <div class="panel" id="panel-health" data-tab="tab-health">
-          <p class="panel-name mono">Healthcare practices</p>
-          <div class="scr-head"><span><span class="day-long">Tuesday</span> · 7:12 AM · Your morning</span><span class="open-count" aria-hidden="true" data-open>0 open</span></div>
+        <div class="panel" id="panel-pro" data-tab="tab-pro">
+          <p class="panel-name mono">Professional services</p>
+          <div class="scr-head"><span><span class="day-long">Free 30-minute call · 1 or 2 workflows</span><span class="day-short">Sized with your numbers</span></span><span class="open-count" aria-hidden="true" data-open>3 named</span></div>
           <ul class="rows">
             <li class="row">
-              <span class="ico" aria-hidden="true"><svg><use href="#i-phone"/></svg></span>
+              <span class="ico" aria-hidden="true"><svg><use href="#i-doc"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Missed call · </span>(610) 555-0142</p>
-                <p class="row-meta"><span class="problem">Missed 6:48 AM</span><span class="detail">Before the front desk opens</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Missed</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Texted back in 1 min with a link to book</p>
+                <p class="row-title"><span class="cat">Getting customers · </span>Engagement letter gone quiet</p>
+                <p class="row-meta"><span class="problem" data-ticks="Sent 2 days|Sent 5 days|Quiet 9 days">Quiet 9 days</span><span class="detail">Waiting on the partner</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Quiet 9 days</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: proposal follow-up</span> <span class="sz">· sized with your numbers</span></p>
               </div>
             </li>
             <li class="row">
-              <span class="ico" aria-hidden="true"><svg><use href="#i-cal"/></svg></span>
+              <span class="ico" aria-hidden="true"><svg><use href="#i-inbox"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">No-show · </span>Yesterday's last appointment</p>
-                <p class="row-meta"><span class="problem">No follow-up yet</span><span class="detail">Not rebooked</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">No-show</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Text offering a new time sent · 7:13 AM</p>
+                <p class="row-title"><span class="cat">Serving customers · </span>Work waits on one partner</p>
+                <p class="row-meta"><span class="problem">In one partner's head</span><span class="detail">Stalls the week they're out</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">One person</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: owner-only work</span> <span class="sz">· sized with your numbers</span></p>
               </div>
             </li>
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-doc"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">New-patient paperwork · </span>Thursday visit</p>
-                <p class="row-meta"><span class="problem">Paperwork not started</span><span class="detail">Front desk would retype it</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Not started</span><span class="chip chip-done"><svg><use href="#i-check"/></svg>Followed up</span></span></p>
-                <p class="row-action"><span class="arr" aria-hidden="true">→</span> <span class="sr-only">Followed up:</span> Paperwork link sent ahead of the visit · 7:14 AM</p>
+                <p class="row-title"><span class="cat">Back office · </span>Client details re-keyed</p>
+                <p class="row-meta"><span class="problem">Typed in twice</span><span class="detail">Every new client</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">By hand</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: re-keying</span> <span class="sz">· sized with your numbers</span></p>
               </div>
             </li>
           </ul>
-          <div class="scr-foot"><p class="summary">3 followed up before 7:15 AM.<span class="s2"> You didn't touch any of them.</span></p></div>
+        </div>
+
+        <div class="panel" id="panel-health" data-tab="tab-health">
+          <p class="panel-name mono">Healthcare practices</p>
+          <div class="scr-head"><span><span class="day-long">Free 30-minute call · 1 or 2 workflows</span><span class="day-short">Sized with your numbers</span></span><span class="open-count" aria-hidden="true" data-open>3 named</span></div>
+          <ul class="rows">
+            <li class="row">
+              <span class="ico" aria-hidden="true"><svg><use href="#i-cal"/></svg></span>
+              <div>
+                <p class="row-title"><span class="cat">Scheduling · </span>Booking request, Friday 7 PM</p>
+                <p class="row-meta"><span class="problem">Front desk closed</span><span class="detail">Waits for Monday</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">After hours</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: after-hours booking</span> <span class="sz">· sized with your numbers</span></p>
+              </div>
+            </li>
+            <li class="row">
+              <span class="ico" aria-hidden="true"><svg><use href="#i-doc"/></svg></span>
+              <div>
+                <p class="row-title"><span class="cat">Paperwork · </span>New-patient forms re-keyed</p>
+                <p class="row-meta"><span class="problem">Typed in twice</span><span class="detail">Every new patient</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">By hand</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: intake paperwork</span> <span class="sz">· sized with your numbers</span></p>
+              </div>
+            </li>
+            <li class="row">
+              <span class="ico" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
+              <div>
+                <p class="row-title"><span class="cat">Billing · </span>Billing follow-up nobody owns</p>
+                <p class="row-meta"><span class="problem">Nobody chasing</span><span class="detail">Balances sitting</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Unpaid</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: billing follow-up</span> <span class="sz">· late cash, not a yearly loss</span></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="scr-foot" id="scr-foot">
+          <p class="summary">3 leaks named on one 30-minute call.</p>
+          <p class="paths-h mono">Then one of three paths</p>
+          <ol class="paths">
+            <li><b>Rebuild the workflow</b><span>Workflow Rebuild, quoted after the call</span></li>
+            <li><b>The deeper AI &amp; Efficiency Audit</b><span>$1,000</span></li>
+            <li><b>A straight answer</b><span>if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</span></li>
+          </ol>
         </div>
       </figure>
 
       <div class="screen-bar">
-        <p class="caption" id="screen-cap">Example screen. Names and amounts are illustrative.</p>
+        <p class="caption" id="screen-cap">Example call notes. The only dollar figure is from a real audit.</p>
         <button class="play-btn" type="button" id="play-btn" hidden aria-controls="screen">Pause</button>
       <details class="more how">
         <summary>How this works</summary>
@@ -940,28 +962,28 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <div>
             <p class="how-h">Trades &amp; contractors</p>
             <ul>
-              <li><b>Quiet quote:</b> A check-in goes out on a schedule you set. Anything about price or a discount comes to you first. <a class="text-link" href="/tools/quote-rescue">Try one quote free →</a></li>
-              <li><b>Missed call:</b> A text goes back within a minute so they don't call the next company.</li>
-              <li><b>Schedule slip:</b> When a job moves, the customer gets the new day to confirm, so the crew and the customer are on the same page.</li>
+              <li><b>Quote gone quiet:</b> Named on the call, then sized with how many quotes go quiet and what a job is worth to you. Got one sitting there now? <a class="text-link" href="/tools/quote-rescue">Draft one free with Quote Rescue →</a></li>
+              <li><b>Pricing in one head:</b> From a real audit at a specialty contractor: eight hours a bid, fifty-three bids a year, and the pricing logic held by one person.</li>
+              <li><b>Unpaid invoices:</b> Late cash is real, but it isn't lost, so it gets named and not counted as a yearly loss.</li>
             </ul>
           </div>
           <div>
             <p class="how-h">Professional services</p>
             <ul>
-              <li><b>Intake:</b> A new inquiry gets your intake form and a short welcome right away, instead of waiting in the inbox.</li>
-              <li><b>Partner follow-up:</b> The check-in goes out in the partner's words, on a schedule they set. Anything about fees or scope goes to them first.</li>
-              <li><b>Client reminders:</b> A friendly reminder with an upload link. You choose the wording once.</li>
+              <li><b>Engagement letter gone quiet:</b> Named, then sized with how many go quiet and what a client is worth to you.</li>
+              <li><b>One partner's head:</b> Work only one person can do gets named. If there's no honest figure, it stays named and unpriced.</li>
+              <li><b>Re-keying:</b> Sized as hours, times how often, times who does it.</li>
             </ul>
           </div>
           <div>
             <p class="how-h">Healthcare practices</p>
             <ul>
-              <li><b>Missed call:</b> A text goes back within a minute with a way to book.</li>
-              <li><b>No-show:</b> A short text offers a new time. Scheduling only, never clinical details.</li>
-              <li><b>New-patient paperwork:</b> The forms go out before the visit, so the front desk isn't retyping them.</li>
+              <li><b>After-hours booking:</b> Scheduling only.</li>
+              <li><b>New-patient paperwork:</b> The forms, not the chart. Never clinical work.</li>
+              <li><b>Billing follow-up:</b> Named as late cash, not counted as a yearly loss.</li>
             </ul>
           </div>
-          <p>Example screen. These are the kinds of follow-ups I build. Your version is built around your tools and your rules.</p>
+          <p>Each figure uses your numbers, rounded down. If a number is missing, I don't guess. A build is a Workflow Rebuild, quoted after the call, and sometimes the answer is a tool you already pay for.</p>
         </div>
       </details>
       </div>
@@ -1166,13 +1188,13 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <li><span class="kicker">6 of 24 leaks</span><p>“Nothing follows up unless a person remembers to.”</p></li>
           <li><span class="kicker">5 of 24 leaks</span><p>“The owner is still doing work nobody needs the owner for.”</p></li>
         </ul>
-        <p style="margin-top:1rem">Eleven of 24 leaks trace to these two. <a class="text-link" href="#h1">That's what the morning screen is for →</a></p>
+        <p style="margin-top:1rem">Eleven of 24 leaks trace to these two. <a class="text-link" href="#h1">Bring one of them to the free 30-minute call →</a></p>
         <div class="np-card">
           <p class="kicker">Named, not priced</p>
           <h3>Eight leaks I named but didn't price. Guessing would make the total look bigger, so I didn't.</h3>
           <p>One was about a hundred thousand dollars in old unpaid invoices. Another was a subcontractor list only one trade deep.</p>
         </div>
-        <p class="typical">Typical audit: $30,000 to $40,000 a year. The guarantee sits at $10,000.</p>
+        <p class="typical">The guarantee sits at $10,000. That's the number I'll stake the fee on, not the number I expect.</p>
         <details class="more"><summary>Why some leaks aren't priced</summary><div class="more-body"><p>Late cash isn't lost cash, and knowledge stuck in one person's head doesn't have an honest yearly figure. I name it so you can act on it. I don't add it to the total.</p><p>If I can't defend a number in front of your accountant, you get the leak without the number.</p></div></details>
       </div>
     </div>
@@ -1215,14 +1237,14 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       </article>
     </div>
     <h3 class="demos-h">More demos and free tools</h3>
+    <p class="demos-note">Demos are examples of past or possible builds, not packages. Any build is a Workflow Rebuild, quoted after the call.</p>
     <ul class="demos">
-      <li><a href="/how-it-works#chief-of-staff"><b>AI chief of staff</b><span>Watch an assistant run an owner's day on the clock.</span></a></li>
-      <li><a href="/tools/knowledge-demo"><b>Business knowledge base</b><span>What your best people know, kept in one place.</span></a></li>
-      <li><a href="/tools/servlead-knowledge-full"><b>Knowledge base, full walkthrough</b><span>Ask a question, get the answer with its source.</span></a></li>
+      <li><a href="/how-it-works#chief-of-staff"><b>AI chief of staff</b><span>Demo: an assistant that keeps an owner on top of the day.</span></a></li>
+      <li><a href="/tools/knowledge-demo"><b>Business knowledge base</b><span>Demo: what your best people know, kept in one place.</span></a></li>
+      <li><a href="/tools/servlead-knowledge-full"><b>Knowledge base, full walkthrough</b><span>Demo: ask a question, get the answer with its source.</span></a></li>
       <li><a href="/tools/audit-explainer"><b>The $1,000 audit, explained</b><span>A short animated walk through the hour.</span></a></li>
-      <li><a href="/tools/live-audit"><b>Live audit calculator</b><span>The calculator I use during the paid audit.</span></a></li>
       <li><a href="/tools/quote-cost-calculator"><b>Quote follow-up calculator</b><span>What a year of quiet quotes adds up to.</span></a></li>
-      <li><a href="/how-it-works#builds"><b>Example builds</b><span>What a Workflow Rebuild looks like.</span></a></li>
+      <li><a href="/how-it-works#builds"><b>Example builds</b><span>Examples of past builds. Not packages.</span></a></li>
     </ul>
   </div>
 </section>
@@ -1275,24 +1297,24 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <p class="step-tag" aria-hidden="true">Step<b>04</b></p>
           <div>
             <h3>Build the fix, or don't <span class="price">Quoted after the call</span></h3>
-            <p>A Workflow Rebuild: one workflow rebuilt end to end, at a fixed price. Or a straight answer.</p>
+            <p>A Workflow Rebuild: one workflow rebuilt end to end, at a fixed price quoted after the call. Only when the call shows it's worth it. Or a straight answer.</p>
             <ul class="get"><li>Runs in accounts you own</li><li>Your team trained, with a one-page sheet for when something breaks</li></ul>
             <details class="more"><summary>See example builds</summary><div class="more-body">
-              <p>A Workflow Rebuild is one repeating job, rebuilt from start to finish, with AI only where it helps. For example, a quote follow-up system, a company knowledge base, or an AI assistant that keeps the owner on top of the day.</p>
+              <p>A Workflow Rebuild is one repeating job, rebuilt from start to finish, with AI only where it helps. Each one is built for that business, not taken off a shelf. Past examples include a quote follow-up system, a company knowledge base, and an AI assistant that keeps the owner on top of the day.</p>
               <p><a class="text-link" href="/how-it-works#builds">See example builds →</a> · <a class="text-link" href="/how-it-works">How a build works →</a></p>
             </div></details>
           </div>
         </li>
       </ol>
       <figure class="terminal">
-        <div class="t-head"><span>Tracked from day one</span><span aria-hidden="true">●</span></div>
+        <div class="t-head"><span>If there's a rebuild · baseline first</span><span aria-hidden="true">●</span></div>
         <dl>
-          <dt>Quotes followed up</dt><dd>your number</dd>
-          <dt>Calls returned</dt><dd>your number</dd>
-          <dt>Invoices past 30 days</dt><dd>your number</dd>
-          <dt>Hours back per week</dt><dd>your number</dd>
+          <dt>Hours on the workflow each week</dt><dd>your number</dd>
+          <dt>How often it runs</dt><dd>your number</dd>
+          <dt>Days from start to done</dt><dd>your number</dd>
+          <dt>Hours back per week, after</dt><dd>your number</dd>
         </dl>
-        <figcaption>Measured on your numbers, not my slides.</figcaption>
+        <figcaption>Measured on your numbers, against your week-one baseline. Not my slides.</figcaption>
       </figure>
     </div>
   </div>
@@ -1304,7 +1326,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     <div class="g-card">
       <h2 id="g-h" class="kicker" style="font-family:var(--font-mono);font-size:0.75rem;margin:0">The guarantee</h2>
       <p class="big-g">If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
-      <span class="mono">Typical audit: $30,000–$40,000 a year</span>
+      <span class="mono">Settled out loud at the end of the hour</span>
       <details class="more"><summary>How the guarantee works</summary><div class="more-body">
         <ol>
           <li>It's settled out loud at the end of the hour, not weeks later.</li>
@@ -1312,7 +1334,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <li>It covers what I show you on the call, not money you later recover. That part isn't mine to promise.</li>
           <li>No "if you're not satisfied" clause. A clear number is fairer to both of us.</li>
         </ol>
-        <p>The $10,000 bar sits well under what I typically show. It's the number I'll stake the fee on, not the number I expect.</p>
+        <p>The $10,000 bar is the number I'll stake the fee on, not the number I expect.</p>
       </div></details>
     </div>
   </div>
@@ -1335,12 +1357,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       </article>
       <article class="band">
         <p class="kicker">Technical</p>
-        <h3>How is it built?</h3>
+        <h3>If there's a build, how is it built?</h3>
         <ul>
           <li>Tools you already pay for first. New ones only when they earn it.</li>
           <li>Runs in accounts you own, in your business's name.</li>
           <li>Prices, totals and dates come from your records. AI only reads and drafts.</li>
-          <li>After handoff, your team runs it. You get a written page for each automation and a copy of the build in your own files.</li>
+          <li>After handoff, your team runs it. You get a written page for what was built and a copy of it in your own files.</li>
         </ul>
       </article>
       <article class="band">
@@ -1446,7 +1468,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       <li class="faq-item">
         <h3>What happens after the free 30 minutes?</h3>
         <p class="one"><strong>A clear next step, and it isn't always the AI &amp; Efficiency Audit.</strong></p>
-        <details class="more"><summary>More on next steps</summary><div class="more-body"><p>Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. The AI &amp; Efficiency Audit ($1,000): when you want me to show you the bigger picture. A straight answer: sometimes you don't need me. If it's simple, I'll tell you how to fix it yourself, or point you to someone who fits better.</p></div></details>
+        <details class="more"><summary>More on next steps</summary><div class="more-body"><p>Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. The AI &amp; Efficiency Audit ($1,000): when you want me to show you the bigger picture. Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p></div></details>
       </li>
       <li class="faq-item">
         <h3>What does it cost?</h3>
@@ -1481,7 +1503,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       <li class="faq-item" id="faq-health">
         <h3>Do you touch patient records or clinical work?</h3>
         <p class="one"><strong>No clinical work. Patient records only with the right safeguards in place.</strong></p>
-        <details class="more"><summary>More on healthcare practices</summary><div class="more-body"><p>For dental, PT, chiropractic, and counseling practices, I work on the front office: missed calls, scheduling and no-show follow-up, the paperwork when someone new comes in, and billing follow-up. Nothing I build gives medical advice or makes care decisions.</p></div></details>
+        <details class="more"><summary>More on healthcare practices</summary><div class="more-body"><p>For dental, PT, chiropractic, and counseling practices, I only look at the front office: scheduling, the paperwork when someone new comes in, and billing follow-up. Nothing I build gives medical advice or makes care decisions.</p></div></details>
       </li>
     </ul>
   </div>
@@ -1539,7 +1561,6 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <li><a href="/tools/knowledge-demo">Knowledge base demo</a></li>
           <li><a href="/tools/servlead-knowledge-full">Knowledge base, full walkthrough</a></li>
           <li><a href="/tools/audit-explainer">The audit, explained</a></li>
-          <li><a href="/tools/live-audit">Live audit calculator</a></li>
         </ul>
       </div>
       <div>
@@ -1592,6 +1613,8 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   var tabs = Array.prototype.slice.call(screen.querySelectorAll('[role="tab"]'));
   var panels = Array.prototype.slice.call(screen.querySelectorAll('.panel'));
   var playBtn = document.getElementById('play-btn');
+  var foot = document.getElementById('scr-foot');
+  var footSteps = Array.prototype.slice.call(foot.querySelectorAll('.summary, .paths-h, .paths li'));
   panels.forEach(function (p) {
     p.setAttribute('role', 'tabpanel');
     p.setAttribute('aria-labelledby', p.getAttribute('data-tab'));
@@ -1644,9 +1667,8 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   function build(panel) {
     var rows = Array.prototype.slice.call(panel.querySelectorAll('.row'));
     var count = panel.querySelector('[data-open]');
-    var summary = panel.querySelector('.summary');
     var ev = [];
-    var open = rows.length;
+    var named = 0;
     rows.forEach(function (row, i) {
       var s = 0.4 + i * 2.4;
       var prob = row.querySelector('.problem');
@@ -1658,24 +1680,32 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         ev.push({ at: s + k * 0.6, fn: function () { prob.textContent = txt; if (ticks) chip.textContent = txt; } });
       });
       ev.push({ at: s + 1.6, fn: function () { row.classList.add('acted'); } });
-      ev.push({ at: s + 2.0, fn: function () { row.classList.add('done'); open -= 1; count.textContent = open + ' open'; } });
+      ev.push({ at: s + 2.0, fn: function () { row.classList.add('done'); named += 1; count.textContent = named + ' named'; } });
     });
-    ev.push({ at: 0.4 + rows.length * 2.4, fn: function () { summary.classList.add('on'); } });
+    // The story ends on the summary, then the three paths, one after another.
+    var end = 0.4 + rows.length * 2.4;
+    footSteps.forEach(function (el, k) {
+      ev.push({ at: end + (k === 0 ? 0 : 0.4 + k * 0.45), fn: function () { el.classList.add('on'); } });
+    });
     return {
       panel: panel, events: ev, i: 0, t: 0, last: 0, paused: false,
       reset: function () {
         panel.classList.add('no-t');
         rows.forEach(function (r, i) { r.className = 'row' + (i === 0 ? '' : ' wait'); var p = r.querySelector('.problem'); var t = p.getAttribute('data-ticks'); if (t) { p.textContent = t.split('|')[0]; r.querySelector('.chip-problem').textContent = p.textContent; } });
-        count.textContent = rows.length + ' open';
-        summary.classList.remove('on');
+        count.textContent = '0 named';
+        foot.classList.add('no-t');
+        footSteps.forEach(function (el) { el.classList.remove('on'); });
+        foot.classList.add('foot-wait');
         panel.classList.add('playing');
         void panel.offsetHeight;
         panel.classList.remove('no-t');
+        foot.classList.remove('no-t');
       },
       finish: function () {
         panel.classList.remove('playing');
         rows.forEach(function (r) { r.className = 'row'; });
-        count.textContent = '0 open';
+        count.textContent = rows.length + ' named';
+        foot.classList.remove('foot-wait');
       }
     };
   }
