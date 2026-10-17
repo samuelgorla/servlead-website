@@ -1,4 +1,4 @@
-# Homepage number sources (index.html, Round 2)
+# Homepage number sources (index.html, Round 2, CFA rows updated in Round 2b)
 
 Every number on the homepage, where it shows up, and its source. Notion links are internal client or ops files: they're linked on the page with a plain label like "(client file)". Nothing on the page was kept without a source. The "Cut" table lists what was removed.
 
@@ -32,11 +32,15 @@ Every number on the homepage, where it shows up, and its source. Notion links ar
 | About two months | Kahler layer 2 | Budd's own words in the raw film ("Sam Gorla's been with me for about two months now") |
 | Nine budget templates, five live jobs | Kahler layer 2 | Working Session, Thu Oct 8, 2026 https://app.notion.com/p/3f377a727f268113ac4acf4d14a94fe2 ("nine budget templates (Budd built these), five jobs set up") |
 | 38 seconds | Kahler film caption, aria-labels, JSON-LD PT38S | The video file itself (37.9 s, ffprobe) |
-| CFA ~1.7% → ~6% | CFA header, rates figure, After | 10/13 Results Walkthrough https://app.notion.com/p/3f877a727f268100b4e9e1330b5ca201 and Phase 1 Recap https://app.notion.com/p/3f877a727f2681b88bccc640904b7a25 (verified by Zara). Cited in CFA layer 2 |
-| 4 of about 70 people | CFA rates note, After | Same two pages |
-| About 105 verified contacts | CFA layer 2 | Same two pages (verified as is) |
-| Two high schools ordering | CFA After | Same two pages (verified as is) |
-| "Catering nearly doubled from last year" | CFA After | The store's own statement, attributed ("The store says…"); not claimed as our own figure |
+| CFA ~1.7% → ~6% | CFA header, layer 2 first bullet | 10/13 Results Walkthrough https://app.notion.com/p/3f877a727f268100b4e9e1330b5ca201 and Phase 1 Recap (client file) https://app.notion.com/p/3f877a727f2681b88bccc640904b7a25 (verified by Zara). Cited in CFA layer 2 |
+| 4 of about 70 people | CFA header caption, layer 2 first bullet | Same two pages |
+| About 105 verified contacts | CFA layer 2 only | Same two pages (verified as is) |
+| One high school orders on a regular, recurring schedule | CFA "Land and expand" figure, After, layer 2 | CFA Whitehall CRM notes (client file) https://app.notion.com/p/37477a727f268079a95cc25a87591012; Phase 1 Recap (client file) https://app.notion.com/p/3f877a727f2681b88bccc640904b7a25. From Sam's 10/14 sit with the store's team lead and their 10/16 text. School not named |
+| Second high school: committee ordered 150 resale sandwiches in one order, plus a personal order | CFA figure ("150 sandwiches in one order"), layer 2 | Same CRM notes and Phase 1 Recap (10/14 sit). School not named |
+| Law firm contact passed it to the staff-meetings lead; sample tray being scheduled, catering to follow | CFA figure ("a law firm"), layer 2 | Same CRM notes and Phase 1 Recap (10/14 sit). Firm not named |
+| Several corporate offices have engaged (no count) | CFA figure ("offices"), layer 2 | Same CRM notes and Phase 1 Recap. Written as "several" on purpose |
+| The store's team lead runs the outreach; another reply on 10/16 | CFA After, layer 2 | Same CRM notes and Phase 1 Recap (10/16 text). No staff first name on the page |
+| "The store says catering roughly doubled from last year, driven by many sources." | CFA After | The store's own statement, attributed word for word (10/14 sit, CRM notes). Not claimed as caused by the outreach |
 
 ## Audit figures (Leak Ledger)
 
@@ -75,3 +79,6 @@ Every number on the homepage, where it shows up, and its source. Notion links ar
 | "6 of 24 leaks" / "5 of 24 leaks" split | Old S4 owner's-voice cards | The canonical page only gives the combined 11 of 24. Cut the split, kept the 11 |
 | BLS $46.89/hr, McKinsey "a fifth of the week" | Not on the homepage | Nothing to cite or cut on this page |
 | Any "credit" | Not on the homepage or anywhere in the repo | Nothing to remove (`rg -i credit` returns nothing) |
+| "Two high schools ordering" | CFA After | Replaced in Round 2b by the specific facts: one school on a recurring schedule, one committee order of 150 |
+| "Catering nearly doubled from last year" | CFA After | Replaced in Round 2b by the store's exact line, "roughly doubled… driven by many sources", so it doesn't read as caused by the outreach |
+| The 1.7% / 6% bar figure | CFA card, left column | Replaced in Round 2b by the "Land and expand" figure. The rate stays in the header |

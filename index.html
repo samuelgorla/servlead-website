@@ -741,15 +741,15 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .who-more { margin-top: 1rem; color: var(--slate-soft); font-size: 0.95rem; }
   .trust-h { margin-top: 3rem; scroll-margin-top: calc(var(--header-h) + 1rem); }
   .case .pull { margin-top: 0; }
-  .rates { background: var(--navy); color: var(--white); border-radius: 12px; padding: 1.4rem; }
-  .rates .kicker { color: var(--slate-300); }
-  .rates ul { list-style: none; margin-top: 1rem; display: grid; gap: 1rem; }
-  .rates li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.35rem 0.75rem; font-size: 0.9rem; color: var(--slate-200); }
-  .rates i { grid-column: 1 / -1; grid-row: 2; height: 12px; border-radius: 3px; background: var(--slate-200); }
-  .rates i.r-before { width: 28%; background: transparent; border: 1.5px solid var(--gold); }
-  .rates i.r-after { width: 100%; }
-  .rates b { font-family: var(--font-mono); font-weight: 500; color: var(--white); }
-  .rates-note { margin-top: 1rem; font-size: 0.85rem; color: var(--slate-300); }
+  .spread { background: var(--navy); color: var(--white); border-radius: 12px; padding: 1.4rem; }
+  .spread .kicker { color: var(--slate-300); }
+  .spread ol { list-style: none; margin-top: 1rem; display: grid; gap: 0.9rem; }
+  .spread li { position: relative; padding-left: 1.6rem; font-size: 0.85rem; line-height: 1.4; color: var(--slate-300); }
+  .spread li::before { content: ""; position: absolute; z-index: 1; left: 0.25rem; top: 0.3rem; width: 8px; height: 8px; border-radius: 50%; background: var(--slate-200); }
+  .spread li:not(:last-child)::after { content: ""; position: absolute; left: calc(0.25rem + 3px); top: 0.5rem; bottom: -1.2rem; border-left: 2px solid var(--slate-soft); }
+  .spread li:nth-child(2)::before { left: 0.15rem; top: 0.2rem; width: 12px; height: 12px; }
+  .spread li:last-child::before { left: 0; top: 0.1rem; width: 16px; height: 16px; background: var(--gold); box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12); }
+  .spread b { display: block; font-size: 0.95rem; font-weight: 600; color: var(--white); }
   /* OFFER prices */
   .price { display: inline-block; margin-left: 0.4rem; padding: 0.1rem 0.5rem; border: 1px solid var(--navy); border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; vertical-align: 0.2em; white-space: nowrap; }
   /* TRUST BANDS */
@@ -780,8 +780,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .pull { font-size: 1.15rem; }
     .ba { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; margin-top: 0.85rem; }
     .ba > div { padding: 0.65rem 0.85rem; }
-    .rates { padding: 1rem 1.1rem; }
-    .rates ul { margin-top: 0.6rem; gap: 0.6rem; }
+    .spread { padding: 1rem 1.1rem; }
+    .spread ol { margin-top: 0.6rem; gap: 0.6rem; }
+    .spread li:not(:last-child)::after { bottom: -0.9rem; }
     .demos { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
     .demos a { padding: 0.6rem 0.9rem; }
     .demos span { font-size: 0.85rem; }
@@ -1078,17 +1079,17 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <p class="case-type">Restaurant · catering outreach</p>
         </div>
         <!-- NEEDS SAM CONFIRM: CFA figures from draft case study -->
-        <p class="case-num">~1.7% → ~6%<small>Share of people emailed who wrote back.</small></p>
+        <p class="case-num">~1.7% → ~6%<small>Share of people emailed who wrote back (4 of about 70).</small></p>
       </header>
       <div class="case-body">
         <!-- NEEDS SAM CONFIRM: CFA figures from draft case study -->
-        <figure class="rates">
-          <figcaption class="kicker">Catering outreach replies</figcaption>
-          <ul>
-            <li><span>First round</span><i class="r-before" aria-hidden="true"></i><b>about 1.7%</b></li>
-            <li><span>Overall, after the changes</span><i class="r-after" aria-hidden="true"></i><b>about 6%</b></li>
-          </ul>
-          <p class="rates-note">4 of about 70 people. Small numbers, so on track, not proven.</p>
+        <figure class="spread">
+          <figcaption class="kicker">Land and expand</figcaption>
+          <ol>
+            <li><b>A few replies</b><span>Schools, a law firm, offices</span></li>
+            <li><b>First orders</b><span>Sample trays, then 150 sandwiches in one order</span></li>
+            <li><b>Repeat and spread</b><span>A school on a recurring schedule, and contacts passing it on</span></li>
+          </ol>
         </figure>
         <div>
           <blockquote class="pull"><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient…”</p></blockquote>
@@ -1096,12 +1097,20 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <!-- NEEDS SAM CONFIRM: CFA figures from draft case study -->
           <dl class="ba">
             <div><dt>Before</dt><dd>Catering orders came in on their own. Nobody reached out to schools or offices, and nobody followed up.</dd></div>
-            <div><dt>After</dt><dd>Replies went from about 1.7% in the first round to about 6% overall (4 of about 70 people). Two high schools are ordering, and the team runs it on its own. The store says catering nearly doubled from last year.</dd></div>
+            <div><dt>After</dt><dd>A few replies turned into orders that repeat and spread. One high school now orders on a recurring schedule, and the store's team lead runs the outreach. The store says catering roughly doubled from last year, driven by many sources.</dd></div>
           </dl>
-          <details class="more"><summary>What I did, the full review, and the sources</summary><div class="more-body">
-            <p>Working next to the store's team, I built a list of about 105 verified contacts at colleges, high schools, medical practices and offices, and wrote the emails. Then I made them shorter, made the first ask a free sample tray, and added one follow-up. A person read every email before it went out from the team's own mailbox.</p>
+          <details class="more"><summary>How it spread, what I did, and the sources</summary><div class="more-body">
+            <ul>
+              <li>Replies went from about 1.7% in the first round to about 6% overall (4 of about 70 people).</li>
+              <li>One local high school now orders on a regular, recurring schedule.</li>
+              <li>At a second high school, the first contact took it to a committee, which ordered 150 resale sandwiches in one order. A personal order followed.</li>
+              <li>A law firm contact passed it to the person who runs staff meetings. A sample tray is being scheduled, with catering to follow.</li>
+              <li>Several corporate offices have engaged.</li>
+              <li>The store's team lead now runs the outreach and got another reply on 10/16.</li>
+            </ul>
+            <p>Working next to the store's team, I built a list of about 105 verified contacts and wrote the emails. Then I made them shorter, made the first ask a free sample tray, and added one follow-up. A person read every email before it went out from the team's own mailbox.</p>
             <p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient… Not only has it saved us valuable time, but it has also helped increase our sales.” Alyssa Schlener</p>
-            <p class="src">Sources: <a href="https://app.notion.com/p/3f877a727f268100b4e9e1330b5ca201">10/13 Results Walkthrough (client file)</a> · <a href="https://app.notion.com/p/3f877a727f2681b88bccc640904b7a25">Phase 1 Recap (client file)</a>. The catering figure is the store's own.</p>
+            <p class="src">Sources: <a href="https://app.notion.com/p/3f877a727f268100b4e9e1330b5ca201">10/13 Results Walkthrough (client file)</a> for the reply rate · <a href="https://app.notion.com/p/37477a727f268079a95cc25a87591012">CFA Whitehall CRM notes (client file)</a> and <a href="https://app.notion.com/p/3f877a727f2681b88bccc640904b7a25">Phase 1 Recap (client file)</a> for the orders and the outreach. The catering figure is the store's own.</p>
           </div></details>
         </div>
       </div>
