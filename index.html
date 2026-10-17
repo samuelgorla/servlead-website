@@ -28,10 +28,9 @@
 <meta name="twitter:description" content="Sam Gorla shows owner-run contractors, CPA and law firms, and practices where money is leaking and what it's worth. Start with a free 30-minute call.">
 <meta name="twitter:image" content="https://servleadsolutions.com/images/servlead-og-2026.png">
 
-<!-- Motion is opt-in: the HTML is the resolved state. Only when motion is allowed does CSS set the "before" state. -->
+<!-- Motion is opt-in. The HTML is the readable state. The anim class is added only after the reveal observer is armed, so a slow or failed script cannot leave sections faded. -->
 <script>
 document.documentElement.classList.add('js');
-if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('anim');
 </script>
 
 <!-- ProfessionalService + founder. Locality only (Orefield, PA): no street address, no home address, no geo coordinates (the Google Business Profile pin is wrong until Sam fixes it there). No AggregateRating or Review markup (self-served reviews). -->
@@ -717,6 +716,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: 0ms !important; animation: none !important; }
+    .reveal, .row, .row-meta, .row-action, .summary, .paths-h, .paths li { opacity: 1 !important; transform: none !important; }
   }
   @media print {
     .site-head, .sticky-cta, .play-btn, .tabs { display: none !important; }
@@ -1514,7 +1514,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 <script>
 (function () {
   var root = document.documentElement;
-  var motion = root.classList.contains('anim');
+  var motion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches);
 
   // Nav: hamburger and "Who I help" disclosures. Esc closes and returns focus.
   var menuBtn = document.querySelector('.menu-btn');
@@ -1646,31 +1646,45 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     run.last = now;
     while (run.i < run.events.length && run.events[run.i].at <= run.t) run.events[run.i++].fn();
     if (run.i < run.events.length) requestAnimationFrame(frame);
-    else { run.finish(); run = null; setBtn('done'); }
+    else { clearTimeout(run.watch); run.finish(); run = null; setBtn('done'); }
   }
-  function stop() { if (run) { run.finish(); run = null; } }
-  function tick() { run.waiting = false; run.last = performance.now(); requestAnimationFrame(frame); }
+  function stop() { if (run) { clearTimeout(run.watch); run.finish(); run = null; } }
+  function armWatchdog() {
+    clearTimeout(run.watch);
+    // The story is about ten seconds. If a frame never lands, put every row back to the readable HTML state.
+    run.watch = setTimeout(function () {
+      if (!run) return;
+      run.finish();
+      run = null;
+      setBtn('done');
+    }, 12000);
+  }
+  function tick() { run.waiting = false; run.last = performance.now(); armWatchdog(); requestAnimationFrame(frame); }
   function play(panel, wait) {
     stop();
     run = build(panel);
-    run.reset();
     run.waiting = !!wait;
     setBtn('playing');
-    if (!wait) tick();
+    // Stay on the readable HTML until the story actually starts. A panel that never plays must not sit greyed out.
+    if (!wait) { run.reset(); tick(); }
   }
   if (motion) {
     playBtn.hidden = false;
     playBtn.addEventListener('click', function () {
       if (run && !run.paused) { run.paused = true; setBtn('paused'); }
-      else if (run && run.paused) { run.paused = false; setBtn('playing'); tick(); }
+      else if (run && run.paused) {
+        run.paused = false;
+        setBtn('playing');
+        if (run.waiting) run.reset();
+        tick();
+      }
       else play(panels.filter(function (p) { return !p.hidden; })[0]);
     });
-    // Prime the first panel's "before" state now, so the first paint is already the start of the story (no flash of the resolved screen).
     play(panels[0], true);
     var started = false;
-    var start = function () { if (started) return; started = true; setTimeout(function () { if (run && run.waiting && !run.paused) tick(); }, 400); };
+    var start = function () { if (started) return; started = true; setTimeout(function () { if (run && run.waiting && !run.paused) { run.reset(); tick(); } }, 400); };
     if ('IntersectionObserver' in window) {
-      var so = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { so.disconnect(); start(); } }, { threshold: 0.5 });
+      var so = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { so.disconnect(); start(); } }, { threshold: 0.2 });
       so.observe(screen);
     } else start();
   }
@@ -1699,15 +1713,23 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     co.observe(closeCta);
   }
 
-  // Section reveals: once, motion allowed only.
-  if (motion && 'IntersectionObserver' in window) {
+  // Section reveals. Anything already on screen is marked shown before the hide class is added.
+  // A timer shows the rest if the observer never calls back, so nothing can stay faded.
+  (function armReveals() {
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    function showAll() { nodes.forEach(function (el) { el.classList.add('in'); }); }
+    if (!motion || !('IntersectionObserver' in window)) { showAll(); return; }
     var ro = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(function (el) { ro.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-  }
+    nodes.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) el.classList.add('in');
+      ro.observe(el);
+    });
+    root.classList.add('anim');
+    setTimeout(showAll, 8000);
+  })();
 
   // Kahler film: one big tap target over the poster. Native controls take over once it plays.
   var film = document.querySelector('.film-wrap');
