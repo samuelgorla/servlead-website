@@ -288,6 +288,7 @@
   .display em{font-style:italic;color:var(--slate)}
   .seo-h1{font:500 17px/1.45 var(--sans);color:var(--ink);margin:20px 0 0;max-width:40ch;letter-spacing:-.005em}
   .seo-h1 span{color:var(--slate);font-weight:400}
+  .see-cases{display:none}
   .go-note{font-size:14.5px;line-height:1.45;color:var(--slate);margin:12px 0 0}
   .lede{font-size:18px;color:var(--slate);max-width:38ch;margin:12px 0 28px}
   .byline{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:14px;color:var(--slate);max-width:44ch}
@@ -690,6 +691,7 @@
     .lede{display:none}
     .hero .go-hero{margin-top:18px}
     .go-note{font-size:13px;margin-top:8px}
+    .see-cases{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:500 13.5px/1.2 var(--sans);color:var(--slate);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
     .byline{font-size:12.5px;margin-top:12px;align-items:flex-start}
     .note{width:auto;max-width:262px;padding:11px 13px;border-radius:14px;gap:10px}
     .note .ic{width:32px;height:32px}
@@ -730,7 +732,8 @@
     .case-k .case-body{gap:0}
     .case-k .case-main{display:contents}
     .case-k .case-sum{order:1}
-    .case-k .kvid{order:2;grid-template-columns:132px 1fr;gap:16px;margin:14px 0 6px}
+    .case-k .kvid{order:2;grid-template-columns:132px 1fr;gap:16px;margin:12px 0 6px;align-items:start}
+    .case-k .kv-quote{padding-top:18px}
     .case-k .more-d{order:3}
     .case-k .case-logo{height:30px}
     .case-k .kv-quote{font-size:17px}
@@ -838,6 +841,8 @@
     .byline{display:none}
   }
   @media (prefers-reduced-motion: reduce){.dock{transition:none}}
+  /* Small phones: tighten the case-studies lead-in so the Kahler stat and quote sit within one screen after the hero */
+  @media (max-width:400px){ .proofs{padding-top:24px} .logos{gap:14px 20px} .case-k{margin-top:20px;padding-top:18px} .case-k .case-head{padding-bottom:14px} .case-k .kvid{margin-top:8px} .case-k .kv-quote{padding-top:6px} }
   @media (max-width:700px){ .paths a.box{display:none} .explainer:not(:has(.vbox.ready)){display:none} }
 </style>
 </head>
@@ -870,6 +875,7 @@
             <a class="btn btn-primary" id="hero-cta" href="https://cal.com/samgorla/quick-connect" data-umami-event="CTA Click" data-umami-event-loc="hero">Book my free 30-minute call
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
             <p class="go-note">Bring me one workflow. I'll look at it with you.</p>
+            <a class="see-cases" href="#cases" data-umami-event="Case Studies Link" data-umami-event-loc="hero">See the case studies <span aria-hidden="true">↓</span></a>
           </div>
           <div class="byline">
             <span class="av"><img src="../assets/sam-headshot-suit.jpg" alt="Sam Gorla" width="440" height="550"></span>
@@ -1077,9 +1083,9 @@
                       <circle class="dot" style="--w:1.1s" cx="300" cy="64" r="4.5"/>
                     </svg>
                     <div class="ans-body">
-                      <p class="atag real">From an audit · General contractor</p>
+                      <p class="atag">Typical of what I look at</p>
                       <p class="lead">I'd look at where your estimate time goes, and what could be written down so it doesn't depend on one head.</p>
-                      <p class="proof">In one audit, a contractor's bids took about 8 hours each, about 53 a year, with the pricing logic living in one person's head: <b>about $32,000 a year</b>.</p>
+                      <p class="leave">You'd leave knowing which part of your estimating to get out of your head first.</p>
                       <a class="ilink" href="https://servleadsolutions.com/trades-manufacturing-distribution" data-umami-event="Industry Link" data-umami-event-industry="contractors">More for contractors, manufacturers and distributors <span aria-hidden="true">→</span></a>
                     </div>
                   </div>
