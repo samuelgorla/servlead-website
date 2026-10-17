@@ -10,7 +10,7 @@ Every number on the homepage, where it shows up, and its source. Notion links ar
 | $1,000 audit · $500 to book · $500 when the plan lands | Hero price line, step 02/03, FAQ, demos card, JSON-LD | Canonical Offer Language (LOCKED), same URL |
 | Sixty minutes | Results H2, step 02, FAQ | Canonical Offer Language (LOCKED) |
 | Written plan within 48 hours | Step 02/03, FAQ, JSON-LD | Canonical Offer Language (LOCKED) |
-| $10,000 guarantee (wording untouched) | Hero, guarantee card, trust band, FAQ, close, JSON-LD | Canonical Offer Language (LOCKED) |
+| $10,000 guarantee (wording untouched; paid audit only, never next to the free call) | Hero three-paths card (audit path only), audit guarantee card, FAQ audit-guarantee answer, JSON-LD audit offer and FAQ answer | Canonical Offer Language (LOCKED) |
 | $10M and up | Step 02 layer 2, FAQ | Canonical Offer Language (LOCKED) |
 | From about $2M up | Who I help line | Canonical Offer Language (LOCKED), "Who it's for" |
 | 1 or 2 workflows | Hero example, step 01 | Canonical Offer Language (LOCKED) |

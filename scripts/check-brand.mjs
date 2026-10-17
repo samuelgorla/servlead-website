@@ -10,6 +10,11 @@
  * same rules should cover it. Edit VENDOR_DENYLIST and DOLLAR_ALLOWLIST
  * in this file; each allowlisted amount needs a source note.
  *
+ * The guarantee belongs to the paid $1,000 audit only. A page fails if the
+ * guarantee sentence shares its nearest block (div, article, section, header,
+ * footer, aside, figure, form) with a quick-connect (free call) link, or if
+ * JSON-LD attaches it to a free offer or to an answer about the free call.
+ *
  * Launch mode also fails on any element with a data-publish-gate attribute:
  * content that is fine on a preview but waits on someone's written approval
  * before it can go live. Without --launch, gates are reported, not failed.
@@ -47,6 +52,10 @@ const DOLLAR_ALLOWLIST = [
   { key: '$100000', source: 'Leak Ledger: No follow-up on aging invoices (~$100K across 8 invoices, 35-60 days out). https://app.notion.com/p/3bb77a727f2681338893cba9f414f91e' },
   { key: '$37440', source: 'Leak Ledger: Interviews that nobody shows up to. https://app.notion.com/p/3bb77a727f268184bf93e8f7a1b5b8aa' },
 ];
+
+const GUARANTEE_RE = /leaking out of your business, audit is free/i;
+const GUARANTEE_BLOCKS = new Set(['div', 'article', 'section', 'header', 'footer', 'aside', 'figure', 'form']);
+const FREE_CALL_RE = /call is free|free (?:30-minute )?(?:call|look)|30-minute/i;
 
 const BANNED_GREENS = ['#22764f', '#4fc28c', '#0f5136'];
 
@@ -245,6 +254,42 @@ function isCtaSelector(selector) {
   );
 }
 
+function ldNodes(value, out = []) {
+  if (Array.isArray(value)) value.forEach((item) => ldNodes(item, out));
+  else if (value && typeof value === 'object') {
+    out.push(value);
+    Object.values(value).forEach((item) => ldNodes(item, out));
+  }
+  return out;
+}
+
+function ldTypes(node) {
+  return [].concat(node['@type'] || []);
+}
+
+function checkGuaranteeLd(json, line, groups) {
+  let data;
+  try {
+    data = JSON.parse(json);
+  } catch {
+    return;
+  }
+  for (const node of ldNodes(data)) {
+    const types = ldTypes(node);
+    if (types.includes('Offer') && GUARANTEE_RE.test(node.description || '')) {
+      const free = String(node.price) === '0' || /free/i.test(node.name || '') || String(node.url || '').includes(QUICK_CONNECT);
+      const audit = /audit/i.test(node.name || '');
+      if (free && !audit) push(groups, 'Guarantee placement', line, `JSON-LD offer "${node.name}" carries the guarantee; it belongs to the $1,000 audit only`);
+    }
+    if (types.includes('Question')) {
+      const answer = node.acceptedAnswer?.text || '';
+      if (GUARANTEE_RE.test(answer) && (FREE_CALL_RE.test(node.name || '') || FREE_CALL_RE.test(answer))) {
+        push(groups, 'Guarantee placement', line, `FAQ answer "${node.name}" puts the guarantee next to the free call`);
+      }
+    }
+  }
+}
+
 function push(groups, name, line, detail) {
   if (!groups.has(name)) groups.set(name, []);
   groups.get(name).push({ line, detail });
@@ -324,6 +369,7 @@ function checkFile(file, launch) {
 
   const ctas = [];
   const gates = [];
+  const guaranteeBlocks = [];
   let fortune = false;
   let vendors = false;
 
@@ -353,6 +399,13 @@ function checkFile(file, launch) {
   walk(html, (node) => {
     if (node.type === 'text' || node.type === 'comment') {
       noteDollar(node.text, node.index, stackIsSample(node.stack));
+      const inner = node.stack[node.stack.length - 1];
+      if (node.type === 'text' && inner?.name === 'script' && /ld\+json/i.test(inner.attrs.type || '')) {
+        checkGuaranteeLd(node.text, lineAt(html, node.index), groups);
+      } else if (node.type === 'text' && inner?.name !== 'script' && inner?.name !== 'style' && GUARANTEE_RE.test(node.text)) {
+        const block = node.stack.slice().reverse().find((el) => GUARANTEE_BLOCKS.has(el.name));
+        if (block) guaranteeBlocks.push({ block, line: lineAt(html, node.index) });
+      }
       return;
     }
     if (node.type !== 'open') return;
@@ -374,12 +427,21 @@ function checkFile(file, launch) {
         push(groups, 'Images', lineAt(html, node.index), 'img is missing a non-empty alt');
       }
     }
+    if (node.name === 'a' && String(node.attrs.href || '').replace(/\/$/, '') === QUICK_CONNECT) {
+      for (const el of node.stack) el.freeCall = true;
+    }
     if (node.name === 'a' || node.name === 'button') {
       if (classTokens(node.attrs.class).includes('btn-primary')) {
         ctas.push({ href: node.attrs.href || '', line: lineAt(html, node.index) });
       }
     }
   });
+
+  for (const { block, line } of guaranteeBlocks) {
+    if (block.freeCall) {
+      push(groups, 'Guarantee placement', line, `guarantee shares a <${block.name}> with a free-call link; keep it with the $1,000 audit only`);
+    }
+  }
 
   if (ctas.length > MAX_RUST_CTAS) {
     push(groups, 'Rust', ctas[0]?.line || 1, `${ctas.length} rust CTA buttons; at most ${MAX_RUST_CTAS} are allowed`);
