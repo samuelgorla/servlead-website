@@ -685,6 +685,57 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .panel[hidden] { display: block !important; }
     .dark { background: #fff; color: #000; }
   }
+
+  /* CASE STUDIES */
+  .case { margin-top: 2.5rem; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1.25rem, 3vw, 2.25rem); scroll-margin-top: 6rem; }
+  .case-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.5rem 1.25rem; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+  .case-logo { height: 48px; width: auto; max-width: 180px; filter: url(#to-navy); }
+  .case-head h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.6rem; line-height: 1.15; }
+  .case-type { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate-soft); }
+  .case-num { font-family: var(--font-mono); font-weight: 500; font-size: clamp(1.75rem, 3.4vw, 2.6rem); line-height: 1; letter-spacing: -0.03em; text-align: right; }
+  .case-num small { display: block; margin-top: 0.4rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400; letter-spacing: 0; color: var(--slate-soft); }
+  .case-body { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 2.5rem; margin-top: 1.75rem; align-items: start; }
+  .case .pull { margin-top: 0; }
+  .bwa { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
+  .bwa li { border: 1px solid var(--line); border-radius: 10px; padding: 1rem; background: var(--paper); }
+  .bwa h4 { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); }
+  .bwa h4::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--slate); flex: none; }
+  .bwa-before h4::before { background: var(--gold); box-shadow: 0 0 0 1px var(--slate-300); }
+  .bwa-did h4::before { background: transparent; border: 1.5px solid var(--slate); }
+  .bwa p { margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.5; color: var(--slate-soft); }
+  .rates { background: var(--navy); color: var(--white); border-radius: 12px; padding: 1.4rem; }
+  .rates .kicker { color: var(--slate-300); }
+  .rates ul { list-style: none; margin-top: 1rem; display: grid; gap: 1rem; }
+  .rates li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.35rem 0.75rem; font-size: 0.9rem; color: var(--slate-200); }
+  .rates i { grid-column: 1 / -1; grid-row: 2; height: 12px; border-radius: 3px; background: var(--slate-200); }
+  .rates i.r-before { width: 28%; background: transparent; border: 1.5px solid var(--gold); }
+  .rates i.r-after { width: 100%; background: linear-gradient(90deg, var(--slate-200) 67%, var(--slate-soft) 67%); }
+  .rates b { font-family: var(--font-mono); font-weight: 500; color: var(--white); }
+  .rates-note { margin-top: 1rem; font-size: 0.85rem; color: var(--slate-300); }
+  .placeholder { margin-top: 1rem; padding: 0.75rem; border: 1px dashed var(--line-navy); border-radius: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-300); text-align: center; }
+  /* OFFER prices */
+  .price { display: inline-block; margin-left: 0.4rem; padding: 0.1rem 0.5rem; border: 1px solid var(--navy); border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; vertical-align: 0.2em; white-space: nowrap; }
+  .get { margin-top: 0.5rem; padding-left: 1.1rem; font-size: 0.95rem; color: var(--slate-soft); }
+  /* TRUST BANDS */
+  .bands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; align-items: start; }
+  .band { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--navy); border-radius: 10px; padding: 1.5rem; }
+  .band h3 { margin-top: 0.4rem; font-family: var(--font-serif); font-weight: 400; font-size: 1.45rem; }
+  .band ul { margin-top: 0.75rem; padding-left: 1.1rem; font-size: 0.95rem; color: var(--slate-soft); display: grid; gap: 0.45rem; }
+  /* DEMOS */
+  .demos-h { margin-top: 2.5rem; font-family: var(--font-serif); font-weight: 400; font-size: 1.45rem; }
+  .demos { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  .demos a { display: block; height: 100%; min-height: 44px; padding: 1rem 1.1rem; background: var(--white); border: 1px solid var(--line); border-radius: 10px; color: var(--navy); text-decoration: none; }
+  .demos a:hover, .demos a:focus-visible { border-color: var(--navy); }
+  .demos b { display: block; font-weight: 600; }
+  .demos b::after { content: " →"; }
+  .demos span { display: block; margin-top: 0.2rem; font-size: 0.9rem; color: var(--slate-soft); }
+  @media (max-width: 900px) {
+    .case-head { grid-template-columns: auto minmax(0, 1fr); }
+    .case-num { grid-column: 1 / -1; text-align: left; margin-top: 0.5rem; }
+    .case-body, .bwa, .bands { grid-template-columns: minmax(0, 1fr); }
+    .case .film { max-width: 300px; }
+  }
+  @media (max-width: 560px) { .case-logo { height: 36px; max-width: 120px; } .case-head h3 { font-size: 1.35rem; } }
 </style>
 </head>
 <body>
@@ -711,8 +762,8 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     </button>
     <ul class="nav-menu" id="menu">
       <li><a href="#how">How it works</a></li>
-      <li><a href="#results">Results</a></li>
-      <li><a href="#tools">Free tools</a></li>
+      <li><a href="#proof">Results</a></li>
+      <li><a href="#tools">Demos &amp; tools</a></li>
       <li class="who">
         <button class="who-btn" type="button" aria-expanded="false" aria-controls="who-list" hidden>Who I help</button>
         <a class="who-fallback" href="#who">Who I help</a>
@@ -908,6 +959,99 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   </div>
 </section>
 
+<!-- S3 PROOF: two named case studies -->
+<section id="proof" aria-labelledby="proof-h">
+  <div class="wrap reveal">
+    <p class="kicker">Proof · Two named clients</p>
+    <h2 id="proof-h">Don't take my word for it. Take theirs.</h2>
+
+    <article class="case" id="kahler" aria-labelledby="kahler-h">
+      <header class="case-head">
+        <img class="case-logo" src="logos/kahler-construction-480.webp" alt="Kahler Construction logo" width="222" height="48" loading="lazy">
+        <div>
+          <h3 id="kahler-h">Kahler Construction</h3>
+          <p class="case-type">General contractor · Lehigh Valley</p>
+        </div>
+        <!-- Source: Kahler audit report, roughly $38,000 to $54,000 a year. -->
+        <p class="case-num">$38K–$54K a year<small>Leaking, shown in the audit.</small></p>
+      </header>
+      <div class="case-body">
+        <figure class="film">
+          <video controls preload="none" playsinline poster="/images/media/kahler-web-9x16-poster-360.jpg" width="720" height="1280" aria-label="Kahler Construction testimonial, 38 seconds">
+            <source src="/images/media/kahler-web-9x16.mp4" type="video/mp4">
+          </video>
+          <figcaption>Budd Kahler, in his own words. 38 seconds. Tap to play.</figcaption>
+        </figure>
+        <div>
+          <blockquote class="pull"><p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p></blockquote>
+          <p class="by">Budd Kahler, Kahler Construction</p>
+          <ol class="bwa">
+            <li class="bwa-before"><h4>Before</h4><p>For 17 years, Budd priced labor and materials in basic spreadsheets. Progress payments, change orders and proposals each lived on their own separate form.</p></li>
+            <li class="bwa-did"><h4>What I did</h4><p>I worked alongside Budd and his team for about two months, setting up one system for estimating and job money: a cost catalog, nine budget templates Budd built himself, and five live jobs.</p></li>
+            <li class="bwa-after"><h4>After</h4><p>Estimates, forms and job costs sit in one place. In Budd's words, “everything's right there with me.” Hours saved aren't measured yet, so I don't claim a number.</p></li>
+          </ol>
+          <details class="more"><summary>What Budd says in the film</summary><div class="more-body">
+            <p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p>
+            <p>“I really encourage anybody in construction to use this for a tool, to gain major efficiency in their company.”</p>
+          </div></details>
+        </div>
+      </div>
+    </article>
+
+    <!-- NEEDS SAM CONFIRM: CFA figures from draft case study -->
+    <article class="case" id="chick-fil-a" aria-labelledby="cfa-h">
+      <header class="case-head">
+        <img class="case-logo" src="logos/chick-fil-a.svg" alt="Chick-fil-A logo" width="48" height="48" loading="lazy">
+        <div>
+          <h3 id="cfa-h">Chick-fil-A Whitehall</h3>
+          <p class="case-type">Restaurant · catering outreach</p>
+        </div>
+        <p class="case-num">~1.7% → ~4–6%<small>Share of people emailed who wrote back.</small></p>
+      </header>
+      <div class="case-body">
+        <figure class="rates">
+          <figcaption class="kicker">Catering outreach replies</figcaption>
+          <ul>
+            <li><span>First round</span><i class="r-before" aria-hidden="true"></i><b>about 1.7%</b></li>
+            <li><span>After the changes</span><i class="r-after" aria-hidden="true"></i><b>about 4–6%</b></li>
+          </ul>
+          <p class="rates-note">Typical cold email: 3–5%. Small numbers, so on track, not proven.</p>
+          <p class="placeholder">Video from the store team: not filmed yet.</p>
+        </figure>
+        <div>
+          <blockquote class="pull"><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient…”</p></blockquote>
+          <p class="by">Alyssa Schlener · Dir. of Community &amp; Culture · Chick-fil-A Whitehall</p>
+          <ol class="bwa">
+            <li class="bwa-before"><h4>Before</h4><p>Catering orders came in on their own, through the app, ads and a catering website. Nobody reached out to schools or offices, and nobody followed up.</p></li>
+            <li class="bwa-did"><h4>What I did</h4><p>Working next to the store's team, I built a list of about 105 verified contacts at colleges, high schools, medical practices and offices, and wrote the emails. Then I made them shorter, made the first ask a free sample tray, and added one follow-up. A person read every email before it went out from the team's own mailbox.</p></li>
+            <li class="bwa-after"><h4>After</h4><p>Replies went from about 1.7% to about 4–6%. Two high schools are ordering. The team runs it on its own now. Catering nearly doubled from last year. That has several causes, and outreach is one of them.</p></li>
+          </ol>
+          <details class="more"><summary>Read Alyssa Schlener's full review</summary><div class="more-body"><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient… Not only has it saved us valuable time, but it has also helped increase our sales.”</p></div></details>
+        </div>
+      </div>
+    </article>
+
+    <ul class="reviews">
+      <li class="review" id="sm-klase">
+        <img src="logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="129" height="40" loading="lazy">
+        <p class="stars" role="img" aria-label="Five out of five stars">★★★★★</p>
+        <blockquote><p>“He pinpointed areas of inefficiency and put together a systematic plan to address them.”</p></blockquote>
+        <p class="by">S.M. Klase Custom Homes · Custom home builder</p>
+        <details class="more"><summary>Read the full S.M. Klase review</summary><div class="more-body"><p>“Sam was extremely helpful and showed us areas we could dramatically improve our efficiency and therefore, profitability… He pinpointed areas of inefficiency and put together a systematic plan to address them.”</p></div></details>
+      </li>
+      <li class="review" id="aig-safety">
+        <img src="logos/aig-safety.svg" alt="AIG Safety" width="172" height="40" loading="lazy">
+        <p class="stars" role="img" aria-label="Five out of five stars">★★★★★</p>
+        <blockquote><p>“Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</p></blockquote>
+        <p class="by">AIG Safety · Access safety systems</p>
+        <details class="more"><summary>Read the full AIG Safety review</summary><div class="more-body"><p>“The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</p></div></details>
+      </li>
+    </ul>
+    <p style="margin-top:1.5rem"><a class="text-link" href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9" target="_blank" rel="noopener">Read all four reviews on Google →</a></p>
+  </div>
+</section>
+
+
 <!-- S3 MONEY STAGES -->
 <section class="dark" id="results" aria-labelledby="results-h">
   <div class="wrap reveal">
@@ -998,7 +1142,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 <!-- S5 FREE TOOLS -->
 <section class="tint" id="tools" aria-labelledby="tools-h">
   <div class="wrap reveal">
-    <p class="kicker">Free tools · Not ready for a call?</p>
+    <p class="kicker">Demos &amp; free tools · Not ready for a call?</p>
     <h2 id="tools-h">Try it on your own numbers.</h2>
     <div class="tools-grid">
       <article class="tool">
@@ -1030,22 +1174,32 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         <details class="more"><summary>What happens to what you paste</summary><div class="more-body"><p>Your quote is sent to an AI model to write the draft, and it isn't stored. Remove names or prices first if you like. Nothing is ever sent to your customer. You send it.</p></div></details>
       </article>
     </div>
-    <p class="calc-link"><a class="text-link" href="/tools/quote-cost-calculator">What a year of quiet quotes adds up to →</a></p>
+    <h3 class="demos-h">More demos and free tools</h3>
+    <ul class="demos">
+      <li><a href="/how-it-works#chief-of-staff"><b>AI chief of staff</b><span>Watch an assistant run an owner's day on the clock.</span></a></li>
+      <li><a href="/tools/knowledge-demo"><b>Business knowledge base</b><span>What your best people know, kept in one place.</span></a></li>
+      <li><a href="/tools/servlead-knowledge-full"><b>Knowledge base, full walkthrough</b><span>Ask a question, get the answer with its source.</span></a></li>
+      <li><a href="/tools/audit-explainer"><b>The $1,000 audit, explained</b><span>A short animated walk through the hour.</span></a></li>
+      <li><a href="/tools/live-audit"><b>Live audit calculator</b><span>The calculator I use during the paid audit.</span></a></li>
+      <li><a href="/tools/quote-cost-calculator"><b>Quote follow-up calculator</b><span>What a year of quiet quotes adds up to.</span></a></li>
+      <li><a href="/how-it-works#builds"><b>Example builds</b><span>What a Workflow Rebuild looks like.</span></a></li>
+    </ul>
   </div>
 </section>
 
 <!-- S6 HOW IT WORKS -->
 <section id="how" aria-labelledby="how-h">
   <div class="wrap reveal">
-    <p class="kicker">How it works</p>
+    <p class="kicker">How it works · The offer</p>
     <h2 id="how-h">Four steps. You can stop after any of them.</h2>
     <div class="how-grid-main">
       <ol class="steps">
         <li class="step">
           <p class="step-tag" aria-hidden="true">Step<b>01</b></p>
           <div>
-            <h3>Free 30-minute call</h3>
-            <p>Bring one or two jobs that eat your time. Phone, video, or in person in the Lehigh Valley.</p>
+            <h3>Free 30-minute call <span class="price">Free</span></h3>
+            <p>A free look at one or two workflows. Phone, video, or in person in the Lehigh Valley.</p>
+            <ul class="get"><li>Where each one is stuck, in plain language</li><li>A one-page Direction Page: what it's worth and the fix I'd take</li><li>A clear next step, or a straight answer</li></ul>
             <details class="more"><summary>What you leave with</summary><div class="more-body">
               <p>Where each job is stuck and the fix I'd point you toward, in plain language, at no charge. You keep that whether or not you ever book anything else.</p>
               <p>Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
@@ -1056,8 +1210,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         <li class="step">
           <p class="step-tag" aria-hidden="true">Step<b>02</b></p>
           <div>
-            <h3>The AI &amp; Efficiency Audit, $1,000</h3>
-            <p>Sixty minutes. Your biggest leaks named, ranked, and priced.</p>
+            <h3>The AI &amp; Efficiency Audit <span class="price">$1,000 · $500 to book</span></h3>
+            <p>Sixty minutes, live. Your biggest leaks named, ranked, and priced.</p>
+            <ul class="get"><li>A dollar figure on each leak I can stand behind</li><li>An honest read on whether AI is even the right fix</li><li>The guarantee, settled out loud at the end of the hour</li></ul>
             <details class="more"><summary>What the $1,000 covers</summary><div class="more-body">
               <div class="halves">
                 <div class="half"><h4>The hour ($500 to book)</h4><ul><li>Your biggest leaks, named and ranked</li><li>A dollar figure on each one I can stand behind</li><li>The ones I won't put a number on, and why</li><li>An honest read on whether AI is even the right fix</li></ul></div>
@@ -1071,15 +1226,17 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         <li class="step">
           <p class="step-tag" aria-hidden="true">Step<b>03</b></p>
           <div>
-            <h3>The plan, within 48 hours</h3>
+            <h3>The written plan, within 48 hours <span class="price">$500 when the plan lands</span></h3>
             <p>A fix for each leak, in order, with the math shown.</p>
+            <ul class="get"><li>A plan your team can run with or without me</li><li>Yours to keep, whether or not you ever hire me</li></ul>
           </div>
         </li>
         <li class="step">
           <p class="step-tag" aria-hidden="true">Step<b>04</b></p>
           <div>
-            <h3>Build the fix, or don't</h3>
-            <p>A Workflow Rebuild, quoted after the call, or a straight answer.</p>
+            <h3>Build the fix, or don't <span class="price">Quoted after the call</span></h3>
+            <p>A Workflow Rebuild: one workflow rebuilt end to end, at a fixed price. Or a straight answer.</p>
+            <ul class="get"><li>Runs in accounts you own</li><li>Your team trained, with a one-page sheet for when something breaks</li></ul>
             <details class="more"><summary>See example builds</summary><div class="more-body">
               <p>A Workflow Rebuild is one repeating job, rebuilt from start to finish, with AI only where it helps. For example, a quote follow-up system, a company knowledge base, or an AI assistant that keeps the owner on top of the day.</p>
               <p><a class="text-link" href="/how-it-works#builds">See example builds →</a> · <a class="text-link" href="/how-it-works">How a build works →</a></p>
@@ -1121,57 +1278,54 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   </div>
 </section>
 
-<!-- S8 PROOF -->
-<section id="proof" aria-labelledby="proof-h">
+<!-- TRUST BANDS -->
+<section id="trust" aria-labelledby="trust-h">
   <div class="wrap reveal">
-    <p class="kicker">What clients say</p>
-    <h2 id="proof-h">I'd rather you hear it from them.</h2>
-    <div class="proof-grid">
-      <figure class="film">
-        <video controls preload="none" playsinline poster="/images/media/kahler-web-9x16-poster-360.jpg" width="720" height="1280" aria-label="Kahler Construction testimonial, 38 seconds">
-          <source src="/images/media/kahler-web-9x16.mp4" type="video/mp4">
-        </video>
-        <figcaption>Budd Kahler, Kahler Construction. 38 seconds.</figcaption>
-      </figure>
-      <div id="kahler">
-        <img class="kahler-logo" src="logos/kahler-construction-480.webp" alt="Kahler Construction" width="222" height="48">
-        <!-- Source: Kahler audit report, roughly $38,000 to $54,000 a year. -->
-        <p class="kahler-num">$38K–$54K a year<small>Shown at Kahler Construction, a Lehigh Valley GC.</small></p>
-        <blockquote class="pull"><p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p></blockquote>
-        <p class="by">Budd Kahler, Kahler Construction</p>
-        <details class="more"><summary>What Budd says in the film</summary><div class="more-body">
-          <p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p>
-          <p>“I really encourage anybody in construction to use this for a tool, to gain major efficiency in their company.”</p>
+    <p class="kicker">Before you say yes</p>
+    <h2 id="trust-h">Three things owners ask me first.</h2>
+    <div class="bands">
+      <article class="band">
+        <p class="kicker">Business</p>
+        <h3>Does it pay?</h3>
+        <ul>
+          <li>$38K–$54K a year shown at Kahler Construction.</li>
+          <li>Five stars from all four Google reviews.</li>
+          <li>If I don't show you at least $10,000 a year leaking out of your business, audit is free.</li>
+        </ul>
+      </article>
+      <article class="band">
+        <p class="kicker">Technical</p>
+        <h3>How is it built?</h3>
+        <ul>
+          <li>Tools you already pay for first. New ones only when they earn it.</li>
+          <li>Runs in accounts you own, in your business's name.</li>
+          <li>Prices, totals and dates come from your records. AI only reads and drafts.</li>
+          <li>After handoff, your team runs it. You get a written page for each automation and a copy of the build in your own files.</li>
+        </ul>
+      </article>
+      <article class="band">
+        <p class="kicker">Governance &amp; security</p>
+        <h3>How I keep your data safe</h3>
+        <ul>
+          <li>Only the data the job needs. Individual logins with two-step sign-in. No shared passwords.</li>
+          <li>No patient records. No tax-return or legal-matter files in AI tools.</li>
+          <li>If something goes wrong, I pause it, tell you the same day, fix it, and write down what changed.</li>
+          <li>If you stop working with me, I remove my access, change the keys, and hand over everything.</li>
+        </ul>
+        <details class="more"><summary>What always waits for a human</summary><div class="more-body">
+          <ul>
+            <li>Prices, discounts, scope changes and complaints go to you, or the person you name.</li>
+            <li>Anything that sends, posts, deletes, pays or buys waits for a yes until you sign off on letting routine items run.</li>
+            <li>If a fact is missing, the draft leaves a [bracket]. The AI doesn't guess.</li>
+            <li>When something looks wrong, it stops and asks. It doesn't send.</li>
+          </ul>
         </div></details>
-      </div>
+      </article>
     </div>
-
-    <ul class="reviews">
-      <li class="review" id="sm-klase">
-        <img src="logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="129" height="40" loading="lazy">
-        <p class="stars" role="img" aria-label="Five out of five stars">★★★★★</p>
-        <blockquote><p>“He pinpointed areas of inefficiency and put together a systematic plan to address them.”</p></blockquote>
-        <p class="by">S.M. Klase Custom Homes · Custom home builder</p>
-        <details class="more"><summary>Read the full S.M. Klase review</summary><div class="more-body"><p>“Sam was extremely helpful and showed us areas we could dramatically improve our efficiency and therefore, profitability… He pinpointed areas of inefficiency and put together a systematic plan to address them.”</p></div></details>
-      </li>
-      <li class="review" id="chick-fil-a">
-        <img src="logos/chick-fil-a.svg" alt="Chick-fil-A Whitehall" width="40" height="40" loading="lazy">
-        <p class="stars" role="img" aria-label="Five out of five stars">★★★★★</p>
-        <blockquote><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient…”</p></blockquote>
-        <p class="by">Alyssa Schlener · Dir. of Community &amp; Culture · Chick-fil-A Whitehall</p>
-        <details class="more"><summary>Read Alyssa Schlener's full review</summary><div class="more-body"><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient… Not only has it saved us valuable time, but it has also helped increase our sales.”</p></div></details>
-      </li>
-      <li class="review" id="aig-safety">
-        <img src="logos/aig-safety.svg" alt="AIG Safety" width="172" height="40" loading="lazy">
-        <p class="stars" role="img" aria-label="Five out of five stars">★★★★★</p>
-        <blockquote><p>“Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</p></blockquote>
-        <p class="by">AIG Safety · Access safety systems</p>
-        <details class="more"><summary>Read the full AIG Safety review</summary><div class="more-body"><p>“The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</p></div></details>
-      </li>
-    </ul>
-    <p style="margin-top:1.5rem"><a class="text-link" href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9" target="_blank" rel="noopener">Read all four reviews on Google →</a></p>
   </div>
 </section>
+
+
 
 <!-- S9 WHO I HELP -->
 <section class="tint" id="who" aria-labelledby="who-h">
@@ -1336,12 +1490,16 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         </ul>
       </div>
       <div>
-        <h2>Free tools</h2>
+        <h2>Demos &amp; free tools</h2>
         <ul>
           <li><a href="/leak-estimate">Leak Estimate</a></li>
           <li><a href="/tools/quote-rescue">Quote Rescue</a></li>
           <li><a href="/tools/quote-cost-calculator">Quote follow-up calculator</a></li>
-          <li><a href="/tools/servlead-knowledge-full">Everything about how I work, in one page</a></li>
+          <li><a href="/how-it-works#chief-of-staff">AI chief of staff demo</a></li>
+          <li><a href="/tools/knowledge-demo">Knowledge base demo</a></li>
+          <li><a href="/tools/servlead-knowledge-full">Knowledge base, full walkthrough</a></li>
+          <li><a href="/tools/audit-explainer">The audit, explained</a></li>
+          <li><a href="/tools/live-audit">Live audit calculator</a></li>
         </ul>
       </div>
       <div>
@@ -1350,6 +1508,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
           <li><a href="/how-it-works">How it works</a></li>
           <li><a href="/how-it-works#builds">Example builds</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9" target="_blank" rel="noopener">Google reviews &amp; map</a></li>
           <li><a href="https://outoftheownershead.substack.com" target="_blank" rel="noopener">Newsletter: Out of the Owner's Head</a></li>
           <li><a href="https://www.linkedin.com/in/samuelgorla">Sam on LinkedIn</a></li>
           <li><a href="https://www.linkedin.com/company/servlead-solutions">Servlead on LinkedIn</a></li>
