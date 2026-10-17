@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Quiet 9 Days, explainer coming soon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2A3B"/>
+      <stop offset="1" stop-color="#14202E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g fill="none" stroke="#3D5266" stroke-width="2">
+    <rect x="980" y="230" width="420" height="440" rx="22" fill="#1B2A3B"/>
+    <path d="M1020 310 H1360 M1020 390 H1360 M1020 470 H1360 M1020 550 H1360"/>
+  </g>
+  <g font-family="'Spline Sans Mono', ui-monospace, monospace" font-size="22" letter-spacing="2" fill="#C9D3DD">
+    <text x="1020" y="290">KITCHEN ADDITION</text>
+    <text x="1020" y="370">BASEMENT FINISH</text>
+    <text x="1020" y="450">DECK REBUILD</text>
+    <text x="1020" y="530">ROOF TEAR-OFF</text>
+  </g>
+  <rect x="1012" y="342" width="356" height="56" rx="12" fill="none" stroke="#E8B64C" stroke-width="2.5"/>
+  <circle cx="1346" cy="370" r="7" fill="#E8B64C"/>
+  <g font-family="'Spline Sans Mono', ui-monospace, monospace" font-size="24" letter-spacing="3" fill="#E8B64C">
+    <text x="180" y="330">EXPLAINER · COMING SOON</text>
+  </g>
+  <g font-family="Newsreader, Georgia, serif" fill="#FBF8F3">
+    <text x="176" y="470" font-size="120" letter-spacing="-3">Quiet 9 Days</text>
+    <text x="180" y="560" font-size="40" font-style="italic" fill="#C9D3DD">A quote goes quiet. Then what?</text>
+  </g>
+</svg>

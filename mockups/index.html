@@ -20,7 +20,14 @@
   h1{font:300 clamp(40px,5vw,64px)/1.02 Newsreader,serif;letter-spacing:-.02em;margin:48px 0 12px}
   .sub{color:var(--slate);max-width:60ch;margin:0 0 44px}
   .label{font:500 12px/1.4 "Spline Sans Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2)}
-  .grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px}
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+  .pick{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:0;margin-bottom:56px}
+  .pick .thumb{border-bottom:0;border-right:1px solid var(--rule);aspect-ratio:auto;max-height:640px}
+  .pick .body{padding:36px 40px;align-self:center}
+  .pick .body h2{font-size:40px}
+  .pick ul{margin:14px 0 0;padding-left:18px;color:var(--slate);font-size:15.5px}
+  .earlier{margin:0 0 18px}
+  @media (max-width:860px){.pick{grid-template-columns:1fr}.pick .thumb{border-right:0;border-bottom:1px solid var(--rule)}.pick .body{padding:22px}}
   a.card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--rule);border-radius:14px;overflow:hidden;transition:transform .15s, box-shadow .15s}
   a.card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -28px rgba(20,32,46,.45)}
   a.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
@@ -38,24 +45,31 @@
 </head>
 <body>
 <div class="wrap">
-  <header><img src="assets/servlead-logo.png" alt="" width="44" height="42"><span>Servlead Solutions</span></header>
-  <h1>Homepage mockups</h1>
-  <p class="sub">Three light, warm directions for servleadsolutions.com. Each is a hero plus the sections below it, built for desktop and phone. Preview only, not the live site.</p>
+  <header><img src="assets/servlead-logo.png" alt="Servlead Solutions" width="44" height="42"><span>Servlead Solutions</span></header>
+  <h1>Homepage, round 3</h1>
+  <p class="sub">Sam picked B, the Bethlehem furnace photo. Round 3 builds on it. Preview only, not the live site.</p>
+  <a class="card rec-card pick" href="b3/index.html">
+    <div class="thumb"><img src="assets/thumbs/b3.jpg" alt="Round 3 on a phone: Bring me the workflow that eats your week, over the Bethlehem furnaces" width="600" height="1298"></div>
+    <div class="body"><span class="rec">Sam's pick · Round 3</span><h2>B3 · Furnace, then listen first</h2><p>B's furnace hero with one clear search-term headline, then the two-tap "What's eating your week?" picker, the Kahler proof line and client logos, a real sample of the product, three equal paths, the navy founder band, and plain answers.</p>
+    <ul><li>Every booking button: "Book my free 30-minute call"</li><li>Includes the thank-you page shown after a booking (booked/)</li></ul><div class="go">Open round 3 →</div></div>
+  </a>
+  <p class="label earlier">Earlier rounds</p>
   <div class="grid">
-    <a class="card rec-card" href="c/index.html">
+    <a class="card" href="c/index.html">
       <div class="thumb"><img src="assets/thumbs/c.jpg" alt="Mockup C on a phone: What's eating your week? with industry choices" width="600" height="1298"></div>
-      <div class="body"><span class="rec">Recommended</span><h2>C · Listen first</h2><p>Two taps: pick an industry and what eats your week, and see what Sam would look at, with a line drawing. Calm sections and plain-answer FAQ below.</p><div class="go">Open C →</div></div>
+      <div class="body"><div class="label">Round 2</div><h2>C · Listen first</h2><p>Two taps: pick an industry and what eats your week, and see what Sam would look at, with a line drawing.</p><div class="go">Open C →</div></div>
     </a>
     <a class="card" href="a/index.html">
       <div class="thumb"><img src="assets/thumbs/a.jpg" alt="Mockup A on a phone: Thirty minutes. One or two workflows. A straight answer." width="600" height="1298"></div>
-      <div class="body"><div class="label">Alternative</div><h2>A · Big promise</h2><p>One big promise, lots of space, and hand-drawn Lehigh Valley line art. Three steps, three equal paths, a note from Sam.</p><div class="go">Open A →</div></div>
+      <div class="body"><div class="label">Round 2</div><h2>A · Big promise</h2><p>One big promise, lots of space, and hand-drawn Lehigh Valley line art.</p><div class="go">Open A →</div></div>
     </a>
     <a class="card" href="b/index.html">
       <div class="thumb"><img src="assets/thumbs/b.jpg" alt="Mockup B on a phone: the Bethlehem blast furnaces with example workflow moments" width="600" height="1298"></div>
-      <div class="body"><div class="label">Alternative</div><h2>B · Photo and moments</h2><p>The Bethlehem blast furnaces at dusk, warm-graded, with example workflow moments popping in. Three equal paths, a note from Sam.</p><div class="go">Open B →</div></div>
+      <div class="body"><div class="label">Round 2</div><h2>B · Photo and moments</h2><p>The Bethlehem blast furnaces at dusk, warm-graded, with example workflow moments popping in.</p><div class="go">Open B →</div></div>
     </a>
   </div>
-  <footer>Based in the Lehigh Valley. Working with owners here and beyond. Photo in B and in the footers: “Bethlehem pennsylvania (4427763828)” by Mad House Photography, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons, cropped, overlay added.</footer>
+  <p style="margin-top:28px"><a href="booked/index.html" style="color:var(--ink)">The booked/ thank-you page →</a></p>
+  <footer>Based in the Lehigh Valley. Working with owners here and beyond. Photo in B, B3 and the footers: “Bethlehem pennsylvania (4427763828)” by Mad House Photography, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons, cropped, overlay added.</footer>
 </div>
 </body>
 </html>
