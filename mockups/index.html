@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servlead homepage mockups (preview)</title>
+<link rel="icon" type="image/png" href="assets/servlead-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Spline+Sans+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#14202E;--slate:#3D5266;--slate-2:#6B7F93;--rule:#E4DCCF;--paper:#FBF8F3;--paper-2:#F5EFE6;--gold:#E8B64C}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 Archivo,system-ui,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:56px 32px 80px}
+  header{display:flex;align-items:center;gap:12px}
+  header img{width:44px;height:auto}
+  header span{font:500 22px/1 Newsreader,serif}
+  h1{font:300 clamp(40px,5vw,64px)/1.02 Newsreader,serif;letter-spacing:-.02em;margin:48px 0 12px}
+  .sub{color:var(--slate);max-width:60ch;margin:0 0 44px}
+  .label{font:500 12px/1.4 "Spline Sans Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2)}
+  .grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px}
+  a.card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--rule);border-radius:14px;overflow:hidden;transition:transform .15s, box-shadow .15s}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -28px rgba(20,32,46,.45)}
+  a.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .thumb{background:var(--paper-2);border-bottom:1px solid var(--rule);aspect-ratio:3/4;overflow:hidden}
+  .thumb img{width:100%;height:auto;display:block}
+  .body{padding:20px 22px 24px}
+  .rec{display:inline-block;background:var(--gold);color:var(--ink);border-radius:999px;padding:5px 11px;font:500 11px/1 "Spline Sans Mono",monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .body h2{font:400 28px/1.1 Newsreader,serif;margin:0 0 8px}
+  .body p{margin:0;color:var(--slate);font-size:15.5px}
+  .go{margin-top:14px;font-weight:600;font-size:15px}
+  .rec-card{border:2px solid var(--gold)}
+  footer{margin-top:48px;color:var(--slate-2);font-size:13.5px}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}.wrap{padding:32px 20px 56px}h1{margin-top:32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="assets/servlead-logo.png" alt="" width="44" height="42"><span>Servlead Solutions</span></header>
+  <h1>Homepage mockups</h1>
+  <p class="sub">Three light, warm directions for servleadsolutions.com. Each is a hero plus the sections below it, built for desktop and phone. Preview only, not the live site.</p>
+  <div class="grid">
+    <a class="card rec-card" href="c/index.html">
+      <div class="thumb"><img src="assets/thumbs/c.jpg" alt="Mockup C on a phone: What's eating your week? with industry choices" width="600" height="1298"></div>
+      <div class="body"><span class="rec">Recommended</span><h2>C · Listen first</h2><p>Two taps: pick an industry and what eats your week, and see what Sam would look at, with a line drawing. Calm sections and plain-answer FAQ below.</p><div class="go">Open C →</div></div>
+    </a>
+    <a class="card" href="a/index.html">
+      <div class="thumb"><img src="assets/thumbs/a.jpg" alt="Mockup A on a phone: Thirty minutes. One or two workflows. A straight answer." width="600" height="1298"></div>
+      <div class="body"><div class="label">Alternative</div><h2>A · Big promise</h2><p>One big promise, lots of space, and hand-drawn Lehigh Valley line art. Three steps, three equal paths, a note from Sam.</p><div class="go">Open A →</div></div>
+    </a>
+    <a class="card" href="b/index.html">
+      <div class="thumb"><img src="assets/thumbs/b.jpg" alt="Mockup B on a phone: the Bethlehem blast furnaces with example workflow moments" width="600" height="1298"></div>
+      <div class="body"><div class="label">Alternative</div><h2>B · Photo and moments</h2><p>The Bethlehem blast furnaces at dusk, warm-graded, with example workflow moments popping in. Three equal paths, a note from Sam.</p><div class="go">Open B →</div></div>
+    </a>
+  </div>
+  <footer>Based in the Lehigh Valley. Working with owners here and beyond. Photo in B and in the footers: “Bethlehem pennsylvania (4427763828)” by Mad House Photography, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons, cropped, overlay added.</footer>
+</div>
+</body>
+</html>
