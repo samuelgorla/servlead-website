@@ -4,10 +4,15 @@
  *
  *   node scripts/check-brand.mjs
  *   node scripts/check-brand.mjs index.html path/to/other.html
+ *   node scripts/check-brand.mjs --launch      (npm run check:launch)
  *
  * With no arguments, checks DEFAULT_PAGES. Add a page there when the
  * same rules should cover it. Edit VENDOR_DENYLIST and DOLLAR_ALLOWLIST
  * in this file; each allowlisted amount needs a source note.
+ *
+ * Launch mode also fails on any element with a data-publish-gate attribute:
+ * content that is fine on a preview but waits on someone's written approval
+ * before it can go live. Without --launch, gates are reported, not failed.
  *
  * Exit 0 when every file passes, 1 otherwise.
  */
@@ -38,7 +43,8 @@ const DOLLAR_ALLOWLIST = [
   { key: '$10m', source: 'Existing line for sizing the audit at operations of $10M and up.' },
   { key: '$13300', source: 'Leak Ledger: Manual lead generation with no system. https://app.notion.com/p/3bb77a727f2681578285c82925556ff1' },
   { key: '$32000', source: "Leak Ledger: Estimating logic lives entirely in Budd's head. https://app.notion.com/p/3bb77a727f2681278885e69e2c01b9a8" },
-  { key: '$16494', source: 'Leak Ledger: Cash counted by hand at four locations and chased against POS. https://app.notion.com/3bb77a727f26816c958ed6bad3c5cd36' },
+  { key: '$16494', source: 'Leak Ledger: Cash counted by hand at four locations and chased against POS. https://app.notion.com/p/3bb77a727f26816c958ed6bad3c5cd36' },
+  { key: '$100000', source: 'Leak Ledger: No follow-up on aging invoices (~$100K across 8 invoices, 35-60 days out). https://app.notion.com/p/3bb77a727f2681338893cba9f414f91e' },
   { key: '$37440', source: 'Leak Ledger: Interviews that nobody shows up to. https://app.notion.com/p/3bb77a727f268184bf93e8f7a1b5b8aa' },
 ];
 
@@ -244,7 +250,7 @@ function push(groups, name, line, detail) {
   groups.get(name).push({ line, detail });
 }
 
-function checkFile(file) {
+function checkFile(file, launch) {
   const html = readFileSync(file, 'utf8');
   const groups = new Map();
   let dollars = 0;
@@ -317,6 +323,7 @@ function checkFile(file) {
   }
 
   const ctas = [];
+  const gates = [];
   let fortune = false;
   let vendors = false;
 
@@ -352,6 +359,14 @@ function checkFile(file) {
     const sample = stackIsSample(node.stack, { attrs: node.attrs });
     for (const value of Object.values(node.attrs)) noteDollar(value, node.index, sample);
 
+    if ('data-publish-gate' in node.attrs) {
+      const gate = node.attrs['data-publish-gate'] || '(unnamed)';
+      gates.push(gate);
+      if (launch) {
+        push(groups, 'Publish gates', lineAt(html, node.index),
+          `<${node.name} data-publish-gate="${gate}"> is still on the page; get the written approval and remove the gate, or remove the gated content`);
+      }
+    }
     if (node.name === 'img') {
       images += 1;
       const alt = node.attrs.alt;
@@ -395,7 +410,7 @@ function checkFile(file) {
     }
   }
 
-  return { file, groups, dollars, allowlisted, sampled, images, ctas: ctas.length, fortune, vendors };
+  return { file, groups, dollars, allowlisted, sampled, images, ctas: ctas.length, gates, fortune, vendors };
 }
 
 function printResult(result) {
@@ -406,6 +421,9 @@ function printResult(result) {
   );
   console.log(`  rust CTA buttons: ${result.ctas}`);
   console.log(`  images: ${result.images}`);
+  if (result.gates.length) {
+    console.log(`  publish gates: ${result.gates.join(', ')}${launch ? '' : ' (allowed on preview; npm run check:launch fails until removed)'}`);
+  }
   if (!failed) {
     console.log('');
     return;
@@ -419,13 +437,16 @@ function printResult(result) {
   console.log('');
 }
 
-const files = argv.slice(2);
+const args = argv.slice(2);
+const launch = args.includes('--launch');
+const files = args.filter((arg) => arg !== '--launch');
+if (launch) console.log('Launch mode: publish gates fail the check.\n');
 const targets = files.length ? files : DEFAULT_PAGES;
 let failed = false;
 for (const file of targets) {
   let result;
   try {
-    result = checkFile(file);
+    result = checkFile(file, launch);
   } catch (error) {
     console.log(`FAIL ${file}`);
     console.log(`  ${error.message}`);

@@ -36,4 +36,18 @@ The check fails when a page has:
 
 Mark an example with `class="sample"`, `class="example"`, or `data-figure="sample"`. The class token has to be exact: `sample-list` does not count. Do not add a dollar amount to the allowlist without a source you can point at.
 
+## Launch check
+
+```bash
+npm run check:launch
+```
+
+That runs the same brand check with `--launch`, and also fails while any element has a `data-publish-gate` attribute. Wrap content that can show on a preview but waits on someone's written approval in a gate, with a comment saying whose approval:
+
+```html
+<div data-publish-gate="cfa-john-velarde">…</div>
+```
+
+`npm run check:brand` lists gates but passes, so previews stay green. Before going live, run `npm run check:launch`; when the approval comes in, remove the wrapper (or remove the gated content and any links to it).
+
 This repository does not have GitHub Actions yet. When CI is added, run `npm run check:brand` on pull requests. Do not add a workflow only for this check until the repo has a CI setup to put it in.
