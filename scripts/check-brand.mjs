@@ -35,6 +35,10 @@ const DOLLAR_ALLOWLIST = [
   { key: '$38000', source: 'Kahler Construction audit report, written out.' },
   { key: '$54000', source: 'Kahler Construction audit report, written out.' },
   { key: '$10m', source: 'Existing line for sizing the audit at operations of $10M and up.' },
+  { key: '$13300', source: 'Leak Ledger: Manual lead generation with no system. https://app.notion.com/p/3bb77a727f2681578285c82925556ff1' },
+  { key: '$32000', source: "Leak Ledger: Estimating logic lives entirely in Budd's head. https://app.notion.com/p/3bb77a727f2681278885e69e2c01b9a8" },
+  { key: '$16494', source: 'Leak Ledger: Cash counted by hand at four locations and chased against POS. https://app.notion.com/3bb77a727f26816c958ed6bad3c5cd36' },
+  { key: '$37440', source: 'Leak Ledger: Interviews that nobody shows up to. https://app.notion.com/p/3bb77a727f268184bf93e8f7a1b5b8aa' },
 ];
 
 const BANNED_GREENS = ['#22764f', '#4fc28c', '#0f5136'];
