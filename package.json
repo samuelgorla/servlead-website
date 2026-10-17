@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "check:brand": "node scripts/check-brand.mjs",
-    "check:launch": "node scripts/check-brand.mjs --launch"
+    "check:launch": "node scripts/check-brand.mjs --launch",
+    "check:deploy": "node scripts/check-deploy.mjs"
   }
 }

@@ -50,4 +50,14 @@ That runs the same brand check with `--launch`, and also fails while any element
 
 `npm run check:brand` lists gates but passes, so previews stay green. Before going live, run `npm run check:launch`; when the approval comes in, remove the wrapper (or remove the gated content and any links to it).
 
+## Deploy check
+
+```bash
+npm run check:deploy
+```
+
+That fails if a markdown note, anything under `scripts/`, `test/`, or `functions/`, a `package*.json`, or `.assetsignore` would be published. It also fails if `llms.txt`, `robots.txt`, or `sitemap.xml` would be blocked, or if a file that is published contains a Notion URL or a `cal.com/samgorla/consultation` link.
+
+`.assetsignore` lists the same internal files, but Pages still served `number-sources.md` with that file in place. `_worker.js` calls `isBlockedAsset` before the asset fetch, and that is what returns 404. The `/consultation` 301 stays in both `_redirects` and `_worker.js`.
+
 This repository does not have GitHub Actions yet. When CI is added, run `npm run check:brand` on pull requests. Do not add a workflow only for this check until the repo has a CI setup to put it in.

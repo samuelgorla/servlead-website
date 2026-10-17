@@ -1,6 +1,8 @@
-# Unit tests are not part of the site.
+# Harmless if Pages ignores this file. _worker.js is what returns 404.
+*.md
+/scripts/
+scripts/
 /test/
 test/
-
-# Internal notes: number sources for the homepage, with client file links.
-/number-sources.md
+package*.json
+.assetsignore
