@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Field Notes · a homepage direction · Servlead Solutions</title>
+<meta name="description" content="Design mockup. The owner's notebook: a homepage direction for Servlead Solutions.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --ink: #14202E;
+    --slate: #3D5166;
+    --muted: #5C6E80;
+    --line: #D9D0C0;
+    --paper: #F7F3EA;
+    --desk: #E4DCCE;
+    --gold: #E8B64C;
+    --wash: #F3E6C8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: Archivo, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    accent-color: #14202E;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  img { max-width: 100%; }
+  a { color: inherit; }
+  button, input { font: inherit; color: inherit; }
+  .skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+  }
+  .skip:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 6;
+    background: var(--paper);
+    padding: 0.5rem 0.75rem;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  .mock {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.55rem 1.1rem;
+    background: var(--ink);
+    color: #F7F3EA;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .mock a { color: var(--gold); }
+  .book {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: var(--paper);
+    min-height: 100vh;
+  }
+  .spine { display: none; }
+  main { padding: 1.35rem 1.15rem 3rem; }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .brand svg { display: block; }
+  .kicker {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.8rem;
+  }
+  h1, h2, h3 { font-family: Newsreader, serif; font-weight: 450; letter-spacing: -0.03em; }
+  h1 {
+    font-size: clamp(2.55rem, 8vw, 5.5rem);
+    line-height: 0.94;
+    margin: 0 0 1rem;
+  }
+  h1 em { font-style: italic; font-weight: 400; }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.05; margin: 0 0 0.7rem; }
+  h3 { font-size: 1.35rem; margin: 0 0 0.3rem; }
+  .lede { font-family: Newsreader, serif; font-size: 1.28rem; line-height: 1.35; margin: 0 0 0.9rem; }
+  .range { margin: 0 0 1.1rem; max-width: 38rem; }
+  .hero { display: grid; gap: 1.4rem; align-items: start; }
+  .hero-art svg { width: 100%; height: auto; display: block; }
+  .draw { stroke-dashoffset: 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    .draw { stroke-dasharray: 280; animation: ink 1.4s ease both; }
+  }
+  @keyframes ink { from { stroke-dashoffset: 280; } to { stroke-dashoffset: 0; } }
+  .sam {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin: 1rem 0 0;
+  }
+  .sam img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+  }
+  .sam b { display: block; }
+  .sam span { color: var(--muted); font-size: 0.92rem; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    background: #A63D1C;
+    border: 1px solid #A63D1C;
+    color: #F7F4EE;
+    font-family: Archivo, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background: #7C2B13;
+    border-color: #7C2B13;
+    color: #F7F4EE;
+  }
+  .guarantee {
+    font-family: Newsreader, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin: 0.75rem 0 0;
+    max-width: 36rem;
+  }
+  .spread { margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .lanes { display: grid; gap: 0.8rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .lanes li { border-top: 1px solid var(--ink); padding-top: 0.65rem; }
+  .lanes span {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .picker { display: grid; gap: 1rem; }
+  .lane-switch { display: flex; flex-wrap: wrap; gap: 0.45rem; border: 0; padding: 0; margin: 0 0 0.8rem; }
+  .lane-switch label {
+    border: 1px solid var(--ink);
+    padding: 0.45rem 0.7rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .lane-switch input { position: absolute; opacity: 0; }
+  .lane-switch label:has(input:checked) { background: var(--ink); color: var(--paper); }
+  .lane-switch label:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
+  #lane-note { color: var(--slate); margin: 0 0 0.8rem; }
+  .leak-list { display: grid; gap: 0.35rem; }
+  .leak {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 0.7rem;
+    align-items: center;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+  }
+  .leak input { width: 1.15rem; height: 1.15rem; margin: 0; }
+  .rule {
+    grid-column: 2;
+    grid-row: 1;
+    height: 2px;
+    background: transparent;
+    align-self: center;
+    margin-top: 1.15rem;
+  }
+  .leak-name { font-weight: 700; grid-column: 2; grid-row: 1; }
+  .leak-feel {
+    grid-column: 2;
+    font-family: Newsreader, serif;
+    font-style: italic;
+    color: var(--slate);
+  }
+  .leak:has(input:checked) .rule { background: var(--gold); }
+  .leak:has(input:checked) .leak-name { text-decoration: line-through; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
+  .look h3 { font-family: Archivo, sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+  #weight-line { font-family: Newsreader, serif; font-style: italic; }
+  #look-list { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  .bridge { color: var(--slate); }
+  .block {
+    font-family: Newsreader, serif;
+    font-size: 1.28rem;
+    line-height: 1.4;
+    margin: 0 0 1.2rem;
+  }
+  .scale-layout { display: grid; gap: 1.2rem; }
+  .marks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    min-height: 2.4rem;
+    padding: 0.8rem;
+    background:
+      repeating-linear-gradient(transparent, transparent 27px, rgba(20, 32, 46, 0.08) 28px);
+  }
+  .mark {
+    width: 10px;
+    height: 22px;
+    background: var(--ink);
+    display: block;
+  }
+  .marks-note, .solo { color: var(--muted); font-size: 0.92rem; }
+  .field { display: grid; gap: 0.3rem; margin: 0 0 0.85rem; }
+  .field span { font-family: "Spline Sans Mono", monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  input[type="number"], input[type="range"] { width: 100%; }
+  input[type="number"] {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    padding: 0.45rem 0;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 1.15rem;
+  }
+  .people-row { display: grid; grid-template-columns: 1fr 5.5rem; gap: 0.6rem; align-items: center; }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .formula, .result { font-family: "Spline Sans Mono", monospace; font-size: 0.92rem; }
+  .result { font-family: Newsreader, serif; font-size: 1.35rem; margin: 0.4rem 0; }
+  .example {
+    background: var(--wash);
+    padding: 0.8rem 0.9rem;
+    margin: 0.6rem 0 0;
+  }
+  .facts { margin: 1.2rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.9rem; }
+  .facts li { border-top: 1px solid var(--line); padding-top: 0.7rem; font-size: 0.98rem; }
+  .facts a { overflow-wrap: anywhere; }
+  .proof-grid, .findings { display: grid; gap: 0.8rem; }
+  .clip {
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 0.9rem;
+    box-shadow: 4px 4px 0 rgba(20, 32, 46, 0.06);
+  }
+  .logo-well {
+    background: var(--paper);
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7rem;
+  }
+  .logo-well img { height: 52px; width: auto; max-width: 100%; }
+  .stars { color: var(--ink); display: flex; gap: 0.12rem; margin: 0 0 0.45rem; }
+  .stars svg { width: 14px; height: 14px; }
+  blockquote { margin: 0; font-family: Newsreader, serif; font-style: italic; font-size: 1.12rem; line-height: 1.35; }
+  .attr { margin: 0.7rem 0 0; font-size: 0.92rem; }
+  .attr b { display: block; }
+  .finding {
+    display: grid;
+    gap: 0.2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--ink);
+  }
+  .finding b { font-family: Newsreader, serif; font-weight: 500; font-size: 1.2rem; }
+  .close p { max-width: 40rem; }
+  .news-link { font-weight: 700; }
+  .colophon { margin-top: 2rem; color: var(--muted); font-size: 0.92rem; }
+  .colophon h2 { font-size: 1.3rem; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  @media (min-width: 800px) {
+    .book { margin: 1.25rem auto; display: grid; grid-template-columns: 48px 1fr; box-shadow: 0 18px 50px rgba(20, 32, 46, 0.12); }
+    .spine {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ink);
+      color: var(--gold);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: "Spline Sans Mono", monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+    main { padding: 2rem 2.2rem 3.5rem; }
+    .hero { grid-template-columns: 1.05fr 0.95fr; gap: 2rem; }
+    .picker { grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; align-items: start; }
+    .scale-layout { grid-template-columns: 0.8fr 1.2fr; gap: 1.5rem; }
+    .proof-grid { grid-template-columns: 1fr 1fr; }
+    .findings { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mock">
+  <a href="/design/">All three directions</a>
+  <span>A · Field Notes · mockup</span>
+</div>
+<div class="book">
+  <div class="spine">Servlead · Field notes · Lehigh Valley</div>
+  <main id="main">
+    <a class="brand" href="/design/">
+      <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" fill="#14202E" stroke="#E8B64C" stroke-width="1.5"/><path d="M8 17.5l5 5 11-12" fill="none" stroke="#E8B64C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Servlead Solutions
+    </a>
+    <section class="hero">
+      <div>
+        <p class="kicker">Note 01 · Lehigh Valley</p>
+        <h1>The business still runs <em>through your head.</em></h1>
+        <p class="lede">I’m Sam Gorla. I sit with owner-run companies and show you where the time and money slip. Then I build the fix with your team.</p>
+        <p class="range">From about $2M up to $20M–$50M in revenue. Crews, locations, a book of work. Fourteen years in technology consulting for Fortune 1000 companies. I do the work myself.</p>
+        <a class="btn-primary" id="book" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call</a>
+        <p class="guarantee">If I don't show you at least $10,000 a year leaking out of your business, the audit's free.</p>
+        <p class="sam">
+          <img src="/Sam%20Gorla_headshot.jpeg" alt="Sam Gorla, founder of Servlead Solutions" width="479" height="382">
+          <span><b>Sam Gorla</b><span>Lehigh Valley, PA. Phone, Teams, or in person.</span></span>
+        </p>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 640 520" role="img" aria-label="An open notebook. Ledger lines leave a geometric head. Three of the lines break.">
+          <rect x="16" y="24" width="608" height="472" fill="#F7F3EA" stroke="#14202E" stroke-width="1.4"/>
+          <path d="M320 24v472" stroke="#14202E" stroke-width="1"/>
+          <circle class="draw" cx="148" cy="168" r="62" fill="none" stroke="#14202E" stroke-width="1.6"/>
+          <path class="draw" d="M168 150c22 8 34 28 28 52-18 8-40 6-52-8" fill="none" stroke="#14202E" stroke-width="1.6"/>
+          <path class="draw" d="M126 230c8 36 18 70 14 110" fill="none" stroke="#14202E" stroke-width="1.6"/>
+          <path d="M250 120h150M430 120h150" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <path d="M250 168h120" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <rect x="384" y="160" width="18" height="18" fill="#E8B64C"/>
+          <path d="M416 168h184" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <path d="M250 216h340" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <path d="M250 264h90" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <rect x="354" y="256" width="18" height="18" fill="#E8B64C"/>
+          <path d="M386 264h194" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <path d="M250 312h200" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <rect x="464" y="304" width="18" height="18" fill="#E8B64C"/>
+          <path d="M496 312h84" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <path d="M250 360h330" fill="none" stroke="#14202E" stroke-width="1.2"/>
+          <text x="250" y="430" fill="#5C6E80" font-family="Spline Sans Mono, monospace" font-size="13">THE SLIP IS THE GAP</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="spread" aria-labelledby="lanesTitle">
+      <p class="kicker">Who I sit with</p>
+      <h2 id="lanesTitle">Three lanes. The owner is still close to the work.</h2>
+      <ul class="lanes">
+        <li><span>Trades and contractors</span><h3>Bids, crews, and sites.</h3><p>Quotes go quiet. The week on the tools still runs through you, even with more than one crew.</p></li>
+        <li><span>Professional services</span><h3>CPA, law, insurance, agencies.</h3><p>Intake and follow-up live in the inbox, and in one partner’s head, while the book of work gets larger.</p></li>
+        <li><span>Healthcare practices</span><h3>Dental, PT, chiropractic, counseling.</h3><p>Missed calls, the schedule, intake paperwork, and billing follow-up. Never clinical work or patient records.</p></li>
+      </ul>
+    </section>
+
+    <section class="spread" id="leaks" aria-labelledby="leakTitle">
+      <p class="kicker">Where it slips</p>
+      <h2 id="leakTitle">Mark the leaks you already recognize.</h2>
+      <p>I will not invent a dollar figure from a tap. Mark what you know. I will name where I would look first.</p>
+      <div class="picker">
+        <div>
+          <fieldset class="lane-switch">
+            <legend class="sr-only">Your lane</legend>
+            <label><input type="radio" name="lane" value="trades" checked> Trades and contractors</label>
+            <label><input type="radio" name="lane" value="professional"> Professional services</label>
+            <label><input type="radio" name="lane" value="healthcare"> Healthcare practices</label>
+          </fieldset>
+          <p id="lane-note">Crews, bids, and more than one site. The work still routes through the owner.</p>
+          <div class="leak-list" id="leak-list"></div>
+        </div>
+        <div class="look">
+          <h3>What I’d look at first</h3>
+          <p id="weight-line"></p>
+          <ol id="look-list"></ol>
+        </div>
+      </div>
+      <p class="bridge">The same leak gets heavier as the company gets larger. The next page of the notebook is how it adds up, from numbers you enter.</p>
+    </section>
+
+    <section class="spread scale" id="scale" aria-labelledby="scaleTitle">
+      <p class="block">Most leaks start small: a missed call, a slow quote, a handoff that slips through the cracks. As your business grows, those same leaks repeat across more people, more locations and more calls, quotes and appointments, and each hour tends to cost more at larger employers too. I won't guess a dollar figure for your business, but I'll show you how to measure yours with your own numbers.</p>
+      <h2 id="scaleTitle">See how one leak adds up</h2>
+      <div class="scale-layout">
+        <div>
+          <div class="marks" id="marks" aria-hidden="true"></div>
+          <p class="marks-note">The marks stand in for the people on the slider. They are not a headcount of a real company.</p>
+        </div>
+        <div class="calc">
+          <label class="field">Hours lost per person per week
+            <input id="hours" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="Enter hours">
+          </label>
+          <label class="field">People affected
+            <span class="people-row">
+              <input id="people-range" type="range" min="1" max="500" step="1" value="250" aria-label="People affected, slider">
+              <input id="people-num" type="number" min="1" max="2000" step="1" value="250" inputmode="numeric" aria-label="People affected">
+            </span>
+            <span class="scale-labels" aria-hidden="true"><span>1</span><span>100</span><span>250+</span><span>500</span></span>
+          </label>
+          <label class="field">Loaded hourly cost
+            <input id="cost" type="number" min="0.01" step="0.01" value="46.89" inputmode="decimal">
+          </label>
+          <label class="field">Working weeks
+            <input id="weeks" type="number" min="1" max="52" step="1" value="48">
+          </label>
+          <p class="formula" id="formula-static">hours × people × cost × weeks = estimated yearly leak</p>
+          <p class="formula" id="formula-live"></p>
+          <p class="result" id="result" aria-live="polite"></p>
+          <p class="example" data-figure="example">Example only, not a benchmark. 3 hours a week × 25 people × $46.89/hr × 48 weeks = $168,804 a year.</p>
+        </div>
+      </div>
+      <ol class="facts">
+        <li>In private industry an employee hour costs $46.89 in total compensation, and it rises with employer size: $37.64 at 1–49 workers, $47.96 at 100–499, $67.68 at 500+. Source: <a href="https://www.bls.gov/news.release/ecec.t06.htm">BLS ECEC June 2026, https://www.bls.gov/news.release/ecec.t06.htm</a></li>
+        <li>Benefits are about 30% of what an hour really costs. Source: <a href="https://www.bls.gov/news.release/ecec.nr0.htm">BLS ECEC, https://www.bls.gov/news.release/ecec.nr0.htm</a></li>
+        <li>Knowledge workers were estimated to spend about a fifth of their week searching for and gathering information. Source: <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">McKinsey Global Institute, cited in 'The economic potential of generative AI' (2023), https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier</a></li>
+      </ol>
+    </section>
+
+    <section class="spread" id="proof" aria-labelledby="proofTitle">
+      <p class="kicker">What clients say</p>
+      <h2 id="proofTitle">I’d rather you hear it from them.</h2>
+      <p>Four clients gave permission to use their name, logo, and words.</p>
+      <div class="proof-grid">
+        <article class="clip">
+          <div class="logo-well"><img src="/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="900" height="300"></div>
+          <p class="stars"><span class="sr-only">Five out of five stars</span><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg></p>
+          <blockquote><p>“Sam was extremely helpful and showed us areas we could dramatically improve our efficiency and therefore, profitability… He pinpointed areas of inefficiency and put together a systematic plan to address them.”</p></blockquote>
+          <p class="attr"><b>S.M. Klase Custom Homes</b></p>
+        </article>
+        <article class="clip">
+          <div class="logo-well"><img src="/logos/chick-fil-a.svg" alt="Chick-fil-A" width="76" height="77"></div>
+          <p class="stars"><span class="sr-only">Five out of five stars</span><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg></p>
+          <blockquote><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient… Not only has it saved us valuable time, but it has also helped increase our sales.”</p></blockquote>
+          <p class="attr"><b>Alyssa Schlener</b> Director of Community &amp; Culture, Chick-fil-A Whitehall</p>
+        </article>
+        <article class="clip">
+          <div class="logo-well"><img src="/logos/aig-safety.svg" alt="AIG Safety" width="222" height="52"></div>
+          <p class="stars"><span class="sr-only">Five out of five stars</span><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg></p>
+          <blockquote><p>“The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</p></blockquote>
+          <p class="attr"><b>AIG Safety</b> Access Innovations Global</p>
+        </article>
+        <article class="clip">
+          <div class="logo-well"><img src="/logos/kahler-construction-840.webp" alt="Kahler Construction" width="1200" height="260"></div>
+          <blockquote><p>“I really encourage anybody in construction to use this for a tool, to gain major efficiency in their company.”</p></blockquote>
+          <blockquote><p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p></blockquote>
+          <p class="attr"><b>Budd Kahler, Kahler Construction</b></p>
+        </article>
+      </div>
+      <p><a href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9">5.0 · 4 reviews on Google. Read all four on Google.</a></p>
+    </section>
+
+    <section class="spread" aria-labelledby="findTitle">
+      <p class="kicker">From the audits</p>
+      <h2 id="findTitle">Each figure stands alone.</h2>
+      <p>These are not run through the formula above, and they are not added together.</p>
+      <div class="findings">
+        <p class="finding"><b>Wholesale distributor.</b> About 8 hrs/week of prospecting by hand, $13,300 a year.</p>
+        <p class="finding"><b>General contractor.</b> About 8 hrs per bid across 53 bids a year, $32,000 a year. The bidding logic lived in the owner’s head.</p>
+        <p class="finding"><b>Multi-location restaurant operator.</b> Cash counted by hand at four sites, $16,494 a year.</p>
+        <p class="finding"><b>The same operator.</b> Interview no-shows (about 9 in 10 when booked more than a day out), $37,440 a year.</p>
+        <p class="finding"><b>Kahler Construction.</b> About $38K–$54K a year, shown at Kahler Construction.</p>
+      </div>
+      <p class="solo">Figures are from real audits, with identifying details removed.</p>
+    </section>
+
+    <section class="spread close">
+      <p class="kicker">How I work</p>
+      <h2>Side by side, with the people who already do the work.</h2>
+      <p>Sometimes the fix is AI. Sometimes it is a tool you already pay for, a hire, or a process change. Sometimes you don’t need me, and I will say so. The free 30-minute call looks at one or two jobs that eat the week. Phone, Teams, or I’ll come to you. It ends with a clear next step, and it isn’t always an audit.</p>
+      <p>A weekly note for owner-run companies: <a class="news-link" href="https://outoftheownershead.substack.com">Out of the Owner's Head</a>.</p>
+      <p>The booking button is the rust one at the top of this page.</p>
+    </section>
+
+    <footer class="colophon">
+      <h2>Direction A · Field Notes</h2>
+      <p>The homepage is a bound notebook. The problem is an entry, the leaks are lines you mark, and the scale math is a sum on the same page. A busy owner can read one spread. The cited facts sit in the margin of the sum.</p>
+      <p>Palette: navy ink on warm paper. Gold is a rule and a mark, not body text. Rust is only the booking button. The live mark’s check is green, so this direction uses a wordmark and a gold tick. Client logos stay as they are, including the green in the S.M. Klase mark. Fonts unchanged: Newsreader, Archivo, Spline Sans Mono.</p>
+      <p>Motion: the notebook lines draw in. A marked leak strikes through in gold. The people slider repeats the mark. Reduced motion keeps every line already drawn.</p>
+      <p>© 2026 Servlead Solutions · Lehigh Valley, PA · Design mockup, not the live homepage.</p>
+    </footer>
+  </main>
+</div>
+<script src="/design/preview.js"></script>
+</body>
+</html>

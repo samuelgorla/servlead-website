@@ -1,0 +1,7 @@
+{
+  "name": "servlead-website",
+  "private": true,
+  "scripts": {
+    "check:brand": "node scripts/check-brand.mjs"
+  }
+}
