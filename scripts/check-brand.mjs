@@ -25,7 +25,30 @@
 import { readFileSync } from 'node:fs';
 import { argv, exit } from 'node:process';
 
-const DEFAULT_PAGES = ['index.html'];
+const DEFAULT_PAGES = [
+  'index.html',
+  // Original client colors. Exempt from the palette scan, and nothing else is.
+  'logos/chick-fil-a.svg',
+  'logos/sm-klase.svg',
+  'logos/aig-safety.svg',
+  'logos/kahler-construction-1200.png',
+];
+
+/** Client logo files only. A green in page CSS still fails. */
+const LOGO_COLOR_EXEMPT = new Set([
+  'logos/chick-fil-a.svg',
+  'logos/sm-klase.svg',
+  'logos/aig-safety.svg',
+  'logos/kahler-construction-1200.png',
+]);
+
+function isLogoColorExempt(file) {
+  const normalized = String(file).replace(/\\/g, '/');
+  for (const name of LOGO_COLOR_EXEMPT) {
+    if (normalized === name || normalized.endsWith('/' + name)) return true;
+  }
+  return false;
+}
 
 const QUICK_CONNECT = 'https://cal.com/samgorla/quick-connect';
 const MAX_RUST_CTAS = 2;
@@ -296,6 +319,20 @@ function push(groups, name, line, detail) {
 }
 
 function checkFile(file, launch) {
+  if (isLogoColorExempt(file)) {
+    return {
+      file,
+      groups: new Map(),
+      dollars: 0,
+      allowlisted: 0,
+      sampled: 0,
+      images: 0,
+      ctas: 0,
+      gates: [],
+      fortune: false,
+      vendors: false,
+    };
+  }
   const html = readFileSync(file, 'utf8');
   const groups = new Map();
   let dollars = 0;

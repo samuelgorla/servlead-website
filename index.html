@@ -98,7 +98,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       "name": "Sam Gorla",
       "jobTitle": "Founder",
       "worksFor": { "@id": "https://servleadsolutions.com/#business" },
-      "image": "https://servleadsolutions.com/Sam%20Gorla_headshot.jpeg",
+      "image": "https://servleadsolutions.com/images/sam-full-1200.jpg",
       "description": "Sam has 14 years in technology consulting for Fortune 1000 companies.",
       "url": "https://www.linkedin.com/in/samuelgorla",
       "sameAs": [
@@ -156,7 +156,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       "name": "What does the free 30-minute look cover?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "One or two jobs that eat your week, and which way I'd go with them. You pick where money moves, like getting work, doing it, or getting paid. I tell you what's slowing it down and which way I'd go. It's a look at one or two jobs, not the whole business. The whole business is the AI & Efficiency Audit."
+        "text": "One or two jobs that eat your week, and which way I'd go with them. You pick where money moves, like getting work, doing it, or getting paid. I tell you what's slowing it down and which way I'd go. It's a look at one or two jobs, not the whole business. After the call, the three paths are equal: a Workflow Rebuild, the AI & Efficiency Audit, or a straight answer."
       }
     },
     {
@@ -164,7 +164,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       "name": "What happens after the free 30 minutes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A clear next step, and it isn't always the AI & Efficiency Audit. Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. The AI & Efficiency Audit ($1,000): when you want me to show you the bigger picture. Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is."
+        "text": "A clear next step, and it isn't always the AI & Efficiency Audit. The three paths are equal. Rebuild the workflow: a Workflow Rebuild, one workflow rebuilt end to end, a fixed price quoted after the call. The deeper AI & Efficiency Audit ($1,000): sixty minutes, live, plus the written plan within 48 hours. A straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is. A rebuild can also follow an audit. It doesn't have to."
       }
     },
     {
@@ -372,6 +372,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .panel:focus-visible { outline: 2px solid var(--slate-200); outline-offset: -2px; }
   .panel-name { padding: 0.9rem 1.25rem 0; color: var(--slate-200); font-size: 0.75rem; }
   .js .panel-name { display: none; }
+  .panel-lead { padding: 0.85rem 1.25rem 0.15rem; font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.25; color: var(--white); }
   .scr-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--line-navy); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate-300); }
   .open-count { color: var(--white); font-variant-numeric: tabular-nums; }
   .day-short { display: none; }
@@ -428,9 +429,10 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 
   /* S2 LOGO BAND */
   .logos { padding: 1.5rem 0 1.5rem; background: var(--paper); border-bottom: 1px solid var(--line); }
-  .logo-row { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: center; gap: 1.5rem 2.5rem; }
-  .logo-row a { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--slate-soft); }
-  .logo-row img { height: 64px; width: auto; max-width: min(220px, 100%); object-fit: contain; filter: url(#to-navy); }
+  .logo-row { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2rem 3rem; }
+  .logo-row > li:last-child { grid-column: 1 / -1; justify-self: center; }
+  .logo-row a { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--slate-soft); }
+  .logo-row img { height: auto; width: auto; max-height: 128px; max-width: min(420px, 100%); object-fit: contain; }
   .logo-row .lname { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; }
   .logo-row a:hover .lname { color: var(--navy); text-decoration: underline; }
   .rating { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--navy); font-size: 0.875rem; font-weight: 600; text-underline-offset: 3px; }
@@ -484,6 +486,13 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .half h4 { font-size: 0.95rem; color: var(--navy); }
   .half ul { margin-top: 0.4rem; font-size: 0.9rem; }
 
+  /* Three equal paths after the free call. The guarantee lives only on the audit card. */
+  .fork { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; align-items: stretch; }
+  .fork-card { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--navy); border-radius: 12px; padding: 1.1rem 1.15rem 1.2rem; }
+  .fork-card h3 { margin-top: 0.3rem; font-family: var(--font-serif); font-weight: 400; font-size: 1.35rem; line-height: 1.2; }
+  .fork-card > p { margin-top: 0.5rem; color: var(--slate-soft); }
+  .fork-card .path-g { margin-top: 0.65rem; font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; line-height: 1.35; color: var(--navy); }
+  .fork-note { margin-top: 1rem; color: var(--slate-soft); max-width: 62ch; }
   /* Guarantee card sits beside the steps */
   .g-card { position: sticky; top: 6rem; max-width: 56rem; border: 1px solid var(--line-navy); border-radius: 16px; padding: clamp(1.4rem, 3vw, 2.25rem); background: var(--navy-2); }
   .g-card .g-h { font-family: var(--font-mono); font-size: 0.75rem; margin: 0; max-width: none; letter-spacing: 0.08em; }
@@ -525,9 +534,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .tile .go { margin-top: auto; padding-top: 0.75rem; font-weight: 600; }
 
   /* S10 ABOUT */
-  .about-grid { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 3rem; align-items: start; }
+  .about-grid { display: grid; grid-template-columns: minmax(260px, 460px) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
   .about-copy h2 { margin-bottom: 1rem; }
-  .portrait img { width: 100%; height: auto; aspect-ratio: 479 / 382; object-fit: cover; border-radius: 12px; }
+  .portrait img { width: 100%; height: auto; border-radius: 16px; }
   .portrait figcaption { margin-top: 0.75rem; font-size: 0.875rem; color: var(--slate-300); }
   .about-copy > p:not(.kicker) { font-size: 1.15rem; line-height: 1.55; color: var(--slate-200); max-width: 38rem; }
   .values { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1.5rem; border-top: 1px solid var(--line-navy); padding-top: 1.25rem; }
@@ -581,11 +590,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .stage:nth-child(n+3) { border-top: 1px solid var(--line-navy); }
     .how-grid-main, .tools-grid, .about-grid, .showing { grid-template-columns: minmax(0, 1fr); }
     .g-card { position: static; }
-    .portrait { max-width: 240px; }
+    .portrait { max-width: 420px; }
+    .fork { grid-template-columns: minmax(0, 1fr); }
     .demos { grid-template-columns: 1fr 1fr; }
     .faq-list { grid-template-columns: minmax(0, 1fr); }
-    .logo-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .logo-row > li:last-child { grid-column: 1 / -1; justify-self: center; }
+    .logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .logo-row img { max-height: 104px; }
     .foot-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 900px) {
@@ -663,8 +673,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .screen-bar { margin-top: 0.4rem; }
     .caption { font-size: 0.75rem; }
     .logos { padding: 1.25rem 0 1.75rem; }
-    .logo-row { grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; }
-    .logo-row img { height: 40px; max-width: 150px; }
+    .logo-row { gap: 1.25rem 1rem; }
+    .logo-row img { max-height: 84px; max-width: 100%; }
+    .panel-lead { padding: 0.65rem 0.85rem 0.1rem; font-size: 1.05rem; }
     /* Phones: stages stay two by two */
     .stage, .stage + .stage, .stage:nth-child(3) { padding: 1rem 0.75rem 0.25rem 0; }
     .stages > li:nth-child(even) .stage { padding-left: 0.75rem; }
@@ -713,13 +724,15 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   /* CASE STUDIES */
   .case { margin-top: 2rem; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1.25rem, 3vw, 2.25rem); scroll-margin-top: 6rem; }
   .case-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.5rem 1.25rem; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
-  .case-logo { height: 48px; width: auto; max-width: 180px; filter: url(#to-navy); }
+  .case-logo { height: 56px; width: auto; max-width: 220px; }
   .case-head h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.6rem; line-height: 1.15; }
   .case-type { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate-soft); }
   .case-num { font-family: var(--font-mono); font-weight: 500; font-size: clamp(1.75rem, 3.4vw, 2.6rem); line-height: 1; letter-spacing: -0.03em; text-align: right; }
   .case-num small { display: block; margin-top: 0.4rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400; letter-spacing: 0; color: var(--slate-soft); }
     .case + .case, [data-publish-gate] > .case { margin-top: 1rem; }
   .case-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 2rem; margin-top: 1.25rem; align-items: start; }
+  .case.feature .case-body { grid-template-columns: minmax(200px, 300px) minmax(0, 1fr); align-items: center; }
+  .case.feature .pull { font-size: clamp(1.45rem, 2.3vw, 1.9rem); line-height: 1.3; }
   .case-head { padding-bottom: 1rem; }
   .pull { font-size: 1.3rem; }
   /* Before / after: two short lines, the rest in layer 2 */
@@ -774,6 +787,8 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .case { padding: 1.1rem; }
     .case-body { grid-template-columns: minmax(0, 1fr); }
     .case .film { max-width: 200px; }
+    .case.feature .film { max-width: 240px; }
+    .portrait { max-width: 300px; }
     .pull { font-size: 1.15rem; }
     .ba { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; margin-top: 0.85rem; }
     .ba > div { padding: 0.65rem 0.85rem; }
@@ -850,13 +865,14 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         </div>
 
         <div class="panel" id="panel-trades" data-tab="tab-trades">
-          <p class="panel-name mono">Contractors &amp; manufacturers</p>
+          <p class="panel-name mono">Contractors, manufacturers &amp; distributors</p>
+          <p class="panel-lead">Contractors, manufacturers &amp; distributors</p>
           <div class="scr-head"><span><span class="day-long">Free 30-minute call · 1 or 2 workflows</span><span class="day-short">Sized with your numbers</span></span><span class="open-count" aria-hidden="true" data-open>3 named</span></div>
           <ul class="rows">
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-doc"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Getting customers · </span>Quote gone quiet</p>
+                <p class="row-title"><span class="cat">Contractor · </span>Quote or RFQ gone quiet</p>
                 <p class="row-meta"><span class="problem" data-ticks="Sent 2 days|Sent 5 days|Quiet 9 days">Quiet 9 days</span><span class="detail">Nobody's chasing it</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Quiet 9 days</span><span class="chip chip-done">Named</span></span></p>
                 <p class="row-action"><span class="named">Named: quote follow-up</span> <span class="sz">· sized with your numbers</span></p>
               </div>
@@ -864,17 +880,19 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-cal"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Serving customers · </span>Pricing lives in one head</p>
-                <p class="row-meta"><span class="problem">8 hours a bid</span><span class="detail">53 bids a year</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">One person</span><span class="chip chip-done">Named</span></span></p>
-                <p class="row-action"><span class="named">Named: estimating</span> <span class="sz sz-key">· real audit: $32,000/yr</span></p>
+                <!-- Source: AIG Safety audit. Orders entered by hand and shipping documents re-keyed, about 6 hours a week. -->
+                <p class="row-title"><span class="cat">Manufacturer · </span>Orders re-keyed by hand</p>
+                <p class="row-meta"><span class="problem">About 6 hours a week</span><span class="detail">Shipping papers too</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">By hand</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: order entry</span> <span class="sz">· real audit: about 6 hours a week</span></p>
               </div>
             </li>
             <li class="row">
               <span class="ico" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
               <div>
-                <p class="row-title"><span class="cat">Getting paid · </span>Invoices sitting unpaid</p>
-                <p class="row-meta"><span class="problem">Nobody chasing</span><span class="detail">Work done, not paid</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Unpaid</span><span class="chip chip-done">Named</span></span></p>
-                <p class="row-action"><span class="named">Named: invoice chasing</span> <span class="sz">· late cash, not a yearly loss</span></p>
+                <!-- Source: wholesale distributor audit, manual lead generation, $13,300 a year. -->
+                <p class="row-title"><span class="cat">Distributor · </span>Accounts nobody calls</p>
+                <p class="row-meta"><span class="problem">About 100 known accounts</span><span class="detail">Prospecting by hand</span><span class="chip-wrap" aria-hidden="true"><span class="chip chip-problem">Uncontacted</span><span class="chip chip-done">Named</span></span></p>
+                <p class="row-action"><span class="named">Named: prospecting</span> <span class="sz sz-key">· real audit: $13,300/yr</span></p>
               </div>
             </li>
           </ul>
@@ -960,11 +978,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         <summary>How this works</summary>
         <div class="more-body how-grid">
           <div>
-            <p class="how-h">Contractors &amp; manufacturers</p>
+            <p class="how-h">Contractors, manufacturers &amp; distributors</p>
             <ul>
-              <li><b>Quote gone quiet:</b> Named on the call, then sized with how many quotes go quiet and what a job is worth to you. Got one sitting there now? <a class="text-link" href="/tools/quote-rescue">Draft one free with Quote Rescue →</a></li>
-              <li><b>Pricing in one head:</b> From a real audit at a general contractor: about eight hours a bid, about fifty-three bids a year, and the pricing logic held by one person. Source: (audit file).</li>
-              <li><b>Unpaid invoices:</b> Late cash is real, but it isn't lost, so it gets named and not counted as a yearly loss.</li>
+              <li><b>Contractor, quote or RFQ gone quiet:</b> Named on the call, then sized with how many go quiet and what a job is worth to you. Got one sitting there now? <a class="text-link" href="/tools/quote-rescue">Draft one free with Quote Rescue →</a></li>
+              <li><b>Manufacturer, orders re-keyed:</b> From a real audit at a safety manufacturer: orders entered by hand and shipping papers re-keyed, about 6 hours a week. Source: (audit file).</li>
+              <li><b>Distributor, accounts nobody calls:</b> From a real audit at a wholesale distributor: about eight hours a week of prospecting by hand, while about a hundred known accounts sat uncontacted. $13,300 a year. Source: (audit file).</li>
+              <li><b>Estimating that lives in one head:</b> The $32,000 a year figure stays with the general contractor audit. About eight hours a bid, about fifty-three bids a year, pricing held by one person. It is on the results below. Source: (audit file).</li>
             </ul>
           </div>
           <div>
@@ -993,7 +1012,6 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       <a class="btn-primary" id="hero-cta" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call <span class="arr" aria-hidden="true">→</span></a>
       <p class="price-line mono">The audit: $1,000 · $500 to book · $500 when the plan lands</p>
       <div class="byline">
-        <img src="sam-gorla-160.webp" alt="Sam Gorla" width="48" height="48">
         <p><b>Sam Gorla</b><span>14 years consulting for Fortune 1000 companies</span></p>
       </div>
       <a class="tool-link" href="/leak-estimate">Not ready for a call? Run the 3-minute Leak Estimate →</a>
@@ -1021,7 +1039,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     <p class="kicker">Proof · Named clients</p>
     <h2 id="proof-h">Don't take my word for it. Take theirs.</h2>
 
-    <article class="case" id="kahler" aria-labelledby="kahler-h">
+    <article class="case feature" id="kahler" aria-labelledby="kahler-h">
       <header class="case-head">
         <img class="case-logo" src="logos/kahler-construction-480.webp" alt="Kahler Construction" width="222" height="48" loading="lazy">
         <div>
@@ -1034,12 +1052,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       <div class="case-body">
         <figure class="film">
           <div class="film-wrap">
-            <video controls preload="none" playsinline poster="/images/media/kahler-web-9x16-poster-360.jpg" width="720" height="1280" aria-label="Kahler Construction testimonial, 38 seconds">
+            <video controls preload="none" playsinline poster="/images/media/kahler-web-9x16-poster.jpg" width="720" height="1280" aria-label="Kahler Construction testimonial, 38 seconds. Captions are on the picture.">
               <source src="/images/media/kahler-web-9x16.mp4" type="video/mp4">
             </video>
             <button class="film-play" type="button" hidden aria-label="Play Kahler Construction testimonial, 38 seconds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15l12-7.5z"/></svg></span></button>
           </div>
-          <figcaption>Budd Kahler, in his own words. 38 seconds.</figcaption>
+          <figcaption>Budd Kahler, in his own words. 38 seconds. Captions are on the picture.</figcaption>
         </figure>
         <div>
           <blockquote class="pull"><p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p></blockquote>
@@ -1198,71 +1216,45 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 <section id="how" aria-labelledby="how-h">
   <div class="wrap reveal">
     <p class="kicker">How it works · The offer</p>
-    <h2 id="how-h">Four steps. You can stop after any of them.</h2>
-    <div class="how-grid-main">
-      <ol class="steps">
-        <li class="step">
-          <p class="step-tag" aria-hidden="true">Step<b>01</b></p>
-          <div>
-            <h3>Free 30-minute call <span class="price">Free</span></h3>
-            <p>A free look at one or two workflows. Phone, video, or in person in the Lehigh Valley. You leave with where each one is stuck, what it's worth, and a clear next step.</p>
-            <details class="more"><summary>What you leave with</summary><div class="more-body">
-              <p>A one-page Direction Page: where each workflow is stuck, in plain language, what it's worth, and the fix I'd take. You keep it whether or not you ever book anything else.</p>
-              <p>Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
-              <p>For healthcare practices: scheduling, new-patient paperwork, and billing follow-up. No clinical work, and patient records only with the right safeguards in place.</p>
-            </div></details>
-          </div>
-        </li>
-        <li class="step">
-          <p class="step-tag" aria-hidden="true">Step<b>02</b></p>
-          <div>
-            <h3>The AI &amp; Efficiency Audit <span class="price">$1,000 · $500 to book</span></h3>
-            <p>Sixty minutes, live. Your biggest leaks named, ranked, and priced, with an honest read on whether AI is even the right fix.</p>
-            <details class="more"><summary>What the $1,000 covers</summary><div class="more-body">
-              <div class="halves">
-                <div class="half"><h4>The hour ($500 to book)</h4><ul><li>Your biggest leaks, named and ranked</li><li>A dollar figure on each one I can stand behind</li><li>The ones I won't put a number on, and why</li><li>The guarantee, settled out loud at the end of the hour</li></ul></div>
-                <div class="half"><h4>The plan ($500 when it lands, within 48 hours)</h4><ul><li>A specific fix for each leak</li><li>Priority order, with the math shown</li><li>A plan your team can run without me</li><li>Yours to keep</li></ul></div>
-              </div>
-              <p>Sometimes the answer is a tool you already pay for.</p>
-              <p>Bigger operation, $10M and up? I'll scope the audit to the right department, or the whole company, on the 30-minute call.</p>
-            </div></details>
-          </div>
-        </li>
-        <li class="step">
-          <p class="step-tag" aria-hidden="true">Step<b>03</b></p>
-          <div>
-            <h3>The written plan, within 48 hours <span class="price">$500 when the plan lands</span></h3>
-            <p>A fix for each leak, in order, with the math shown. Yours to keep, whether or not you ever hire me.</p>
-          </div>
-        </li>
-        <li class="step">
-          <p class="step-tag" aria-hidden="true">Step<b>04</b></p>
-          <div>
-            <h3>Build the fix, or don't <span class="price">Quoted after the call</span></h3>
-            <p>A Workflow Rebuild: one workflow rebuilt end to end, at a fixed price quoted after the call. Only when the call shows it's worth it.</p>
-            <details class="more"><summary>How a build works</summary><div class="more-body">
-              <p>One repeating job, rebuilt from start to finish, with AI only where it helps. Each one is built for that business, not taken off a shelf. Past examples include a quote follow-up system, a company knowledge base, and an AI assistant that keeps the owner on top of the day.</p>
-              <p>Baseline first: hours on the workflow each week, how often it runs, and days from start to done, all your numbers. After, it's measured against that week-one baseline, not my slides. It runs in accounts you own, and your team is trained, with a one-page sheet for when something breaks.</p>
-              <p><a class="text-link" href="/how-it-works#builds">See example builds →</a> · <a class="text-link" href="/how-it-works">How a build works →</a></p>
-            </div></details>
-          </div>
-        </li>
-      </ol>
-      <div class="g-card dark" id="guarantee">
-        <h2 class="kicker g-h" id="g-h">The audit guarantee · $1,000 AI &amp; Efficiency Audit</h2>
-        <p class="big-g">If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
-        <span class="mono">Applies to the paid audit · Settled out loud at the end of the hour</span>
+    <h2 id="how-h">The free call, then one of three paths.</h2>
+    <p class="lede">A free 30-minute look at one or two workflows. Phone, video, or in person in the Lehigh Valley. You leave knowing where each one is stuck, and which path fits. For healthcare practices: scheduling, new-patient paperwork, and billing follow-up. No clinical work.</p>
+    <div class="fork">
+      <article class="fork-card">
+        <p class="kicker">Path 1</p>
+        <h3>Rebuild the workflow</h3>
+        <p>Workflow Rebuild: one workflow rebuilt end to end, a fixed price quoted after the call.</p>
+        <details class="more"><summary>How a build works</summary><div class="more-body">
+          <p>One repeating job, rebuilt from start to finish, with AI only where it helps. Each one is built for that business, not taken off a shelf. Past examples include a quote follow-up system, a company knowledge base, and an AI assistant that keeps the owner on top of the day.</p>
+          <p>Baseline first: hours on the workflow each week, how often it runs, and days from start to done, all your numbers. After, it's measured against that week-one baseline. It runs in accounts you own, and your team is trained, with a one-page sheet for when something breaks.</p>
+          <p><a class="text-link" href="/how-it-works#builds">See example builds →</a></p>
+        </div></details>
+      </article>
+      <article class="fork-card" id="guarantee">
+        <p class="kicker">Path 2 · The audit guarantee</p>
+        <h3 id="g-h">The deeper AI &amp; Efficiency Audit</h3>
+        <p>$1,000 · $500 to book · $500 when the plan lands. Sixty minutes, live, plus the written plan within 48 hours.</p>
+        <p class="path-g">If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p>
         <details class="more"><summary>How the audit guarantee works</summary><div class="more-body">
+          <div class="halves">
+            <div class="half"><h4>The hour ($500 to book)</h4><ul><li>Your biggest leaks, named and ranked</li><li>A dollar figure on each one I can stand behind</li><li>The ones I won't put a number on, and why</li><li>The guarantee, settled out loud at the end of the hour</li></ul></div>
+            <div class="half"><h4>The plan ($500 when it lands, within 48 hours)</h4><ul><li>A specific fix for each leak</li><li>Priority order, with the math shown</li><li>A plan your team can run without me</li><li>Yours to keep</li></ul></div>
+          </div>
           <ol>
             <li>It's settled out loud at the end of the hour, not weeks later.</li>
             <li>Under $10,000 shown, there's no second invoice.</li>
             <li>It covers what I show you in the audit, not money you later recover. That part isn't mine to promise.</li>
             <li>No "if you're not satisfied" clause. A clear number is fairer to both of us.</li>
           </ol>
-          <p>The $10,000 bar is the number I'll stake the fee on, not the number I expect.</p>
+          <p>The $10,000 bar is the number I'll stake the fee on, not the number I expect. Bigger operation, $10M and up? I'll scope the audit to the right department, or the whole company, on the 30-minute call.</p>
         </div></details>
-      </div>
+      </article>
+      <article class="fork-card">
+        <p class="kicker">Path 3</p>
+        <h3>A straight answer</h3>
+        <p>if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
+      </article>
     </div>
+    <p class="fork-note">A rebuild can also follow an audit. It doesn't have to. You also leave the free call with a one-page Direction Page: where each workflow is stuck, what it's worth, and the fix I'd take. You keep it whether or not you book anything else.</p>
   </div>
 </section>
 
@@ -1376,7 +1368,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   <div class="wrap reveal">
     <div class="about-grid">
       <figure class="portrait">
-        <img src="Sam Gorla_headshot.jpeg" alt="Sam Gorla, founder of Servlead Solutions" width="479" height="382" loading="lazy">
+        <picture>
+          <source media="(max-width: 700px)" type="image/webp" srcset="images/sam-4x5-480.webp 480w, images/sam-4x5-800.webp 800w, images/sam-4x5-1200.webp 1200w" sizes="300px">
+          <source media="(max-width: 700px)" type="image/jpeg" srcset="images/sam-4x5-480.jpg 480w, images/sam-4x5-800.jpg 800w, images/sam-4x5-1200.jpg 1200w" sizes="300px">
+          <source type="image/webp" srcset="images/sam-full-480.webp 480w, images/sam-full-800.webp 800w, images/sam-full-1200.webp 1200w, images/sam-full-1600.webp 1600w" sizes="(min-width: 1024px) 460px, 420px">
+          <img src="images/sam-full-800.jpg" srcset="images/sam-full-480.jpg 480w, images/sam-full-800.jpg 800w, images/sam-full-1200.jpg 1200w, images/sam-full-1600.jpg 1600w" sizes="(min-width: 1024px) 460px, 420px" width="1600" height="1200" alt="Sam Gorla, arms open, in the Lehigh Valley" loading="lazy" decoding="async">
+        </picture>
         <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
       </figure>
       <div class="about-copy">
@@ -1412,12 +1409,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
       <li class="faq-item">
         <h3>What does the free 30-minute look cover?</h3>
         <p class="one"><strong>One or two jobs that eat your week, and which way I'd go with them.</strong></p>
-        <details class="more"><summary>More on the free call</summary><div class="more-body"><p>You pick where money moves, like getting work, doing it, or getting paid. I tell you what's slowing it down and which way I'd go. It's a look at one or two jobs, not the whole business. The whole business is the AI &amp; Efficiency Audit.</p></div></details>
+        <details class="more"><summary>More on the free call</summary><div class="more-body"><p>You pick where money moves, like getting work, doing it, or getting paid. I tell you what's slowing it down and which way I'd go. It's a look at one or two jobs, not the whole business. After the call, the three paths are equal: a Workflow Rebuild, the AI &amp; Efficiency Audit, or a straight answer.</p></div></details>
       </li>
       <li class="faq-item">
         <h3>What happens after the free 30 minutes?</h3>
         <p class="one"><strong>A clear next step, and it isn't always the AI &amp; Efficiency Audit.</strong></p>
-        <details class="more"><summary>More on next steps</summary><div class="more-body"><p>Workflow Rebuild: one repeating job, rebuilt from start to finish, with AI only where it helps, quoted after the call. The AI &amp; Efficiency Audit ($1,000): when you want me to show you the bigger picture. Or a straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p></div></details>
+        <details class="more"><summary>More on next steps</summary><div class="more-body"><p>The three paths are equal. Rebuild the workflow: a Workflow Rebuild, one workflow rebuilt end to end, a fixed price quoted after the call. The deeper AI &amp; Efficiency Audit ($1,000): sixty minutes, live, plus the written plan within 48 hours. A straight answer: if a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is. A rebuild can also follow an audit. It doesn't have to.</p></div></details>
       </li>
       <li class="faq-item">
         <h3>What does it cost?</h3>
