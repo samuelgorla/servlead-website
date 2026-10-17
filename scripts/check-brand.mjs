@@ -25,7 +25,9 @@ const DEFAULT_PAGES = [
 ];
 
 const QUICK_CONNECT = 'https://cal.com/samgorla/quick-connect';
-const MAX_RUST_CTAS = 2;
+/* Design directions repeat one booking button: hero, after a marked leak,
+   after proof, the close, and a mobile sticky bar. Same destination. */
+const MAX_RUST_CTAS = 5;
 
 /** Editable. A hit anywhere in the page fails the check. */
 const VENDOR_DENYLIST = ['EasyCater', 'Google Sheets'];

@@ -9,7 +9,17 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
-  :root { --ink: #14202E; --paper: #F4EFE6; --gold: #E8B64C; --muted: #B7C3CE; }
+  :root {
+    --navy-950: #0C121B;
+    --navy-900: #101820;
+    --navy-800: #14202E;
+    --navy-700: #1A2836;
+    --cream: #F4EFE6;
+    --ink: var(--navy-800);
+    --paper: var(--cream);
+    --gold: #E8B64C;
+    --muted: #B7C3CE;
+  }
   * { box-sizing: border-box; }
   body {
     margin: 0;
@@ -31,8 +41,8 @@
   article a.enter { font-weight: 700; }
   .a { background: #F7F3EA; color: var(--ink); }
   .a a { color: var(--ink); }
-  .b { background: #101820; border: 1px solid var(--gold); }
-  .c { background: #0C121B; outline: 8px solid #1A2836; outline-offset: -8px; }
+  .b { background: var(--navy-900); border: 1px solid var(--gold); }
+  .c { background: var(--navy-950); outline: 8px solid var(--navy-700); outline-offset: -8px; }
   .mini { min-height: 140px; }
   .note { color: var(--muted); font-size: 0.95rem; }
   .a .note { color: #3D5166; }
@@ -50,7 +60,7 @@
   <h1>Three directions for the <em>homepage.</em></h1>
   <p>Servlead Solutions. Sam Gorla, Lehigh Valley. Owner-run companies from about $2M up to $20M–$50M. The business still runs through the owner’s head. These pages are previews, not a build. The live homepage is untouched.</p>
   <p>Each direction has the same words for the scale of a leak, the same formula, and the same three cited facts. Only the layout changes. Proof uses the four permitted clients. Audit figures stay separate and are not added together.</p>
-  <p class="note">The live mark’s check is green. These directions redraw that tick in gold so the pages we design introduce no green. Client logos stay as given, including the green in the S.M. Klase mark. Fonts stay Newsreader, Archivo, and Spline Sans Mono. Direction C darkens navy for the theater and says so on the page. Rust appears only as the single booking button inside each direction.</p>
+  <p class="note">The live mark’s check is green. These directions redraw that tick in gold so the pages we design introduce no green. Client logos stay as given, including the green in the S.M. Klase mark. Fonts stay Newsreader, Archivo, and Spline Sans Mono. Direction C darkens navy for the theater and says so on the page. Rust is only the booking button, repeated down each page and in a mobile bar. Same destination.</p>
   <div class="board">
     <article class="a">
       <svg class="mini" viewBox="0 0 180 140" aria-hidden="true">
@@ -63,7 +73,7 @@
         <p class="kicker">Direction A</p>
         <h2>Field Notes</h2>
         <p>The homepage is a bound notebook. The problem is an entry, the leaks are lines you mark, and the scale math is a sum on the same page. A busy owner can read one spread. The cited facts sit with the sum.</p>
-        <p class="note">Navy ink on warm paper. Gold rules. Interactive: lane tabs, struck leaks, a people slider that repeats the mark, and the formula.</p>
+        <p class="note">Navy ink on warm paper. Gold rules. Interactive: lane tabs, leaks marked with a gold tick, a people slider that repeats the mark, and the formula.</p>
         <a class="enter" href="/design/a/">Open Field Notes</a>
       </div>
     </article>
@@ -83,7 +93,7 @@
     </article>
     <article class="c">
       <svg class="mini" viewBox="0 0 180 140" aria-hidden="true">
-        <rect width="180" height="140" fill="#0C121B"/>
+        <rect width="180" height="140" fill="var(--navy-950)"/>
         <circle cx="90" cy="70" r="36" fill="none" stroke="#F4EFE6"/>
         <rect x="20" y="28" width="36" height="22" fill="#F4EFE6" transform="rotate(-8 38 39)"/>
         <rect x="124" y="80" width="36" height="22" fill="#E8B64C" transform="rotate(6 142 91)"/>
@@ -99,11 +109,12 @@
   </div>
   <h2>Preview</h2>
   <ul class="urls">
-    <li>https://cursor-design-directions-25a9.servlead-website.pages.dev/design/</li>
-    <li>https://cursor-design-directions-25a9.servlead-website.pages.dev/design/a/</li>
-    <li>https://cursor-design-directions-25a9.servlead-website.pages.dev/design/b/</li>
-    <li>https://cursor-design-directions-25a9.servlead-website.pages.dev/design/c/</li>
+    <li>https://cursor-design-directions-25a.servlead-website.pages.dev/design/</li>
+    <li>https://cursor-design-directions-25a.servlead-website.pages.dev/design/a/</li>
+    <li>https://cursor-design-directions-25a.servlead-website.pages.dev/design/b/</li>
+    <li>https://cursor-design-directions-25a.servlead-website.pages.dev/design/c/</li>
   </ul>
+  <p class="note">Cloudflare Pages cuts a branch alias at 28 characters. This branch’s preview host is cursor-design-directions-25a. The longer host cursor-design-directions-25a9 is not a Pages hostname, so it 404s.</p>
   <p class="note">Kahler’s vertical testimonial is not in the repo, so none of these directions play a film. His words and logo are on each page. No other research figures are used beyond the three cited facts.</p>
 </main>
 </body>

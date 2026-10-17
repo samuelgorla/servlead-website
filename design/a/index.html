@@ -112,9 +112,21 @@
   .hero-art svg { width: 100%; height: auto; display: block; }
   .draw { stroke-dashoffset: 0; }
   @media (prefers-reduced-motion: no-preference) {
-    .draw { stroke-dasharray: 280; animation: ink 1.4s ease both; }
+    .draw { stroke-dasharray: 1; animation: ink 1.4s ease both; }
   }
-  @keyframes ink { from { stroke-dashoffset: 280; } to { stroke-dashoffset: 0; } }
+  @keyframes ink { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  .logo-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.35rem;
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    grid-column: 1 / -1;
+  }
+  .logo-row img { height: 72px; width: auto; max-width: 100%; }
+  .logo-row a { font-weight: 700; }
   .sam {
     display: flex;
     gap: 0.75rem;
@@ -181,40 +193,45 @@
   }
   .lane-switch input { position: absolute; opacity: 0; }
   .lane-switch label:has(input:checked) { background: var(--ink); color: var(--paper); }
-  .lane-switch label:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .lane-switch label:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
   #lane-note { color: var(--slate); margin: 0 0 0.8rem; }
   .leak-list { display: grid; gap: 0.35rem; }
   .leak {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto auto 1fr;
     grid-template-rows: auto auto;
-    column-gap: 0.7rem;
+    column-gap: 0.55rem;
     align-items: center;
-    padding: 0.45rem 0;
+    padding: 0.45rem 0.35rem;
     border-bottom: 1px solid var(--line);
     cursor: pointer;
   }
-  .leak input { width: 1.15rem; height: 1.15rem; margin: 0; }
+  .leak input { width: 1.15rem; height: 1.15rem; margin: 0; grid-row: 1 / span 2; }
   .rule {
-    grid-column: 2;
-    grid-row: 1;
-    height: 2px;
-    background: transparent;
+    width: 0.7rem;
+    height: 0.7rem;
     align-self: center;
-    margin-top: 1.15rem;
   }
-  .leak-name { font-weight: 700; grid-column: 2; grid-row: 1; }
+  .leak-name { font-weight: 700; }
   .leak-feel {
-    grid-column: 2;
+    grid-column: 3;
     font-family: Newsreader, serif;
     font-style: italic;
     color: var(--slate);
   }
-  .leak:has(input:checked) .rule { background: var(--gold); }
-  .leak:has(input:checked) .leak-name { text-decoration: line-through; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
+  .leak:has(input:checked) { background: var(--wash); }
+  .leak:has(input:checked) .rule {
+    width: 0.45rem;
+    height: 0.75rem;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(40deg);
+  }
   .look h3 { font-family: Archivo, sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
   #weight-line { font-family: Newsreader, serif; font-style: italic; }
   #look-list { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  #look-empty { margin: 0.4rem 0 0; }
+  [hidden] { display: none !important; }
   .bridge { color: var(--slate); }
   .block {
     font-family: Newsreader, serif;
@@ -253,13 +270,20 @@
   }
   .people-row { display: grid; grid-template-columns: 1fr 5.5rem; gap: 0.6rem; align-items: center; }
   .scale-labels {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    display: block;
+    height: 1.15rem;
+    margin: 0.25rem 6.1rem 0 0;
     font-family: "Spline Sans Mono", monospace;
     font-size: 0.68rem;
     letter-spacing: 0.08em;
     color: var(--muted);
   }
+  .scale-labels span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+  .scale-labels span:nth-child(1) { left: 0; transform: none; }
+  .scale-labels span:nth-child(2) { left: 19.84%; }
+  .scale-labels span:nth-child(3) { left: 49.9%; }
+  .scale-labels span:nth-child(4) { left: 100%; transform: translateX(-100%); }
   .formula, .result { font-family: "Spline Sans Mono", monospace; font-size: 0.92rem; }
   .result { font-family: Newsreader, serif; font-size: 1.35rem; margin: 0.4rem 0; }
   .example {
@@ -284,7 +308,7 @@
     align-items: center;
     margin-bottom: 0.7rem;
   }
-  .logo-well img { height: 52px; width: auto; max-width: 100%; }
+  .logo-well img { height: auto; max-height: 96px; width: auto; max-width: 100%; }
   .stars { color: var(--ink); display: flex; gap: 0.12rem; margin: 0 0 0.45rem; }
   .stars svg { width: 14px; height: 14px; }
   blockquote { margin: 0; font-family: Newsreader, serif; font-style: italic; font-size: 1.12rem; line-height: 1.35; }
@@ -301,7 +325,23 @@
   .news-link { font-weight: 700; }
   .colophon { margin-top: 2rem; color: var(--muted); font-size: 0.92rem; }
   .colophon h2 { font-size: 1.3rem; }
-  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .sticky-book { display: none; }
+  @media (max-width: 799px) {
+    body { padding-bottom: 5.25rem; }
+    .sticky-book {
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      padding: 0.65rem 0.85rem;
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+    }
+    .sticky-book .btn-primary { width: 100%; }
+  }
   @media (min-width: 800px) {
     .book { margin: 1.25rem auto; display: grid; grid-template-columns: 48px 1fr; box-shadow: 0 18px 50px rgba(20, 32, 46, 0.12); }
     .spine {
@@ -349,16 +389,16 @@
         <p class="guarantee">If I don't show you at least $10,000 a year leaking out of your business, the audit's free.</p>
         <p class="sam">
           <img src="/Sam%20Gorla_headshot.jpeg" alt="Sam Gorla, founder of Servlead Solutions" width="479" height="382">
-          <span><b>Sam Gorla</b><span>Lehigh Valley, PA. Phone, Teams, or in person.</span></span>
+          <span><b>Sam Gorla</b><span>Lehigh Valley, PA. Phone, video, or in person.</span></span>
         </p>
       </div>
       <div class="hero-art">
         <svg viewBox="0 0 640 520" role="img" aria-label="An open notebook. Ledger lines leave a geometric head. Three of the lines break.">
           <rect x="16" y="24" width="608" height="472" fill="#F7F3EA" stroke="#14202E" stroke-width="1.4"/>
           <path d="M320 24v472" stroke="#14202E" stroke-width="1"/>
-          <circle class="draw" cx="148" cy="168" r="62" fill="none" stroke="#14202E" stroke-width="1.6"/>
-          <path class="draw" d="M168 150c22 8 34 28 28 52-18 8-40 6-52-8" fill="none" stroke="#14202E" stroke-width="1.6"/>
-          <path class="draw" d="M126 230c8 36 18 70 14 110" fill="none" stroke="#14202E" stroke-width="1.6"/>
+          <circle class="draw" pathLength="1" cx="148" cy="168" r="62" fill="none" stroke="#14202E" stroke-width="1.6"/>
+          <path class="draw" pathLength="1" d="M168 150c22 8 34 28 28 52-18 8-40 6-52-8" fill="none" stroke="#14202E" stroke-width="1.6"/>
+          <path class="draw" pathLength="1" d="M126 230c8 36 18 70 14 110" fill="none" stroke="#14202E" stroke-width="1.6"/>
           <path d="M250 120h150M430 120h150" fill="none" stroke="#14202E" stroke-width="1.2"/>
           <path d="M250 168h120" fill="none" stroke="#14202E" stroke-width="1.2"/>
           <rect x="384" y="160" width="18" height="18" fill="#E8B64C"/>
@@ -371,8 +411,15 @@
           <rect x="464" y="304" width="18" height="18" fill="#E8B64C"/>
           <path d="M496 312h84" fill="none" stroke="#14202E" stroke-width="1.2"/>
           <path d="M250 360h330" fill="none" stroke="#14202E" stroke-width="1.2"/>
-          <text x="250" y="430" fill="#5C6E80" font-family="Spline Sans Mono, monospace" font-size="13">THE SLIP IS THE GAP</text>
+          <text x="472" y="430" text-anchor="middle" fill="#5C6E80" font-family="Spline Sans Mono, monospace" font-size="13">THE SLIP IS THE GAP</text>
         </svg>
+      </div>
+      <div class="logo-row">
+        <img src="/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="900" height="300">
+        <img src="/logos/chick-fil-a.svg" alt="Chick-fil-A" width="76" height="77">
+        <img src="/logos/aig-safety.svg" alt="AIG Safety" width="222" height="52">
+        <img src="/logos/kahler-construction-840.webp" alt="Kahler Construction" width="1200" height="260">
+        <a href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9">5.0 on Google</a>
       </div>
     </section>
 
@@ -389,7 +436,7 @@
     <section class="spread" id="leaks" aria-labelledby="leakTitle">
       <p class="kicker">Where it slips</p>
       <h2 id="leakTitle">Mark the leaks you already recognize.</h2>
-      <p>I will not invent a dollar figure from a tap. Mark what you know. I will name where I would look first.</p>
+      <p>I won't invent a dollar figure from a tap. Mark what you know. I'll show you where I'd look first.</p>
       <div class="picker">
         <div>
           <fieldset class="lane-switch">
@@ -404,7 +451,9 @@
         <div class="look">
           <h3>What I’d look at first</h3>
           <p id="weight-line"></p>
+          <p id="look-empty">I'll show you where I'd look first.</p>
           <ol id="look-list"></ol>
+          <p data-book-follow hidden><a class="btn-primary" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call</a></p>
         </div>
       </div>
       <p class="bridge">The same leak gets heavier as the company gets larger. The next page of the notebook is how it adds up, from numbers you enter.</p>
@@ -416,7 +465,8 @@
       <div class="scale-layout">
         <div>
           <div class="marks" id="marks" aria-hidden="true"></div>
-          <p class="marks-note">The marks stand in for the people on the slider. They are not a headcount of a real company.</p>
+          <p class="marks-note">The marks follow the people on the slider. They are not a headcount of a real company.</p>
+          <p class="marks-note" id="marks-key">Each mark is one person on the slider.</p>
         </div>
         <div class="calc">
           <label class="field">Hours lost per person per week
@@ -424,8 +474,8 @@
           </label>
           <label class="field">People affected
             <span class="people-row">
-              <input id="people-range" type="range" min="1" max="500" step="1" value="250" aria-label="People affected, slider">
-              <input id="people-num" type="number" min="1" max="2000" step="1" value="250" inputmode="numeric" aria-label="People affected">
+              <input id="people-range" type="range" min="1" max="500" step="1" value="25" aria-label="People affected, slider">
+              <input id="people-num" type="number" min="1" max="2000" step="1" value="25" inputmode="numeric" aria-label="People affected">
             </span>
             <span class="scale-labels" aria-hidden="true"><span>1</span><span>100</span><span>250+</span><span>500</span></span>
           </label>
@@ -454,31 +504,32 @@
       <p>Four clients gave permission to use their name, logo, and words.</p>
       <div class="proof-grid">
         <article class="clip">
-          <div class="logo-well"><img src="/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="900" height="300"></div>
+          <div class="logo-well"><img src="/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="900" height="300" loading="lazy"></div>
           <p class="stars"><span class="sr-only">Five out of five stars</span><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg></p>
           <blockquote><p>“Sam was extremely helpful and showed us areas we could dramatically improve our efficiency and therefore, profitability… He pinpointed areas of inefficiency and put together a systematic plan to address them.”</p></blockquote>
           <p class="attr"><b>S.M. Klase Custom Homes</b></p>
         </article>
         <article class="clip">
-          <div class="logo-well"><img src="/logos/chick-fil-a.svg" alt="Chick-fil-A" width="76" height="77"></div>
+          <div class="logo-well"><img src="/logos/chick-fil-a.svg" alt="Chick-fil-A" width="76" height="77" loading="lazy"></div>
           <p class="stars"><span class="sr-only">Five out of five stars</span><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg></p>
           <blockquote><p>“He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient… Not only has it saved us valuable time, but it has also helped increase our sales.”</p></blockquote>
           <p class="attr"><b>Alyssa Schlener</b> Director of Community &amp; Culture, Chick-fil-A Whitehall</p>
         </article>
         <article class="clip">
-          <div class="logo-well"><img src="/logos/aig-safety.svg" alt="AIG Safety" width="222" height="52"></div>
+          <div class="logo-well"><img src="/logos/aig-safety.svg" alt="AIG Safety" width="222" height="52" loading="lazy"></div>
           <p class="stars"><span class="sr-only">Five out of five stars</span><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2l1.7 4.2 4.5.4-3.4 2.9 1 4.4L8 11.2 4.2 13.1l1-4.4L1.8 5.8l4.5-.4z"/></svg></p>
           <blockquote><p>“The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.”</p></blockquote>
           <p class="attr"><b>AIG Safety</b> Access Innovations Global</p>
         </article>
         <article class="clip">
-          <div class="logo-well"><img src="/logos/kahler-construction-840.webp" alt="Kahler Construction" width="1200" height="260"></div>
+          <div class="logo-well"><img src="/logos/kahler-construction-840.webp" alt="Kahler Construction" width="1200" height="260" loading="lazy"></div>
           <blockquote><p>“I really encourage anybody in construction to use this for a tool, to gain major efficiency in their company.”</p></blockquote>
           <blockquote><p>“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</p></blockquote>
           <p class="attr"><b>Budd Kahler, Kahler Construction</b></p>
         </article>
       </div>
       <p><a href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9">5.0 · 4 reviews on Google. Read all four on Google.</a></p>
+      <p><a class="btn-primary" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call</a></p>
     </section>
 
     <section class="spread" aria-labelledby="findTitle">
@@ -490,28 +541,31 @@
         <p class="finding"><b>General contractor.</b> About 8 hrs per bid across 53 bids a year, $32,000 a year. The bidding logic lived in the owner’s head.</p>
         <p class="finding"><b>Multi-location restaurant operator.</b> Cash counted by hand at four sites, $16,494 a year.</p>
         <p class="finding"><b>The same operator.</b> Interview no-shows (about 9 in 10 when booked more than a day out), $37,440 a year.</p>
-        <p class="finding"><b>Kahler Construction.</b> About $38K–$54K a year, shown at Kahler Construction.</p>
+        <p class="finding"><b>Kahler Construction.</b> About $38K–$54K a year, from the audit.</p>
       </div>
-      <p class="solo">Figures are from real audits, with identifying details removed.</p>
+      <p class="solo">Kahler is named with permission; the others have identifying details removed.</p>
     </section>
 
     <section class="spread close">
       <p class="kicker">How I work</p>
       <h2>Side by side, with the people who already do the work.</h2>
-      <p>Sometimes the fix is AI. Sometimes it is a tool you already pay for, a hire, or a process change. Sometimes you don’t need me, and I will say so. The free 30-minute call looks at one or two jobs that eat the week. Phone, Teams, or I’ll come to you. It ends with a clear next step, and it isn’t always an audit.</p>
+      <p>Sometimes the fix is AI. Sometimes it is a tool you already pay for, a hire, or a process change. Sometimes you don’t need me, and I'll say so. The free 30-minute call looks at one or two jobs that eat the week. Phone, video, or I’ll come to you. It ends with a clear next step, and it isn’t always an audit.</p>
       <p>A weekly note for owner-run companies: <a class="news-link" href="https://outoftheownershead.substack.com">Out of the Owner's Head</a>.</p>
-      <p>The booking button is the rust one at the top of this page.</p>
+      <p><a class="btn-primary" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call</a></p>
     </section>
 
     <footer class="colophon">
       <h2>Direction A · Field Notes</h2>
       <p>The homepage is a bound notebook. The problem is an entry, the leaks are lines you mark, and the scale math is a sum on the same page. A busy owner can read one spread. The cited facts sit in the margin of the sum.</p>
       <p>Palette: navy ink on warm paper. Gold is a rule and a mark, not body text. Rust is only the booking button. The live mark’s check is green, so this direction uses a wordmark and a gold tick. Client logos stay as they are, including the green in the S.M. Klase mark. Fonts unchanged: Newsreader, Archivo, Spline Sans Mono.</p>
-      <p>Motion: the notebook lines draw in. A marked leak strikes through in gold. The people slider repeats the mark. Reduced motion keeps every line already drawn.</p>
+      <p>Motion: the notebook lines draw in. A marked leak takes a gold tick on a warm wash. The people slider repeats the mark, and above 36 people each mark stands for 10. Reduced motion keeps every line already drawn.</p>
       <p>© 2026 Servlead Solutions · Lehigh Valley, PA · Design mockup, not the live homepage.</p>
     </footer>
   </main>
 </div>
 <script src="/design/preview.js"></script>
+<div class="sticky-book">
+  <a class="btn-primary" href="https://cal.com/samgorla/quick-connect">Book a free 30-minute call</a>
+</div>
 </body>
 </html>

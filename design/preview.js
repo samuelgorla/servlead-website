@@ -40,6 +40,8 @@
     }
   };
 
+  var LOOK_EMPTY = "I'll show you where I'd look first.";
+
   function lane() {
     var checked = document.querySelector('input[name="lane"]:checked');
     return LANES[checked ? checked.value : 'trades'];
@@ -47,25 +49,40 @@
 
   function moneyCents(n) {
     var sign = '$';
-    return sign + (Math.round(n * 100) / 100).toFixed(2);
+    return sign + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
   function moneyWhole(n) {
     var sign = '$';
-    return sign + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return sign + Math.round(n).toLocaleString('en-US');
   }
 
   function paintMarks(n) {
     var box = document.getElementById('marks');
+    var key = document.getElementById('marks-key');
     if (!box) return;
     var count = Math.max(0, Math.round(n) || 0);
-    var show = Math.min(count, 36);
+    var each = count > 36 ? 10 : 1;
+    var show = each === 1 ? count : Math.ceil(count / each);
     box.replaceChildren();
     for (var i = 0; i < show; i++) {
       var dot = document.createElement('span');
       dot.className = 'mark';
       box.appendChild(dot);
     }
+    if (key) {
+      if (!count) key.textContent = 'Marks appear when you set a number of people.';
+      else if (each === 1) key.textContent = 'Each mark is one person on the slider.';
+      else key.textContent = 'Each mark stands for 10 people on the slider.';
+    }
+  }
+
+  function readNum(el) {
+    if (!el) return NaN;
+    var raw = String(el.value).trim();
+    if (raw === '') return NaN;
+    var n = Number(raw);
+    return Number.isFinite(n) ? n : NaN;
   }
 
   function runFormula() {
@@ -76,35 +93,79 @@
     var live = document.getElementById('formula-live');
     var result = document.getElementById('result');
     if (!hoursEl || !peopleEl || !costEl || !weeksEl || !result) return;
-    var hours = parseFloat(hoursEl.value);
-    var people = parseFloat(peopleEl.value);
-    var cost = parseFloat(costEl.value);
-    var weeks = parseFloat(weeksEl.value);
-    var ready = hours > 0 && people > 0 && cost > 0 && weeks > 0;
+    var hours = readNum(hoursEl);
+    var people = readNum(peopleEl);
+    var cost = readNum(costEl);
+    var weeks = readNum(weeksEl);
+    var ready = Number.isFinite(hours) && Number.isFinite(people) && Number.isFinite(cost) && Number.isFinite(weeks);
     if (!ready) {
-      if (live) live.textContent = 'hours × people × cost × weeks = estimated yearly leak';
+      if (live) live.textContent = '';
       result.textContent = 'Enter hours lost per person per week. The estimate uses only the four numbers on this form.';
       return;
     }
+    if (hours < 0.1 || hours > 168 || people < 1 || people > 2000 || cost <= 0 || cost > 10000 || weeks < 1 || weeks > 52) {
+      if (live) live.textContent = '';
+      result.textContent = 'Hours from 0.1 to 168, people from 1 to 2000, hourly cost above zero and at most 10000, weeks from 1 to 52.';
+      return;
+    }
     var yearly = hours * people * cost * weeks;
+    if (!Number.isFinite(yearly)) {
+      if (live) live.textContent = '';
+      result.textContent = 'Those numbers are too large to show. Try a smaller entry.';
+      return;
+    }
     var line = hours + ' × ' + people + ' × ' + moneyCents(cost) + ' × ' + weeks + ' = ' + moneyWhole(yearly);
     if (live) live.textContent = line;
     result.textContent = 'Estimated yearly leak: ' + moneyWhole(yearly) + '. From the numbers on this form.';
   }
 
-  function setPeople(raw, fromRange) {
-    var n = Math.round(Number(raw));
-    if (!isFinite(n) || n < 1) n = 1;
-    if (n > 2000) n = 2000;
+  function clamp(n, min, max) {
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function commitPeople() {
     var num = document.getElementById('people-num');
     var range = document.getElementById('people-range');
-    if (num) num.value = String(n);
+    if (!num) return;
+    var n = readNum(num);
+    if (!Number.isFinite(n)) n = 25;
+    n = clamp(Math.round(n), 1, 2000);
+    num.value = String(n);
     if (range) range.value = String(Math.min(n, Number(range.max) || 500));
-    if (fromRange && range) {
-      n = Number(range.value);
-      if (num) num.value = String(n);
-    }
     paintMarks(n);
+    runFormula();
+  }
+
+  function onPeopleInput() {
+    var num = document.getElementById('people-num');
+    var range = document.getElementById('people-range');
+    var raw = String(num.value).trim();
+    if (raw === '') {
+      paintMarks(0);
+      runFormula();
+      return;
+    }
+    var n = Number(raw);
+    if (!Number.isFinite(n)) return;
+    if (range && n >= 1) range.value = String(Math.min(Math.round(n), Number(range.max) || 500));
+    if (n >= 1 && n <= 2000) paintMarks(Math.round(n));
+    runFormula();
+  }
+
+  function onRangeInput() {
+    var num = document.getElementById('people-num');
+    var range = document.getElementById('people-range');
+    var n = Math.round(Number(range.value));
+    if (!Number.isFinite(n)) return;
+    if (num) num.value = String(n);
+    paintMarks(n);
+    runFormula();
+  }
+
+  function clampField(el, min, max) {
+    var n = readNum(el);
+    if (!Number.isFinite(n)) return;
+    el.value = String(clamp(n, min, max));
     runFormula();
   }
 
@@ -125,6 +186,45 @@
     });
     var clinical = document.querySelector('[data-room="clinical"]');
     if (clinical) clinical.hidden = data !== LANES.healthcare;
+  }
+
+  function selectedIds(list) {
+    var selected = [];
+    list.querySelectorAll('input:checked').forEach(function (input) {
+      selected.push(input.value);
+    });
+    return selected;
+  }
+
+  function paintLook(data, selected) {
+    var look = document.getElementById('look-list');
+    var empty = document.getElementById('look-empty');
+    var weight = document.getElementById('weight-line');
+    var hasDrawing = !!document.querySelector('[data-room]');
+    document.querySelectorAll('[data-book-follow]').forEach(function (el) {
+      el.hidden = selected.length < 1;
+    });
+    if (look) {
+      look.replaceChildren();
+      if (selected.length) {
+        data.leaks.forEach(function (leak) {
+          if (selected.indexOf(leak.id) === -1) return;
+          var li = document.createElement('li');
+          li.textContent = leak.look;
+          look.appendChild(li);
+        });
+      }
+    }
+    if (empty) {
+      empty.hidden = selected.length > 0;
+      empty.textContent = LOOK_EMPTY;
+    }
+    if (weight) {
+      var n = selected.length;
+      if (n === 0) weight.textContent = hasDrawing ? 'Nothing marked. The drawing stays quiet.' : 'Nothing marked.';
+      else if (n === 1) weight.textContent = 'One leak. It already has a shape. The formula further down measures one leak at a time.';
+      else weight.textContent = 'You marked ' + n + ' leaks. I\'d still start with one. This page doesn\'t add them together.';
+    }
   }
 
   function renderLeaks() {
@@ -156,53 +256,19 @@
       list.appendChild(label);
     });
     paintRooms(data, []);
-    var look = document.getElementById('look-list');
-    if (look) {
-      look.replaceChildren();
-      var li = document.createElement('li');
-      li.textContent = 'Mark a leak and I will name where I would look first.';
-      look.appendChild(li);
-    }
-    var weight = document.getElementById('weight-line');
-    if (weight) weight.textContent = 'Nothing marked. The drawing stays quiet.';
+    paintLook(data, []);
   }
 
   function onLeakChange() {
     var list = document.getElementById('leak-list');
     var data = lane();
-    var selected = [];
-    list.querySelectorAll('input:checked').forEach(function (input) {
-      selected.push(input.value);
-    });
+    var selected = selectedIds(list);
     paintRooms(data, selected);
-    var look = document.getElementById('look-list');
-    if (look) {
-      look.replaceChildren();
-      if (!selected.length) {
-        var empty = document.createElement('li');
-        empty.textContent = 'Mark a leak and I will name where I would look first.';
-        look.appendChild(empty);
-      } else {
-        data.leaks.forEach(function (leak) {
-          if (selected.indexOf(leak.id) === -1) return;
-          var li = document.createElement('li');
-          li.textContent = leak.look;
-          look.appendChild(li);
-        });
-      }
-    }
-    var weight = document.getElementById('weight-line');
-    if (weight) {
-      var n = selected.length;
-      if (n === 0) weight.textContent = 'Nothing marked. The drawing stays quiet.';
-      else if (n === 1) weight.textContent = 'One leak. It already has a shape. The formula further down measures one leak at a time.';
-      else weight.textContent = 'You marked ' + n + ' leaks. I would still start with one. This page does not add them together.';
-    }
+    paintLook(data, selected);
   }
 
   function init() {
-    var radios = document.querySelectorAll('input[name="lane"]');
-    radios.forEach(function (radio) {
+    document.querySelectorAll('input[name="lane"]').forEach(function (radio) {
       radio.addEventListener('change', renderLeaks);
     });
     var list = document.getElementById('leak-list');
@@ -212,18 +278,38 @@
     }
     var range = document.getElementById('people-range');
     var num = document.getElementById('people-num');
-    if (range) {
-      range.addEventListener('input', function () { setPeople(range.value, true); });
-    }
+    if (range) range.addEventListener('input', onRangeInput);
     if (num) {
-      num.addEventListener('input', function () { setPeople(num.value, false); });
+      num.addEventListener('input', onPeopleInput);
+      num.addEventListener('change', commitPeople);
+      num.addEventListener('blur', commitPeople);
     }
-    ['hours', 'cost', 'weeks'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) el.addEventListener('input', runFormula);
-    });
-    if (num) setPeople(num.value, false);
+    var hours = document.getElementById('hours');
+    var cost = document.getElementById('cost');
+    var weeks = document.getElementById('weeks');
+    if (hours) {
+      hours.addEventListener('input', runFormula);
+      hours.addEventListener('change', function () { clampField(hours, 0.1, 168); });
+    }
+    if (cost) {
+      cost.addEventListener('input', runFormula);
+      cost.addEventListener('change', function () { clampField(cost, 0.01, 10000); });
+    }
+    if (weeks) {
+      weeks.addEventListener('input', runFormula);
+      weeks.addEventListener('change', function () { clampField(weeks, 1, 52); });
+    }
+    if (num) onPeopleInput();
     else runFormula();
+
+    var motion = document.getElementById('motion-toggle');
+    if (motion) {
+      motion.addEventListener('click', function () {
+        var paused = document.body.classList.toggle('motion-paused');
+        motion.textContent = paused ? 'Play motion' : 'Pause motion';
+        motion.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      });
+    }
 
     var frames = document.querySelectorAll('[data-time]');
     var code = document.getElementById('timecode');

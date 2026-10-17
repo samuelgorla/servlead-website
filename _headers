@@ -1,0 +1,35 @@
+/design
+  X-Robots-Tag: noindex
+
+/design/
+  X-Robots-Tag: noindex
+
+/design/*
+  X-Robots-Tag: noindex
+
+/design/a
+  X-Robots-Tag: noindex
+
+/design/a/
+  X-Robots-Tag: noindex
+
+/design/a/*
+  X-Robots-Tag: noindex
+
+/design/b
+  X-Robots-Tag: noindex
+
+/design/b/
+  X-Robots-Tag: noindex
+
+/design/b/*
+  X-Robots-Tag: noindex
+
+/design/c
+  X-Robots-Tag: noindex
+
+/design/c/
+  X-Robots-Tag: noindex
+
+/design/c/*
+  X-Robots-Tag: noindex
