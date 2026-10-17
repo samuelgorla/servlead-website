@@ -19,10 +19,18 @@ function clip(value, max) {
   return String(value || '').trim().slice(0, max);
 }
 
+const SOURCES = ['leak-estimate', 'quote-rescue', 'newsletter'];
+
+// Known sources pass through; anything else is filed as a leak-estimate lead.
+function sourceOf(value) {
+  const source = clip(value, 40);
+  return SOURCES.includes(source) ? source : 'leak-estimate';
+}
+
 export function leadPayload(data, request) {
   const payload = {
     email: clip(data.email, 254),
-    source: clip(data.source, 40) === 'quote-rescue' ? 'quote-rescue' : 'leak-estimate',
+    source: sourceOf(data.source),
     page: pageOf(data, request),
     timestamp: new Date().toISOString()
   };
