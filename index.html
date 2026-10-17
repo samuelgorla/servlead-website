@@ -97,7 +97,7 @@ document.documentElement.classList.add('js');
       "name": "Sam Gorla",
       "jobTitle": "Founder",
       "worksFor": { "@id": "https://servleadsolutions.com/#business" },
-      "image": "https://servleadsolutions.com/images/sam-full-1200.jpg",
+      "image": "https://servleadsolutions.com/Sam%20Gorla_headshot.jpeg",
       "description": "Sam has 14 years in technology consulting for Fortune 1000 companies.",
       "url": "https://www.linkedin.com/in/samuelgorla",
       "sameAs": [
@@ -533,9 +533,10 @@ document.documentElement.classList.add('js');
   .tile .go { margin-top: auto; padding-top: 0.75rem; font-weight: 600; }
 
   /* S10 ABOUT */
-  .about-grid { display: grid; grid-template-columns: minmax(240px, 380px) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+  .about-grid { display: grid; grid-template-columns: minmax(240px, 479px) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
   .about-copy h2 { margin-bottom: 1rem; }
-  .portrait img { width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 16px; }
+  .portrait { max-width: 479px; }
+  .portrait img { width: 100%; height: auto; aspect-ratio: 479 / 382; border-radius: 16px; }
   .portrait figcaption { margin-top: 0.75rem; font-size: 0.875rem; color: var(--slate-300); }
   .about-copy > p:not(.kicker) { font-size: 1.15rem; line-height: 1.55; color: var(--slate-200); max-width: 38rem; }
   .values { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1.5rem; border-top: 1px solid var(--line-navy); padding-top: 1.25rem; }
@@ -589,7 +590,7 @@ document.documentElement.classList.add('js');
     .stage:nth-child(n+3) { border-top: 1px solid var(--line-navy); }
     .how-grid-main, .tools-grid, .about-grid, .showing { grid-template-columns: minmax(0, 1fr); }
     .g-card { position: static; }
-    .portrait { max-width: 420px; }
+    .portrait { max-width: 479px; }
     .fork { grid-template-columns: minmax(0, 1fr); }
     .demos { grid-template-columns: 1fr 1fr; }
     .faq-list { grid-template-columns: minmax(0, 1fr); }
@@ -676,7 +677,6 @@ document.documentElement.classList.add('js');
     .logo-row { gap: 0.85rem 0.75rem; }
     .logo-row img { height: 64px; }
     .logo-row .lname { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-    .portrait img { aspect-ratio: 4 / 5; }
     .fork { gap: 0.65rem; }
     .fork-card { padding: 0.85rem 0.95rem 0.95rem; }
     .panel-lead { padding: 0.65rem 0.85rem 0.1rem; font-size: 1.05rem; }
@@ -796,7 +796,6 @@ document.documentElement.classList.add('js');
     .case-body { grid-template-columns: minmax(0, 1fr); }
     .case .film { max-width: 200px; }
     .case.feature .film { max-width: 240px; }
-    .portrait { max-width: 220px; }
     .pull { font-size: 1.15rem; }
     .ba { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; margin-top: 0.85rem; }
     .ba > div { padding: 0.65rem 0.85rem; }
@@ -1378,10 +1377,8 @@ document.documentElement.classList.add('js');
     <div class="about-grid">
       <figure class="portrait">
         <picture>
-          <source media="(max-width: 700px)" type="image/webp" srcset="images/sam-4x5-480.webp 480w, images/sam-4x5-800.webp 800w, images/sam-4x5-1200.webp 1200w" sizes="300px">
-          <source media="(max-width: 700px)" type="image/jpeg" srcset="images/sam-4x5-480.jpg 480w, images/sam-4x5-800.jpg 800w, images/sam-4x5-1200.jpg 1200w" sizes="300px">
-          <source type="image/webp" srcset="images/sam-full-480.webp 480w, images/sam-full-800.webp 800w, images/sam-full-1200.webp 1200w, images/sam-full-1600.webp 1600w" sizes="(min-width: 1024px) 380px, 300px">
-          <img src="images/sam-full-800.jpg" srcset="images/sam-full-480.jpg 480w, images/sam-full-800.jpg 800w, images/sam-full-1200.jpg 1200w, images/sam-full-1600.jpg 1600w" sizes="(min-width: 1024px) 380px, 300px" width="1600" height="1200" alt="Sam Gorla, arms open, in the Lehigh Valley" loading="lazy" decoding="async">
+          <source type="image/webp" srcset="Sam%20Gorla_headshot.webp">
+          <img src="Sam%20Gorla_headshot.jpeg" width="479" height="382" alt="Sam Gorla, founder of Servlead Solutions" loading="lazy" decoding="async">
         </picture>
         <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
       </figure>
