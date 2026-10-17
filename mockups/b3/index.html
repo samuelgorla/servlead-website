@@ -931,43 +931,43 @@
             <figcaption class="mono">How it came together</figcaption>
             <ol>
               <li><b>A deep-dive audit</b><span>How the work really flows, and where the time goes</span></li>
-              <li><b>Built side by side</b><span>With the owner and his team</span></li>
+              <li><b>Built side by side</b><span>With Budd and his team</span></li>
               <li><b>One connected estimating system</b><span>Costs, templates and bids in one place</span></li>
             </ol>
           </figure>
           <div class="case-main">
             <p class="case-sum">Estimating went from about 5 hours to about 1.5.</p>
             <dl class="ba ba-wide">
-              <div><dt>Before</dt><dd>For 17 years, the owner ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
-              <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then the owner, his team and I built it together.</dd></div>
-              <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as I connect the AI pieces I've already tested.</dd></div>
+              <div><dt>Before</dt><dd>For 17 years, Budd ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
+              <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then Budd, his team and I built it together.</dd></div>
+              <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as we connect the AI pieces we've already tested.</dd></div>
             </dl>
-            <details class="more-d"><summary>How it went, and what I did</summary>
+            <details class="more-d"><summary>How it went</summary>
               <figure class="spread spread-phone">
                 <figcaption class="mono">How it came together</figcaption>
                 <ol>
                   <li><b>A deep-dive audit</b><span>How the work really flows, and where the time goes</span></li>
-                  <li><b>Built side by side</b><span>With the owner and his team</span></li>
+                  <li><b>Built side by side</b><span>With Budd and his team</span></li>
                   <li><b>One connected estimating system</b><span>Costs, templates and bids in one place</span></li>
                 </ol>
               </figure>
               <dl class="ba ba-phone">
-                <div><dt>Before</dt><dd>For 17 years, the owner ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
-                <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then the owner, his team and I built it together.</dd></div>
-                <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as I connect the AI pieces I've already tested.</dd></div>
+                <div><dt>Before</dt><dd>For 17 years, Budd ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
+                <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then Budd, his team and I built it together.</dd></div>
+                <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as we connect the AI pieces we've already tested.</dd></div>
               </dl>
               <ul>
-                <li>The audit put roughly $38,000 to $54,000 a year on the table, and estimating was the biggest part of it. <span class="basis">From the audit report</span></li>
-                <li>I set up a cost catalog with the markup built in, budget templates, and a cost structure the books can follow.</li>
-                <li>I ran one real bid start to finish in the new system with the owner, and got one customer proposal ready to send.</li>
-                <li>I trained the owner and his team as I went, and showed them a first look at the AI pieces before connecting anything.</li>
+                <li>The audit showed roughly $38,000 to $54,000 a year on the table, and estimating was the biggest piece. <span class="basis">From the audit report</span></li>
+                <li>Budd's costs, markup and budget templates now live in one place, set up the way his books already work.</li>
+                <li>We ran a real bid start to finish together, and a customer proposal was ready to send.</li>
+                <li>Budd and Brandon learned it hands-on along the way and got a first look at the AI pieces before anything was connected.</li>
               </ul>
               <p>Kahler Construction said yes to me sharing this story.</p>
             </details>
           </div>
           <figure class="kvid">
             <div class="kv-wrap">
-              <video class="kv" controls playsinline preload="none" width="720" height="1280" poster="../assets/media/kahler-web-9x16-poster-360.jpg" data-poster-full="../assets/media/kahler-web-9x16-poster.jpg" aria-label="Video, 38 seconds: the owner of Kahler Construction on the work">
+              <video class="kv" controls playsinline preload="none" width="720" height="1280" poster="../assets/media/kahler-web-9x16-poster.jpg" aria-label="Video, 38 seconds: Budd Kahler of Kahler Construction on the work">
                 <source src="../assets/media/kahler-web-9x16.mp4" type="video/mp4">
               </video>
               <button class="kv-play" type="button" aria-label="Play the 38-second video"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.2 L10.5 6 L2.5 10.8 Z"/></svg></button>
@@ -1622,10 +1622,11 @@
   var kv = document.querySelector('.kv');
   if (kv) {
     var kfig = kv.closest('.kvid'), kbtn = kfig.querySelector('.kv-play');
-    if (kv.dataset.posterFull && window.matchMedia('(min-width:701px)').matches) kv.poster = kv.dataset.posterFull;
     kv.controls = false; // one clear play button until it plays; without JS the native controls stay
     kbtn.addEventListener('click', function(){ kv.controls = true; kv.play(); });
     kv.addEventListener('play', function(){ kv.controls = true; kfig.classList.add('playing'); track('Testimonial Play', {client: 'kahler'}); });
+    // When it ends, go back to Budd's poster instead of resting on the end card.
+    kv.addEventListener('ended', function(){ kfig.classList.remove('playing'); kv.controls = false; kv.load(); });
   }
 
   // ---------- Entrances ----------
