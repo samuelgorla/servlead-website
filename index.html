@@ -10,23 +10,23 @@
 <meta name="author" content="Sam Gorla — Servlead Solutions">
 <link rel="canonical" href="https://servleadsolutions.com/">
 
-<!-- FLAG for Sam: /servlead-og-banner.png still shows the $1,000 audit and the $10,000 guarantee. Shared by other pages, so this preview does not replace it and does not invent new offer terms. -->
+<!-- Homepage share image is /images/servlead-og-2026.png. Other pages still use /servlead-og-banner.png. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Servlead Solutions">
 <meta property="og:title" content="AI Consultant in the Lehigh Valley | Servlead Solutions">
 <meta property="og:description" content="Owner-run Lehigh Valley businesses: quotes go quiet and the inbox runs the day. I'll show you where the time and money slip. Free 30-minute call.">
 <meta property="og:url" content="https://servleadsolutions.com/">
-<meta property="og:image" content="https://servleadsolutions.com/servlead-og-banner.png">
+<meta property="og:image" content="https://servleadsolutions.com/images/servlead-og-2026.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Servlead Solutions share image. The current artwork still shows a $1,000 AI and Efficiency Audit and a $10,000 guarantee. A replacement image needs Sam's approval before any offer terms change.">
+<meta property="og:image:alt" content="Servlead Solutions. Practical AI for owner-run Lehigh Valley businesses. Book a free 30-minute call.">
 <meta property="og:locale" content="en_US">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI Consultant in the Lehigh Valley | Servlead Solutions">
 <meta name="twitter:description" content="Owner-run Lehigh Valley businesses: quotes go quiet and the inbox runs the day. I'll show you where the time and money slip. Free 30-minute call.">
-<meta name="twitter:image" content="https://servleadsolutions.com/servlead-og-banner.png">
-<meta name="twitter:image:alt" content="Servlead Solutions share image. The current artwork still shows a $1,000 AI and Efficiency Audit and a $10,000 guarantee.">
+<meta name="twitter:image" content="https://servleadsolutions.com/images/servlead-og-2026.png">
+<meta name="twitter:image:alt" content="Servlead Solutions. Practical AI for owner-run Lehigh Valley businesses. Book a free 30-minute call.">
 
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -141,6 +141,15 @@
       "sameAs": [
         "https://www.linkedin.com/in/samuelgorla"
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Budd Kahler, Kahler Construction",
+      "description": "Budd Kahler says the work can save tremendous hours in estimating, emailing, and checklists, and he encourages anybody in construction to use it for major efficiency in their company.",
+      "thumbnailUrl": "https://servleadsolutions.com/images/media/kahler-web-9x16-poster.jpg",
+      "uploadDate": "2026-10-16",
+      "duration": "PT38S",
+      "contentUrl": "https://servleadsolutions.com/images/media/kahler-web-9x16.mp4"
     }
   ]
 }
@@ -418,15 +427,12 @@
     font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.3; margin: 1rem 0 0.6rem;
   }
   .by { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-  .vid {
-    width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line-dark); background: var(--ink); color: var(--paper);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.45rem;
-    cursor: pointer; text-align: center; padding: 1rem; font-family: var(--sans);
+  .phone { justify-self: center; width: min(280px, 100%); margin: 0; }
+  .phone video {
+    display: block; width: 100%; height: auto; aspect-ratio: 9 / 16;
+    background: var(--navy); border-radius: 28px; border: 8px solid var(--navy);
   }
-  .vid svg { width: 64px; height: 64px; color: var(--gold); }
-  .vid .vid-k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
-  .vid strong { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; }
-  .vid-note { margin-top: 0.7rem; color: var(--slate); background: var(--white); border: 1px solid var(--line-dark); padding: 0.8rem 0.9rem; }
+  .phone figcaption { margin-top: 0.75rem; color: var(--slate); font-size: 0.95rem; }
 
   .stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 1.3rem; }
   .stage-card { background: var(--white); border: 1px solid var(--line-dark); padding: 1rem 0.9rem; }
@@ -518,6 +524,7 @@
   @media (max-width: 1024px) {
     .hero-grid, .kahler, .about, .offer { grid-template-columns: 1fr; }
     .hero-sam { justify-content: flex-start; }
+    .phone { width: min(300px, 78vw); }
     .blocks { grid-template-columns: repeat(3, 1fr); }
     .stages, .counts { grid-template-columns: 1fr 1fr; }
     .count:nth-child(2) { border-right: none; }
@@ -917,15 +924,20 @@
           <blockquote class="pull">“This has capabilities to the sky, and I know in time it's gonna save us tremendous hours in estimating, emailing, checklists.”</blockquote>
           <p class="by">Budd Kahler, Kahler Construction</p>
         </div>
-        <div>
-          <button type="button" class="vid" id="vidBtn" aria-expanded="false" aria-controls="vidNote">
-            <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2"/><path d="M27 20v24l18-12z" fill="currentColor"/></svg>
-            <span class="vid-k">Placeholder · click to play</span>
-            <strong>Budd Kahler testimonial</strong>
-            <span>The video isn't ready yet.</span>
-          </button>
-          <p class="vid-note" id="vidNote" hidden>Placeholder. Budd Kahler's testimonial video is not ready, so nothing plays here. The slot is reserved for a click-to-play film with captions, a transcript under it, 16:9 on a desk and 9:16 on a phone, once Sam approves the cut. His words already on this page are the ones he gave permission to use.</p>
-        </div>
+        <figure class="phone">
+          <video
+            poster="/images/media/kahler-web-9x16-poster.jpg"
+            preload="none"
+            playsinline
+            controls
+            width="720"
+            height="1280"
+            aria-label="Budd Kahler of Kahler Construction on the work"
+          >
+            <source src="/images/media/kahler-web-9x16.mp4" type="video/mp4">
+          </video>
+          <figcaption>In the film, Budd says this can save tremendous hours in estimating, emailing, and checklists, and he encourages anybody in construction to use it.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -1063,6 +1075,7 @@
     <div class="container">
       <p class="mark" aria-hidden="true">“</p>
       <h2 id="guaranteeTitle">If I don't show you at least $10,000 a year leaking out of your business, the audit's free.</h2>
+      <p>The guarantee is the floor I'll stake my fee on, not what I expect to show you.</p>
       <p>We settle it out loud at the end of the hour, not weeks later. Under ten thousand shown, the audit's free: no second invoice, and we shake hands and part. That's a promise about what I show you on the call — not about money you'll recover, which isn't mine to promise.</p>
     </div>
   </section>
@@ -1221,16 +1234,6 @@
     });
   }
 
-  var vid = document.getElementById('vidBtn');
-  var note = document.getElementById('vidNote');
-  if (vid && note) {
-    vid.addEventListener('click', function () {
-      var open = note.hasAttribute('hidden');
-      if (open) note.removeAttribute('hidden');
-      else note.setAttribute('hidden', '');
-      vid.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  }
 })();
 </script>
 </body>
