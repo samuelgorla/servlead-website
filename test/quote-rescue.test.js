@@ -220,6 +220,18 @@ test('leadPayload keeps only the public fields', function () {
   assert.equal(payload.business, undefined);
 });
 
+test('leadPayload accepts source=newsletter and still coerces unknown sources', function () {
+  const request = { headers: { get: function () { return ''; } } };
+  const newsletter = leadPayload({ email: 'owner@example.com', source: 'newsletter', page: 'https://servleadsolutions.com/' }, request);
+  assert.equal(newsletter.source, 'newsletter');
+  assert.deepEqual(Object.keys(newsletter).sort(), ['email', 'page', 'source', 'timestamp']);
+  assert.equal(leadPayload({ email: 'owner@example.com', source: 'leak-estimate' }, request).source, 'leak-estimate');
+  assert.equal(leadPayload({ email: 'owner@example.com', source: 'quote-rescue' }, request).source, 'quote-rescue');
+  assert.equal(leadPayload({ email: 'owner@example.com', source: 'Newsletter ' }, request).source, 'leak-estimate');
+  assert.equal(leadPayload({ email: 'owner@example.com', source: 'evil' }, request).source, 'leak-estimate');
+  assert.equal(leadPayload({ email: 'owner@example.com' }, request).source, 'leak-estimate');
+});
+
 test('refusalMessage keeps a short sentence and drops anything with a price or a link', function () {
   assert.equal(refusalMessage('Paste a quote, proposal, or engagement letter.'), 'Paste a quote, proposal, or engagement letter.');
   assert.match(refusalMessage('See https://evil.example for $500 off'), /Paste a quote/);

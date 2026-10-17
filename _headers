@@ -1,0 +1,36 @@
+# Branch-preview mockups only. Not linked from the sitemap.
+/mockups
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/*
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/a
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/a/
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/a/*
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/b
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/b/
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/b/*
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/c
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/c/
+  X-Robots-Tag: noindex, nofollow
+
+/mockups/c/*
+  X-Robots-Tag: noindex, nofollow
