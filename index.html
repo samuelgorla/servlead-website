@@ -230,7 +230,8 @@
   .wrap{max-width:1240px;margin:0 auto;padding:0 40px}
   .mono{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2)}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  section{scroll-margin-top:84px}
+  section,.jump{scroll-margin-top:84px}
+  .jump{position:absolute;top:0;left:0;width:0;height:0;overflow:hidden;pointer-events:none}
   h2{font:400 clamp(36px,4.2vw,58px)/1.04 var(--serif);letter-spacing:-.02em;margin:14px 0 16px}
   h2 em{font-style:italic;color:var(--slate)}
   h2,.proofline,.paths-head p,.product-head p,.lead,.micah blockquote{text-wrap:balance}
@@ -392,10 +393,10 @@
   .motion .draw.on .dot{opacity:1;transform:none;transition:opacity .3s ease var(--w,1s), transform .4s cubic-bezier(.3,1.6,.5,1) var(--w,1s)}
 
   /* ---------- Proof: Kahler line, logos, CFA case ---------- */
-  .proofs{padding:72px 0 0}
+  .proofs{position:relative;padding:72px 0 0}
   .proofline{margin:0 auto;max-width:900px;text-align:center;font:400 26px/1.4 var(--serif);color:var(--ink);letter-spacing:-.005em}
   .proofline .basis{display:inline-block;margin-left:10px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);vertical-align:middle;border:1px solid var(--line);border-radius:999px;padding:5px 9px}
-  .logos{display:flex;justify-content:center;align-items:center;gap:30px 64px;padding:0;flex-wrap:wrap}
+  .logos{position:relative;display:flex;justify-content:center;align-items:center;gap:30px 64px;padding:0;flex-wrap:wrap}
   .logos .mono{width:100%;text-align:center;margin-bottom:-6px}
   .logos img{height:46px;width:auto}
   .logos .klase{height:52px}
@@ -670,7 +671,7 @@
   @media (max-width:700px){
     body{font-size:16px}
     html{scroll-padding-top:68px}
-    section{scroll-margin-top:68px}
+    section,.jump{scroll-margin-top:68px}
     .wrap{padding:0 20px}
     .top .wrap{height:60px}
     .mark .logo{width:36px}
@@ -905,9 +906,14 @@
   </section>
 
   <section class="proofs" id="cases" aria-labelledby="proof-title">
+    <span id="who" class="jump" aria-hidden="true"></span>
+    <span id="ledger" class="jump" aria-hidden="true"></span>
     <div class="wrap">
       <h2 class="sr" id="proof-title">Case studies</h2>
       <div class="logos">
+        <span id="sm-klase" class="jump" aria-hidden="true"></span>
+        <span id="chick-fil-a" class="jump" aria-hidden="true"></span>
+        <span id="aig-safety" class="jump" aria-hidden="true"></span>
         <span class="mono">Leaders I've worked with</span>
         <img src="/logos/kahler-construction-480.webp" alt="Kahler Construction" width="212" height="46">
         <img class="klase" src="/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="168" height="52">
