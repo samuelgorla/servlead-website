@@ -429,10 +429,9 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
 
   /* S2 LOGO BAND */
   .logos { padding: 1.5rem 0 1.5rem; background: var(--paper); border-bottom: 1px solid var(--line); }
-  .logo-row { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 2rem 3rem; }
-  .logo-row > li:last-child { grid-column: 1 / -1; justify-self: center; }
-  .logo-row a { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--slate-soft); }
-  .logo-row img { height: auto; width: auto; max-height: 128px; max-width: min(420px, 100%); object-fit: contain; }
+  .logo-row { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: center; gap: 1.25rem 1.75rem; }
+  .logo-row a { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 0.45rem; text-decoration: none; color: var(--slate-soft); }
+  .logo-row img { display: block; width: 100%; height: 96px; object-fit: contain; }
   .logo-row .lname { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; }
   .logo-row a:hover .lname { color: var(--navy); text-decoration: underline; }
   .rating { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--navy); font-size: 0.875rem; font-weight: 600; text-underline-offset: 3px; }
@@ -534,7 +533,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .tile .go { margin-top: auto; padding-top: 0.75rem; font-weight: 600; }
 
   /* S10 ABOUT */
-  .about-grid { display: grid; grid-template-columns: minmax(260px, 460px) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+  .about-grid { display: grid; grid-template-columns: minmax(240px, 380px) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
   .about-copy h2 { margin-bottom: 1rem; }
   .portrait img { width: 100%; height: auto; border-radius: 16px; }
   .portrait figcaption { margin-top: 0.75rem; font-size: 0.875rem; color: var(--slate-300); }
@@ -595,7 +594,8 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .demos { grid-template-columns: 1fr 1fr; }
     .faq-list { grid-template-columns: minmax(0, 1fr); }
     .logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .logo-row img { max-height: 104px; }
+    .logo-row > li:last-child { grid-column: 1 / -1; justify-self: center; }
+    .logo-row img { height: 80px; }
     .foot-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 900px) {
@@ -672,9 +672,12 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .scr-foot { padding: 0.55rem 0.85rem 0.65rem; }
     .screen-bar { margin-top: 0.4rem; }
     .caption { font-size: 0.75rem; }
-    .logos { padding: 1.25rem 0 1.75rem; }
-    .logo-row { gap: 1.25rem 1rem; }
-    .logo-row img { max-height: 84px; max-width: 100%; }
+    .logos { padding: 0.85rem 0 1rem; }
+    .logo-row { gap: 0.85rem 0.75rem; }
+    .logo-row img { height: 64px; }
+    .logo-row .lname { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .fork { gap: 0.65rem; }
+    .fork-card { padding: 0.85rem 0.95rem 0.95rem; }
     .panel-lead { padding: 0.65rem 0.85rem 0.1rem; font-size: 1.05rem; }
     /* Phones: stages stay two by two */
     .stage, .stage + .stage, .stage:nth-child(3) { padding: 1rem 0.75rem 0.25rem 0; }
@@ -731,8 +734,10 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
   .case-num small { display: block; margin-top: 0.4rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400; letter-spacing: 0; color: var(--slate-soft); }
     .case + .case, [data-publish-gate] > .case { margin-top: 1rem; }
   .case-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 2rem; margin-top: 1.25rem; align-items: start; }
-  .case.feature .case-body { grid-template-columns: minmax(200px, 300px) minmax(0, 1fr); align-items: center; }
   .case.feature .pull { font-size: clamp(1.45rem, 2.3vw, 1.9rem); line-height: 1.3; }
+  @media (min-width: 768px) {
+    .case.feature .case-body { grid-template-columns: minmax(200px, 280px) minmax(0, 1fr); align-items: center; }
+  }
   .case-head { padding-bottom: 1rem; }
   .pull { font-size: 1.3rem; }
   /* Before / after: two short lines, the rest in layer 2 */
@@ -788,7 +793,7 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
     .case-body { grid-template-columns: minmax(0, 1fr); }
     .case .film { max-width: 200px; }
     .case.feature .film { max-width: 240px; }
-    .portrait { max-width: 300px; }
+    .portrait { max-width: 220px; }
     .pull { font-size: 1.15rem; }
     .ba { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; margin-top: 0.85rem; }
     .ba > div { padding: 0.65rem 0.85rem; }
@@ -1371,8 +1376,8 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preferen
         <picture>
           <source media="(max-width: 700px)" type="image/webp" srcset="images/sam-4x5-480.webp 480w, images/sam-4x5-800.webp 800w, images/sam-4x5-1200.webp 1200w" sizes="300px">
           <source media="(max-width: 700px)" type="image/jpeg" srcset="images/sam-4x5-480.jpg 480w, images/sam-4x5-800.jpg 800w, images/sam-4x5-1200.jpg 1200w" sizes="300px">
-          <source type="image/webp" srcset="images/sam-full-480.webp 480w, images/sam-full-800.webp 800w, images/sam-full-1200.webp 1200w, images/sam-full-1600.webp 1600w" sizes="(min-width: 1024px) 460px, 420px">
-          <img src="images/sam-full-800.jpg" srcset="images/sam-full-480.jpg 480w, images/sam-full-800.jpg 800w, images/sam-full-1200.jpg 1200w, images/sam-full-1600.jpg 1600w" sizes="(min-width: 1024px) 460px, 420px" width="1600" height="1200" alt="Sam Gorla, arms open, in the Lehigh Valley" loading="lazy" decoding="async">
+          <source type="image/webp" srcset="images/sam-full-480.webp 480w, images/sam-full-800.webp 800w, images/sam-full-1200.webp 1200w, images/sam-full-1600.webp 1600w" sizes="(min-width: 1024px) 380px, 300px">
+          <img src="images/sam-full-800.jpg" srcset="images/sam-full-480.jpg 480w, images/sam-full-800.jpg 800w, images/sam-full-1200.jpg 1200w, images/sam-full-1600.jpg 1600w" sizes="(min-width: 1024px) 380px, 300px" width="1600" height="1200" alt="Sam Gorla, arms open, in the Lehigh Valley" loading="lazy" decoding="async">
         </picture>
         <figcaption>Sam Gorla · Lehigh Valley, PA</figcaption>
       </figure>
