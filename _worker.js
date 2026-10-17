@@ -1,16 +1,29 @@
 import { onRequestPost as onLead } from "./functions/api/lead.js";
 import { onRequestPost as onQuoteRescue } from "./functions/api/quote-rescue.js";
+import { isBlockedAsset } from "./functions/publish-policy.mjs";
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
-    if (path === "/test" || path.startsWith("/test/")) {
+    // .assetsignore does not keep these off the preview. Block them here.
+    if (isBlockedAsset(url.pathname)) {
       return new Response("Not found", {
         status: 404,
         headers: {
           "content-type": "text/plain; charset=utf-8",
           "cache-control": "no-store"
+        }
+      });
+    }
+    // /consultation now books through the quick-connect call. Handled here because
+    // Pages does not reliably apply _redirects when _worker.js serves the request.
+    if (path === "/consultation") {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          "location": "https://cal.com/samgorla/quick-connect" + url.search,
+          "cache-control": "public, max-age=3600"
         }
       });
     }
