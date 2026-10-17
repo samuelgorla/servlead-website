@@ -392,10 +392,10 @@
   .motion .draw.on .dot{opacity:1;transform:none;transition:opacity .3s ease var(--w,1s), transform .4s cubic-bezier(.3,1.6,.5,1) var(--w,1s)}
 
   /* ---------- Proof: Kahler line, logos, CFA case ---------- */
-  .proofs{padding:96px 0 0}
+  .proofs{padding:72px 0 0}
   .proofline{margin:0 auto;max-width:900px;text-align:center;font:400 26px/1.4 var(--serif);color:var(--ink);letter-spacing:-.005em}
   .proofline .basis{display:inline-block;margin-left:10px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);vertical-align:middle;border:1px solid var(--line);border-radius:999px;padding:5px 9px}
-  .logos{display:flex;justify-content:center;align-items:center;gap:30px 64px;padding:36px 0 0;flex-wrap:wrap}
+  .logos{display:flex;justify-content:center;align-items:center;gap:30px 64px;padding:0;flex-wrap:wrap}
   .logos .mono{width:100%;text-align:center;margin-bottom:-6px}
   .logos img{height:46px;width:auto}
   .logos .klase{height:52px}
@@ -434,6 +434,20 @@
   .more-d ul{margin:0 0 12px;padding-left:18px;color:var(--slate);font-size:15px}
   .more-d li{margin:4px 0}
   .more-d p{margin:0 0 6px;color:var(--slate);font-size:15px}
+  /* Kahler case: lead card, with a modest tap-to-play testimonial in a side column */
+  .case-k .case-logo{width:auto;height:40px}
+  .case-k .case-body{grid-template-columns:1fr 1.15fr 180px;gap:40px}
+  .case-k .ba div{grid-template-columns:84px 1fr}
+  .more-d .basis{display:inline-block;margin-left:6px;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);border:1px solid var(--line);border-radius:999px;padding:4px 8px;vertical-align:middle}
+  .kvid{margin:0}
+  .kv-wrap{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--ink)}
+  .kv{display:block;width:100%;height:100%;object-fit:cover}
+  .kv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.94);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px -6px rgba(20,32,46,.5)}
+  .kv-play svg{width:18px;height:18px;fill:var(--ink);margin-left:3px}
+  .kv-play:focus-visible{outline:2px solid var(--paper-hi);outline-offset:3px}
+  .kvid.playing .kv-play{display:none}
+  .kv-quote{margin:14px 0 0;font:italic 400 19px/1.3 var(--serif);color:var(--ink)}
+  .kv-attrib{margin:6px 0 0;font-size:13px;color:var(--slate-2)}
 
   /* ---------- The real product: sample list + explainer ---------- */
   .product{padding:120px 0 0}
@@ -620,6 +634,9 @@
     .pick{grid-template-columns:1fr;gap:28px}
     .product-grid{grid-template-columns:1fr}
     .case-body{grid-template-columns:1fr;gap:28px}
+    .case-k .case-body{grid-template-columns:1fr;gap:28px}
+    .case-k .kvid{display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center;max-width:520px}
+    .case-k .kv-quote{margin-top:0}
     .faq-grid{grid-template-columns:1fr;gap:28px}
     .later-card{grid-template-columns:1fr;gap:28px}
     .creed{grid-template-columns:1fr;max-width:640px}
@@ -698,17 +715,25 @@
     .lead{font-size:20px}
     .go{margin-top:18px}
 
-    .proofs{padding-top:52px}
+    .proofs{padding-top:36px}
     .proofline{text-align:left;font-size:21px}
     .proofline .basis{margin:10px 0 0;display:table}
     /* Phone logos: a 2x2 grid, tall enough that the wordmarks read */
-    .logos{display:grid;grid-template-columns:1fr 1fr;justify-items:start;align-items:center;gap:26px 20px;padding-top:30px}
+    .logos{display:grid;grid-template-columns:1fr 1fr;justify-items:start;align-items:center;gap:20px 20px;padding-top:0}
     .logos .mono{grid-column:1/-1;text-align:left;margin-bottom:0}
     .logos img{height:40px;max-width:100%;object-fit:contain;object-position:left center}
     .logos .klase{height:48px}
     .logos .cfa img{height:40px}
     .case{margin-top:32px;padding:22px 18px 8px;border-radius:22px}
     .case-head{padding-bottom:18px}
+    /* Phone Kahler: stat in the head, then the summary, then a small video, then the expander */
+    .case-k .case-body{gap:0}
+    .case-k .case-main{display:contents}
+    .case-k .case-sum{order:1}
+    .case-k .kvid{order:2;grid-template-columns:132px 1fr;gap:16px;margin:14px 0 6px}
+    .case-k .more-d{order:3}
+    .case-k .case-logo{height:30px}
+    .case-k .kv-quote{font-size:17px}
     .case-body{padding-top:16px;gap:0}
     /* Phone: the card face is the number and one line; the rest opens in "How it spread" */
     .ba-wide,.spread-wide{display:none}
@@ -822,6 +847,7 @@
   <div class="wrap">
     <a class="mark" href="#top"><img class="logo" src="../assets/servlead-logo.png" alt="Servlead Solutions" width="40" height="38"><span aria-hidden="true">Servlead Solutions</span></a>
     <nav aria-label="Primary">
+      <a class="link" href="#cases">Case studies</a>
       <a class="link" href="#paths">Paths</a>
       <a class="link" href="#about">About Sam</a>
       <a class="link" href="#faq">FAQ</a>
@@ -870,6 +896,137 @@
           <div class="ic"><svg viewBox="0 0 20 20"><path d="M4 3h12v14H4z"/><path d="M7 7h6M7 10h6"/><path class="gd" d="M7.5 13.5l1.8 1.8 3.7-3.8"/></svg></div>
           <div><b>Client intake done</b><span>Engagement letter ready for your review</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proofs" id="cases" aria-labelledby="proof-title">
+    <div class="wrap">
+      <h2 class="sr" id="proof-title">Case studies</h2>
+      <div class="logos">
+        <span class="mono">Leaders I've worked with</span>
+        <img src="../assets/logos/kahler-construction-480.webp" alt="Kahler Construction" width="212" height="46">
+        <img class="klase" src="../assets/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="168" height="52">
+        <img src="../assets/logos/aig-safety.svg" alt="AIG Safety" width="198" height="46">
+        <span class="cfa"><img src="../assets/logos/chick-fil-a.svg" alt="CFA Whitehall" width="44" height="44"><span aria-hidden="true">CFA Whitehall</span></span>
+      </div>
+
+      <article class="case case-k rise" id="kahler" aria-labelledby="kahler-h">
+        <header class="case-head">
+          <img class="case-logo" src="../assets/logos/kahler-construction-480.webp" alt="Kahler Construction" width="212" height="46" loading="lazy">
+          <div>
+            <p class="mono case-type">Case · Contractor estimating</p>
+            <h2 id="kahler-h">Kahler Construction</h2>
+          </div>
+          <p class="case-num"><span class="ab">About</span> 5 hrs → <span class="ab">about</span> 1.5 hrs<small>Time to build one estimate.</small></p>
+        </header>
+        <div class="case-body">
+          <figure class="spread spread-wide">
+            <figcaption class="mono">How it came together</figcaption>
+            <ol>
+              <li><b>A deep-dive audit</b><span>How the work really flows, and where the time goes</span></li>
+              <li><b>Built side by side</b><span>With the owner and his team</span></li>
+              <li><b>One connected estimating system</b><span>Costs, templates and bids in one place</span></li>
+            </ol>
+          </figure>
+          <div class="case-main">
+            <p class="case-sum">Estimating went from about 5 hours to about 1.5.</p>
+            <dl class="ba ba-wide">
+              <div><dt>Before</dt><dd>For 17 years, the owner ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
+              <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then the owner, his team and I built it together.</dd></div>
+              <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as I connect the AI pieces I've already tested.</dd></div>
+            </dl>
+            <details class="more-d"><summary>How it went, and what I did</summary>
+              <figure class="spread spread-phone">
+                <figcaption class="mono">How it came together</figcaption>
+                <ol>
+                  <li><b>A deep-dive audit</b><span>How the work really flows, and where the time goes</span></li>
+                  <li><b>Built side by side</b><span>With the owner and his team</span></li>
+                  <li><b>One connected estimating system</b><span>Costs, templates and bids in one place</span></li>
+                </ol>
+              </figure>
+              <dl class="ba ba-phone">
+                <div><dt>Before</dt><dd>For 17 years, the owner ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
+                <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then the owner, his team and I built it together.</dd></div>
+                <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as I connect the AI pieces I've already tested.</dd></div>
+              </dl>
+              <ul>
+                <li>The audit put roughly $38,000 to $54,000 a year on the table, and estimating was the biggest part of it. <span class="basis">From the audit report</span></li>
+                <li>I set up a cost catalog with the markup built in, budget templates, and a cost structure the books can follow.</li>
+                <li>I ran one real bid start to finish in the new system with the owner, and got one customer proposal ready to send.</li>
+                <li>I trained the owner and his team as I went, and showed them a first look at the AI pieces before connecting anything.</li>
+              </ul>
+              <p>Kahler Construction said yes to me sharing this story.</p>
+            </details>
+          </div>
+          <figure class="kvid">
+            <div class="kv-wrap">
+              <video class="kv" controls playsinline preload="none" width="720" height="1280" poster="../assets/media/kahler-web-9x16-poster-360.jpg" data-poster-full="../assets/media/kahler-web-9x16-poster.jpg" aria-label="Video, 38 seconds: the owner of Kahler Construction on the work">
+                <source src="../assets/media/kahler-web-9x16.mp4" type="video/mp4">
+              </video>
+              <button class="kv-play" type="button" aria-label="Play the 38-second video"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.2 L10.5 6 L2.5 10.8 Z"/></svg></button>
+            </div>
+            <figcaption>
+              <blockquote class="kv-quote">“Everything's right there with me.”</blockquote>
+              <p class="kv-attrib" data-attribution>Owner, Kahler Construction</p>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <div data-publish-gate="cfa">
+      
+      <article class="case rise" id="whitehall" aria-labelledby="whitehall-h">
+        <header class="case-head">
+          <img class="case-logo" src="../assets/logos/chick-fil-a.svg" alt="CFA Whitehall" width="52" height="52" loading="lazy">
+          <div>
+            <p class="mono case-type">Case · Restaurant catering outreach</p>
+            <h2 id="whitehall-h">CFA Whitehall</h2>
+          </div>
+          <p class="case-num"><span class="ab">About</span> 1.7% → <span class="ab">about</span> 6%<small>Share of people emailed who wrote back (4 of about 70).</small></p>
+        </header>
+        <div class="case-body">
+          <figure class="spread spread-wide">
+            <figcaption class="mono">Land and expand</figcaption>
+            <ol>
+              <li><b>A few replies</b><span>Schools, a law firm, offices</span></li>
+              <li><b>First orders</b><span>Sample trays, then 150 sandwiches in one order</span></li>
+              <li><b>Repeat and spread</b><span>A school on a recurring schedule, and contacts passing it on</span></li>
+            </ol>
+          </figure>
+          <div>
+            <p class="case-sum">A few replies turned into orders that repeat and spread.</p>
+            <dl class="ba ba-wide">
+              <div><dt>Before</dt><dd>Catering orders came in on their own. Nobody reached out to schools or offices, and nobody followed up.</dd></div>
+              <div><dt>After</dt><dd>A few replies turned into orders that repeat and spread. One high school now orders on a recurring schedule, and the store's team lead runs the outreach. The store says catering roughly doubled from last year, driven by many sources.</dd></div>
+            </dl>
+            <details class="more-d"><summary>How it spread, and what I did</summary>
+              
+              <figure class="spread spread-phone">
+                <figcaption class="mono">Land and expand</figcaption>
+                <ol>
+                  <li><b>A few replies</b><span>Schools, a law firm, offices</span></li>
+                  <li><b>First orders</b><span>Sample trays, then 150 sandwiches in one order</span></li>
+                  <li><b>Repeat and spread</b><span>A school on a recurring schedule, and contacts passing it on</span></li>
+                </ol>
+              </figure>
+              <dl class="ba ba-phone">
+                <div><dt>Before</dt><dd>Catering orders came in on their own. Nobody reached out to schools or offices, and nobody followed up.</dd></div>
+                <div><dt>After</dt><dd>A few replies turned into orders that repeat and spread. One high school now orders on a recurring schedule, and the store's team lead runs the outreach. The store says catering roughly doubled from last year, driven by many sources.</dd></div>
+              </dl>
+              <ul>
+                <li>Replies went from about 1.7% in the first round to about 6% overall (4 of about 70 people).</li>
+                <li>One local high school now orders on a regular, recurring schedule.</li>
+                <li>At a second high school, the first contact took it to a committee, which ordered 150 resale sandwiches in one order. A personal order followed.</li>
+                <li>A law firm contact passed it to the person who runs staff meetings. A sample tray is being scheduled, with catering to follow.</li>
+                <li>Several corporate offices have engaged.</li>
+                <li>The store's team lead now runs the outreach and keeps getting replies.</li>
+              </ul>
+              <p>Working next to the store's team, I built a list of about 105 verified contacts and wrote the emails. Then I made them shorter, made the first ask a free sample tray, and added one follow-up. A person read every email before it went out from the team's own mailbox.</p>
+            </details>
+          </div>
+        </div>
+      </article>
       </div>
     </div>
   </section>
@@ -1167,75 +1324,6 @@
     </div>
   </section>
 
-  <section class="proofs" id="proof" aria-labelledby="proof-title">
-    <div class="wrap">
-      <h2 class="sr" id="proof-title">Leaders I've worked with</h2>
-      <p class="proofline rise">At Kahler Construction, I showed the owners roughly $38,000 to $54,000 a year slipping away. <span class="basis">From the audit report</span></p>
-      <div class="logos">
-        <span class="mono">Leaders I've worked with</span>
-        <img src="../assets/logos/kahler-construction-480.webp" alt="Kahler Construction" width="212" height="46">
-        <img class="klase" src="../assets/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="168" height="52">
-        <img src="../assets/logos/aig-safety.svg" alt="AIG Safety" width="198" height="46">
-        <span class="cfa"><img src="../assets/logos/chick-fil-a.svg" alt="CFA Whitehall" width="44" height="44"><span aria-hidden="true">CFA Whitehall</span></span>
-      </div>
-
-      <div data-publish-gate="cfa">
-      
-      <article class="case rise" id="whitehall" aria-labelledby="whitehall-h">
-        <header class="case-head">
-          <img class="case-logo" src="../assets/logos/chick-fil-a.svg" alt="CFA Whitehall" width="52" height="52" loading="lazy">
-          <div>
-            <p class="mono case-type">Case · Restaurant catering outreach</p>
-            <h2 id="whitehall-h">CFA Whitehall</h2>
-          </div>
-          <p class="case-num"><span class="ab">About</span> 1.7% → <span class="ab">about</span> 6%<small>Share of people emailed who wrote back (4 of about 70).</small></p>
-        </header>
-        <div class="case-body">
-          <figure class="spread spread-wide">
-            <figcaption class="mono">Land and expand</figcaption>
-            <ol>
-              <li><b>A few replies</b><span>Schools, a law firm, offices</span></li>
-              <li><b>First orders</b><span>Sample trays, then 150 sandwiches in one order</span></li>
-              <li><b>Repeat and spread</b><span>A school on a recurring schedule, and contacts passing it on</span></li>
-            </ol>
-          </figure>
-          <div>
-            <p class="case-sum">A few replies turned into orders that repeat and spread.</p>
-            <dl class="ba ba-wide">
-              <div><dt>Before</dt><dd>Catering orders came in on their own. Nobody reached out to schools or offices, and nobody followed up.</dd></div>
-              <div><dt>After</dt><dd>A few replies turned into orders that repeat and spread. One high school now orders on a recurring schedule, and the store's team lead runs the outreach. The store says catering roughly doubled from last year, driven by many sources.</dd></div>
-            </dl>
-            <details class="more-d"><summary>How it spread, and what I did</summary>
-              
-              <figure class="spread spread-phone">
-                <figcaption class="mono">Land and expand</figcaption>
-                <ol>
-                  <li><b>A few replies</b><span>Schools, a law firm, offices</span></li>
-                  <li><b>First orders</b><span>Sample trays, then 150 sandwiches in one order</span></li>
-                  <li><b>Repeat and spread</b><span>A school on a recurring schedule, and contacts passing it on</span></li>
-                </ol>
-              </figure>
-              <dl class="ba ba-phone">
-                <div><dt>Before</dt><dd>Catering orders came in on their own. Nobody reached out to schools or offices, and nobody followed up.</dd></div>
-                <div><dt>After</dt><dd>A few replies turned into orders that repeat and spread. One high school now orders on a recurring schedule, and the store's team lead runs the outreach. The store says catering roughly doubled from last year, driven by many sources.</dd></div>
-              </dl>
-              <ul>
-                <li>Replies went from about 1.7% in the first round to about 6% overall (4 of about 70 people).</li>
-                <li>One local high school now orders on a regular, recurring schedule.</li>
-                <li>At a second high school, the first contact took it to a committee, which ordered 150 resale sandwiches in one order. A personal order followed.</li>
-                <li>A law firm contact passed it to the person who runs staff meetings. A sample tray is being scheduled, with catering to follow.</li>
-                <li>Several corporate offices have engaged.</li>
-                <li>The store's team lead now runs the outreach and keeps getting replies.</li>
-              </ul>
-              <p>Working next to the store's team, I built a list of about 105 verified contacts and wrote the emails. Then I made them shorter, made the first ask a free sample tray, and added one follow-up. A person read every email before it went out from the team's own mailbox.</p>
-            </details>
-          </div>
-        </div>
-      </article>
-      </div>
-    </div>
-  </section>
-
   <section class="product" id="product" aria-labelledby="product-title">
     <div class="wrap">
       <div class="product-head rise">
@@ -1522,6 +1610,16 @@
       vid.controls = false; // empty slot: no dead play button; the markup keeps controls for when the mp4 lands
     }
     vid.addEventListener('play', function(){ if (vid.currentSrc) track('Explainer Play', {src: 'video'}); });
+  }
+
+  // Kahler testimonial: tap to play, nothing downloads before that (preload="none").
+  var kv = document.querySelector('.kv');
+  if (kv) {
+    var kfig = kv.closest('.kvid'), kbtn = kfig.querySelector('.kv-play');
+    if (kv.dataset.posterFull && window.matchMedia('(min-width:701px)').matches) kv.poster = kv.dataset.posterFull;
+    kv.controls = false; // one clear play button until it plays; without JS the native controls stay
+    kbtn.addEventListener('click', function(){ kv.controls = true; kv.play(); });
+    kv.addEventListener('play', function(){ kv.controls = true; kfig.classList.add('playing'); track('Testimonial Play', {client: 'kahler'}); });
   }
 
   // ---------- Entrances ----------
