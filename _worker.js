@@ -14,6 +14,17 @@ export default {
         }
       });
     }
+    // /consultation now books through the quick-connect call. Handled here because
+    // Pages does not reliably apply _redirects when _worker.js serves the request.
+    if (path === "/consultation") {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          "location": "https://cal.com/samgorla/quick-connect" + url.search,
+          "cache-control": "public, max-age=3600"
+        }
+      });
+    }
     if (path === "/api/lead" || path === "/api/quote-rescue") {
       if (request.method !== "POST") {
         return new Response(JSON.stringify({ ok: false }), {
