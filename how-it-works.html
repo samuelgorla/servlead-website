@@ -314,6 +314,60 @@
   .rule-l{font:italic 400 19px/1.3 var(--serif);color:var(--ink)}
 
   .tries{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+
+  .own{margin:18px 0 0;font:italic 400 19px/1.4 var(--serif);color:var(--slate)}
+  .own b{font-weight:400;color:var(--ink)}
+  #knowledge{padding-top:clamp(40px,4vw,64px)}
+  .kb-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+  .kb-grid h2{margin:10px 0 14px}
+  .kb-grid p{font-size:18px;color:var(--slate);margin:0 0 20px;max-width:40ch}
+  .kb-frame{position:relative;border-radius:20px;overflow:hidden;background:var(--navy) center/cover no-repeat;aspect-ratio:1040/582;box-shadow:0 1px 2px rgba(20,32,46,.08),0 30px 60px -36px rgba(20,32,46,.6)}
+  .kb-vid{display:block;width:100%;height:100%;object-fit:cover}
+  .kb-ctl{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+  .kb-ctl .mono{color:var(--slate-2)}
+  .kb-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);display:grid;place-items:center;cursor:pointer}
+  .kb-btn svg{width:13px;height:13px;fill:#fff}
+  .kb-btn .i-pause{display:none}.kb-media.playing .kb-btn .i-play{display:none}.kb-media.playing .kb-btn .i-pause{display:block}
+  .blk{margin-top:56px}
+  .blk-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .blk-h h3{margin:6px 0 0;font:400 clamp(24px,2.2vw,32px)/1.15 var(--serif);color:var(--ink)}
+  .blk-tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;list-style:none;margin:0;padding:0}
+  .blk-tiles a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px;border-radius:16px;background:var(--paper-hi);text-decoration:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule),0 18px 36px -30px rgba(20,32,46,.45);transition:box-shadow .2s,background .2s}
+  .blk-tiles a:hover{background:#fff}
+  .blk-tiles a[aria-current="true"]{background:#fff;box-shadow:inset 0 0 0 2px var(--ink),0 18px 36px -26px rgba(20,32,46,.5)}
+  .blk-tiles .mono{color:var(--slate-2)}
+  .blk-tiles b{font:600 16px/1.2 var(--sans)}
+  .blk-tiles span.l{font-size:14.5px;line-height:1.4;color:var(--slate)}
+  .blk-screen{margin-top:14px;background:var(--navy);border-radius:20px;padding:16px 18px 18px;color:var(--paper-hi)}
+  .blk-bar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;color:var(--fog);border-bottom:1px solid rgba(201,211,221,.18);padding-bottom:10px}
+  .blk-bar b{font-weight:500;color:var(--paper-hi)}
+  .blk-msgs{height:330px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding-top:12px}
+  .bm{max-width:min(78%,560px);padding:10px 13px;border-radius:14px;font-size:15px;line-height:1.45}
+  .bm small{display:block;font:500 10.5px/1.3 var(--mono);letter-spacing:.05em;opacity:.75;margin-bottom:4px}
+  .bm.in{align-self:flex-start;background:var(--navy-2);color:var(--paper-hi);box-shadow:inset 0 0 0 1px rgba(201,211,221,.16)}
+  .bm.out{align-self:flex-end;background:var(--paper-hi);color:var(--ink)}
+  .bm.sys{align-self:center;max-width:100%;padding:5px 10px;border-radius:999px;font:500 11.5px/1.3 var(--mono);letter-spacing:.04em;color:var(--gold);background:rgba(232,182,76,.1)}
+  .bm.typing{align-self:flex-end;background:var(--paper-hi);padding:12px 14px}
+  .bm.typing i{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--slate-2);animation:dot 1s infinite}
+  .bm.typing i:nth-child(2){animation-delay:.15s}.bm.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
+  .motion .bm{animation:bmIn .35s ease both}
+  @keyframes bmIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .cred{margin:22px 0 0;padding:24px 28px;border-left:3px solid var(--gold);background:transparent}
+  .cred blockquote{margin:0;font:400 clamp(20px,1.9vw,26px)/1.4 var(--serif);color:var(--ink);max-width:56ch}
+  .cred figcaption{margin-top:12px;color:var(--slate-2)}
+  @media (max-width:980px){.kb-grid{grid-template-columns:1fr;gap:24px}.blk-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (max-width:700px){
+    .blk{margin-top:40px}
+    .blk-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .blk-tiles li:last-child{grid-column:1/-1}
+    .blk-tiles a{padding:13px}
+    .blk-tiles b{font-size:15px}.blk-tiles span.l{font-size:13.5px}
+    .blk-msgs{height:360px}.bm{max-width:88%;font-size:14.5px}
+    .cred{padding:18px 18px}
+    .kb-grid p{font-size:16.5px}
+  }
+  @media (prefers-reduced-motion: reduce){.bm.typing i{animation:none;opacity:.6}.blk-tiles a{transition:none}}
   .audit-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
   .price-l{font:500 15px/1.5 var(--sans);color:var(--slate);margin:0 0 16px}
   .price-l b{display:block;font:500 26px/1.15 var(--serif);color:var(--ink)}
@@ -671,6 +725,30 @@
             <div class="ucard done"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Day wrapped</b><span>What went out, and what waits on you</span></div></div></li>
         </ol>
         <div class="day-foot"><span class="mono">Example day · fictional business, names and times</span><span class="rule-l">It drafts. You approve.</span></div>
+        <p class="own">I run one in my own business. <b>That's work I used to do at night.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="knowledge" aria-labelledby="kb-title">
+    <span class="jump" id="knowledge-base"></span>
+    <div class="wrap">
+      <div class="kb-grid">
+        <div class="rise">
+          <span class="mono">Knowledge base</span>
+          <h2 id="kb-title">What the business knows, <em>kept.</em></h2>
+          <p>Pricing logic, supplier quirks, how the work gets done. Findable by anyone, with the source attached.</p>
+          <a class="xlink" href="/tools/servlead-knowledge-full" data-umami-event="Demo Open" data-umami-event-demo="knowledge"><span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg></span>Play the full demo</a>
+        </div>
+        <div class="kb-media rise">
+          <div class="kb-frame" id="kbFrame">
+            <video class="kb-vid" id="kbVid" width="1040" height="582" muted loop playsinline preload="none" data-src="/kb-demo.mp4" data-poster="/kb-demo-poster.jpg" aria-label="Silent demo with on-screen captions: what a business knows, scattered across three people, gathered in one place, and a new hire's pricing question answered with the source attached"></video>
+          </div>
+          <div class="kb-ctl">
+            <span class="mono" aria-hidden="true">Example · captions on screen</span>
+            <button class="kb-btn" id="kbBtn" type="button" aria-label="Play the knowledge demo video"><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1 L11 6 L2.5 11 Z"/></svg><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1h3v10H2zM7 1h3v10H7z"/></svg></button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -691,9 +769,24 @@
         <li class="phase"><span class="mono">Phase 4</span><b>Embed</b><p>I train your team to run it.</p></li>
       </ol>
 
+      <div class="blk rise" id="blocks">
+        <span class="jump" id="demos-blocks"></span><span class="jump" id="lead-responder"></span><span class="jump" id="invoice-collections"></span><span class="jump" id="inbox-autopilot"></span><span class="jump" id="document-autopilot"></span><span class="jump" id="lead-discovery"></span>
+        <div class="blk-h"><div><span class="mono">Building blocks</span><h3>Or start smaller. One job each.</h3></div></div>
+        <ul class="blk-tiles">
+          <li><a href="#lead-responder" data-demo="0" data-umami-event="Demo Tile" data-umami-event-loc="hiw-blocks-lead-responder"><span class="mono">01</span><b>Lead Responder</b><span class="l">New leads answered after hours.</span></a></li>
+          <li><a href="#invoice-collections" data-demo="1" data-umami-event="Demo Tile" data-umami-event-loc="hiw-blocks-invoice-collections"><span class="mono">02</span><b>Invoice Collections</b><span class="l">Polite nudges on unpaid invoices.</span></a></li>
+          <li><a href="#inbox-autopilot" data-demo="2" data-umami-event="Demo Tile" data-umami-event-loc="hiw-blocks-inbox-autopilot"><span class="mono">03</span><b>Inbox Autopilot</b><span class="l">Routine replies drafted, rest flagged.</span></a></li>
+          <li><a href="#document-autopilot" data-demo="3" data-umami-event="Demo Tile" data-umami-event-loc="hiw-blocks-document-autopilot"><span class="mono">04</span><b>Document Autopilot</b><span class="l">Orders read and entered once.</span></a></li>
+          <li><a href="#lead-discovery" data-demo="4" data-umami-event="Demo Tile" data-umami-event-loc="hiw-blocks-lead-discovery"><span class="mono">05</span><b>Lead Discovery &amp; Outreach</b><span class="l">Good-fit customers found, note drafted.</span></a></li>
+        </ul>
+        <div class="blk-screen" id="blkScreen" aria-live="polite">
+          <div class="blk-bar"><b id="blkTitle">Lead Responder</b><span>SIMULATION · FICTIONAL NAMES</span></div>
+          <div class="blk-msgs" id="blkMsgs"></div>
+        </div>
+      </div>
+
       <div class="tries rise">
         <a class="xlink" href="/tools/quote-rescue" data-umami-event="Demo Open" data-umami-event-demo="quote-rescue"><span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg></span>Try Quote Rescue free</a>
-        <a class="xlink" href="/tools/servlead-knowledge-full" data-umami-event="Demo Open" data-umami-event-demo="knowledge"><span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg></span>Play the knowledge demo</a>
       </div>
 
       <a class="proof rise" href="/#kahler" data-umami-event="Case Studies Link" data-umami-event-loc="hiw-builds">
@@ -744,6 +837,9 @@
         <div><span class="mono">Point the way</span><h2 id="answer-title">A straight answer.</h2></div>
         <p>If a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
       </div>
+      <figure class="cred rise">
+        <blockquote><p style="margin:0">Fourteen years in technology consulting for Fortune 1000 companies taught me the win is rarely the flashiest tool. It's the one you'll still be using in a year.</p></blockquote>
+      </figure>
     </div>
   </section>
 
@@ -1205,6 +1301,109 @@
   window.addEventListener('resize', function () { layout(); sync(); });
   layout(); sync(); requestAnimationFrame(frame);
   wrap.classList.add('ready');
+  }
+})();
+</script>
+<script>
+(function(){
+  function track(n, d){ if (window.umami && typeof umami.track === 'function') umami.track(n, d); }
+  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Knowledge base video: no bytes until near view; muted autoplay only without reduced motion */
+  var fr = document.getElementById('kbFrame'), v = document.getElementById('kbVid'), btn = document.getElementById('kbBtn');
+  if (fr && v && btn) {
+    var loaded = false, played = false;
+    function poster(){ if (!v.poster) v.poster = v.dataset.poster; fr.style.backgroundImage = 'url(' + v.dataset.poster + ')'; }
+    function load(){ if (loaded) return; loaded = true; poster(); v.src = v.dataset.src; }
+    function play(){ load(); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    v.addEventListener('play', function(){ fr.parentNode.classList.add('playing'); btn.setAttribute('aria-label','Pause the knowledge demo video'); if (!played) { played = true; track('KB Demo Play', { loc: 'hiw-knowledge' }); } });
+    v.addEventListener('pause', function(){ fr.parentNode.classList.remove('playing'); btn.setAttribute('aria-label','Play the knowledge demo video'); });
+    var userPaused = false;
+    btn.addEventListener('click', function(){ if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(es){ if (es[0].isIntersecting) poster(); }, { rootMargin: '200px 0px' }).observe(fr);
+      new IntersectionObserver(function(es){
+        if (es[0].isIntersecting) { if (!RM && !userPaused) play(); }
+        else if (!v.paused) v.pause();
+      }, { threshold: 0.5 }).observe(fr);
+    } else { poster(); }
+  }
+
+  /* Building blocks: one shared screen, five short simulations */
+  var S = [
+    { t: 'Lead Responder', id: 'lead-responder', m: [
+      ['in','New lead · web form · 7:42 PM','Hi, I need a quote on a warehouse buildout. Timeline is tight.'],
+      ['typing'],
+      ['out','Reply · wording you approved','Thanks for reaching out. Two quick questions so we quote it right: when do you need it done, and is the space empty or partly finished?'],
+      ['in','Lead · 7:46 PM','October. It is an empty shell.'],
+      ['sys','Details logged · on your list for a morning callback'] ] },
+    { t: 'Invoice Collections', id: 'invoice-collections', m: [
+      ['sys','Invoice two weeks past due'],
+      ['typing'],
+      ['out','Follow-up · you approved it','Hi Dana, a friendly nudge on the invoice from last month. Here is the payment link in case it slipped through. Anything holding it up on your end?'],
+      ['in','Client · same afternoon','Sorry about that! Paying it today.'],
+      ['sys','Marked paid · thank-you note drafted for you'] ] },
+    { t: 'Inbox Autopilot', id: 'inbox-autopilot', m: [
+      ['sys','Overnight email sorted'],
+      ['in','Marcus · scheduling','Can we move Thursday\u2019s walkthrough to the afternoon?'],
+      ['typing'],
+      ['out','Draft · waiting for your OK','Hi Marcus, yes. 2 PM Thursday works. I\u2019ve updated the invite.'],
+      ['in','Flagged · needs you','Change order on the Fulton job. Need your call on the structural piece.'] ] },
+    { t: 'Document Autopilot', id: 'document-autopilot', m: [
+      ['in','Email · PDF attached','Purchase order from Hartline Distribution'],
+      ['typing'],
+      ['sys','Read · items, quantities, ship date'],
+      ['out','Entered · for your review','Order created in your system and checked against stock. One flag: an item with a long lead time.'],
+      ['sys','Typed once, by nobody'] ] },
+    { t: 'Lead Discovery & Outreach', id: 'lead-discovery', m: [
+      ['sys','Looking for companies like your best customers'],
+      ['typing'],
+      ['sys','Short list ready · best fits researched'],
+      ['out','Draft note · for your approval','Hi Tom, saw Keystone picked up the school renovation. Would a short call about bid prep be useful?'],
+      ['in','Reply · next morning','Good timing, actually. Call me this week.'] ] }
+  ];
+  var tiles = Array.prototype.slice.call(document.querySelectorAll('.blk-tiles a'));
+  var box = document.getElementById('blkMsgs'), title = document.getElementById('blkTitle'), scr = document.getElementById('blkScreen');
+  if (!box || !tiles.length) return;
+  var timers = [], cur = -1, started = false;
+  function el(x){
+    var d = document.createElement('div');
+    if (x[0] === 'typing') { d.className = 'bm typing'; d.setAttribute('aria-hidden','true'); d.innerHTML = '<i></i><i></i><i></i>'; return d; }
+    d.className = 'bm ' + x[0];
+    if (x[0] === 'sys') { d.textContent = x[1]; return d; }
+    var s = document.createElement('small'); s.textContent = x[1]; d.appendChild(s); d.appendChild(document.createTextNode(x[2])); return d;
+  }
+  function run(i){
+    timers.forEach(clearTimeout); timers = []; cur = i; started = true;
+    tiles.forEach(function(a, k){ a.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    title.textContent = S[i].t; box.innerHTML = '';
+    if (RM) { S[i].m.forEach(function(x){ if (x[0] !== 'typing') box.appendChild(el(x)); }); return; }
+    var t = 300, typ = null;
+    S[i].m.forEach(function(x){
+      timers.push(setTimeout(function(){
+        if (typ) { typ.remove(); typ = null; }
+        var n = el(x); box.appendChild(n); if (x[0] === 'typing') typ = n;
+      }, t));
+      t += x[0] === 'typing' ? 1100 : 1500;
+    });
+  }
+  function fromHash(){ var h = location.hash.slice(1); for (var k = 0; k < S.length; k++) if (S[k].id === h) return k; return -1; }
+  tiles.forEach(function(a, k){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      if (history.replaceState) history.replaceState(null, '', '#' + S[k].id);
+      run(k);
+      if (scr.getBoundingClientRect().top > window.innerHeight - 120) scr.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
+    });
+  });
+  var h0 = fromHash();
+  if (h0 >= 0) run(h0);
+  window.addEventListener('hashchange', function(){ var k = fromHash(); if (k >= 0) run(k); });
+  if (h0 < 0) {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { io.disconnect(); if (!started) run(0); } }, { threshold: 0.4 });
+      io.observe(scr);
+    } else run(0);
   }
 })();
 </script>
