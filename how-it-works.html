@@ -102,12 +102,9 @@
       "@type": "FAQPage",
       "@id": "https://servleadsolutions.com/how-it-works#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "How long does a rebuild take?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the workflow. You get the price before I start, and there's a check after the first working piece, so you never keep paying for something that isn't working." } },
-        { "@type": "Question", "name": "Who owns what you build?", "acceptedAnswer": { "@type": "Answer", "text": "You do. Who owns what is written into the scope before work starts." } },
+        { "@type": "Question", "name": "How long does a rebuild take?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the workflow. You get a fixed price before I start, and a check after the first working piece." } },
         { "@type": "Question", "name": "What do you need from my team?", "acceptedAnswer": { "@type": "Answer", "text": "One person who decides, and time with whoever knows the work best." } },
-        { "@type": "Question", "name": "What if it isn't working?", "acceptedAnswer": { "@type": "Answer", "text": "There's a check after the first working piece. If it isn't clearly useful on your real data, we stop or change course." } },
-        { "@type": "Question", "name": "Will it send anything without me?", "acceptedAnswer": { "@type": "Answer", "text": "No. It drafts, and you approve. Money, anything that goes out, and anything you can't undo always wait for you." } },
-        { "@type": "Question", "name": "What do you build it on?", "acceptedAnswer": { "@type": "Answer", "text": "Whatever fits what you already use. The plan names the tool and says why." } }
+        { "@type": "Question", "name": "Will it send anything without me?", "acceptedAnswer": { "@type": "Answer", "text": "No. It drafts, and you approve. Money, and anything you can't undo, waits for you." } }
       ]
     }
   ]
@@ -203,7 +200,6 @@
   .sheet li::before{content:counter(s);font:500 13px/1.6 var(--mono);color:var(--slate-2)}
   .sheet li:last-child{border-bottom:0}
   .sheet li span{display:block;font-size:13.5px;color:var(--slate-2);margin-top:2px}
-  .sample-cap{margin:12px 0 2px;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--slate-2)}
   .fine{font-size:15px;color:var(--slate-2);margin:18px 0 0}
 
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
@@ -214,7 +210,6 @@
   .card h3{font:500 27px/1.1 var(--serif);letter-spacing:-.015em;margin:12px 0 0}
   .card .price{margin-top:12px;font:500 14px/1.4 var(--sans);color:var(--slate)}
   .card .body{padding:18px 12px 8px;display:flex;flex-direction:column;flex:1}
-  .card .body p{margin:0 0 14px;font-size:16px;color:var(--slate)}
   .more{margin-top:auto;font:600 14.5px/1 var(--sans);color:var(--ink);text-decoration:none;display:inline-flex;gap:6px;padding:10px 0 4px}
   a.card:hover .more,.more:hover{text-decoration:underline;text-underline-offset:4px}
   a.card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
@@ -230,18 +225,6 @@
   .gate p{margin:0;font-size:14px;line-height:1.4;color:var(--slate)}
   .gate b{display:block;font:600 13px/1.3 var(--sans);color:var(--ink);margin-bottom:4px}
 
-  .build-sub{margin:72px 0 22px;display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
-  .build-sub h3{font:400 30px/1.1 var(--serif);margin:6px 0 0}
-  .build-sub p{margin:0;color:var(--slate);max-width:46ch}
-  .demos{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .ui{background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 1px 0 var(--rule);font-size:13.5px;margin-top:16px}
-  .ui .mono{font-size:10.5px;display:block;margin-bottom:6px}
-  .ui p{margin:0;color:var(--ink);line-height:1.45}
-  .ui .ph{margin-top:8px;display:inline-flex;gap:6px}
-  .ui .ph span{font:600 12px/1 var(--sans);padding:6px 10px;border-radius:8px;border:1px solid var(--mist);color:var(--slate)}
-  .ui .ph span:first-child{background:var(--ink);border-color:var(--ink);color:#fff}
-  .ui .q{font:500 13px/1.4 var(--sans);background:var(--paper);border-radius:10px;padding:8px 10px;margin-bottom:6px}
-  .ui .src{font:500 11px/1.4 var(--mono);color:var(--slate-2);margin-top:6px;letter-spacing:.04em}
 
   .proof{margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--navy);color:var(--paper-hi);border-radius:20px;padding:22px 28px;text-decoration:none}
   .proof .k{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fog)}
@@ -250,68 +233,32 @@
   .proof .go-l{font:600 15px/1.3 var(--sans);color:var(--paper-hi);white-space:nowrap}
   .proof:hover .go-l{text-decoration:underline;text-underline-offset:4px}
   .proof:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-  .build-go{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:34px}
-  .build-go p{margin:0;font-size:15px;color:var(--slate-2)}
 
-  .cos-wrap{margin-top:22px;background:var(--paper-hi);border-radius:24px;padding:22px;box-shadow:0 1px 0 var(--rule), 0 24px 50px -36px rgba(20,32,46,.35);scroll-margin-top:84px}
-  .cos-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin:2px 4px 16px}
-  .cos-head h3{font:500 27px/1.1 var(--serif);margin:8px 0 0}
-  .cos-head p{margin:0;color:var(--slate);max-width:48ch;font-size:16px}
-  .cos-stage { position: relative; background: var(--ink); border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(20, 32, 46, 0.45), inset 0 0 0 1px rgba(242, 242, 241, 0.14); }
-  .cos-stage canvas { display: block; width: 100%; }
-  .cos-ov { position: absolute; inset: 0; pointer-events: none; }
-  .cos-rail { position: absolute; left: 26px; top: 22px; width: min(320px, 32%); height: 250px; }
-  .cos-card { position: absolute; left: 0; top: 0; width: 100%; background: rgba(242, 242, 241, 0.05); border: 1px solid rgba(242, 242, 241, 0.14); border-radius: 12px; padding: 11px 13px; opacity: 0; transform: translateY(14px); transition: opacity .45s var(--ease), transform .55s var(--ease), top .55s var(--ease); }
-  .cos-card.on { opacity: 1; transform: none; }
-  .cos-card.slotB { top: 118px; }
-  .cos-card.gone { opacity: 0; transform: translateY(-14px) scale(0.96); }
-  .cos-card .hd { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
-  .cos-card .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
-  .cos-card .who { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: #98a1b0; white-space: nowrap; }
-  .cos-card .b { font-size: 13px; line-height: 1.45; color: #dfe3e9; }
-  .cos-card .r { display: grid; grid-template-columns: 3.6rem 1fr; gap: 6px; font-size: 12.5px; line-height: 1.4; color: #dfe3e9; }
-  .cos-card .r i { font-style: normal; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #98a1b0; padding-top: 2px; }
-  .cos-card.crm .k { color: var(--fog); }
-  .cos-meter { height: 8px; margin-top: 9px; background: rgba(242, 242, 241, 0.1); border-radius: 99px; overflow: hidden; }
-  .cos-meter i { display: block; height: 100%; width: 0; background: var(--mist); border-radius: 99px; transition: width 1.3s var(--ease) 0.35s; }
-  .cos-card.on .cos-meter i { width: 60%; }
-  .cos-count { position: absolute; right: 26px; top: 22px; text-align: right; }
-  .cos-count b { display: block; font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1; color: var(--paper-hi); font-variant-numeric: tabular-nums; }
-  .cos-count span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fog); }
-  .cos-count em { display: block; margin-top: 6px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); opacity: 0; transition: opacity .4s; }
-  .cos-count em.on { opacity: 1; }
-  .cos-chap { position: absolute; left: 26px; bottom: 24px; max-width: min(460px, 44%); }
-  .cos-chap .n { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; opacity: 0; transition: opacity 0.35s; }
-  .cos-chap .t { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 30px); line-height: 1.12; letter-spacing: -0.01em; color: var(--paper-hi); opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease); }
-  .cos-chap .t em { font-style: italic; color: var(--gold); }
-  .cos-chap.on .n, .cos-chap.on .t { opacity: 1; transform: none; }
-  .cos-held { position: absolute; right: 26px; bottom: 24px; width: min(340px, 33%); background: rgba(251, 248, 243, 0.96); color: var(--ink); border-radius: 16px 16px 4px 16px; padding: 12px 14px; opacity: 0; transform: translateY(10px); transition: opacity .45s, transform .55s var(--ease); }
-  .cos-held.on { opacity: 1; transform: none; }
-  .cos-held .h { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-2); margin-bottom: 5px; }
-  .cos-held p { font-size: 13.5px; line-height: 1.45; margin: 0; }
-  .cos-stamp { display: inline-block; margin-top: 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border: 1.5px solid var(--ink); border-radius: 6px; padding: 3px 7px; }
-  .cos-tl { margin-top: 14px; display: grid; grid-template-columns: auto auto 1fr; gap: 14px; align-items: center; }
-  .cos-snd { width: 34px; height: 34px; margin-left: -6px; border-radius: 50%; border: 1px solid rgba(20, 32, 46, 0.12); background: #fff; color: var(--ink); display: grid; place-items: center; cursor: pointer; }
-  .cos-snd[aria-pressed="false"] { color: var(--slate-2); }
-  .cos-snd[hidden] { display: none; }
-  .cos-play { width: 52px; height: 52px; border-radius: 50%; border: none; background: var(--ink); color: var(--paper-hi); display: grid; place-items: center; cursor: pointer; transition: transform .2s; }
-  .cos-play:hover { transform: scale(1.04); }
-  .cos-play:focus-visible, .cos-ch:focus-visible, .cos-snd:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-  .cos-chaps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; grid-column: 3; grid-row: 1; }
-  .cos-chaps::before { content: ''; position: absolute; left: 0; right: 0; top: 5px; height: 2px; background: rgba(20, 32, 46, 0.12); border-radius: 2px; }
-  .cos-prog { position: absolute; left: 0; top: 5px; height: 2px; width: 0; background: var(--ink); border-radius: 2px; }
-  .cos-ch { position: relative; background: none; border: none; text-align: left; padding: 14px 0 0; cursor: pointer; font-family: var(--sans); }
-  .cos-ch::before { content: ''; position: absolute; left: 0; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--paper-hi); border: 2px solid #b7bdc8; transition: border-color .2s, background .2s, transform .2s; }
-  .cos-ch.live::before { border-color: var(--ink); background: var(--ink); transform: scale(1.15); }
-  .cos-ch.past::before { border-color: var(--ink); }
-  .cos-ch i { display: block; font-style: normal; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate-2); }
-  .cos-ch b { display: block; font-weight: 500; font-size: 13.5px; color: var(--ink); margin-top: 2px; }
-  .flag-note { margin: 12px 4px 2px; font: 500 11.5px/1.4 var(--mono); letter-spacing:.04em; color: var(--slate-2); }
 
+  .day{background:var(--paper-hi);border-radius:28px;padding:26px 34px 22px;box-shadow:0 1px 0 var(--rule), 0 30px 60px -44px rgba(20,32,46,.4)}
+  .day-cols,.beat{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:center}
+  .day-cols{padding:0 0 12px}
+  .beats{list-style:none;margin:0;padding:0;position:relative}
+  .beats::before{content:"";position:absolute;left:5px;top:30px;bottom:30px;width:1.5px;background:var(--mist)}
+  .beat{padding:14px 0;border-top:1px solid var(--rule);position:relative}
+  .beat time{display:flex;align-items:center;gap:14px;font:500 14.5px/1 var(--mono);color:var(--ink);white-space:nowrap}
+  .beat time::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px var(--paper-hi)}
+  .was{margin:0;display:flex;gap:10px;align-items:baseline;font-size:15.5px;line-height:1.45;color:var(--slate-2)}
+  .was::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--fog);transform:translateY(-1px)}
+  .ucard{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 1px 2px rgba(20,32,46,.06),0 14px 30px -18px rgba(20,32,46,.42)}
+  .ucard .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--paper);display:grid;place-items:center}
+  .ucard .ic svg{width:19px;height:19px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .ucard.done .ic{background:var(--ink)}.ucard.done .ic svg{stroke:var(--gold)}
+  .ucard b{display:block;font:600 14.5px/1.25 var(--sans)}
+  .ucard span{display:block;font-size:13.5px;line-height:1.35;color:var(--slate-2);margin-top:3px}
+  .ucard .nchips{display:flex;gap:6px;margin-top:8px}
+  .ucard .nchip{display:inline-block;margin:0;font:600 12px/1 var(--sans);padding:6px 10px;border-radius:8px;border:1px solid var(--mist);color:var(--slate)}
+  .ucard .nchip.ok{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .day-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:16px;margin-top:2px}
+  .rule-l{font:italic 400 19px/1.3 var(--serif);color:var(--ink)}
+
+  .tries{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
   .audit-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
-  .facts{list-style:none;margin:0 0 20px;padding:0}
-  .facts li{display:flex;gap:12px;padding:6px 0;font-size:16.5px;color:var(--slate)}
-  .facts li::before{content:"";flex:none;width:14px;height:1.5px;background:var(--slate-2);margin-top:13px}
   .price-l{font:500 15px/1.5 var(--sans);color:var(--slate);margin:0 0 16px}
   .price-l b{display:block;font:500 26px/1.15 var(--serif);color:var(--ink)}
   .guarantee{margin:0 0 16px;padding:14px 16px;border-radius:12px;background:var(--gold-soft);font:italic 400 18px/1.4 var(--serif);color:var(--ink)}
@@ -341,23 +288,10 @@
   .finding{margin-top:18px;padding:16px 18px;border-radius:14px;background:var(--sand);font-size:15.5px;line-height:1.5;color:var(--slate)}
   .finding b{color:var(--ink);font-weight:600}
 
-  .answer-fix{display:grid;grid-template-columns:.9fr 1.6fr;gap:22px;align-items:stretch}
-  .answer{background:var(--paper-hi);border-radius:24px;padding:28px;box-shadow:0 1px 0 var(--rule), 0 24px 50px -36px rgba(20,32,46,.35);scroll-margin-top:84px}
-  .answer h2{font-size:clamp(28px,2.6vw,36px);margin:10px 0 12px}
-  .answer p{margin:0;color:var(--slate);font-size:16.5px}
-  .fixes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
-  .fix{background:var(--paper-hi);border-radius:18px;padding:18px 16px;box-shadow:0 1px 0 var(--rule)}
-  .fix svg{width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-  .fix b{display:block;font:500 20px/1.15 var(--serif);margin:12px 0 6px}
-  .fix p{margin:0;font-size:14.5px;line-height:1.45;color:var(--slate)}
-  .fix-head h2{font-size:clamp(28px,2.6vw,36px);margin:10px 0 18px}
+  .answer{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center;background:var(--paper-hi);border-radius:24px;padding:32px 40px;box-shadow:0 1px 0 var(--rule), 0 24px 50px -36px rgba(20,32,46,.35);scroll-margin-top:84px}
+  .answer h2{font-size:clamp(28px,2.6vw,40px);margin:10px 0 0}
+  .answer p{margin:0;color:var(--slate);font-size:18px;max-width:46ch}
 
-  .own{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .check{list-style:none;margin:0;padding:18px 22px;background:#fff;border-radius:20px;box-shadow:0 1px 0 var(--rule), 0 24px 50px -36px rgba(20,32,46,.35)}
-  .check li{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--rule);font-size:16px}
-  .check li:last-child{border-bottom:0}
-  .check li::before{content:"";width:20px;height:20px;border-radius:6px;background:var(--ink);margin-top:1px;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' fill='none' stroke='%23FBF8F3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
 
   .faq{padding:110px 0 100px}
   .faq-grid{display:grid;grid-template-columns:1fr 1.55fr;gap:72px;align-items:start}
@@ -372,7 +306,7 @@
   .qa p{margin:0 0 24px;max-width:60ch;color:var(--slate);font-size:17px;line-height:1.6}
 
   .final{padding:0 0 110px}
-  .final-card{background:var(--navy);color:var(--paper-hi);border-radius:28px;padding:52px 56px;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;position:relative;overflow:hidden}
+  .final-card{background:var(--navy);color:var(--paper-hi);border-radius:28px;padding:56px 56px;display:grid;grid-template-columns:1fr;gap:56px;align-items:center;position:relative;overflow:hidden}
   .final-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 400px at 10% 0%,rgba(232,182,76,.08),transparent 70%)}
   .final-card > *{position:relative}
   .final-card .mono{color:var(--fog)}
@@ -382,17 +316,6 @@
   .who img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:2px solid var(--paper-hi)}
   .final-card .go{margin-top:26px}
   .final-card .leak{color:var(--paper-hi);text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:5px;font:600 15.5px/1.3 var(--sans)}
-  .signup label{display:block;font-size:15px;color:#D3DCE5;margin-bottom:10px}
-  .signup .row{display:flex;background:#fff;border:1px solid var(--rule);border-radius:12px;padding:4px 4px 4px 14px}
-  .signup input{flex:1;min-width:0;border:0;background:transparent;font:400 16px/1 var(--sans);color:var(--ink);padding:12px 0}
-  .signup input:focus{outline:none}
-  .signup button{border:0;border-radius:9px;background:var(--ink);color:#fff;font:600 14px/1 var(--sans);padding:0 18px;min-height:44px;cursor:pointer}
-  .signup button:hover{background:#22344A}
-  .signup button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-  .signup .thanks{font-size:15px;color:#D3DCE5;margin:0}
-  .signup .err{font-size:14.5px;color:var(--paper-hi);margin:10px 0 0}
-  .signup button[disabled]{opacity:.6;cursor:default}
-  .signup .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
   footer{padding:0 0 44px}
   .foot{border-top:1px solid var(--rule);padding-top:34px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
@@ -410,30 +333,18 @@
     .flowvis{min-height:300px;max-width:620px}
   }
   @media (max-width:980px){
-    .split,.audit-grid,.own,.faq-grid,.final-card,.answer-fix{grid-template-columns:1fr;gap:28px}
+    .split,.audit-grid,.faq-grid,.final-card{grid-template-columns:1fr;gap:28px}
     .cards{grid-template-columns:1fr;max-width:620px}
-    .demos{grid-template-columns:1fr}
     .phases{grid-template-columns:1fr;gap:0;border-left:2px solid var(--ink);margin-left:6px}
     .phase,.gate{border-top:0;padding:0 0 22px 26px;text-align:left;width:auto}
     .phase::before{top:4px;left:-8px}
     .gate{border-left:0}
     .gate::before{top:2px;left:-8px;margin-left:0}
-    .fixes{grid-template-columns:1fr 1fr}
-    .cos-ov { position: static; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 18px; }
-    .cos-chap { position: static; max-width: none; order: -1; }
-    .cos-rail { position: static; width: auto; height: auto; display: flex; flex-direction: column; gap: 8px; }
-    .cos-card { position: relative; top: auto !important; transform: none; }
-    .cos-card:not(.on) { display: none; }
-    .cos-held { position: static; width: auto; display: none; }
-    .cos-held.on { display: block; }
-    .cos-count { position: static; text-align: left; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-    .cos-count b { font-size: 28px; }
-    .cos-count em { margin-top: 0; }
   }
   @media (max-width:700px){
     body{font-size:16px}
     html{scroll-padding-top:68px}
-    section,.jump,.cos-wrap,.answer{scroll-margin-top:68px}
+    section,.jump,.answer{scroll-margin-top:68px}
     .wrap{padding:0 20px}
     .top .wrap{height:60px}
     .mark .logo{width:36px}
@@ -453,25 +364,23 @@
     .head-c{margin-bottom:24px}
     .head-c p{font-size:16.5px}
     .card h3{font-size:24px}
-    .build-sub{margin-top:44px}
-    .build-sub h3{font-size:25px}
     .proof{padding:18px 18px}
     .proof b{font-size:24px}
-    .cos-wrap{padding:12px;border-radius:20px}
-    .cos-head h3{font-size:23px}
-    .cos-chaps { gap: 4px; }
-    .cos-ch b { display: none; }
-    .cos-ch i { font-size: 9px; letter-spacing: 0.02em; }
-    .cos-tl { grid-template-columns: auto 1fr; row-gap: 8px; }
-    .cos-chaps { grid-column: 2; grid-row: 1; }
-    .cos-snd { grid-column: 1; grid-row: 2; justify-self: center; width: 30px; height: 30px; margin-left: 0; }
     .audit-vis{padding:14px}
     .dial{width:80px;height:80px}.dial span{font-size:26px}
     .stages div{font-size:13.5px;padding:9px 10px}
-    .answer{padding:22px 18px}
-    .fix{padding:14px 12px}
-    .fix b{font-size:17.5px}
-    .fix p{font-size:13.5px}
+    .answer{padding:22px 18px;grid-template-columns:1fr;gap:12px}
+    .day{padding:18px 16px 16px;border-radius:22px}
+    .day-cols{display:flex;gap:18px;padding:0 0 12px}
+    .day-cols span:first-child{display:none}
+    .l-was,.l-with{display:inline-flex;align-items:center;gap:8px}
+    .l-was::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--fog)}
+    .l-with::before{content:"";width:14px;height:10px;border-radius:3px;background:#fff;box-shadow:0 0 0 1px var(--mist)}
+    .beat{grid-template-columns:1fr;gap:8px;padding:14px 0 14px 26px}
+    .beats::before{top:22px;bottom:22px}
+    .beat time{margin-left:-26px}
+    .was{font-size:14.5px}
+    .rule-l{font-size:17px}
     .faq{padding:64px 0 44px}
     .faq-grid{gap:18px}
     .qa summary{font-size:18.5px;min-height:52px;padding:12px 0}
@@ -489,7 +398,6 @@
   }
   @media (prefers-reduced-motion: reduce){
     .dock{transition:none}
-    .cos-card, .cos-held, .cos-chap .n, .cos-chap .t, .cos-meter i, .cos-count em { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
   }
 </style>
 </head>
@@ -517,11 +425,11 @@
         <div>
           <span class="pill"><i aria-hidden="true"></i>How it works · free 30-minute call first</span>
           <h1 id="h1">How it works: one call, one clear path, and a fix <em>your team runs.</em></h1>
-          <p class="lede">You bring me one or two workflows that eat your week. I look at them with you and tell you straight what I'd do. Then you pick the path, or none.</p>
+          <p class="lede">Bring me one or two workflows that eat your week. I'll tell you straight what I'd do.</p>
           <div class="go">
             <a class="btn btn-primary" id="hero-cta" href="https://cal.com/samgorla/quick-connect" data-umami-event="CTA Click" data-umami-event-loc="hiw-hero">Book my free 30-minute call
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            <a class="tlink" href="#builds" data-umami-event="Path Jump" data-umami-event-path="rebuild" data-umami-event-loc="hiw-hero">See what I build <span aria-hidden="true">↓</span></a>
+            <a class="tlink" href="#day" data-umami-event="Path Jump" data-umami-event-path="example-day" data-umami-event-loc="hiw-hero">See an example day <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="flowvis" aria-hidden="true">
@@ -541,24 +449,23 @@
         <div class="rise">
           <span class="mono">Step 1 · the free call</span>
           <h2 id="call-title">Thirty minutes. <em>One or two workflows.</em></h2>
-          <p class="lede" style="margin-bottom:0">You walk me through how the work runs today. I ask plain questions and name the bottleneck. When the numbers matter, I put them on one page you keep.</p>
+          <p class="lede" style="margin-bottom:0">You walk me through the work. I name the bottleneck on one page you keep.</p>
           <div class="chips">
             <span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>Phone</span>
             <span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/></svg>Video</span>
             <span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>In person in the Lehigh Valley</span>
           </div>
-          <p class="fine">It's a conversation, not an audit. There's nothing to sign.</p>
+          <p class="fine">Nothing to sign.</p>
         </div>
         <div class="sheet rise" aria-label="Sample of the one page you keep">
           <div class="sheet-top"><b>One page, after the call</b><span class="mono">Sample</span></div>
           <ol>
-            <li><div>What I heard<span>The workflow, in your words</span></div></li>
-            <li><div>What I'm seeing<span>The bottleneck behind it</span></div></li>
-            <li><div>Rebuilt<span>Before and after, and where AI does the work</span></div></li>
-            <li><div>What it's worth<span>A rough figure from your own numbers</span></div></li>
-            <li><div>My recommendation<span>One path, and why</span></div></li>
+            <li><div>What I heard</div></li>
+            <li><div>What I'm seeing</div></li>
+            <li><div>Rebuilt</div></li>
+            <li><div>What it's worth</div></li>
+            <li><div>My recommendation</div></li>
           </ol>
-          <p class="sample-cap">Sample layout. Not a client's page.</p>
         </div>
       </div>
     </div>
@@ -569,132 +476,78 @@
       <div class="head-c rise">
         <span class="mono">Step 2 · after the call</span>
         <h2 id="paths-title">Then one of three paths. <em>All of them honest.</em></h2>
-        <p>They aren't steps in a sequence. I'll recommend the one that fits.</p>
+        <p>I'll recommend the one that fits.</p>
       </div>
       <div class="cards">
         <a class="card rise" href="#builds" data-umami-event="Path Jump" data-umami-event-path="rebuild">
           <div class="head"><span class="mono"><i aria-hidden="true"></i>Build it</span><h3>Workflow Rebuild</h3><div class="price">Fixed price, quoted after the call</div></div>
-          <div class="body"><p>One workflow rebuilt end to end, with AI only where it earns its place.</p><span class="more">How a rebuild runs <span aria-hidden="true">↓</span></span></div>
+          <div class="body"><span class="more">How it runs <span aria-hidden="true">↓</span></span></div>
         </a>
         <a class="card rise" href="#audit" data-umami-event="Path Jump" data-umami-event-path="audit">
           <div class="head"><span class="mono"><i aria-hidden="true"></i>Map it</span><h3>The AI &amp; Efficiency Audit</h3><div class="price">$1,000, fixed price</div></div>
-          <div class="body"><p>The whole picture of where your money leaks, in sixty minutes, with a written plan.</p><span class="more">How the audit runs <span aria-hidden="true">↓</span></span></div>
+          <div class="body"><span class="more">How it runs <span aria-hidden="true">↓</span></span></div>
         </a>
         <a class="card rise" href="#answer" data-umami-event="Path Jump" data-umami-event-path="straight-answer">
           <div class="head"><span class="mono"><i aria-hidden="true"></i>Point the way</span><h3>A straight answer</h3><div class="price">Free, nothing to sign</div></div>
-          <div class="body"><p>Honest, even when the answer isn't me.</p><span class="more">What that means <span aria-hidden="true">↓</span></span></div>
+          <div class="body"><span class="more">What it means <span aria-hidden="true">↓</span></span></div>
         </a>
       </div>
     </div>
   </section>
 
+  <section class="step" id="day" aria-labelledby="day-title">
+    <span class="jump" id="chief-of-staff"></span><span class="jump" id="demos"></span>
+    <div class="wrap">
+      <div class="head-c rise">
+        <span class="mono">An example day</span>
+        <h2 id="day-title">The same day, <em>with less of it on you.</em></h2>
+      </div>
+      <div class="day rise">
+        <div class="day-cols" aria-hidden="true"><span></span><span class="mono l-was">Before</span><span class="mono l-with">With Servlead</span></div>
+        <ol class="beats">
+          <li class="beat"><time>7:30 AM</time><p class="was">Digging through the inbox.</p>
+            <div class="ucard"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h9"/></svg></span><div><b>Morning check-in</b><span>Only what needs you today</span></div></div></li>
+          <li class="beat"><time>9:15 AM</time><p class="was">A new customer calls. Voicemail.</p>
+            <div class="ucard"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg></span><div><b>Call answered</b><span>Lead logged for your callback</span></div></div></li>
+          <li class="beat"><time>11:40 AM</time><p class="was">Visit notes live in your head.</p>
+            <div class="ucard"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><div><b>Visit logged</b><span>Your voice note, written up</span></div></div></li>
+          <li class="beat"><time>1:15 PM</time><p class="was">A quote goes quiet. Nobody notices.</p>
+            <div class="ucard"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/></svg></span><div><b>Follow-up drafted</b><span>Basement finish quote · quiet a week</span><div class="nchips"><span class="nchip ok">Approve</span><span class="nchip">Edit</span></div></div></div></li>
+          <li class="beat"><time>3:30 PM</time><p class="was">Calls asking when the crew comes.</p>
+            <div class="ucard"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10H9l-5 4z"/></svg></span><div><b>Text sent</b><span>"Crew arrives at 8 tomorrow." Your wording.</span></div></div></li>
+          <li class="beat"><time>5:30 PM</time><p class="was">Evenings spent catching up.</p>
+            <div class="ucard done"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Day wrapped</b><span>What went out, and what waits on you</span></div></div></li>
+        </ol>
+        <div class="day-foot"><span class="mono">Example day · fictional business, names and times</span><span class="rule-l">It drafts. You approve.</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="step" id="builds" aria-labelledby="builds-title">
-    <span class="jump" id="rebuild"></span>
+    <span class="jump" id="rebuild"></span><span class="jump" id="handoff"></span>
     <div class="wrap">
       <div class="head-c rise">
         <span class="mono">Build it · Workflow Rebuild</span>
         <h2 id="builds-title">One workflow, <em>rebuilt end to end.</em></h2>
-        <p>Fixed price, quoted after the call. AI only where it earns its place. You know the price before I start.</p>
+        <p>AI only where it earns its place. You own it.</p>
       </div>
       <ol class="phases rise" aria-label="How a rebuild runs">
-        <li class="phase"><span class="mono">Phase 1</span><b>Frame</b><p>We pick the one workflow and measure where it stands today.</p></li>
-        <li class="phase"><span class="mono">Phase 2</span><b>Prove</b><p>A working piece on your real data, with an honest list of where it falls short.</p></li>
-        <li class="gate"><b>The check</b><p>If it isn't clearly useful, we stop or change course.</p></li>
-        <li class="phase"><span class="mono">Phase 3</span><b>Harden</b><p>Hooked up, backed up, and a one-page sheet for when something breaks.</p></li>
-        <li class="phase"><span class="mono">Phase 4</span><b>Embed</b><p>I train someone on your team and show you before and after.</p></li>
+        <li class="phase"><span class="mono">Phase 1</span><b>Frame</b><p>Measure one workflow as it runs today.</p></li>
+        <li class="phase"><span class="mono">Phase 2</span><b>Prove</b><p>A working piece on your real data.</p></li>
+        <li class="gate"><b>The check</b><p>Not clearly useful? We stop or change course.</p></li>
+        <li class="phase"><span class="mono">Phase 3</span><b>Harden</b><p>Hooked up, backed up, easy to fix.</p></li>
+        <li class="phase"><span class="mono">Phase 4</span><b>Embed</b><p>I train your team to run it.</p></li>
       </ol>
 
-      <div class="build-sub rise">
-        <div><span class="mono">What I build</span><h3>Pieces you can try today.</h3></div>
-        <p>Each one is running now. Nothing goes out without you. It drafts. You approve.</p>
-      </div>
-      <div class="demos">
-        <a class="card rise" href="/tools/quote-rescue" data-umami-event="Demo Open" data-umami-event-demo="quote-rescue">
-          <div class="head">
-            <span class="mono"><i aria-hidden="true"></i>Contractors, manufacturers, firms</span>
-            <h3>Quiet quotes, caught.</h3>
-            <div class="ui" aria-hidden="true"><span class="mono">Follow-up · draft</span><p>Did you get a chance to look over the estimate? Happy to answer any questions. I'll close this out unless I hear back.</p><div class="ph"><span>Approve</span><span>Edit</span></div></div>
-          </div>
-          <div class="body"><p>Paste a quote that went quiet. Get one short follow-up in a plain owner voice. You send it yourself.</p><span class="more">Try it free <span aria-hidden="true">→</span></span></div>
-        </a>
-        <a class="card rise" href="/tools/servlead-knowledge-full" data-umami-event="Demo Open" data-umami-event-demo="knowledge">
-          <div class="head">
-            <span class="mono"><i aria-hidden="true"></i>Any owner-run business</span>
-            <h3>What the business knows, kept.</h3>
-            <div class="ui" aria-hidden="true"><div class="q">New hire: how do we price a standard repeat job?</div><p>Same as the last dozen: standard labor rate, materials, and the usual markup.</p><div class="src">Source attached</div></div>
-          </div>
-          <div class="body"><p>When pricing logic and supplier quirks live in two or three heads, this keeps them findable by anyone, with the source attached.</p><span class="more">Play the demo <span aria-hidden="true">→</span></span></div>
-        </a>
-      </div>
-
-      <div class="cos-wrap rise" id="chief-of-staff">
-        <span class="jump" id="demos"></span>
-        <div class="cos-head">
-          <div><span class="mono">A chief of staff on a clock</span><h3>A day on the clock.</h3></div>
-          <p>Jobs that repeat on a schedule, handled inside the tools you already use. Press play, or pick a moment.</p>
-        </div>
-        <div class="cos-stage" id="cosStage" role="img" aria-label="Animated illustration of a chief of staff agent working through a day. It checks in each morning, logs a visit, drafts a reply about money and stops for your approval, and checks its own usage each Monday.">
-          <canvas id="cosCanvas" aria-hidden="true"></canvas>
-          <div class="cos-ov" aria-hidden="true">
-            <div class="cos-rail" id="cosRail">
-              <div class="cos-card" data-at="3400">
-                <div class="hd"><span class="k">8:00 AM · check-in</span><span class="who">to you</span></div>
-                <div class="r"><i>Decide</i><span>Hartline quote. Send it or hold?</span></div>
-                <div class="r"><i>Stuck</i><span>Permit call, still no callback.</span></div>
-                <div class="r"><i>Figure</i><span>$6,200 in invoices past 30 days.</span></div>
-              </div>
-              <div class="cos-card" data-at="7400">
-                <div class="hd"><span class="k">11:38 AM · voice note</span><span class="who">you, from the truck</span></div>
-                <div class="b">"Just left Kessler Mechanical. Ray wants a lighting quote by Friday."</div>
-              </div>
-              <div class="cos-card crm" data-at="9700">
-                <div class="hd"><span class="k">11:39 AM · CRM row</span><span class="who">written for you</span></div>
-                <div class="b">Kessler Mechanical · Ray, owner · Wants a lighting quote · Next: quote by Friday</div>
-              </div>
-              <div class="cos-card" data-at="13000">
-                <div class="hd"><span class="k">1:12 PM · inbox</span><span class="who">Hartline Distribution</span></div>
-                <div class="b">Can you confirm the revised Q4 number? We'd like to sign this week.</div>
-              </div>
-              <div class="cos-card crm" data-at="21000">
-                <div class="hd"><span class="k">Mon 8:15 AM · weekly sheet</span><span class="who">its own meter</span></div>
-                <div class="b">60% of the included weekly budget used.</div>
-                <div class="cos-meter"><i></i></div>
-              </div>
-            </div>
-            <div class="cos-count"><b id="cosN">0</b><span>jobs done on the clock</span><em id="cosWait">1 waiting on you</em></div>
-            <div class="cos-chap" id="cosChap"><div class="n"></div><div class="t"></div></div>
-            <div class="cos-held" id="cosHeld">
-              <div class="h">Draft on the thread · 1:49 PM</div>
-              <p>Hi Maria, confirming the revised Q4 figure of $18,400, same scope we discussed.</p>
-              <span class="cos-stamp">Draft · not sent · waiting on you</span>
-            </div>
-          </div>
-        </div>
-        <audio id="cosBed" src="/tools/audio/servlead-cos-clock-bed.mp3" preload="none" playsinline></audio>
-        <div class="cos-tl">
-          <button class="cos-play" id="cosPlay" type="button" aria-label="Play"></button>
-          <button class="cos-snd" id="cosSnd" type="button" aria-label="Turn sound on" aria-pressed="false" title="Sound on or off"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button>
-          <div class="cos-chaps">
-            <div class="cos-prog" id="cosProg"></div>
-            <button class="cos-ch" type="button" data-t="0"><i>8:00 AM</i><b>Check-in</b></button>
-            <button class="cos-ch" type="button" data-t="5500"><i>11:38 AM</i><b>After a visit</b></button>
-            <button class="cos-ch" type="button" data-t="11000"><i>1:49 PM</i><b>Money mail</b></button>
-            <button class="cos-ch" type="button" data-t="18000"><i>Monday</i><b>The meter</b></button>
-            <button class="cos-ch" type="button" data-t="23500"><i>Always</i><b>You approve</b></button>
-          </div>
-        </div>
-        <p class="flag-note">Simulation. Fictional business, fictional names and figures.</p>
+      <div class="tries rise">
+        <a class="xlink" href="/tools/quote-rescue" data-umami-event="Demo Open" data-umami-event-demo="quote-rescue"><span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg></span>Try Quote Rescue free</a>
+        <a class="xlink" href="/tools/servlead-knowledge-full" data-umami-event="Demo Open" data-umami-event-demo="knowledge"><span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg></span>Play the knowledge demo</a>
       </div>
 
       <a class="proof rise" href="/#kahler" data-umami-event="Case Studies Link" data-umami-event-loc="hiw-builds">
-        <div><span class="k">Case · Kahler Construction</span><b>70% less time per estimate</b><span class="s">About 5 hours down to about 1.5 hours to build one estimate.</span></div>
-        <span class="go-l">The full story and video <span aria-hidden="true">→</span></span>
+        <div><span class="k">Case · Kahler Construction</span><b>70% less time per estimate</b><span class="s">About 5 hours down to about 1.5 to build one estimate.</span></div>
+        <span class="go-l">Full story <span aria-hidden="true">→</span></span>
       </a>
-      <div class="build-go rise">
-        <a class="btn btn-primary" href="https://cal.com/samgorla/quick-connect" data-umami-event="CTA Click" data-umami-event-loc="hiw-builds">Book my free 30-minute call
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="tlink" href="https://servleadsolutions.com/#product" data-umami-event="Explainer Link" data-umami-event-src="hiw-builds">See a rebuild on the homepage <span aria-hidden="true">→</span></a>
-      </div>
     </div>
   </section>
 
@@ -705,11 +558,6 @@
         <div class="rise">
           <span class="mono">Map it · The AI &amp; Efficiency Audit</span>
           <h2 id="audit-title">The whole picture <em>in sixty minutes.</em></h2>
-          <ul class="facts">
-            <li>We follow the money through four parts of your business, live, together</li>
-            <li>Every leak named and ranked</li>
-            <li>A written plan within 48 hours, yours to keep, with me or without me</li>
-          </ul>
           <p class="price-l"><b>$1,000, fixed price</b>$500 to book, $500 when the plan lands.</p>
           <div class="guarantee"><span class="mono">My guarantee</span><p>If I don't show you at least $10,000 a year leaking out of your business, audit is free.</p></div>
           <p class="bigger">Bigger operation, $10M and up? I'll scope the audit to the right department, or the whole company, on the 30-minute call.</p>
@@ -726,52 +574,23 @@
             </div>
           </div>
           <div class="plan">
-            <div class="plan-top"><b>Written plan · within 48 hours</b><span class="mono">Sample</span></div>
-            <div class="prow"><span class="n">1</span><div>Quotes go quiet after they're sent<span>The leak, how I sized it, and the fix</span></div></div>
-            <div class="prow"><span class="n">2</span><div>Orders typed in twice<span>The leak, how I sized it, and the fix</span></div></div>
-            <div class="prow"><span class="n">3</span><div>Decisions that only wait on you<span>The leak, how I sized it, and the fix</span></div></div>
+            <div class="plan-top"><b>Ranked plan · within 48 hours</b><span class="mono">Sample</span></div>
+            <div class="prow"><span class="n">1</span><div>Quotes go quiet</div></div>
+            <div class="prow"><span class="n">2</span><div>Orders typed twice</div></div>
+            <div class="prow"><span class="n">3</span><div>Decisions wait on you</div></div>
           </div>
-          <p class="finding">Two things I keep finding: <b>the owner is still doing work nobody needs the owner for, and nothing follows up unless a person remembers to.</b> That's 11 of the 24 leaks I've logged across six audits.</p>
+          <p class="finding">What I keep finding: <b>the owner doing work nobody needs the owner for, and nothing following up unless someone remembers.</b> That's 11 of the 24 leaks I've logged across six audits.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="step" id="answer-fix" aria-label="A straight answer, and what a fix can be">
+  <section class="step" id="answer-sec" aria-labelledby="answer-title">
+    <span class="jump" id="fix"></span>
     <div class="wrap">
-      <div class="answer-fix">
-        <div class="answer rise" id="answer">
-          <span class="mono">Point the way</span>
-          <h2>A straight answer.</h2>
-          <p>If a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
-        </div>
-        <div class="rise" id="fix">
-          <div class="fix-head"><span class="mono">What the fix can be</span><h2>Not AI for the sake of it.</h2></div>
-          <div class="fixes">
-            <div class="fix"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg><b>An AI build</b><p>Repetitive work, handled.</p></div>
-            <div class="fix"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="13" rx="2"/><path d="M8 21h8M12 17.5V21"/></svg><b>A tool you have</b><p>Sometimes you're already paying for it.</p></div>
-            <div class="fix"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><b>A person</b><p>Sometimes the work needs a hire, just not you.</p></div>
-            <div class="fix"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><b>A process change</b><p>Sometimes nothing needs buying.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="handoff" aria-labelledby="handoff-title">
-    <div class="wrap">
-      <div class="own">
-        <div class="rise">
-          <span class="mono">You own it</span>
-          <h2 id="handoff-title">Built so your team runs it, <em>not me.</em></h2>
-          <p class="lede" style="margin-bottom:0">You're never locked in. If you'd rather I keep it running, ask.</p>
-        </div>
-        <ul class="check rise" aria-label="What you get at handoff">
-          <li>A one-page sheet for when something breaks</li>
-          <li>Someone on your team trained to run it</li>
-          <li>Before and after, measured against where you started</li>
-          <li>Who owns what, written into the scope before work starts</li>
-        </ul>
+      <div class="answer rise" id="answer">
+        <div><span class="mono">Point the way</span><h2 id="answer-title">A straight answer.</h2></div>
+        <p>If a tool you already pay for handles it, or I'm not the right person for it, I'll tell you and point you to who is.</p>
       </div>
     </div>
   </section>
@@ -780,35 +599,22 @@
     <div class="wrap">
       <div class="faq-grid">
         <div class="faq-side rise">
-          <span class="mono">Questions about the work</span>
+          <span class="mono">Questions</span>
           <h2 id="faq-title">Plain answers.</h2>
-          <p>More on the homepage FAQ, or ask me on the call.</p>
           <a class="tlink" href="/#faq">Homepage FAQ <span aria-hidden="true">→</span></a>
         </div>
         <div class="qas rise">
           <details class="qa">
             <summary>How long does a rebuild take?</summary>
-            <p>It depends on the workflow. You get the price before I start, and there's a check after the first working piece, so you never keep paying for something that isn't working.</p>
-          </details>
-          <details class="qa">
-            <summary>Who owns what you build?</summary>
-            <p>You do. Who owns what is written into the scope before work starts.</p>
+            <p>It depends on the workflow. You get a fixed price before I start, and a check after the first working piece.</p>
           </details>
           <details class="qa">
             <summary>What do you need from my team?</summary>
             <p>One person who decides, and time with whoever knows the work best.</p>
           </details>
           <details class="qa">
-            <summary>What if it isn't working?</summary>
-            <p>There's a check after the first working piece. If it isn't clearly useful on your real data, we stop or change course.</p>
-          </details>
-          <details class="qa">
             <summary>Will it send anything without me?</summary>
-            <p>No. It drafts, and you approve. Money, anything that goes out, and anything you can't undo always wait for you.</p>
-          </details>
-          <details class="qa">
-            <summary>What do you build it on?</summary>
-            <p>Whatever fits what you already use. The plan names the tool and says why.</p>
+            <p>No. It drafts, and you approve. Money, and anything you can't undo, waits for you.</p>
           </details>
         </div>
       </div>
@@ -822,25 +628,13 @@
         <div>
           <span class="mono">Free · 30 minutes · by phone, video or in person</span>
           <h2 id="book-title">It starts with thirty minutes.</h2>
-          <p>Bring me one workflow. I'll look at it with you and give you a straight answer.</p>
+          <p>Bring me one workflow. You'll get a straight answer, even if it isn't me.</p>
           <div class="go">
             <a class="btn btn-primary" href="https://cal.com/samgorla/quick-connect" data-umami-event="CTA Click" data-umami-event-loc="hiw-final">Book my free 30-minute call
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            <a class="leak" href="/leak-estimate" data-umami-event="Leak Estimate Click" data-umami-event-loc="hiw-final">Not ready? Run the free Leak Estimate <span aria-hidden="true">→</span></a>
           </div>
           <div class="who"><img src="/assets/sam-headshot-suit.jpg" alt="Sam Gorla" width="440" height="550" loading="lazy">You talk to me, from the first call on.</div>
-        </div>
-        <div>
-          <p style="margin-bottom:14px">Not ready for a call? Get a rough yearly figure on your own.</p>
-          <a class="leak" href="/leak-estimate" data-umami-event="Leak Estimate Click" data-umami-event-loc="hiw-final">Run the free Leak Estimate <span aria-hidden="true">→</span></a>
-          <form class="signup" method="post" action="/api/lead" style="margin-top:28px">
-            <input type="hidden" name="source" value="newsletter"><input type="hidden" name="page" value="/how-it-works"><input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <label for="email-hiw">Or get a short note from me now and then.</label>
-            <div class="row">
-              <input id="email-hiw" type="email" name="email" placeholder="you@company.com" autocomplete="email" required>
-              <button type="submit">Subscribe</button>
-            </div>
-            <p class="err" role="alert" hidden>That didn't go through. Try again in a minute, or email info@servleadsolutions.com.</p>
-          </form>
         </div>
       </div>
     </div>
@@ -898,22 +692,8 @@
   setTimeout(onScroll, 0);
 
   var from = (location.hash || '').replace('#','');
-  var known = {builds:1, rebuild:1, audit:1, answer:1, call:1, paths:1, faq:1, 'chief-of-staff':1, arc:1, fix:1, ledger:1, contact:1, book:1, handoff:1, demos:1};
+  var known = {builds:1, rebuild:1, audit:1, answer:1, call:1, paths:1, faq:1, 'chief-of-staff':1, arc:1, fix:1, ledger:1, contact:1, book:1, handoff:1, demos:1, day:1};
   setTimeout(function(){ track('HIW Landed', {from: known[from] ? from : (from ? 'other' : 'none')}); }, 1200);
-
-  document.querySelectorAll('form.signup').forEach(function(f){
-    var err = f.querySelector('.err'), btn = f.querySelector('button[type="submit"]');
-    f.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (!f.checkValidity()) { f.reportValidity(); return; }
-      err.hidden = true; btn.disabled = true;
-      fetch('/api/lead', {method:'POST', body:new FormData(f)}).then(function(r){
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        track('Email Signup', {loc:'hiw'});
-        f.innerHTML = '<p class="thanks" role="status">Thanks. Watch your inbox; I keep it short.</p>';
-      }).catch(function(){ err.hidden = false; btn.disabled = false; });
-    });
-  });
 
   document.querySelectorAll('#faq details.qa').forEach(function(d){
     var byUser = false;
@@ -922,11 +702,6 @@
       if (byUser && d.open) track('FAQ Open', {q: d.querySelector('summary').textContent.trim(), page: 'hiw'});
       byUser = false;
     });
-  });
-
-  var cosTracked = false;
-  document.querySelectorAll('#cosPlay, .cos-ch').forEach(function(b){
-    b.addEventListener('click', function(){ if (!cosTracked) { cosTracked = true; track('Demo Open', {demo: 'chief-of-staff'}); } });
   });
 
   function onView(els, cb, opts){
@@ -942,309 +717,5 @@
 })();
 </script>
 
-<script>
-(function () {
-  var stage = document.getElementById('cosStage'); if (!stage) return;
-  var cv = document.getElementById('cosCanvas'), ctx = cv.getContext('2d');
-  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var TAU = Math.PI * 2, END = 27000;
-  var C = { ink: '#14202e', ink2: '#1a2737', paper: '#f2f2f1', gold: '#e8b64c', mist: '#c9d3dd', blue: '#9fb0c2', gate: '#fbf8f3' };
-  var CHAPS = [
-    [0, '8:00 AM · the check-in', 'Three lines before your day starts. <em>Quiet if there\'s nothing.</em>'],
-    [5500, 'After a visit · the CRM', 'You say what happened. <em>It writes the row.</em>'],
-    [11000, '1:49 PM · the money mail', 'It drafts the reply. <em>Then it stops at you.</em>'],
-    [18000, 'Monday · the meter', 'Every Monday, it checks <em>its own usage.</em>'],
-    [23500, 'The rule', 'You approve money, outbound, <em>and anything you can\'t undo.</em>']
-  ];
-  var KEYS = [[0, 390], [2500, 480], [5500, 480], [7000, 698], [11000, 698], [12500, 829], [18000, 829], [19800, 9135], [END, 9135]];
-  var PARTS = [
-    { a: 'core', b: 'you', t0: 2600, d: 1000, c: C.gold },
-    { a: 'you', b: 'core', t0: 7200, d: 1000, c: C.paper },
-    { a: 'core', b: 'crm', t0: 8600, d: 1000, c: C.mist },
-    { a: 'inbox', b: 'core', t0: 12800, d: 1000, c: C.blue },
-    { a: 'core', b: 'gate', t0: 14600, d: 1200, c: C.gate, hold: true },
-    { a: 'core', b: 'sheet', t0: 20000, d: 1000, c: C.gold }
-  ];
-  var PULSES = [2600, 8600, 14200, 20000];
-  var DONE = [3600, 9600, 15800, 21000];
-  var HELD = 15800;
-  var DAYS = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'];
-
-  var W, H, L, mob;
-  var S = { t: RM ? END : 0, playing: false, last: 0, visible: false, started: false, chap: -1 };
-
-  function ease(p) { return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
-  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-
-  function layout() {
-    var DPR = Math.min(2, window.devicePixelRatio || 1);
-    W = stage.clientWidth; mob = W < 760;
-    H = Math.round(mob ? Math.max(280, W * 0.82) : clamp(W * 0.56, 440, 600));
-    cv.width = W * DPR; cv.height = H * DPR; cv.style.height = H + 'px';
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    var cx = mob ? W * 0.5 : W * 0.6, cy = mob ? H * 0.5 : H * 0.47;
-    var R = mob ? Math.min(W, H) * 0.25 : H * 0.27, r2 = R * (mob ? 1.62 : 1.55);
-    function at(deg, label) { var a = deg * Math.PI / 180; return { x: cx + Math.cos(a) * r2, y: cy + Math.sin(a) * r2, label: label }; }
-    L = { cx: cx, cy: cy, R: R, r2: r2, nodes: { you: at(180, 'You'), sheet: at(-70, 'Weekly sheet'), crm: at(-20, 'CRM'), inbox: at(12, 'Inbox') } };
-    L.gate = { x: L.nodes.you.x + 34, y: L.nodes.you.y };
-    L.core = { x: cx, y: cy };
-    render(performance.now());
-  }
-
-  function pt(n) { return n === 'core' ? L.core : n === 'gate' ? L.gate : L.nodes[n]; }
-  function ctrl(a, b) { var dx = b.x - a.x, dy = b.y - a.y; return { x: (a.x + b.x) / 2 - dy * 0.15, y: (a.y + b.y) / 2 + dx * 0.15 }; }
-  function qp(a, c, b, p) { var q = 1 - p; return { x: q * q * a.x + 2 * q * p * c.x + p * p * b.x, y: q * q * a.y + 2 * q * p * c.y + p * p * b.y }; }
-  function minutesAt(t) {
-    for (var i = 1; i < KEYS.length; i++) if (t <= KEYS[i][0]) {
-      var k0 = KEYS[i - 1], k1 = KEYS[i], p = k1[0] === k0[0] ? 1 : ease((t - k0[0]) / (k1[0] - k0[0]));
-      return k0[1] + (k1[1] - k0[1]) * p;
-    }
-    return KEYS[KEYS.length - 1][1];
-  }
-  function fmt(m) {
-    var d = Math.floor(m / 1440), mm = m % 1440, h = Math.floor(mm / 60), mi = Math.floor(mm % 60);
-    var ap = h >= 12 ? 'PM' : 'AM', h12 = h % 12 === 0 ? 12 : h % 12;
-    return DAYS[clamp(d, 0, 6)] + ' ' + h12 + ':' + (mi < 10 ? '0' : '') + mi + ' ' + ap;
-  }
-  function glow(name, t) {
-    var g = 0;
-    PARTS.forEach(function (p) {
-      var arr = p.t0 + p.d;
-      if (p.b === name && t >= arr && t < arr + 1800) g = Math.max(g, 1 - (t - arr) / 1800);
-      if (p.a === name && t >= p.t0 - 300 && t < p.t0 + 500) g = Math.max(g, 1 - Math.abs(t - p.t0) / 500);
-    });
-    return g;
-  }
-  function inFlight(name, t) {
-    return PARTS.some(function (p) { return (p.a === name || p.b === name) && t >= p.t0 && t <= p.t0 + p.d; });
-  }
-
-  function icon(name, x, y) {
-    ctx.save(); ctx.strokeStyle = 'rgba(242,242,241,0.75)'; ctx.fillStyle = 'rgba(242,242,241,0.75)'; ctx.lineWidth = 1.3;
-    if (name === 'crm') { for (var i = -1; i <= 1; i++) { ctx.beginPath(); ctx.moveTo(x - 7, y + i * 4.5); ctx.lineTo(x + 7, y + i * 4.5); ctx.stroke(); } }
-    else if (name === 'inbox') { ctx.strokeRect(x - 7.5, y - 5, 15, 10); ctx.beginPath(); ctx.moveTo(x - 7.5, y - 5); ctx.lineTo(x, y + 1); ctx.lineTo(x + 7.5, y - 5); ctx.stroke(); }
-    else if (name === 'sheet') { ctx.strokeRect(x - 7.5, y - 3, 15, 6); ctx.fillRect(x - 7.5, y - 3, 9, 6); }
-    else if (name === 'you') { ctx.beginPath(); ctx.arc(x, y - 3, 3.6, 0, TAU); ctx.stroke(); ctx.beginPath(); ctx.arc(x, y + 8, 7, Math.PI * 1.15, Math.PI * 1.85); ctx.stroke(); }
-    ctx.restore();
-  }
-
-  function render(now) {
-    if (!L) return;
-    var t = S.t, n = RM ? 0 : now;
-    ctx.fillStyle = C.ink; ctx.fillRect(0, 0, W, H);
-    var g = ctx.createRadialGradient(L.cx, L.cy, 0, L.cx, L.cy, L.r2 * 1.7);
-    g.addColorStop(0, 'rgba(232,182,76,0.07)'); g.addColorStop(1, 'rgba(20,32,46,0)');
-    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-
-    ctx.save(); ctx.setLineDash([2, 6]); ctx.strokeStyle = 'rgba(242,242,241,0.10)'; ctx.beginPath(); ctx.arc(L.cx, L.cy, L.r2, 0, TAU); ctx.stroke(); ctx.restore();
-    for (var i = 0; i < 40; i++) {
-      var a = i / 40 * TAU + n * 0.00005 * (i % 2 ? 1 : -1), rr = L.r2 + Math.sin(i * 7.3) * 14;
-      ctx.fillStyle = 'rgba(242,242,241,' + (0.06 + 0.08 * ((i * 13) % 5) / 5) + ')';
-      ctx.beginPath(); ctx.arc(L.cx + Math.cos(a) * rr, L.cy + Math.sin(a) * rr, 1, 0, TAU); ctx.fill();
-    }
-
-    Object.keys(L.nodes).forEach(function (k) {
-      var b = k === 'you' ? L.gate : L.nodes[k], c = ctrl(L.core, b), on = inFlight(k, t) || (k === 'you' && inFlight('gate', t));
-      ctx.strokeStyle = 'rgba(242,242,241,' + (on ? 0.32 : 0.08) + ')'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(L.core.x, L.core.y); ctx.quadraticCurveTo(c.x, c.y, b.x, b.y); ctx.stroke();
-    });
-
-    var R = L.R;
-    ctx.fillStyle = 'rgba(26,39,55,0.85)'; ctx.beginPath(); ctx.arc(L.cx, L.cy, R, 0, TAU); ctx.fill();
-    ctx.strokeStyle = 'rgba(242,242,241,0.22)'; ctx.lineWidth = 1; ctx.stroke();
-    for (i = 0; i < 60; i++) {
-      var ang = i / 60 * TAU - Math.PI / 2, hr = i % 5 === 0, r0 = R - (hr ? 10 : 5);
-      ctx.strokeStyle = hr ? 'rgba(242,242,241,0.45)' : 'rgba(242,242,241,0.14)'; ctx.lineWidth = hr ? 1.4 : 1;
-      ctx.beginPath(); ctx.moveTo(L.cx + Math.cos(ang) * r0, L.cy + Math.sin(ang) * r0); ctx.lineTo(L.cx + Math.cos(ang) * (R - 2), L.cy + Math.sin(ang) * (R - 2)); ctx.stroke();
-    }
-    ctx.fillStyle = 'rgba(242,242,241,0.4)'; ctx.font = (mob ? 9 : 10) + 'px "Spline Sans Mono", ui-monospace, monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    [['12', 0], ['3', 3], ['6', 6], ['9', 9]].forEach(function (q) { var a2 = q[1] / 12 * TAU - Math.PI / 2; ctx.fillText(q[0], L.cx + Math.cos(a2) * (R - 22), L.cy + Math.sin(a2) * (R - 22)); });
-
-    var m = minutesAt(t);
-    [[480, 2500, C.gold], [829, 12500, C.gold], [495, 19800, C.mist]].forEach(function (r) {
-      var a3 = ((r[0] / 60) % 12) / 12 * TAU - Math.PI / 2, lit = t >= r[1];
-      var x = L.cx + Math.cos(a3) * (R + 9), y = L.cy + Math.sin(a3) * (R + 9);
-      ctx.fillStyle = lit ? r[2] : 'rgba(242,242,241,0.25)'; ctx.beginPath(); ctx.arc(x, y, lit ? 3.4 : 2.4, 0, TAU); ctx.fill();
-      if (lit) { ctx.strokeStyle = r[2]; ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.arc(x, y, 7, 0, TAU); ctx.stroke(); ctx.globalAlpha = 1; }
-    });
-
-    var mm = m % 1440, ha = ((mm / 60) % 12) / 12 * TAU - Math.PI / 2, ma = (mm % 60) / 60 * TAU - Math.PI / 2;
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = 'rgba(242,242,241,0.5)'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(L.cx, L.cy); ctx.lineTo(L.cx + Math.cos(ma) * R * 0.8, L.cy + Math.sin(ma) * R * 0.8); ctx.stroke();
-    ctx.strokeStyle = C.paper; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(L.cx, L.cy); ctx.lineTo(L.cx + Math.cos(ha) * R * 0.52, L.cy + Math.sin(ha) * R * 0.52); ctx.stroke();
-    ctx.lineCap = 'butt';
-
-    var rw = mob ? 96 : 124, rh = mob ? 32 : 40, ry = L.cy + R * 0.38;
-    ctx.fillStyle = 'rgba(20,32,46,0.92)'; roundRect(L.cx - rw / 2, ry, rw, rh, 8); ctx.fill();
-    ctx.fillStyle = C.gold; ctx.font = (mob ? 7.5 : 9) + 'px "Spline Sans Mono", ui-monospace, monospace'; ctx.fillText('ON THE CLOCK', L.cx, ry + (mob ? 9 : 11));
-    ctx.fillStyle = C.paper; ctx.font = (mob ? 13 : 17) + 'px Newsreader, Georgia, serif'; ctx.fillText(fmt(m), L.cx, ry + (mob ? 22 : 28));
-
-    PULSES.forEach(function (e) {
-      var dt = t - e; if (dt < 0 || dt > 1200) return; var p = dt / 1200;
-      ctx.strokeStyle = 'rgba(232,182,76,' + (1 - p) * 0.8 + ')'; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.arc(L.cx, L.cy, 8 + p * R * 0.9, 0, TAU); ctx.stroke();
-    });
-
-    Object.keys(L.nodes).forEach(function (k) {
-      var nd = L.nodes[k], gl = glow(k, t), col = k === 'crm' ? C.mist : k === 'inbox' ? C.blue : C.gold;
-      if (gl > 0) { var gg = ctx.createRadialGradient(nd.x, nd.y, 0, nd.x, nd.y, 40); gg.addColorStop(0, hexA(col, 0.45 * gl)); gg.addColorStop(1, hexA(col, 0)); ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(nd.x, nd.y, 40, 0, TAU); ctx.fill(); }
-      ctx.fillStyle = C.ink2; ctx.beginPath(); ctx.arc(nd.x, nd.y, 18, 0, TAU); ctx.fill();
-      ctx.strokeStyle = gl > 0 ? hexA(col, 0.5 + 0.5 * gl) : 'rgba(242,242,241,0.25)'; ctx.lineWidth = 1.2; ctx.stroke();
-      icon(k, nd.x, nd.y);
-      ctx.fillStyle = 'rgba(242,242,241,0.6)'; ctx.font = '10px "Spline Sans Mono", ui-monospace, monospace';
-      if (mob || k === 'you') { ctx.textAlign = 'center'; ctx.fillText(nd.label.toUpperCase(), nd.x, nd.y + 31); }
-      else { ctx.textAlign = 'left'; ctx.fillText(nd.label.toUpperCase(), nd.x + 26, nd.y + 1); }
-    });
-    ctx.textAlign = 'center';
-
-    var gs = t >= 23500 ? 1 : t >= HELD ? 0.75 : 0.3, gy = L.nodes.you;
-    ctx.strokeStyle = hexA(C.gate, gs); ctx.lineWidth = t >= 23500 ? 3 : 2;
-    ctx.beginPath(); ctx.arc(gy.x, gy.y, 34, -Math.PI / 3, Math.PI / 3); ctx.stroke();
-    if (t >= 23500 && !RM) { var pw = 0.5 + 0.5 * Math.sin(n / 260); ctx.strokeStyle = hexA(C.gate, 0.25 * pw); ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(gy.x, gy.y, 34, -Math.PI / 3, Math.PI / 3); ctx.stroke(); }
-
-    PARTS.forEach(function (p) {
-      var a = pt(p.a), b = pt(p.b), c = ctrl(a, b), dt = t - p.t0;
-      if (dt >= 0 && dt <= p.d) {
-        var pr = ease(dt / p.d);
-        for (var k = 9; k >= 0; k--) {
-          var q = clamp(pr - k * 0.025, 0, 1), P = qp(a, c, b, q);
-          ctx.fillStyle = hexA(p.c, k === 0 ? 1 : 0.5 * (1 - k / 10)); ctx.beginPath(); ctx.arc(P.x, P.y, k === 0 ? 4.5 : 3 * (1 - k / 12), 0, TAU); ctx.fill();
-        }
-      } else if (p.hold && dt > p.d) {
-        var pul = RM ? 0.6 : 0.5 + 0.5 * Math.sin(n / 300);
-        ctx.fillStyle = hexA(p.c, 0.25 * pul); ctx.beginPath(); ctx.arc(b.x, b.y, 7 + 6 * pul, 0, TAU); ctx.fill();
-        ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(b.x, b.y, 5, 0, TAU); ctx.fill();
-      }
-    });
-
-    var cg = ctx.createRadialGradient(L.cx, L.cy, 0, L.cx, L.cy, 26); cg.addColorStop(0, 'rgba(232,182,76,0.55)'); cg.addColorStop(1, 'rgba(232,182,76,0)');
-    ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(L.cx, L.cy, 26, 0, TAU); ctx.fill();
-    ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(L.cx, L.cy, 6.5 + (RM ? 0 : Math.sin(n / 500) * 0.8), 0, TAU); ctx.fill();
-  }
-
-  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
-  function hexA(h, a) { var v = parseInt(h.slice(1), 16); return 'rgba(' + (v >> 16) + ',' + ((v >> 8) & 255) + ',' + (v & 255) + ',' + a + ')'; }
-
-  var cards = Array.prototype.slice.call(document.querySelectorAll('#cosRail .cos-card'));
-  var chap = document.getElementById('cosChap'), held = document.getElementById('cosHeld');
-  var num = document.getElementById('cosN'), wait = document.getElementById('cosWait');
-  var prog = document.getElementById('cosProg'), play = document.getElementById('cosPlay');
-  var chBtns = Array.prototype.slice.call(document.querySelectorAll('.cos-ch'));
-  var ICON = {
-    play: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>',
-    pause: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>',
-    replay: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>'
-  };
-  var iconState = '';
-
-  function sync() {
-    var t = S.t;
-    var shown = cards.filter(function (c) { return t >= +c.dataset.at; }), vis = shown.slice(-2);
-    cards.forEach(function (c) {
-      var idx = vis.indexOf(c);
-      c.classList.toggle('on', idx >= 0);
-      c.classList.toggle('slotB', idx === 1);
-      c.classList.toggle('gone', idx < 0 && shown.indexOf(c) >= 0);
-    });
-    held.classList.toggle('on', t >= 16000);
-    wait.classList.toggle('on', t >= 16000);
-    num.textContent = DONE.filter(function (d) { return t >= d; }).length;
-    var ci = 0; CHAPS.forEach(function (c, i) { if (t >= c[0]) ci = i; });
-    if (ci !== S.chap) {
-      S.chap = ci; chap.classList.remove('on');
-      var set = function () { chap.querySelector('.n').textContent = CHAPS[ci][1]; chap.querySelector('.t').innerHTML = CHAPS[ci][2]; chap.classList.add('on'); };
-      if (RM) set(); else setTimeout(set, 180);
-    }
-    prog.style.width = (t / END * 100) + '%';
-    chBtns.forEach(function (b, i) { b.classList.toggle('live', i === ci); b.classList.toggle('past', i < ci); });
-    var want = S.playing ? 'pause' : (t >= END ? 'replay' : 'play');
-    if (want !== iconState) { iconState = want; play.innerHTML = ICON[want]; play.setAttribute('aria-label', want === 'pause' ? 'Pause' : want === 'replay' ? 'Replay' : 'Play'); }
-  }
-
-  function frame(now) {
-    var dt = S.last ? Math.min(64, now - S.last) : 16; S.last = now;
-    if (S.playing && S.visible) { S.t += dt; if (S.t >= END) { S.t = END; S.playing = false; } }
-    if (S.visible) { render(now); sync(); }
-    bedTick();
-    requestAnimationFrame(frame);
-  }
-
-  var bedEl = document.getElementById('cosBed'), snd = document.getElementById('cosSnd');
-  var BED_SRC = bedEl ? bedEl.getAttribute('src') : null, BED_VOL = 0.2, FADE_IN = 0.4, FADE_OUT = 1.2, DRIFT = 300;
-  var B = { on: !RM, armed: false, ctx: null, gain: null, bytes: null, buf: null, src: null, t: 0, off: 0, fix: 0, jump: false, loading: false, el: false };
-  var ICO_ON = '<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><path d="M16.5 9a4 4 0 0 1 0 6"/><path d="M19 6.5a7.5 7.5 0 0 1 0 11"/>',
-      ICO_OFF = '<polygon points="4 9 8 9 13 5 13 19 8 15 4 15 4 9" fill="currentColor" stroke="none"/><line x1="17" y1="9.5" x2="22" y2="14.5"/><line x1="22" y1="9.5" x2="17" y2="14.5"/>';
-  function bedIcon() { var on = B.armed && B.on; snd.querySelector('svg').innerHTML = on ? ICO_ON : ICO_OFF; snd.setAttribute('aria-pressed', on); snd.setAttribute('aria-label', on ? 'Mute sound' : 'Turn sound on'); }
-  function bedTrim(c, f) { var len = Math.min(f.length, Math.ceil(f.sampleRate * (END / 1000 + 0.1))), b = c.createBuffer(f.numberOfChannels, len, f.sampleRate);
-    for (var i = 0; i < f.numberOfChannels; i++) b.getChannelData(i).set(f.getChannelData(i).subarray(0, len)); return b; }
-  function bedDec(c, bytes) { return new Promise(function (ok, no) { var q = c.decodeAudioData(bytes.slice(0), ok, no); if (q && q.catch) q.catch(no); }).then(function (f) { return bedTrim(c, f); }); }
-  function bedLoad() { if (B.loading || !BED_SRC || !window.fetch) return; B.loading = true;
-    fetch(BED_SRC).then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (b) { if (!b) return; B.bytes = b;
-      var OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext; if (!OAC) return;
-      return bedDec(new OAC(2, 44100, 44100), b).then(function (buf) { if (!B.buf) B.buf = buf; B.bytes = null; });
-    }).catch(function () {}); }
-  function bedArm() { if (RM || !BED_SRC) return; B.armed = true; bedLoad();
-    if (!B.ctx) { try { var AC = window.AudioContext || window.webkitAudioContext;
-      if (AC) { try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
-        B.ctx = new AC(); B.gain = B.ctx.createGain(); B.gain.gain.value = 0; B.gain.connect(B.ctx.destination); } } catch (e) { B.ctx = null; B.gain = null; } }
-    if (B.ctx) { try { if (B.ctx.state !== 'running') B.ctx.resume().catch(function () {}); } catch (e) {}
-      if (!B.buf) { var go = B.bytes ? Promise.resolve(B.bytes) : fetch(BED_SRC).then(function (r) { return r.arrayBuffer(); });
-        go.then(function (b) { return B.buf ? B.buf : bedDec(B.ctx, b); }).then(function (buf) { B.buf = B.buf || buf; B.bytes = null; }).catch(function () {}); } }
-    else if (bedEl) { try { bedEl.volume = 0; var p = bedEl.play(); if (p && p.catch) p.catch(function () {}); bedEl.pause(); } catch (e) {} }
-    B.jump = true; bedIcon(); }
-  function bedEnv(ms, rampIn) { if (!B.gain) return; var g = B.gain.gain, t = B.ctx.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t);
-    if (!B.on) { g.linearRampToValueAtTime(0, t + 0.08); return; }
-    var endT = t + (END - ms) / 1000, fs = endT - FADE_OUT;
-    if (fs > t + 0.05) { g.linearRampToValueAtTime(BED_VOL, Math.min(t + rampIn, fs)); g.setValueAtTime(BED_VOL, fs); }
-    g.linearRampToValueAtTime(0, Math.max(t + 0.02, endT)); }
-  function bedKill() { if (B.src) { try { B.src.stop(); } catch (e) {} try { B.src.disconnect(); } catch (e) {} B.src = null; } }
-  function bedStartAt(ms, rampIn) { bedKill(); if (!B.buf || ms >= END - 50) return; var s = B.ctx.createBufferSource(), off = ms / 1000;
-    s.buffer = B.buf; s.connect(B.gain); s.start(0, off, END / 1000 - off); B.src = s; B.t = B.ctx.currentTime; B.off = ms; B.fix = performance.now(); bedEnv(ms, rampIn); }
-  function bedStop() { bedKill(); if (B.gain) { var g = B.gain.gain, t = B.ctx.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(0, t); }
-    if (B.el) { B.el = false; try { bedEl.pause(); } catch (e) {} } }
-  function bedTick() { if (!B.armed) return;
-    var want = B.on && S.playing && S.visible && !document.hidden && S.t < END;
-    if (!want) { if (B.src || B.el) bedStop(); B.jump = true; return; }
-    if (B.ctx) {
-      if (B.ctx.state !== 'running') { try { B.ctx.resume().catch(function () {}); } catch (e) {} return; }
-      if (!B.buf) return;
-      if (!B.src || B.jump) { B.jump = false; bedStartAt(S.t, FADE_IN); return; }
-      var pos = B.off + (B.ctx.currentTime - B.t) * 1000, now = performance.now();
-      if (Math.abs(pos - S.t) > DRIFT && now - B.fix > 1500 && S.t < END - FADE_OUT * 1000) bedStartAt(S.t, 0.15);
-    } else if (bedEl) {
-      if (!B.el || B.jump) { B.jump = false; B.el = true; try { bedEl.currentTime = S.t / 1000; var p = bedEl.play(); if (p && p.catch) p.catch(function () { B.el = false; }); } catch (e) {} }
-      try { bedEl.volume = BED_VOL * clamp(Math.min((END - S.t) / (FADE_OUT * 1000), 1), 0, 1); } catch (e) {}
-    } }
-  if (RM) snd.hidden = true;
-  snd.addEventListener('click', function () {
-    if (!B.armed) { B.on = true; bedArm(); }
-    else { B.on = !B.on; bedIcon(); if (B.src) bedEnv(S.t, 0.3); else B.jump = true; if (!B.on) bedStop(); }
-  });
-  bedIcon();
-  if ('IntersectionObserver' in window) { new IntersectionObserver(function (es) { if (es[0].isIntersecting) bedLoad(); }, { rootMargin: '600px 0px' }).observe(stage); }
-
-  play.addEventListener('click', function () {
-    bedArm();
-    if (S.playing) { S.playing = false; }
-    else { if (S.t >= END) S.t = 0; S.playing = !RM; if (RM) S.t = END; }
-    S.started = true; sync();
-  });
-  chBtns.forEach(function (b) {
-    b.addEventListener('click', function () { bedArm(); S.t = +b.dataset.t; S.playing = !RM; S.started = true; render(performance.now()); sync(); });
-  });
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) {
-      S.visible = es[0].isIntersecting;
-      if (S.visible && !S.started && !RM) { S.started = true; S.playing = true; }
-    }, { threshold: 0.35 }).observe(stage);
-  } else { S.visible = true; S.playing = !RM; }
-
-  window.addEventListener('resize', function () { layout(); sync(); });
-  layout(); sync(); requestAnimationFrame(frame);
-})();
-</script>
 </body>
 </html>
