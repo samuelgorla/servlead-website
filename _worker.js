@@ -27,6 +27,12 @@ export default {
       if (path === "/api/quote-rescue") return onQuoteRescue({ request, env });
       return onLead({ request, env });
     }
-    return env.ASSETS.fetch(request);
+    const res = await env.ASSETS.fetch(request);
+    if (url.hostname.endsWith(".pages.dev")) {
+      const out = new Response(res.body, res);
+      out.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return out;
+    }
+    return res;
   }
 };
