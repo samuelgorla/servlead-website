@@ -486,14 +486,32 @@
   .motion .qlist.done .qrow.live{background:var(--gold-soft)}
   .sample-cap{margin:14px 4px 4px;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--slate-2)}
 
-  .explainer{margin:0}
-  .vbox{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:var(--navy);box-shadow:0 30px 60px -40px rgba(20,32,46,.6)}
-  .vbox video{display:block;width:100%;height:100%;object-fit:cover;background:var(--navy)}
-  .vsoon{position:absolute;inset:0;display:grid;place-items:end start;padding:18px;background:linear-gradient(180deg,rgba(20,32,46,0) 55%,rgba(20,32,46,.55));cursor:default}
-  .vsoon .mono{background:var(--paper-hi);color:var(--navy);border-radius:999px;padding:8px 12px}
-  .vbox.ready .vsoon{display:none}
-  .explainer figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
-  .explainer figcaption p{margin:0;font-size:15px;color:var(--slate);max-width:44ch}
+  /* Quiet 9 Days explainer: lazy poster image over a preload="none" video; nothing downloads before a tap */
+  .explainer{margin:72px auto 0;max-width:1040px}
+  .vbox{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:var(--paper-hi);box-shadow:0 1px 0 var(--rule), 0 30px 60px -40px rgba(20,32,46,.6)}
+  .vbox video{display:block;width:100%;height:100%;object-fit:cover;background:var(--paper-hi)}
+  .vposter{display:none}
+  .js .vposter{display:block;position:absolute;inset:0}
+  .vposter img{display:block;width:100%;height:100%;object-fit:cover}
+  .vplay{display:none}
+  .js .vplay{position:absolute;left:24px;bottom:calc(16.1% + 20px);display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 22px 0 8px;border:0;border-radius:999px;background:#fff;color:var(--ink);font:600 15px/1 var(--sans);cursor:pointer;box-shadow:0 1px 2px rgba(20,32,46,.08), 0 18px 40px -18px rgba(20,32,46,.55);transition:transform .15s ease, box-shadow .15s ease}
+  .vplay .ic{width:42px;height:42px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+  .vplay svg{width:14px;height:14px;fill:#fff;margin-left:2px}
+  .vplay:hover{transform:scale(1.03)}
+  .vplay:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  @media (prefers-reduced-motion: reduce){.vplay,.vplay:hover{transition:none;transform:none}}
+  .explainer.playing .vposter,.explainer.playing .vplay{display:none}
+  .explainer figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;margin-top:16px}
+  .explainer figcaption p{margin:0;font-size:15px;color:var(--slate);max-width:52ch}
+  .vtr{margin-top:14px}
+  .vtr ol{list-style:none;margin:0 0 14px;padding:0}
+  .vtr li{position:relative;padding:12px 0 12px 64px;border-top:1px solid var(--rule)}
+  .vtr li:first-child{border-top:0}
+  .vt-time{position:absolute;left:0;top:15px;font:500 12px/1.2 var(--mono);color:var(--slate-2)}
+  .vtr .vt-cap{margin:0;color:var(--ink);font:500 16px/1.5 var(--sans)}
+  .vtr .vt-note{margin:4px 0 0;color:var(--slate);font-size:14.5px}
+  .vtr .vt-sub{margin:6px 0 0;padding-left:18px;color:var(--slate);font-size:14.5px}
+  .vtr .vt-sub li{padding:0;border:0;margin:3px 0}
 
   /* ---------- Paths ---------- */
   .paths{padding:130px 0 120px}
@@ -514,11 +532,6 @@
   .guarantee{margin:2px 0 16px;padding:14px 16px;border-radius:12px;background:var(--gold-soft);font:italic 400 17px/1.4 var(--serif);color:var(--ink)}
   .guarantee .mono{display:block;font-style:normal;margin-bottom:6px;color:var(--slate)}
   .guarantee p{margin:0}
-  .xlink{display:flex;align-items:center;gap:12px;margin:0 0 16px;padding:10px 12px;border-radius:12px;border:1px solid var(--rule);text-decoration:none;font:500 14.5px/1.3 var(--sans);color:var(--ink);transition:border-color .2s, background .2s}
-  .xlink:hover{border-color:var(--slate-2);background:#fff}
-  .xlink .play{flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
-  .xlink .play svg{width:12px;height:12px;fill:#fff;margin-left:2px}
-  .xlink small{display:block;color:var(--slate-2);font-size:12.5px;margin-top:2px}
   /* Each path card carries one highlighted box, so the three read as equals */
   .box{display:block;margin:2px 0 16px;padding:14px 16px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--rule);text-decoration:none;color:var(--ink);font-size:15.5px;line-height:1.45}
   .box .mono{display:block;margin-bottom:6px;color:var(--slate)}
@@ -539,7 +552,6 @@
   .more:hover{text-decoration:underline;text-underline-offset:4px}
   .paths-foot{text-align:center;margin-top:56px}
   .paths-foot p{margin:14px 0 0;font-size:14px;color:var(--slate-2)}
-  .paths-foot .xlink{display:inline-flex;margin:26px auto 0;text-align:left;background:transparent}
 
   /* ---------- Founder: the one navy band ---------- */
   .founder{background:var(--navy);color:var(--paper-hi);padding:130px 0 120px;position:relative;overflow:hidden}
@@ -763,7 +775,11 @@
     .qrow.live{padding:11px 10px}
     .product-head p{font-size:16.5px}
     .qlist{padding:16px 14px 10px;border-radius:18px}
-    .vbox{border-radius:16px}
+    .vbox{border-radius:16px;aspect-ratio:4/7}
+    .explainer{margin-top:40px}
+    .js .vplay{left:14px;bottom:calc(18.6% + 14px)}
+    .vtr li{padding-left:0;padding-top:30px}
+    .vt-time{top:12px}
 
     .paths{padding:60px 0 52px}
     .paths-head{text-align:left;margin-bottom:24px}
@@ -843,7 +859,7 @@
   @media (prefers-reduced-motion: reduce){.dock{transition:none}}
   /* Small phones: tighten the case-studies lead-in so the Kahler stat and quote sit within one screen after the hero */
   @media (max-width:400px){ .proofs{padding-top:24px} .logos{gap:14px 20px} .case-k{margin-top:20px;padding-top:18px} .case-k .case-head{padding-bottom:14px} .case-k .kvid{margin-top:8px} .case-k .kv-quote{padding-top:6px} }
-  @media (max-width:700px){ .paths a.box{display:none} .explainer:not(:has(.vbox.ready)){display:none} }
+  @media (max-width:700px){ .paths a.box{display:none} }
 </style>
 </head>
 <body>
@@ -1347,6 +1363,63 @@
 
         
       </div>
+        <figure class="explainer rise" id="explainer-video" aria-labelledby="explainer-cap">
+          <div class="vbox">
+            <video id="explainer" controls playsinline preload="none" width="1280" height="720" aria-label="Video, 1 min 46 s, captions on: Quiet 9 Days" aria-describedby="explainer-cap">
+              <source src="/assets/media/quiet-9-days-phone.mp4" type="video/mp4" media="(max-width: 700px)">
+              <source src="/assets/media/quiet-9-days.mp4" type="video/mp4">
+            </video>
+            <picture class="vposter">
+              <source media="(max-width: 700px)" srcset="/assets/media/quiet-9-days-phone-poster.webp" type="image/webp">
+              <source media="(max-width: 700px)" srcset="/assets/media/quiet-9-days-phone-poster.jpg">
+              <source srcset="/assets/media/quiet-9-days-poster.webp" type="image/webp">
+              <img src="/assets/media/quiet-9-days-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+            </picture>
+            <button class="vplay" type="button" aria-label="Play the video, 1 min 46 s, captions on"><span class="ic"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.2 L10.5 6 L2.5 10.8 Z"/></svg></span>Play</button>
+          </div>
+          <figcaption id="explainer-cap"><span class="mono">Video · 1 min 46 s · captions on</span><p>Quiet 9 Days: what happens to a quote nobody chases, and the small fix.</p></figcaption>
+          <details class="more-d vtr"><summary data-umami-event="Explainer Transcript" data-umami-event-src="product">Read the transcript</summary>
+            <ol>
+              <li><span class="vt-time">0:00</span>
+              <p class="vt-cap">A quote goes out on Monday.</p>
+              <p class="vt-note">On screen: a leak card. i · Getting customers. Quote gone quiet. Sent Mon. Quiet 0 days.</p></li>
+              <li><span class="vt-time">0:04</span>
+              <p class="vt-cap">Nine days later, nobody's chased it. Nobody was ever asked to.</p>
+              <p class="vt-note">On screen: a day counter ticks from 1 to 9 as nine squares fill. The card now reads Quiet 9 days · Nobody's chasing it.</p></li>
+              <li><span class="vt-time">0:13</span>
+              <p class="vt-cap">I could throw a big number at you here. I won't. Until I have your numbers, it's named, not priced.</p>
+              <p class="vt-note">On screen: a dollar ticker rolls as blurred, unreadable digits, stops, and is struck through. The card is stamped NAMED: named, not priced.</p></li>
+              <li><span class="vt-time">0:22</span>
+              <p class="vt-cap">With your numbers, it gets a price. Hours, times how often, times who does it, times their rate. Round it down.</p>
+              <p class="vt-note">On screen, labeled EXAMPLE: 2 hrs × 50 a year × estimator × $45/hr = $4,500 a year, rounded down. Example figures, not a client's.</p></li>
+              <li><span class="vt-time">0:33</span>
+              <p class="vt-cap">Same method, real audits: the leaks shown here ran from about thirteen thousand to nearly forty thousand dollars a year. In my experience, the more moving parts a business has, the more room there is to leak. Bigger operation, ten million and up. I'll scope the audit to the right department, or the whole company, on a thirty-minute call.</p>
+              <ul class="vt-sub">
+              <li>i · Getting customers: $13,300 a year. Wholesale distributor, 8 hours a week of manual prospecting while about 100 known accounts sat uncontacted. Estimated.</li>
+              <li>ii · Serving customers: $32,000 a year. General contractor, 8 hours a bid, 53 bids a year, pricing logic held by one person. Estimated.</li>
+              <li>iii · Getting paid: $16,494 a year. Multi-location restaurant, cash counted by hand across 4 sites, about a dozen investigations a month. Client-stated.</li>
+              <li>iv · Back office: $37,440 a year. Multi-location restaurant, interview no-shows; about 9 in 10 didn't show when the interview was set more than a day after first contact. The largest single leak. Client-stated.</li>
+              </ul>
+              <p class="vt-note">Then the four stages dim behind a small card: Bigger operation · ten million and up. The audit, scoped to the right department, or the whole company. On the thirty-minute call.</p></li>
+              <li><span class="vt-time">0:59</span>
+              <p class="vt-cap">And the most common leak I see? Nothing follows up unless a person remembers to.</p>
+              <p class="vt-note">On screen: 24 dots, 16 filled and 8 hollow rings: 16 priced · 8 named. Then six dots light up under the quote “Nothing follows up unless a person remembers to.”: 6 of 24 leaks · six audits.</p></li>
+              <li><span class="vt-time">1:08</span>
+              <p class="vt-cap">It starts with a free thirty-minute call on one or two workflows. Then one of three paths. I rebuild it, I go deeper with a full audit, or I give you a straight answer, even if that answer isn't me.</p>
+              <ul class="vt-sub">
+              <li>Workflow Rebuild: quoted after the call.</li>
+              <li>AI &amp; Efficiency Audit: goes deeper than the call, with a written plan.</li>
+              <li>A straight answer: a tool you already pay for handles it, or I'm not the right person and I'll point you to who is.</li>
+              </ul></li>
+              <li><span class="vt-time">1:26</span>
+              <p class="vt-cap">I do the work myself, side by side with your team. Then your team runs it on its own.</p>
+              <p class="vt-note">On screen: the original card, now Running on its own · Day 2. Two cursors, Sam and Your team, tick off the steps together: Quote logged, Next step on the calendar, Owner: not needed for this. Sam's fades out; your team's keeps going.</p></li>
+              <li><span class="vt-time">1:35</span>
+              <p class="vt-cap">Bring me one or two workflows. I'll show you where they leak, and what it's worth. I'll be glad to serve you.</p>
+              <p class="vt-note">On screen: the same words, then the button Book a free 30-minute call, cal.com/samgorla/quick-connect.</p></li>
+            </ol>
+          </details>
+        </figure>
     </div>
   </section>
 
@@ -1414,7 +1487,6 @@
         <a class="btn btn-navy" href="https://cal.com/samgorla/quick-connect" data-umami-event="CTA Click" data-umami-event-loc="paths">Book my free 30-minute call
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         <p>The call is where you and I work out which path fits.</p>
-        <a class="xlink" href="https://servleadsolutions.com/tools/audit-explainer" data-umami-event="Explainer Link" data-umami-event-src="paths"><span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z"/></svg></span><span>Watch the 31-second audit explainer<small>Opens the explainer page</small></span></a>
       </div>
     </div>
   </section>
@@ -1593,16 +1665,28 @@
     });
   });
 
-  // Explainer video: controls (and the play event) only once a real source exists.
+  // Quiet 9 Days explainer: one clear play button over a lazy poster; nothing downloads before the tap (preload="none").
+  // Umami: Explainer Play (first play), Explainer Progress at 50%, Explainer Complete. Without JS the native controls stay.
   var vid = document.getElementById('explainer');
   if (vid) {
-    if (vid.getAttribute('src') || vid.querySelector('source')) {
-      vid.controls = true;
-      vid.parentNode.classList.add('ready');
-    } else {
-      vid.controls = false; // empty slot: no dead play button; the markup keeps controls for when the mp4 lands
-    }
-    vid.addEventListener('play', function(){ if (vid.currentSrc) track('Explainer Play', {src: 'video'}); });
+    var vfig = vid.closest('.explainer'), vbtn = vfig.querySelector('.vplay'), vPlayed = false, vHalf = false, vDone = false;
+    vid.controls = false;
+    // The phone gets the tall cut; pick it here too, for browsers that ignore <source media>.
+    vbtn.addEventListener('click', function(){
+      var want = window.matchMedia('(max-width: 700px)').matches ? '/assets/media/quiet-9-days-phone.mp4' : '/assets/media/quiet-9-days.mp4';
+      if (vid.currentSrc.indexOf(want) < 0) vid.src = want;
+      vid.controls = true; vfig.classList.add('playing'); vid.play();
+    });
+    vid.addEventListener('play', function(){
+      vid.controls = true; vfig.classList.add('playing');
+      if (!vPlayed) { vPlayed = true; track('Explainer Play', {src: 'product'}); }
+    });
+    vid.addEventListener('timeupdate', function(){
+      if (!vHalf && vid.duration && vid.currentTime >= vid.duration / 2) { vHalf = true; track('Explainer Progress', {src: 'product', pct: 50}); }
+    });
+    vid.addEventListener('ended', function(){
+      if (!vDone) { vDone = true; track('Explainer Complete', {src: 'product'}); }
+    });
   }
 
   // Kahler testimonial: tap to play, nothing downloads before that (preload="none").
