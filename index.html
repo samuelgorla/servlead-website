@@ -404,8 +404,9 @@
   .logos .cfa img{height:52px}
 
   .case{margin:64px auto 0;max-width:1080px;background:var(--paper-hi);border-radius:28px;padding:40px 44px;box-shadow:0 1px 0 var(--rule), 0 30px 60px -48px rgba(20,32,46,.4)}
-  .case-head{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding-bottom:26px;border-bottom:1px solid var(--rule)}
-  .case-logo{width:52px;height:52px}
+  .cases-eyebrow{margin:40px auto 0;max-width:1080px;text-align:center;color:var(--slate-2)}
+  .cases-eyebrow + .case{margin-top:20px}
+  .case-head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;padding-bottom:26px;border-bottom:1px solid var(--rule)}
   .case h2{font-size:clamp(28px,2.6vw,36px);margin:4px 0 0}
   .case-type{margin:0}
   .case-num{margin:0;text-align:right;font:400 40px/1 var(--serif);letter-spacing:-.02em;white-space:nowrap}
@@ -425,7 +426,7 @@
   .ba dt{font:500 11.5px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2)}
   .ba dd{margin:0;font-size:16px;color:var(--slate)}
   .ba div + div dd{color:var(--ink)}
-  .ba-phone,.spread-phone,.case-sum{display:none}
+  .spread-phone,.case-sum{display:none}
   .more-d{margin-top:18px;border-top:1px solid var(--rule)}
   .more-d summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:600 14.5px/1.3 var(--sans)}
   .more-d summary::-webkit-details-marker{display:none}
@@ -436,7 +437,6 @@
   .more-d li{margin:4px 0}
   .more-d p{margin:0 0 6px;color:var(--slate);font-size:15px}
   /* Kahler case: lead card, with a modest tap-to-play testimonial in a side column */
-  .case-k .case-logo{width:auto;height:40px}
   .case-k .case-body{grid-template-columns:1fr 1.15fr 180px;gap:40px}
   .case-k .ba div{grid-template-columns:84px 1fr}
   #whitehall .ba div{grid-template-columns:84px 1fr}
@@ -728,6 +728,8 @@
     .logos .klase{height:48px}
     .logos .cfa img{height:46px}
     .case{margin-top:32px;padding:22px 18px 8px;border-radius:22px}
+    .cases-eyebrow{margin-top:28px;text-align:left}
+    .cases-eyebrow + .case{margin-top:16px}
     .case-head{padding-bottom:18px}
     /* Phone Kahler: stat in the head, then the summary, then a small video, then the expander */
     .case-k .case-body{gap:0}
@@ -735,14 +737,13 @@
     .case-k .kvid{order:2;grid-template-columns:132px 1fr;gap:16px;margin:12px 0 6px;align-items:start}
     .case-k .kv-quote{padding-top:18px}
     .case-k .more-d{order:3}
-    .case-k .case-logo{height:30px}
     .case-k .kv-quote{font-size:17px}
     .case-body{padding-top:16px;gap:0}
-    /* Phone: the card face is the number and one line; the rest opens in "How it spread" */
-    .ba-wide,.spread-wide{display:none}
-    .ba-phone{display:grid;gap:12px;margin:0 0 16px}
+    /* Phone: the card face is the number and before/after; the timeline opens in "How it spread" */
+    .spread-wide{display:none}
+    .ba-wide{gap:12px;margin:0 0 16px}
     .spread-phone{display:block;margin:0 0 14px}
-    .case-sum{display:block;margin:0;font-size:15.5px;color:var(--slate)}
+    .case-sum{display:block;margin:0 0 14px;font-size:15.5px;color:var(--slate)}
     .ba div{grid-template-columns:58px 1fr;gap:10px}
     .ba dd{font-size:15px}
     .spread ol{margin-top:8px}
@@ -751,10 +752,9 @@
     .spread b{font-size:18px}
     .spread span{font-size:14.5px}
     .more-d{margin-top:6px}
-    .case-head{grid-template-columns:auto 1fr;gap:14px}
+    .case-head{grid-template-columns:1fr;gap:14px}
     .case-num{grid-column:1/-1;text-align:left;font-size:34px}
     .case-num small{margin-left:0;letter-spacing:0}
-    .case-logo{width:44px;height:44px}
 
     .product{padding-top:60px}
     .product-head{margin-bottom:22px}
@@ -922,10 +922,10 @@
         <img src="/logos/aig-safety.svg" alt="AIG Safety" width="198" height="46">
         <span class="cfa"><img src="/logos/chick-fil-a.svg" alt="Chick-fil-A Whitehall" width="44" height="44"><span aria-hidden="true">CFA Whitehall</span></span>
       </div>
+      <p class="mono cases-eyebrow">Before and after, side by side</p>
 
       <article class="case case-k rise" id="kahler" aria-labelledby="kahler-h">
         <header class="case-head">
-          <img class="case-logo" src="/logos/kahler-construction-480.webp" alt="Kahler Construction" width="212" height="46" loading="lazy">
           <div>
             <p class="mono case-type">Case · Contractor estimating</p>
             <h2 id="kahler-h">Kahler Construction</h2>
@@ -956,11 +956,6 @@
                   <li><b>One connected estimating system</b><span>Costs, templates and bids in one place</span></li>
                 </ol>
               </figure>
-              <dl class="ba ba-phone">
-                <div><dt>Before</dt><dd>For 17 years, Budd ran Kahler Construction on spreadsheets. Labor and materials in one. Change orders, progress payments and proposals in others. Every bid meant jumping between programs and checking the spreadsheet again.</dd></div>
-                <div><dt>Side by side</dt><dd>It started with a deep-dive audit of how the work really flows, where the time goes, and what actually needed fixing. Then Budd, his team and I built it together.</dd></div>
-                <div><dt>After</dt><dd>Estimating went from about 5 hours to about 1.5. The goal is minutes, as we connect the AI pieces we've already tested.</dd></div>
-              </dl>
               <ul>
                 <li>The audit showed roughly $38,000 to $54,000 a year on the table, and estimating was the biggest piece. <span class="basis">From the audit report</span></li>
                 <li>Budd's costs, markup and budget templates now live in one place, set up the way his books already work.</li>
@@ -987,7 +982,6 @@
 
       <article class="case rise" id="whitehall" aria-labelledby="whitehall-h">
         <header class="case-head">
-          <img class="case-logo" src="/logos/chick-fil-a.svg" alt="Chick-fil-A Whitehall" width="52" height="52" loading="lazy">
           <div>
             <p class="mono case-type">Case · Restaurant catering outreach</p>
             <h2 id="whitehall-h">Chick-fil-A Whitehall</h2>
@@ -1019,11 +1013,6 @@
                   <li><b>Repeat orders</b><span>A high school now orders regularly</span></li>
                 </ol>
               </figure>
-              <dl class="ba ba-phone">
-                <div><dt>Before</dt><dd>Catering orders only came in through the brand's app, ads and a catering website. Nobody reached out to schools or offices, and nobody followed up.</dd></div>
-                <div><dt>Side by side</dt><dd>Working next to the store's team, we built a list of 105 checked contacts at schools, colleges, medical practices and offices, and wrote the emails. When the first round was quiet, we made the email shorter, offered a free sample tray first, and added one follow-up.</dd></div>
-                <div><dt>After</dt><dd>Replies went from fewer than 2 to about 4 to 6 of every 100 people emailed. Two high schools are ordering, and the store's team runs the outreach on its own.</dd></div>
-              </dl>
               <ul>
                 <li>First round: about 58 emails, 1 reply, about 1.7%. After the changes: about 68 to 73 people reached, 4 replies, 3 interested. Email to people who don't know you yet usually gets 3 to 5%.</li>
                 <li>One high school orders regularly. Another has ordered more than once, including 150 sandwiches for a school committee.</li>
