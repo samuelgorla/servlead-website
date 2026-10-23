@@ -111,7 +111,68 @@
       ],
       "sameAs": [
         "https://www.linkedin.com/in/samuelgorla",
-        "https://outoftheownershead.substack.com"
+        "https://outoftheownershead.substack.com",
+        "https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "reviewCount": "4"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Jon"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Sam's services really impacted my business and gave my startup the boost it needed to get to the next level… He was easy to work with, very knowledgeable, and is passionate about seeing results! Highly recommend partnering with Servlead Solutions!"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Alyssa Schlener"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "We had an excellent experience with ServLead Solutions! Sam did a wonderful job taking the time to understand and acknowledge our unique needs. He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient and organized. Not only has it saved us valuable time, but it has also helped increase our sales. Sam's expertise, professionalism, and commitment to finding the right solutions made a real difference for our business. We highly recommend ServLead Solutions to anyone looking to streamline their operations and drive growth!"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Organization",
+            "name": "AIG Safety"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Organization",
+            "name": "S.M.Klase Custom Homes Office"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Sam was extremely helpful and showed us areas we could dramatically improve our efficiency and therefore, profitability by making much better use of AI integration. He pinpointed areas of inefficiency and put together a systematic plan to address them. Understanding the ability of these systems to simplify my workload is mind-blowing. I would highly recommend Servlead Solutions to any company."
+        }
       ],
       "potentialAction": {
         "@type": "ReserveAction",
@@ -328,7 +389,7 @@
   .wrap{max-width:1240px;margin:0 auto;padding:0 40px}
   .mono{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2)}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  section,.jump{scroll-margin-top:84px}
+  section,.jump,.gcard{scroll-margin-top:84px}
   .jump{position:absolute;top:0;left:0;width:0;height:0;overflow:hidden;pointer-events:none}
   h2{font:400 clamp(36px,4.2vw,58px)/1.04 var(--serif);letter-spacing:-.02em;margin:14px 0 16px}
   h2 em{font-style:italic;color:var(--slate)}
@@ -388,6 +449,11 @@
   .seo-h1 span{color:var(--slate);font-weight:400}
   .see-cases{display:none}
   .go-note{font-size:14.5px;line-height:1.45;color:var(--slate);margin:12px 0 0}
+  .review-line{margin:14px 0 0;font-size:14.5px;line-height:1.45;color:var(--slate)}
+  .review-line a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .review-line a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .review-line a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .review-line .stars{color:var(--gold);letter-spacing:.08em}
   .lede{font-size:18px;color:var(--slate);max-width:38ch;margin:12px 0 28px}
   .byline{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:14px;color:var(--slate);max-width:44ch}
   .byline .av{width:30px;height:30px;border-radius:50%;overflow:hidden;position:relative;flex:none}
@@ -500,6 +566,34 @@
   .logos .klase{height:52px}
   .logos .cfa{display:flex;align-items:center;gap:10px;font:600 17px/1 var(--sans);color:var(--ink)}
   .logos .cfa img{height:52px}
+
+  /* Google reviews: rating and four cards, between the logo strip and the cases */
+  .greviews{margin:48px auto 4px;max-width:1080px}
+  .greviews h3{margin:0 0 16px;text-align:center}
+  .grating{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;width:fit-content;max-width:100%;margin:0 auto 22px;padding:12px 18px 12px 16px;background:var(--paper-hi);border-radius:999px;text-decoration:none;color:var(--ink);box-shadow:0 1px 0 var(--rule), 0 16px 36px -28px rgba(20,32,46,.55)}
+  .grating:hover .gsee{color:var(--ink);text-decoration-color:var(--ink)}
+  .grating:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .grating .stars{color:var(--gold);letter-spacing:.12em;font-size:15px;line-height:1}
+  .grating .gscore{font:400 28px/1 var(--serif);letter-spacing:-.02em}
+  .grating .glabel{font:500 15px/1.2 var(--sans);color:var(--slate)}
+  .grating .gsee{font:500 14px/1 var(--sans);color:var(--slate);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+  .gcards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .gcard{min-width:0;margin:0;background:var(--paper-hi);border-radius:22px;padding:22px 24px 20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 var(--rule), 0 22px 44px -36px rgba(20,32,46,.5)}
+  .gcard-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+  .gcard-logo{display:flex;align-items:center;min-width:0;min-height:44px}
+  .gcard-logo img{height:40px;width:auto;max-width:min(190px,100%);object-fit:contain;object-position:left center}
+  .gcard-logo.cfa{gap:10px;font:600 15.5px/1.1 var(--sans);color:var(--ink)}
+  .gcard-logo.cfa img{height:44px;width:44px;max-width:none;flex:none}
+  .gcard-logo.cfa span{min-width:0}
+  .gmark{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--gold-soft);box-shadow:inset 0 0 0 1px var(--gold);font:500 22px/1 var(--serif);color:var(--navy)}
+  .gcard .gstars{flex:none;margin:0;color:var(--gold);letter-spacing:.1em;font-size:13px;line-height:1}
+  .gcard blockquote{margin:0;flex:1}
+  .gcard blockquote p{margin:0;font:italic 400 19px/1.4 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+  .gcard blockquote p::before{content:"“"}
+  .gcard blockquote p::after{content:"”"}
+  .gcard footer{margin:0}
+  .gcard cite{font-style:normal;font:600 14.5px/1.3 var(--sans);color:var(--ink)}
+  .gcard .grole{display:block;margin-top:2px;font:400 13px/1.35 var(--sans);color:var(--slate)}
 
   .case{margin:64px auto 0;max-width:1080px;background:var(--paper-hi);border-radius:28px;padding:40px 44px;box-shadow:0 1px 0 var(--rule), 0 30px 60px -48px rgba(20,32,46,.4)}
   .cases-eyebrow{margin:40px auto 0;max-width:1080px;text-align:center;color:var(--slate-2)}
@@ -714,6 +808,11 @@
   .foot-links a:hover{color:var(--ink);border-color:var(--ink)}
   .credit{grid-column:1/-1;margin:8px 0 0;padding-top:20px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--slate-2);overflow-wrap:anywhere}
   .credit a{color:var(--slate)}
+  .foot-google{margin:14px 0 0;font-size:13.5px;line-height:1.4;color:var(--slate-2)}
+  .foot-google a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .foot-google a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .foot-google a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .foot-google .stars{color:var(--gold);letter-spacing:.06em}
 
   .dock{display:none}
 
@@ -773,7 +872,7 @@
   @media (max-width:700px){
     body{font-size:16px}
     html{scroll-padding-top:68px}
-    section,.jump{scroll-margin-top:68px}
+    section,.jump,.gcard{scroll-margin-top:68px}
     .wrap{padding:0 20px}
     .top .wrap{height:60px}
     .mark .logo{width:36px}
@@ -793,6 +892,7 @@
     .lede{display:none}
     .hero .go-hero{margin-top:18px}
     .go-note{font-size:13px;margin-top:8px}
+    .hero .review-line{margin-top:10px;font-size:13.5px}
     .see-cases{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:500 13.5px/1.2 var(--sans);color:var(--slate);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
     .byline{font-size:12.5px;margin-top:12px;align-items:flex-start}
     .note{width:auto;max-width:262px;padding:11px 13px;border-radius:14px;gap:10px}
@@ -828,6 +928,16 @@
     .logos img{height:40px;max-width:100%;object-fit:contain;object-position:left center}
     .logos .klase{height:48px}
     .logos .cfa img{height:46px}
+    .greviews{margin-top:28px}
+    .greviews h3{text-align:left;margin-bottom:12px}
+    .grating{width:100%;justify-content:flex-start;border-radius:16px;margin-bottom:14px;padding:12px 14px}
+    .grating .gscore{font-size:24px}
+    .grating .glabel{font-size:14px}
+    .gcards{grid-template-columns:1fr;gap:12px}
+    .gcard{padding:18px 16px 16px;border-radius:18px;gap:12px}
+    .gcard blockquote p{font-size:17.5px}
+    .gcard-logo img{height:36px}
+    .gcard-logo.cfa img{height:40px;width:40px}
     .case{margin-top:32px;padding:22px 18px 8px;border-radius:22px}
     .cases-eyebrow{margin-top:28px;text-align:left}
     .cases-eyebrow + .case{margin-top:16px}
@@ -978,6 +1088,7 @@
           <div class="go-hero">
             <a class="btn btn-primary" id="hero-cta" href="https://cal.com/samgorla/quick-connect" data-umami-event="CTA Click" data-umami-event-loc="hero">Book my free 30-minute call
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            <p class="review-line"><a href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9" target="_blank" rel="noopener" data-umami-event="Google Reviews" data-umami-event-loc="hero"><span class="stars" aria-hidden="true">★★★★★</span> <span class="sr">5 stars. </span>5.0 on Google · 4 reviews</a></p>
             <p class="go-note">Bring me one workflow. I'll look at it with you.</p>
             <a class="see-cases" href="#cases" data-umami-event="Case Studies Link" data-umami-event-loc="hero">See the case studies <span aria-hidden="true">↓</span></a>
           </div>
@@ -1016,15 +1127,66 @@
     <div class="wrap">
       <h2 class="sr" id="proof-title">Case studies</h2>
       <div class="logos">
-        <span id="sm-klase" class="jump" aria-hidden="true"></span>
-        <span id="chick-fil-a" class="jump" aria-hidden="true"></span>
-        <span id="aig-safety" class="jump" aria-hidden="true"></span>
         <span class="mono">Leaders I've worked with</span>
         <img src="/logos/kahler-construction-480.webp" alt="Kahler Construction" width="212" height="46">
         <img class="klase" src="/logos/sm-klase.svg" alt="S.M. Klase Custom Homes" width="168" height="52">
         <img src="/logos/aig-safety.svg" alt="AIG Safety" width="198" height="46">
         <span class="cfa"><img src="/logos/chick-fil-a.svg" alt="Chick-fil-A Whitehall" width="44" height="44"><span aria-hidden="true">CFA Whitehall</span></span>
       </div>
+
+      <section class="greviews rise" aria-labelledby="greviews-title">
+        <h3 class="mono" id="greviews-title">Google reviews</h3>
+        <a class="grating" href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9" target="_blank" rel="noopener" data-umami-event="Google Reviews" data-umami-event-loc="proof">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span class="sr">5 stars. </span>
+          <span class="gscore">5.0</span>
+          <span class="glabel">on Google · 4 reviews</span>
+          <span class="gsee">See Google reviews <span aria-hidden="true">→</span></span>
+        </a>
+        <ul class="gcards">
+          <li class="gcard" id="aig-safety">
+            <div class="gcard-top">
+              <div class="gcard-logo"><img src="/logos/aig-safety.svg" alt="" width="198" height="46"></div>
+              <p class="gstars"><span aria-hidden="true">★★★★★</span><span class="sr">5 out of 5 stars</span></p>
+            </div>
+            <blockquote>
+              <p>The insight and visibility that ServLead allowed us to have was incredible. Not only did it give us clarity on AI, but also a strategic perspective to our employees and systems.</p>
+            </blockquote>
+            <footer><cite>AIG Safety</cite></footer>
+          </li>
+          <li class="gcard" id="sm-klase">
+            <div class="gcard-top">
+              <div class="gcard-logo"><img src="/logos/sm-klase.svg" alt="" width="168" height="52"></div>
+              <p class="gstars"><span aria-hidden="true">★★★★★</span><span class="sr">5 out of 5 stars</span></p>
+            </div>
+            <blockquote>
+              <p>…He pinpointed areas of inefficiency and put together a systematic plan to address them. Understanding the ability of these systems to simplify my workload is mind-blowing.</p>
+            </blockquote>
+            <footer><cite>S.M. Klase Custom Homes</cite></footer>
+          </li>
+          <li class="gcard" id="chick-fil-a">
+            <div class="gcard-top">
+              <div class="gcard-logo cfa"><img src="/logos/chick-fil-a.svg" alt="" width="44" height="44"><span>CFA Whitehall</span></div>
+              <p class="gstars"><span aria-hidden="true">★★★★★</span><span class="sr">5 out of 5 stars</span></p>
+            </div>
+            <blockquote>
+              <p>…He created systems and processes that significantly improved our workflow, making our day-to-day operations more efficient and organized.</p>
+            </blockquote>
+            <footer><cite>Alyssa Schlener</cite><span class="grole">Chick-fil-A Whitehall</span></footer>
+          </li>
+          <li class="gcard" id="jon">
+            <div class="gcard-top">
+              <div class="gcard-logo"><span class="gmark" aria-hidden="true">G</span></div>
+              <p class="gstars"><span aria-hidden="true">★★★★★</span><span class="sr">5 out of 5 stars</span></p>
+            </div>
+            <blockquote>
+              <p>Sam's services really impacted my business and gave my startup the boost it needed to get to the next level…</p>
+            </blockquote>
+            <footer><cite>Jon</cite><span class="grole">Google review</span></footer>
+          </li>
+        </ul>
+      </section>
+
       <p class="mono cases-eyebrow">Before and after, side by side</p>
 
       <article class="case case-k rise" id="kahler" aria-labelledby="kahler-h">
@@ -1639,6 +1801,7 @@
       <div>
         <p class="base">Based in the Lehigh Valley. Working with owners here and beyond.</p>
         <span class="mono">© Servlead Solutions · Sam Gorla</span>
+        <p class="foot-google"><a href="https://maps.app.goo.gl/nXhJBhdpDYW1Bx5K9" target="_blank" rel="noopener" data-umami-event="Google Reviews" data-umami-event-loc="footer"><span class="stars" aria-hidden="true">★★★★★</span> <span class="sr">5 stars. </span>5.0 on Google · 4 reviews</a></p>
       </div>
       <nav aria-label="More from Servlead">
         <ul class="foot-links">
